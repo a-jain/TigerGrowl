@@ -1,0 +1,40 @@
+/********************************************/
+/*        CSS PERTINENT TO INDEX.HTML       */
+/********************************************/
+
+/* allows for the footer to span the entirety of the page */
+body {
+	margin:0px;
+	padding:0px;
+}
+
+#headerSpace {
+	height: 150px;
+	width: 100%;
+}
+
+#centerIndexContent {
+	width: 1000px;
+}
+
+
+#login-button, #signup-button {
+	margin-left: 10px;
+	margin-right:10px;
+	width:140px;
+	height:85px;
+
+}
+
+
+#footer {
+	background-color:white;
+	clear:both;
+	text-align:center;
+	position: absolute;
+	height:50px;
+	width:100%;
+	bottom:0;
+	margin:0px;
+	padding:0px;
+}
