@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect
 
 application = Flask(__name__)
 application.debug = True
@@ -11,7 +12,7 @@ def index():
 	import _ssl;_ssl.PROTOCOL_SSLv23 = _ssl.PROTOCOL_SSLv3
 	import CASClient
 
-	return CASClient.CASClient().cas_url
+	return redirect(CASClient.CASClient().cas_url)
 	#C = CASClient.CASClient()
 	#netid = C.Authenticate()
 
