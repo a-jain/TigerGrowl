@@ -10,8 +10,10 @@ application.debug = True
 def index():
 	import _ssl;_ssl.PROTOCOL_SSLv23 = _ssl.PROTOCOL_SSLv3
 	import CASClient
-	C = CASClient.CASClient()
-	netid = C.Authenticate()
+
+	return CASClient.CASClient()
+	#C = CASClient.CASClient()
+	#netid = C.Authenticate()
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
