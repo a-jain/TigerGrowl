@@ -12,7 +12,7 @@ def index():
 	import _ssl;_ssl.PROTOCOL_SSLv23 = _ssl.PROTOCOL_SSLv3
 	import CASClient
 
-	return redirect('https://fed.princeton.edu/cas/')
+	return redirect('https://www.facebook.com/')
 	#C = CASClient.CASClient()
 	#netid = C.Authenticate()
 
