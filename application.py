@@ -8,7 +8,10 @@ application.debug = True
 @application.route('/')
 @application.route('/home')
 def index():
-	return render_template('CAS/index.html')
+	import _ssl;_ssl.PROTOCOL_SSLv23 = _ssl.PROTOCOL_SSLv3
+	import CASClient
+	C = CASClient.CASClient()
+	netid = C.Authenticate()
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
