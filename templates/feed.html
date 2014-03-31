@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>TigerGROWL</title>
+	<link rel="stylesheet" href="/static/css/main.css" type="text/css"/>
+
+	<!-- JQuery -->
+	<script src="/static/js/jquery-1.11.0.min.js"></script>
+
+	<!-- Install Bootstrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="/static/js/bootstrap.min.js"></script>
+
+
+	<!-- Insert Princeton favicon -->
+	<link rel="shortcut icon" href="/static/img/favicon.ico" type="image/icon"/>
+	<link rel="icon" href="/static/img/favicon.ico" type="image/icon"/>
+</head>
+
+<body>
+
+
+<!-- Headder row -->
+<div class="row">
+    <div class="navbar">
+        <button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                </span>
+
+        </button> <a href="#" class="col-2 col-lg-2 brandtitle"> Title logo</a>
+
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+            <!-- <div class="container"> -->
+            <ul class="nav navbar-nav">
+                <li class="tg-sidebar-left"><a class=""><span class=""><i class="glyphicon glyphicon-align-justify"></i>
+                    </span></a>
+                </li>
+                <li class="active"><a href="Adminhome.aspx" class="">Home</a>
+                </li>
+                <li><a href="#" class="">Link</a>
+                </li>
+                <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown
+                        <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="">Action</a>
+                        </li>
+                        <li><a href="#" class="">Another action</a>
+                        </li>
+                        <li><a href="#" class="">Something else here</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li><a href="#" class="">Separated link</a>
+                        </li>
+                        <li><a href="#" class="">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#" class="">Link</a>
+                </li>
+                <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">UserName
+                        <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class=""><span class="glyphicon glyphicon-user"></span>Profile</a>
+                        </li>
+                        <li><a href="#" class=""><span class="glyphicon glyphicon-cog"></span>Setting</a>
+                        </li>
+                        <li><a href="#" class=""><span class="glyphicon glyphicon-off"></span>Logout</a> 
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- </div> /.container -->
+        </div>
+        <!-- /.nav-collapse -->
+    </div>
+</div>
+<!-- Content row -->
+<div class="row">
+    <!-- SIDEBAR Open -->
+    <div id="sidebar-left" class="col-2 col-lg-2">
+        <ul class="nav nav-tabs nav-stacked sidemenus">
+            <li>
+                <asp:textbox id="TextBox1" cssclass="search span12" runat="server" class=""></asp:textbox>
+            </li>
+            <li><a href="#" class="">One</a>
+            </li>
+            <li class="active"><a href="Adminhome.aspx" class="">Two</a>
+            </li>
+            <li><a href="Default2.aspx" class="">Three</a>
+            </li>
+            <li><a href="#" class="">Four</a>
+            </li>
+            <li><a href="#" class="">Five</a>
+            </li>
+            <li><a href="#" class="">Six</a>
+            </li>
+            <li><a href="#" class="">Seven</a>
+            </li>
+            <li><a href="#" class="">Eight</a>
+            </li>
+            <li><a href="#" class="">Nine</a>
+            </li>
+        </ul>
+    </div>
+    <div id="content-right" class="col-lg-10 container" style="background-color:#fff;">
+<div class="container">         
+<h2 class="">
+              Right content holder
+              </h2><br>
+          
+    <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+    <i class="glyphicon glyphicon-tasks"></i>
+    <span>Charting </span>
+      <a class=" pull-right accordion-toggle" data-toggle="collapse" href="#collapseOne">
+        Collapsible Group Item #1
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+        Collapsible Group Item #2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
+        Collapsible Group Item #3
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+        
+    </div>
+</div>
+<!-- Footer row -->
+<div class="row">
+    <div class="container">
+        <div class="col-2"></div>
+        <div class="col-2">Copyright: @ myworld</div>
+    </div>
+</div>
+</body>
+</html>

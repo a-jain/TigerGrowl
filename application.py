@@ -9,12 +9,14 @@ application.debug = True
 @application.route('/')
 @application.route('/home')
 def index():
-	import _ssl;_ssl.PROTOCOL_SSLv23 = _ssl.PROTOCOL_SSLv3
-	import CASClient
-
+	
 	return redirect('https://fed.princeton.edu/cas/', code=302)
 	#C = CASClient.CASClient()
 	#netid = C.Authenticate()
+
+@application.route('/feed')
+def feed():
+	return render_template('feed.html')
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
