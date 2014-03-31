@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FB ids</title>
+	<style>
+	body 
+	{ 
+		/*http://lea.verou.me/css3patterns/#zig-zag*/
+		background: 
+		linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+		linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+		linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+		linear-gradient(45deg, #ECEDDC 25%, transparent 25%);	
+		background-size: 100px 100px;
+		background-color: #8ABE9B;
+		font-family: 'Patrick Hand SC', cursive;
+	}
+	#logbutton {	
+		width: 100px;
+		height: 10px;
+
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	
+		margin: auto}
+		#prelogbutton {	
+			width: 333px;
+			height: 333px;
+			z-index: -100;
+			color: #F16663;
+			font-size: 600%;
+			text-shadow: 1px 6px 1px #313133;
+
+			position: absolute;
+			top:0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+	
+			margin: auto}
+	</style>
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1423477091234772',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+  // for any authentication related change, such as login, logout or session refresh. This means that
+  // whenever someone who was previously logged out tries to log in again, the correct case below 
+  // will be handled. 
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
+    // Here we specify what we do with the response anytime this event occurs. 
+    if (response.status === 'connected') {
+      // The response object is returned with a status field that lets the app know the current
+      // login status of the person. In this case, we're handling the situation where they 
+      // have logged in to the app.
+	  
+	  
+	  // see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
+      FB.api(
+	            "/me?fields=friends.fields(name)",
+	            function (response) {
+	              if (response && !response.error) {
+					  list = response["friends"]["data"];
+					  for (var i=0; i < list.length; i++)
+					  {
+						  console.log(list[i]["id"]);
+					  }
+	                
+	              }
+	            }
+	        );
+    } else if (response.status === 'not_authorized') {
+      // In this case, the person is logged into Facebook, but not into the app, so we call
+      // FB.login() to prompt them to do so. 
+      // In real-life usage, you wouldn't want to immediately prompt someone to login 
+      // like this, for two reasons:
+      // (1) JavaScript created popup windows are blocked by most browsers unless they 
+      // result from direct interaction from people using the app (such as a mouse click)
+      // (2) it is a bad experience to be continually prompted to login upon page load.
+      FB.login();
+    } else {
+      // In this case, the person is not logged into Facebook, so we call the login() 
+      // function to prompt them to do so. Note that at this stage there is no indication
+      // of whether they are logged into the app. If they aren't then they'll see the Login
+      // dialog right after they log in to Facebook. 
+      // The same caveats as above apply to the FB.login() call here.
+      FB.login();
+    }
+  });
+  };
+
+  // Load the SDK asynchronously
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "https://connect.facebook.net/en_US/all.js";
+   ref.parentNode.insertBefore(js, ref);
+  }(document));
+
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses the JavaScript SDK to
+  present a graphical Login button that triggers the FB.login() function when clicked. -->
+
+<!-- <fb:login-button show-faces="false" width="2000" max-rows="1"></fb:login-button> -->
+
+<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" id="logbutton"></div>
+
+<div id="prelogbutton">TigerGrowl</div>
+
+
+
+</body>
+</html>

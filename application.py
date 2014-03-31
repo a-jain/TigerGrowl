@@ -8,7 +8,7 @@ application.debug = True
 @application.route('/')
 @application.route('/home')
 def index():
-	return render_template('CAS/index.html')
+	return render_template('landing.html')
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
