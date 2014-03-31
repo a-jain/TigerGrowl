@@ -26,7 +26,7 @@
 <body>
 
 
-<!-- Headder row -->
+<!-- Header row -->
 <div class="row">
     <div class="navbar">
         <button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button"> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
@@ -37,7 +37,7 @@
         <div class="nav-collapse collapse navbar-responsive-collapse">
             <!-- <div class="container"> -->
             <ul class="nav navbar-nav">
-                <li class="tg-sidebar-left"><a class=""><span class=""><i class="glyphicon glyphicon-align-justify"></i>
+                <li class="tg-sidebar-right"><a class=""><span class=""><i class="glyphicon glyphicon-align-justify"></i>
                     </span></a>
                 </li>
                 <li class="active"><a href="Adminhome.aspx" class="">Home</a>
@@ -87,7 +87,7 @@
 <!-- Content row -->
 <div class="row">
     <!-- SIDEBAR Open -->
-    <div id="sidebar-left" class="col-2 col-lg-2">
+    <div id="sidebar-right" class="col-2 col-lg-2">
         <ul class="nav nav-tabs nav-stacked sidemenus">
             <li>
                 <asp:textbox id="TextBox1" cssclass="search span12" runat="server" class=""></asp:textbox>
@@ -113,10 +113,8 @@
         </ul>
     </div>
     <div id="content-right" class="col-lg-10 container" style="background-color:#fff;">
-<div class="container">         
-<h2 class="">
-              Right content holder
-              </h2><br>
+<div class="container" style="width:100%">         
+<h2 class="">Right content holder</h2><br>
           
     <div class="accordion" id="accordion2">
   <div class="accordion-group">

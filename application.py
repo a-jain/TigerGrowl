@@ -9,14 +9,7 @@ application.debug = True
 @application.route('/')
 @application.route('/home')
 def index():
-<<<<<<< HEAD
-	
-	return redirect('https://fed.princeton.edu/cas/', code=302)
-	#C = CASClient.CASClient()
-	#netid = C.Authenticate()
-=======
 	return render_template('landing.html')
->>>>>>> FETCH_HEAD
 
 @application.route('/feed')
 def feed():

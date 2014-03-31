@@ -25,169 +25,158 @@ margin-left: -22px ! important;
 margin-right: 5px;
 }
     
-    
-    /*& body
+body
 {
-margin-left: 5px;
-margin-right: 5px;
-margin-top: 0;
-} body { padding-top: 70px; }*/
+    /* background-color: #383E4B ! important;*/
+}
     
+
+.style1
+{
+    width: 100%;
+    height: 619px;
+}
+
+.style3
+{
+    height: 483px;
+}
+
+
+
+
+.style5
+{
+    height: 483px;
+    width: 96px;
+}
+.style6
+{
+    height: 55px;
+}
+.style7
+{
+    height: 58px;
+}
+#content-right
+{
+    min-height: 700px;
+}
+
+img
+{
+    border: none;
+}
+/* dock2 - bottom */
+#dock2
+{
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+}
+.dock-container2
+{
+    position: absolute;
+    height: 50px;
+    background: url(images/dock-bg.gif);
+    padding-left: 20px;
+}
+a.dock-item2
+{
+    display: block;
+    font: bold 12px Arial, Helvetica, sans-serif;
+    width: 40px;
+    color: #000;
+    bottom: 0px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+}
+.dock-item2 span
+{
+    display: none;
+    padding-left: 20px;
+}
+.dock-item2 img
+{
+    border: none;
+    margin: 5px 10px 0px;
+    width: 100%;
+}
+
+#leopardDiv
+{
+    position: fixed;
+    bottom: 50px;
+    left: 500px;
+}
+
+
+.navbar
+{
+    margin-bottom: 0px !important;
+}
+
+
+#sidebar-right
+{
+    right:0px;
+    position:fixed;
+}
+
+.sidemenus
+{
+    background-color: #383E4B;
+    padding-top: 20px;
+}
+
+#sidebar-right .nav-tabs > li.active > a, #sidebar-right .nav-tabs > #sidebar-right li.active > a:hover, #sidebar-right .nav-tabs > li.active > a:focus
+{
+    border: none !important;
+    background-color: #2D323D !important;
+    color: #FFFFFF !important;
+}
+
+#sidebar-right li a
+{
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+
+#sidebar-right .nav > li > a:hover, #sidebar-right .nav > li > a:focus
+{
+    background-color: #2D323D !important;
+    border: none;
+}
     
-    body
-    {
-       /* background-color: #383E4B ! important;*/
-        }
+.brandtitle { 
+    color: white;
+    font-weight: bold;
+    padding: 15px 5px;
+    text-align: center;
+}
     
-    
-    .style1
-    {
-        width: 100%;
-        height: 619px;
-    }
-    
-    
-    
-    
-    .style3
-    {
-        height: 483px;
-    }
-    
-    
-    
-    
-    .style5
-    {
-        height: 483px;
-        width: 96px;
-    }
-    .style6
-    {
-        height: 55px;
-    }
-    .style7
-    {
-        height: 58px;
-    }
-    #content-right
-    {
-        min-height: 700px;
-    }
-    
-    img
-    {
-        border: none;
-    }
-    /* dock2 - bottom */
-    #dock2
-    {
-        width: 100%;
-        bottom: 0px;
-        position: absolute;
-        left: 0px;
-    }
-    .dock-container2
-    {
-        position: absolute;
-        height: 50px;
-        background: url(images/dock-bg.gif);
-        padding-left: 20px;
-    }
-    a.dock-item2
-    {
-        display: block;
-        font: bold 12px Arial, Helvetica, sans-serif;
-        width: 40px;
-        color: #000;
-        bottom: 0px;
-        position: absolute;
-        text-align: center;
-        text-decoration: none;
-    }
-    .dock-item2 span
-    {
-        display: none;
-        padding-left: 20px;
-    }
-    .dock-item2 img
-    {
-        border: none;
-        margin: 5px 10px 0px;
-        width: 100%;
-    }
-    
-    #leopardDiv
-    {
-        position: fixed;
-        bottom: 50px;
-        left: 500px;
-    }
-    
-    
-    .navbar
-    {
-        margin-bottom: 0px !important;
-    }
-    
-    
-    #sidebar-left
-    {
-      
-    }
-    
-    .sidemenus
-    {
-        background-color: #383E4B;
-        padding-top: 20px;
-    }
-    
-    #sidebar-left .nav-tabs > li.active > a, #sidebar-left .nav-tabs > #sidebar-left li.active > a:hover, #sidebar-left .nav-tabs > li.active > a:focus
-    {
-        border: none !important;
-        background-color: #2D323D !important;
-        color: #FFFFFF !important;
-    }
-    
-    #sidebar-left li a
-    {
-        color: #FFFFFF !important;
-        border: none !important;
-    }
-    
-    
-    #sidebar-left .nav > li > a:hover, #sidebar-left .nav > li > a:focus
-    {
-        background-color: #2D323D !important;
-        border: none;
-    }
-    
-    .brandtitle{ color: white;
-font-weight: bold;
-padding: 15px 5px;
-text-align: center;
-    }
-    
-    .accordion-heading{
+.accordion-heading{
     background: #36a9e1;
-color: #fff;
-font-size: 16px;}
+    color: #fff;
+    font-size: 16px;}
 
 .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-background-color: #FFFFFF;
-color: #36A9E1;
+    background-color: #FFFFFF;
+    color: #36A9E1;
 }
 
 .navbar-nav > li > a {color:#fff ! important;}
 #hostBox {
-width:200px;
+    width:200px;
 }
 
 #centerFeed {
-width: 400px;
-
+    width: 400px;
 }
 
 #leftBarrier {
-width: 200px;
+    width: 200px;
 }
