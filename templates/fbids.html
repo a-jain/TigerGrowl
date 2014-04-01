@@ -1,6 +1,6 @@
 <html>
 <head>
-		<title>Main Page</title>
+		<title>Facebook Friends</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
@@ -26,16 +26,13 @@ FB.api(
           "/me?fields=friends.fields(name)",
           function (response) {
             if (response && !response.error) {
-				// console.log("Bitch");
 			  list = response["friends"]["data"];
 			  for (var i=0; i < list.length; i++)
 			  {
 				  friendlist.push(list[i]["name"]);
-				  $(document).ready(function(){
+				  $(document).ready(function() {
 					  $("#friendList").append(list[i]["name"] + '<br/>');
 				  });
-				  
-				  // console.log(list[i]["name"]);
 			  }
               
             }
@@ -53,6 +50,7 @@ FB.api(
 
 </script>	
 
+<!-- You can get a list of your friends at this endpoint: https://graph.facebook.com/me/friends. Then, you can get a friend's profile picture at this endpoint: https://graph.facebook.com/[profile_id]/picture. -->
 <p id="friendList"></p>
 
 </body>
