@@ -12,25 +12,24 @@
 	position: relative;
 }   
 
-.tg-sidebar-left span{cursor:pointer ! important;}
+.tg-sidebar-right span{cursor:pointer ! important;}
     
-#sidebar-left {
-padding-right: 0px ! important;
+#sidebar-right {
+    padding-right: 0px ! important;
+    height:100%;
 }
-    
-    
+      
 .navbar-brand {
-float: left;
-margin-left: -22px ! important;
-margin-right: 5px;
+    float: left;
+    margin-left: -22px ! important;
+    margin-right: 5px;
 }
     
 body
 {
-    /* background-color: #383E4B ! important;*/
+    /*background-color: #383E4B ! important;*/
 }
     
-
 .style1
 {
     width: 100%;
@@ -41,8 +40,6 @@ body
 {
     height: 483px;
 }
-
-
 
 
 .style5
@@ -123,12 +120,15 @@ a.dock-item2
 {
     right:0px;
     position:fixed;
+    margin-top: 50px;
+    margin-right:0px;
 }
 
 .sidemenus
 {
     background-color: #383E4B;
     padding-top: 20px;
+    height:100%;
 }
 
 #sidebar-right .nav-tabs > li.active > a, #sidebar-right .nav-tabs > #sidebar-right li.active > a:hover, #sidebar-right .nav-tabs > li.active > a:focus
@@ -169,14 +169,3 @@ a.dock-item2
 }
 
 .navbar-nav > li > a {color:#fff ! important;}
-#hostBox {
-    width:200px;
-}
-
-#centerFeed {
-    width: 400px;
-}
-
-#leftBarrier {
-    width: 200px;
-}
