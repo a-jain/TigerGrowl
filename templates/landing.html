@@ -68,19 +68,19 @@
 	  
 	  
 	  // see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
-      FB.api(
-	            "/me?fields=friends.fields(name)",
-	            function (response) {
-	              if (response && !response.error) {
-					  list = response["friends"]["data"];
-					  for (var i=0; i < list.length; i++)
-					  {
-						  // console.log(list[i]["name"]);
-					  }
+      // FB.api(
+	     //        "/me?fields=friends.fields(name)",
+	     //        function (response) {
+	     //          if (response && !response.error) {
+					 //  list = response["friends"]["data"];
+					 //  for (var i=0; i < list.length; i++)
+					 //  {
+						// console.log(list[i]["name"]);
+					 //  }
 	                
-	              }
-	            }
-	        );
+	     //          }
+	     //        }
+	     //    );
 		window.location.replace(window.location + "feed.html");
     } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
