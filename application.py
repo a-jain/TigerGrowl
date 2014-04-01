@@ -13,7 +13,7 @@ def index():
 
 @application.route('/feed')
 def feed():
-	return render_template('feed.html')
+	return render_template('fbids.html')
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
