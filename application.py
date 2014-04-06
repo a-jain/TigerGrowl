@@ -40,7 +40,6 @@ def feedPrototype():
 @application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	print "Kevin is breathtakingly gay"
-	db.commit()
 	cursor.execute("UPDATE ebdb.user_table SET user_id=NULL, firstname=NULL, lastname=NULL, netid=NULL WHERE user_id='30876';")
 	db.commit()
 	cursor.execute("INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES ('30876', 'Akash', 'Jain', 'akashj');")
