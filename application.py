@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
-# from flaskext.mysql import MySQL
+from flask.ext.mysql import MySQL
 
 # mysql = MySQL()
 application = Flask(__name__)
