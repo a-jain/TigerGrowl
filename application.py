@@ -35,6 +35,11 @@ def feed():
 def feedPrototype():
 	return render_template('feed.html')
 
+@application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
+def dbinsert():
+	cursor.execute("INSERT INTO ebdb.user_table (`user_id`, `firstname`, `lastname`, `netid`) VALUES (id, firstname, surname, netid);")
+	return render_template('hello.html', name="Success")
+
 @application.route('/hello/')
 @application.route('/hello/<name>')
 def hello(name=None):
