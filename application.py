@@ -38,7 +38,7 @@ def feedPrototype():
 @application.route('/hello/')
 @application.route('/hello/<name>')
 def hello(name=None):
-	return render_template('hello.html', name=name)
+	return render_template('hello.html', name=data)
 
 
 if __name__ == '__main__':
