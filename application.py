@@ -15,6 +15,7 @@ application.config['MYSQL_DATABASE_HOST'] = 'aa104vf4z8592ny.ct5w0yg0rrlk.us-eas
 mysql.init_app(application)
 
 db = mysql.connect()
+db.autocommit(True)
 cursor = mysql.connect().cursor()
 cursor.execute("SELECT * from ebdb.user_table where firstname='Kevin'")
 data = cursor.fetchone()
