@@ -46,6 +46,7 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	db.commit()
 	cursor.execute("SELECT * FROM ebdb.user_table;")
 	print cursor.fetchall()
+	cursor.close()
 	db.close()
 	return render_template('hello.html', name="Success")
 
