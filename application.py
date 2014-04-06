@@ -14,7 +14,8 @@ application.config['MYSQL_DATABASE_DB'] = 'ebdb'
 application.config['MYSQL_DATABASE_HOST'] = 'aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com'
 mysql.init_app(application)
 
-cursor = mysql.connect().cursor()
+db = mysql.connect()
+cursor = db.cursor()
 cursor.execute("SELECT * from ebdb.user_table where firstname='Kevin'")
 data = cursor.fetchone()
 if data is None:
@@ -39,6 +40,7 @@ def feedPrototype():
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	print "Kevin is breathtakingly gay"
 	cursor.execute("INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES ('12309876', 'Akash', 'Jain', 'akashj');")
+	db.commit()
 	return render_template('hello.html', name="Success")
 
 @application.route('/hello/')
