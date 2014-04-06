@@ -4,11 +4,23 @@ from flask import request
 from flask import redirect
 from flaskext.mysql import MySQL
 
+mysql = MySQL()
 application = Flask(__name__)
 application.debug = True
-application.config['MYSQL_DATABASE_USER'] = 'root'
-application.config['MYSQL_DATABASE_PASSWORD'] = 'trfoSVTV'
-application.config['MYSQL_DATABASE_DB']
+
+application.config['MYSQL_DATABASE_USER'] = 'growladmin'
+application.config['MYSQL_DATABASE_PASSWORD'] = 'youeatyet?'
+application.config['MYSQL_DATABASE_DB'] = 'ebdb'
+application.config['MYSQL_DATABASE_HOST'] = 'aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com'
+mysql.init_app(application)
+
+cursor = mysql.connect().cursor()
+cursor.execute("SELECT * from ebdb.user_table where firstname='Kevin'")
+data = cursor.fetchone()
+if data is None:
+	print "Nothing was found in the database"
+else:
+	print data
 
 @application.route('/')
 @application.route('/home')
@@ -18,6 +30,10 @@ def index():
 @application.route('/feed')
 def feed():
 	return render_template('fbids.html')
+
+@application.route('/feedPrototype')
+def feedPrototype():
+	return render_template('feed.html')
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
