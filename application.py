@@ -43,11 +43,10 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	print "Kevin is breathtakingly gay"
 	sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (30876, 'Akaddsh', 'Jaiddn', 'akasddhj');"
 	cursor.execute(sql)
-	# db.commit()
+	db.commit()
 	cursor.execute("SELECT * FROM ebdb.user_table;")
 	print cursor.fetchall()
 
-	db.close()
 	return render_template('hello.html', name="Success")
 
 @application.route('/hello/')
