@@ -36,10 +36,11 @@ def feed():
 def feedPrototype():
 	return render_template('feed.html')
 
+@application.route('/insertDB')
 @application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	print "Kevin is breathtakingly gay"
-	cursor.execute("INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES ('12309876', 'Akash', 'Jain', 'akashj');")
+	cursor.execute("INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES ('1230876', 'Akash', 'Jain', 'akashj');")
 	db.commit()
 	return render_template('hello.html', name="Success")
 
