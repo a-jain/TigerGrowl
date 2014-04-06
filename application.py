@@ -16,7 +16,7 @@ mysql.init_app(application)
 
 db = mysql.connect()
 db.autocommit(True)
-cursor = mysql.connect().cursor()
+cursor = mysql.get_db().cursor()
 cursor.execute("SELECT * from ebdb.user_table where firstname='Kevin'")
 data = cursor.fetchone()
 if data is None:
