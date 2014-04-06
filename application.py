@@ -38,7 +38,7 @@ def feedPrototype():
 @application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	print "Kevin is gay"
-	cursor.execute("INSERT INTO ebdb.user_table ('user_id', 'firstname', 'lastname', 'netid') VALUES ('123', 'Akash', 'Jain', 'akashj');")
+	cursor.execute("INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES ('123', 'Akash', 'Jain', 'akashj');")
 	return render_template('hello.html', name="Success")
 
 @application.route('/hello/')
