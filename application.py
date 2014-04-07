@@ -9,14 +9,14 @@ application = Flask(__name__)
 application.debug = True
 
 application.config['MYSQL_DATABASE_USER'] = 'growladmin'
-application.config['MYSQL_DATABASE_PASSWORD'] = 'youeatyet?'
+application.config['MYSQL_DATABASE_PASSWORD'] = 'youeatyet?' # DO NOT LEAVE PASSWORDS IN CODE
 application.config['MYSQL_DATABASE_DB'] = 'ebdb'
 application.config['MYSQL_DATABASE_HOST'] = 'aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com'
 mysql.init_app(application)
 
 db = mysql.connect()
 db.autocommit(True)
-cursor = mysql.get_db().cursor()
+cursor = db.cursor()
 cursor.execute("SELECT * from ebdb.user_table where firstname='Kevin'")
 data = cursor.fetchone()
 if data is None:
@@ -40,7 +40,6 @@ def feedPrototype():
 @application.route('/insertDB')
 @application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
-	print "Kevin is breathtakingly gay"
 	sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (30876, 'Akaddsh', 'Jaiddn', 'akasddhj');"
 	cursor.execute(sql)
 	db.commit()
