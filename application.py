@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, flash
+from flask import render_template, flash, url_for
 from flask import request
 from flask import redirect
 import MySQLdb
@@ -54,7 +54,7 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
-		# return redirect(url_for('hello'))
+		return redirect(url_for('feed'))
 	return render_template('registermeal.html', form=form)
 
 if __name__ == '__main__':
