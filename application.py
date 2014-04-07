@@ -33,13 +33,14 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	cursor.execute(sql)
 	cursor.execute("SELECT * FROM ebdb.user_table;")
 	# db.close()
-	return render_template('hello.html', name="Success")
+	return render_template('feed.html', name="Success")
 
 # @application.route('/hello/')
 # @application.route('/hello/<name>')
 # def hello(name=None):
 # 	return render_template('hello.html', name="kevinisgay")
 
+@application.route('/registermeal')
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = RegistrationForm(request.form)
