@@ -5,7 +5,6 @@ from flask import redirect
 from flaskext.mysql import MySQL
 import MySQLdb
 
-mysql = MySQL()
 application = Flask(__name__)
 application.debug = True
 
