@@ -1,0 +1,13 @@
+<html>
+
+{% from "formmacro.html" import render_field %}
+<form method=post action="/registermeal">
+  <dl>
+    {{ render_field(form.mealtable) }}
+    {{ render_field(form.host) }}
+    {{ render_field(form.place) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+</html>
