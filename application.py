@@ -38,10 +38,10 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 @application.route('/hello/')
 @application.route('/hello/<name>')
 def hello(name=None):
-	return render_template('hello.html', name=data[2])
+	return render_template('hello.html', name="kevinisgay")
 
 @application.route('/registermeal', methods=['GET', 'POST'])
-def register():
+def registermeal():
 	form = RegistrationForm(request.form)
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
