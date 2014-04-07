@@ -38,7 +38,7 @@ def feedPrototype():
 @application.route('/insertDB')
 @application.route('/insertDB/<id>/<firstname>/<surname>/<netid>')
 def dbinsert(id=None, firstname=None, surname=None, netid=None):
-	sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (6969, 'Roberto', 'Flamenco', 'qqkk');"
+	sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (697769, 'Roberto', 'Flamenco', 'qqkk');"
 	cursor.execute(sql)
 	# db.commit()
 	cursor.execute("SELECT * FROM ebdb.user_table;")
