@@ -35,10 +35,10 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	# db.close()
 	return render_template('hello.html', name="Success")
 
-@application.route('/hello/')
-@application.route('/hello/<name>')
-def hello(name=None):
-	return render_template('hello.html', name="kevinisgay")
+# @application.route('/hello/')
+# @application.route('/hello/<name>')
+# def hello(name=None):
+# 	return render_template('hello.html', name="kevinisgay")
 
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
@@ -53,7 +53,6 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
-		print 'Thanks for registering'
 		# return redirect(url_for('hello'))
 	return render_template('registermeal.html', form=form)
 
