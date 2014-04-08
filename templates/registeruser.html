@@ -33,6 +33,20 @@ FB.getLoginStatus(function(response) {
     var userid = response.authResponse.userID;
     var accessToken = response.authResponse.accessToken;
     $(document).ready(function() {$("#uid").val(userid);});
+    FB.api(
+    "/me/picture",
+        {
+        "object": {
+            "redirect": false
+        }
+    },
+    function (response) {
+      if (response && !response.error) {
+      	$(document).ready(function() {$("#fbid").val(response["url"]);});
+        /* handle the result */
+      }
+    }
+);
   } else if (response.status === 'not_authorized') {
     // the user is logged in to Facebook, 
     // but has not authenticated your app
