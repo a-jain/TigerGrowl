@@ -6,11 +6,12 @@ class MealForm(Form):
     host = TextField('Host', [validators.Length(min=3, max=35)])
     place = TextField('Place', [validators.Length(min=3, max=35)])
 
+def validate_email(form, field):
+	if "@princeton.edu" not in field:
+		raise ValidationError(u'Must be a Princetonian!')
+
 class Signup(Form):
 	firstname = TextField('First', [validators.Length(min=3, max=35)])
 	lastname = TextField('Last', [validators.Length(min=3, max=35)])
 	email = TextField('Email', [validate_email])
 
-def validate_email(form, field):
-	if "@princeton.edu" not in field:
-		raise ValidationError(u'Must be a Princetonian!')
