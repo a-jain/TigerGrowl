@@ -49,20 +49,9 @@ def hello(name=None):
 def registeruser():
 	form = Signup(request.form)
 	if request.method == 'POST' and form.validate():
-		# user = User(form.mealtable.data, form.host.data, form.place.data)
-		# if self.session.get("user"):
-		# 	print self.session.get("user")
-		# else:
-		# user = facebook.get_user_from_cookie(self.request.cookies, '1423477091234772', 'e6db8e28a8f2a150534abd4d8a5f4399')
-		# print user
-
-		print form.firstname.data
-		print form.lastname.data
-		print form.email.data
-		print form.uid.data
 
 		netid = form.email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (%d, \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid)
+		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
 
 		cursor.execute(sql)
 
