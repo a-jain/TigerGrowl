@@ -8,6 +8,7 @@
     {{ render_field(form.firstname) }}
     {{ render_field(form.lastname) }}
     {{ render_field(form.email) }}
+    {{ render_field(form.uid) }}
   </dl>
   <p><input type=submit value=Register>
 </form>
@@ -30,7 +31,7 @@ FB.api(
 			  console.log(response["id"])
 
 				  $(document).ready(function() {
-					  $("#email").val(response["id"]);
+					  $("#uid").val(response["id"]);
 				  });
             }
           }

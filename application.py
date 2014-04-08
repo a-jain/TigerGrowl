@@ -55,9 +55,10 @@ def registeruser():
 		print form.firstname.data
 		print form.lastname.data
 		print form.email.data
+		print form.uid.data
 
 		netid = form.email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (firstname, lastname, netid) VALUES (\'%s\', \'%s\', \'%s\');" % (form.firstname.data, form.lastname.data, netid)
+		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid) VALUES (%d, \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid)
 
 		cursor.execute(sql)
 
