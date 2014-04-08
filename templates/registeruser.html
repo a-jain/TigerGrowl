@@ -53,6 +53,7 @@ FB.getLoginStatus(function(response) {
     function (response) {
       if (response && !response.error) {
       	console.log(response)
+      	$(document).ready(function() {$("#friendList").append(response["picture"]["data"]["url"]);});
       	$(document).ready(function() {$("#picurl").val(response["picture"]["data"]["url"]);});
         /* handle the result */
       }
@@ -77,6 +78,6 @@ FB.getLoginStatus(function(response) {
 
 </script>	
 
-<p id="fbid">Hi</p>
+<p id="friendList">Hi</p>
 
 </html>
