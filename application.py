@@ -4,7 +4,6 @@ from flask import request
 from flask import redirect
 import MySQLdb
 from form import *
-import facebook
 
 application = Flask(__name__)
 application.debug = True
@@ -45,7 +44,6 @@ def hello(name=None):
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 	form = Signup(request.form)
-	form.content(id="fbids")
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		# if self.session.get("user"):
@@ -53,11 +51,6 @@ def registeruser():
 		# else:
 		# user = facebook.get_user_from_cookie(self.request.cookies, '1423477091234772', 'e6db8e28a8f2a150534abd4d8a5f4399')
 		# print user
-
-		token = '1423477091234772'
-		graph = facebook.GraphAPI(token)
-		fb = graph.get_object("me?fields=id")
-		print fb
 
 		print form.firstname.data
 		print form.lastname.data
