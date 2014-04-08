@@ -35,15 +35,32 @@ def dbinsert(id=None, firstname=None, surname=None, netid=None):
 	# db.close()
 	return render_template('feed.html', name="Success")
 
-# @application.route('/hello/')
-# @application.route('/hello/<name>')
-# def hello(name=None):
-# 	return render_template('hello.html', name="kevinisgay")
+@application.route('/hello/')
+@application.route('/hello/<name>')
+def hello(name=None):
+	return render_template('hello.html', name="kevinisgay")
 
-@application.route('/registermeal')
+@application.route('/registeruser', methods=['GET', 'POST'])
+def registeruser():
+	form = Signup(request.form)
+	if request.method == 'POST' and form.validate():
+		# user = User(form.mealtable.data, form.host.data, form.place.data)
+		
+		print form.First.data
+		print form.Last.data
+		print form.Email.data
+
+		netid = form.Email.data.split('@')[0]
+		sql = "INSERT INTO ebdb.user_table (firstname, lastname, netid) VALUES (\'%s\', \'%s\', \'%s\');" % (form.First.data, form.Last.data, netid)
+
+		cursor.execute(sql)
+
+		return redirect(url_for('hello'))
+	return render_template('registermeal.html', form=form)
+
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
-	form = RegistrationForm(request.form)
+	form = MealForm(request.form)
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
