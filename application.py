@@ -23,7 +23,7 @@ def feed():
 	return render_template('fbids.html')
 
 @application.route('/timeline')
-def feed():
+def timeline():
 	return render_template('timeline.html')
 
 @application.route('/feedPrototype')
