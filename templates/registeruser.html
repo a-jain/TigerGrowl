@@ -48,7 +48,7 @@ FB.getLoginStatus(function(response) {
     $(document).ready(function() {$("#uid").val(userid);});
     
     FB.api(
-    "/me/picture"
+    "/me?fields=picture"
     },
     function (response) {
       if (response && !response.error) {
