@@ -22,6 +22,19 @@ FB.init({
   cookie     : true, // enable cookies to allow the server to access the session
   xfbml      : true  // parse XFBML
 });
+// FB.Event.subscribe('auth.authResponseChange', function(response) {
+// FB.api(
+//           "me?fields=id,picture",
+//           function (response) {
+//             if (response && !response.error) {
+//             	userid = response["id"]
+//             	pic = response["pic"]
+// 				$(document).ready(function() {$("#uid").val(userid);});
+// 			 	});
+//             }
+//           }
+//       );
+//   });
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
@@ -43,8 +56,8 @@ FB.getLoginStatus(function(response) {
     },
     function (response) {
       if (response && !response.error) {
-      	console.log(response["url"])
-      	$(document).ready(function() {$("#fbid").append(response["url"]);});
+      	console.log(response["picture"]["data"]["url"])
+      	$(document).ready(function() {$("#fbid").append(response["picture"]["data"]["url"]);});
         /* handle the result */
       }
     }
