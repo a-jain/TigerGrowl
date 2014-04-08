@@ -3,6 +3,7 @@ from flask import render_template, flash, url_for
 from flask import request
 from flask import redirect
 import MySQLdb
+import json
 from form import *
 
 application = Flask(__name__)
@@ -37,7 +38,8 @@ def feedPrototype(page=None):
 	#What if page number gives an offset that is too large?
 		
 	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
-	mealList = cursor.fetchall()
+	queryResults = cursor.fetchall()
+	mealList = json.dumps(queryResults)
 	return render_template('feed.html', mealList=mealList)
 
 @application.route('/hello/')
