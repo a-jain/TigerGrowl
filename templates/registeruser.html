@@ -56,7 +56,7 @@ FB.getLoginStatus(function(response) {
     },
     function (response) {
       if (response && !response.error) {
-      	console.log(response["picture"]["data"]["url"])
+      	console.log(response)
       	$(document).ready(function() {$("#fbid").append(response["picture"]["data"]["url"]);});
         /* handle the result */
       }
