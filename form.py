@@ -8,12 +8,12 @@ class MealForm(Form):
     place = TextField('Place', [Required(), validators.Length(min=3, max=35)])
 
 def validate_email(form, field):
-	if "@princeton.edu" not in field.data:
+	if "@princeton.edu" not in field.data.lower():
 		raise ValidationError(u'Must be a Princetonian!')
 
 class Signup(Form):
-	firstname = TextField('First', [Required(), validators.Length(min=3, max=35)])
-	lastname = TextField('Last', [Required(), validators.Length(min=3, max=35)])
+	firstname = TextField('First', [Required(), validators.Length(min=2, max=35)])
+	lastname = TextField('Last', [Required(), validators.Length(min=2, max=35)])
 	email = TextField('Email', [Required(), Email(), validate_email])
 	uid = HiddenField('', [Required()])
 
