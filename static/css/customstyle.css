@@ -13,14 +13,16 @@ body {
 
 .jumbotron{
 	margin-top: 40px;
-	background: url("../images/featured.jpg") bottom center no-repeat;
 	background-size: cover;
 	color: #FFFFFF;
+	text-align: center;
+	background-color: #eceddc;
 }
 
 .jumbotron h1{
 	color: #FFFFFF;
 	text-shadow: 0px 0px 5px #888888;
+
 }
 
 .feed-row{
@@ -34,6 +36,23 @@ body {
 	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
 }
 
+.name-identifier{
+	float: left;
+	width: 50%;
+	padding-left:45px;
+
+}
+
+.setting-identifier {
+	float:right;
+	width:50%;
+	text-align: center;
+}
+
+.attendees {
+	margin-top: 50px;
+	margin-left: 45px;
+}
 footer{
 	border-top: 1px dashed #CCCCCC;
 	padding: 20px 0px;
