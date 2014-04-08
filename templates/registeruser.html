@@ -13,6 +13,7 @@
   <p><input type=submit value=Register>
 </form>
 
+<div id="fb-root"></div>
 <script>
 window.fbAsyncInit = function() {
 FB.init({
@@ -23,20 +24,39 @@ FB.init({
 });
 // see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
 
-FB.Event.subscribe('auth.authResponseChange', function(response) {
-FB.api(
-          "/me?fields=id",
-          function (response) {
-            if (response && !response.error) {
-			  console.log(response["id"])
+// FB.Event.subscribe('auth.authResponseChange', function(response) {
+// FB.api(
+//           "/me?fields=id",
+//           function (response) {
+//             if (response && !response.error) {
+// 			  console.log(response["id"])
 
-				  $(document).ready(function() {
-					  $("#uid").val(response["id"]);
-				  });
-            }
-          }
-      );
-  });
+// 				  $(document).ready(function() {
+// 					  $("#uid").val(response["id"]);
+// 				  });
+//             }
+//           }
+//       );
+//   });
+
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    // the user is logged in and has authenticated your
+    // app, and response.authResponse supplies
+    // the user's ID, a valid access token, a signed
+    // request, and the time the access token 
+    // and signed request each expire
+    var userid = response.authResponse.userID;
+    var accessToken = response.authResponse.accessToken;
+    $(document).ready(function() {$("#uid").val(response["id"]);});
+  } else if (response.status === 'not_authorized') {
+    // the user is logged in to Facebook, 
+    // but has not authenticated your app
+  } else {
+    // the user isn't logged in to Facebook.
+  }
+ });
+
 };
 (function(d){
  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];

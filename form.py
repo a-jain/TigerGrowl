@@ -15,5 +15,5 @@ class Signup(Form):
 	firstname = TextField('First', [Required(), validators.Length(min=3, max=35)])
 	lastname = TextField('Last', [Required(), validators.Length(min=3, max=35)])
 	email = TextField('Email', [Required(), Email(), validate_email])
-	uid = HiddenField('fbid')
+	uid = HiddenField('', [Required()])
 
