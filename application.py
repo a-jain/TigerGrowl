@@ -4,6 +4,9 @@ from flask import request
 from flask import redirect
 import MySQLdb
 from form import *
+import facebook
+
+fbtoken = '1423477091234772|GWGzSu20mgBHVIoqtQoym8E4xD8'
 
 application = Flask(__name__)
 application.debug = True
@@ -37,9 +40,13 @@ def registeruser():
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
+		user = facebook.get_user_from_cookie(self.request.cookies, '1423477091234772', 'e6db8e28a8f2a150534abd4d8a5f4399')
+		print user
+
 		print form.firstname.data
 		print form.lastname.data
 		print form.email.data
+		print form.uid.data
 
 		netid = form.email.data.split('@')[0]
 		sql = "INSERT INTO ebdb.user_table (firstname, lastname, netid) VALUES (\'%s\', \'%s\', \'%s\');" % (form.firstname.data, form.lastname.data, netid)

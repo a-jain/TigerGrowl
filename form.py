@@ -1,5 +1,6 @@
 from wtforms import Form, BooleanField, TextField, IntegerField, PasswordField, validators
 from wtforms.validators import ValidationError, Required, Email
+from wtforms.fields import HiddenField
 
 class MealForm(Form):
     mealtable = IntegerField('Meal ID', [Required(), validators.NumberRange(min=40, max=110000000)])
@@ -14,4 +15,5 @@ class Signup(Form):
 	firstname = TextField('First', [Required(), validators.Length(min=3, max=35)])
 	lastname = TextField('Last', [Required(), validators.Length(min=3, max=35)])
 	email = TextField('Email', [Required(), Email(), validate_email])
+	uid = HiddenField('')
 
