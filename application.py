@@ -38,8 +38,8 @@ def registeruser():
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
-		# user = facebook.get_user_from_cookie(self.request.cookies, '1423477091234772', 'e6db8e28a8f2a150534abd4d8a5f4399')
-		# print user
+		user = facebook.get_user_from_cookie(self.request.cookies, '1423477091234772', 'e6db8e28a8f2a150534abd4d8a5f4399')
+		print user
 
 		print form.firstname.data
 		print form.lastname.data
