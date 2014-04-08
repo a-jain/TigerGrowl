@@ -23,6 +23,7 @@ def index():
 def feed():
 	return render_template('fbids.html')
 
+@application.route('/feedPrototype')
 @application.route('/feedPrototype/<page>')
 def feedPrototype(page):
 	if page is None:
@@ -32,7 +33,7 @@ def feedPrototype(page):
 
 	#What if page number gives an offset that is too large?
 		
-	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 10 OFFSET %d" %(offset*10) )
+	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
 	mealList = db.store_data()
 	return render_template('feed.html', mealList=mealList)
 
