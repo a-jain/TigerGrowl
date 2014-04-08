@@ -98,6 +98,11 @@
 
         <!-- Populate the rows of -->
         <script>
+
+       
+        obj = JSON.parse({{ mealList }});
+        console.log(obj);
+
         $( document ).ready(function() {
           $(".feed-row:nth-child(1) .name-identifier").text("Name 1" + "\'s Meal");
           $(".feed-row:nth-child(2) .name-identifier").text("Name 2" + "\'s Meal");
