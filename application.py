@@ -33,7 +33,7 @@ def feedPrototype(page=None):
 	#What if page number gives an offset that is too large?
 		
 	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
-	mealList = db.store_data()
+	mealList = cursor.fetchall()
 	return render_template('feed.html', mealList=mealList)
 
 @application.route('/hello/')
