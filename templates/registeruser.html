@@ -43,6 +43,7 @@ FB.getLoginStatus(function(response) {
     },
     function (response) {
       if (response && !response.error) {
+      	console.log(response["url"])
       	$(document).ready(function() {$("#fbid").append(response["url"]);});
         /* handle the result */
       }
