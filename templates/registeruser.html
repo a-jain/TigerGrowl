@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 
 {% from "formmacro.html" import render_field %}
 <form method=post action="/registeruser">
@@ -9,5 +9,43 @@
   </dl>
   <p><input type=submit value=Register>
 </form>
+
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+  appId      : '1423477091234772',
+  status     : true, // check login status
+  cookie     : true, // enable cookies to allow the server to access the session
+  xfbml      : true  // parse XFBML
+});
+// see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
+
+FB.Event.subscribe('auth.authResponseChange', function(response) {
+FB.api(
+          "/me?fields=id",
+          function (response) {
+            if (response && !response.error) {
+			  console.log(response)
+
+				  
+				  $(document).ready(function() {
+					  $("#fbid").append(response);
+				  });
+            }
+          }
+      );
+  });
+};
+(function(d){
+ var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement('script'); js.id = id; js.async = true;
+ js.src = "https://connect.facebook.net/en_US/all.js";
+ ref.parentNode.insertBefore(js, ref);
+}(document));
+
+</script>	
+
+<p id="fbid"></p>
 
 </html>
