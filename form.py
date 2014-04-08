@@ -10,6 +10,6 @@ class Signup(Form):
 	lastname = TextField('Last', [validators.Length(min=3, max=35)])
 	email = TextField('Email', [validate_email])
 
-	def validate_email(form, field):
-		if "@princeton.edu" not in field:
-			raise ValidationError(u'Must be a Princetonian!')
+def validate_email(form, field):
+	if "@princeton.edu" not in field:
+		raise ValidationError(u'Must be a Princetonian!')
