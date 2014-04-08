@@ -29,6 +29,7 @@ FB.api(
 
 				  $(document).ready(function() {
 					  $("#fbid").append(response["id"]);
+					  $("#form.email").val(response["id"]);
 				  });
             }
           }
