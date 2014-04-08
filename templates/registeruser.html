@@ -33,6 +33,7 @@ FB.getLoginStatus(function(response) {
     var userid = response.authResponse.userID;
     var accessToken = response.authResponse.accessToken;
     $(document).ready(function() {$("#uid").val(userid);});
+    
     FB.api(
     "/me/picture",
         {
@@ -42,7 +43,7 @@ FB.getLoginStatus(function(response) {
     },
     function (response) {
       if (response && !response.error) {
-      	$(document).ready(function() {$("#fbid").val(response["url"]);});
+      	$(document).ready(function() {$("#fbid").append(response["url"]);});
         /* handle the result */
       }
     }
@@ -66,6 +67,6 @@ FB.getLoginStatus(function(response) {
 
 </script>	
 
-<p id="fbid"></p>
+<p id="fbid">Hi</p>
 
 </html>
