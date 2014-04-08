@@ -25,11 +25,10 @@ FB.api(
           "/me?fields=id",
           function (response) {
             if (response && !response.error) {
-			  console.log(response)
+			  console.log(response["id"])
 
-				  
 				  $(document).ready(function() {
-					  $("#fbid").append(response);
+					  $("#fbid").append(response["id"]);
 				  });
             }
           }
