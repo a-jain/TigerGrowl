@@ -30,7 +30,7 @@ def feedPrototype():
 @application.route('/hello/')
 @application.route('/hello/<name>')
 def hello(name=None):
-	return render_template('hello.html', name="kevinisgay")
+	return render_template('hello.html', name=name)
 
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
