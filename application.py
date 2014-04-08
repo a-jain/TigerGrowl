@@ -24,8 +24,18 @@ def feed():
 	return render_template('fbids.html')
 
 @application.route('/feedPrototype')
-def feedPrototype():
-	return render_template('feed.html')
+@application.route('/feedPrototype/<page>')
+def feedPrototype(page=None):
+	if page is None:
+		offset = 0
+	else:
+		offset = page - 1
+
+	#What if page number gives an offset that is too large?
+		
+	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
+	mealList = db.store_data()
+	return render_template('feed.html', mealList=mealList)
 
 @application.route('/hello/')
 @application.route('/hello/<name>')
