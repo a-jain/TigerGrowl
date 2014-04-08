@@ -1,4 +1,5 @@
 from wtforms import Form, BooleanField, TextField, IntegerField, PasswordField, validators
+from wtforms.validators import ValidationError
 
 class MealForm(Form):
     mealtable = IntegerField('Meal ID', [validators.NumberRange(min=40, max=110000000)])
