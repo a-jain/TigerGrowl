@@ -22,22 +22,6 @@ FB.init({
   cookie     : true, // enable cookies to allow the server to access the session
   xfbml      : true  // parse XFBML
 });
-// see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
-
-// FB.Event.subscribe('auth.authResponseChange', function(response) {
-// FB.api(
-//           "/me?fields=id",
-//           function (response) {
-//             if (response && !response.error) {
-// 			  console.log(response["id"])
-
-// 				  $(document).ready(function() {
-// 					  $("#uid").val(response["id"]);
-// 				  });
-//             }
-//           }
-//       );
-//   });
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
