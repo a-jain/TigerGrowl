@@ -25,7 +25,7 @@ def feed():
 
 @application.route('/feedPrototype')
 @application.route('/feedPrototype/<page>')
-def feedPrototype(page):
+def feedPrototype(page=None):
 	if page is None:
 		offset = 0
 	else:
