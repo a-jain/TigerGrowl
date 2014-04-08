@@ -3,9 +3,9 @@
 {% from "formmacro.html" import render_field %}
 <form method=post action="/registeruser">
   <dl>
-    {{ render_field(form.First) }}
-    {{ render_field(form.Last) }}
-    {{ render_field(form.Email) }}
+    {{ render_field(form.firstname) }}
+    {{ render_field(form.lastname) }}
+    {{ render_field(form.email) }}
   </dl>
   <p><input type=submit value=Register>
 </form>

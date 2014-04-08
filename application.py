@@ -37,17 +37,17 @@ def registeruser():
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
-		print form.First.data
-		print form.Last.data
-		print form.Email.data
+		print form.firstname.data
+		print form.lastname.data
+		print form.email.data
 
-		netid = form.Email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (firstname, lastname, netid) VALUES (\'%s\', \'%s\', \'%s\');" % (form.First.data, form.Last.data, netid)
+		netid = form.email.data.split('@')[0]
+		sql = "INSERT INTO ebdb.user_table (firstname, lastname, netid) VALUES (\'%s\', \'%s\', \'%s\');" % (form.firstname.data, form.lastname.data, netid)
 
 		cursor.execute(sql)
 
 		return redirect(url_for('hello'))
-	return render_template('registermeal.html', form=form)
+	return render_template('registeruser.html', form=form)
 
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
