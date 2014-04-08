@@ -30,7 +30,7 @@ FB.api(
 			  console.log(response["id"])
 
 				  $(document).ready(function() {
-					  $("#email").append(response["id"]);
+					  $("#email").val(response["id"]);
 				  });
             }
           }
