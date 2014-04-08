@@ -1,5 +1,5 @@
 from wtforms import Form, BooleanField, TextField, IntegerField, PasswordField, validators
-from wtforms.validators import ValidationError, Required, Email
+from wtforms.validators import ValidationError, Required, Email, URL
 from wtforms.fields import HiddenField
 
 class MealForm(Form):
@@ -16,4 +16,5 @@ class Signup(Form):
 	lastname = TextField('Last', [Required(), validators.Length(min=2, max=35)])
 	email = TextField('Email', [Required(), Email(), validate_email])
 	uid = HiddenField('', [Required()])
+	picurl = HiddenField('', [URL()])
 

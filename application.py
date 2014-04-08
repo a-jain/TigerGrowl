@@ -22,6 +22,10 @@ def index():
 def feed():
 	return render_template('fbids.html')
 
+@application.route('/timeline')
+def feed():
+	return render_template('timeline.html')
+
 @application.route('/feedPrototype')
 @application.route('/feedPrototype/<page>')
 def feedPrototype(page=None):
