@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 {% from "formmacro.html" import render_field %}
 <form method=post action="/registeruser">
   <dl>
@@ -29,7 +31,6 @@ FB.api(
 
 				  $(document).ready(function() {
 					  $("#fbid").append(response["id"]);
-					  $("#form.email").val(response["id"]);
 				  });
             }
           }

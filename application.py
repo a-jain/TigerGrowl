@@ -35,6 +35,7 @@ def hello(name=None):
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 	form = Signup(request.form)
+	form.content(id="fbids")
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		# if self.session.get("user"):
