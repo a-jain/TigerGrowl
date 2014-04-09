@@ -14,31 +14,31 @@
 		<!-- Necessary to verify user is logged in to fb -->
 		<div id="fb-root"></div>
 		<script>
-		window.fbAsyncInit = function() {
-		FB.init({
-			appId      : '1423477091234772',
-			status     : true, // check login status
-			cookie     : true, // enable cookies to allow the server to access the session
-			xfbml      : true  // parse XFBML
-		});
+		// window.fbAsyncInit = function() {
+		// FB.init({
+		// 	appId      : '1423477091234772',
+		// 	status     : true, // check login status
+		// 	cookie     : true, // enable cookies to allow the server to access the session
+		// 	xfbml      : true  // parse XFBML
+		// });
 
-		FB.getLoginStatus(function(response) {
-			if (response.status != 'connected') {
-				str = window.location
-				console.log(str)
-				console.log(str.split("/"))
-				window.location.replace(str.split("/")[2]);
-			} 
-		 });
+		// FB.getLoginStatus(function(response) {
+		// 	if (response.status != 'connected') {
+		// 		str = window.location
+		// 		console.log(str)
+		// 		console.log(str.split("/"))
+		// 		window.location.replace(str.split("/")[2]);
+		// 	} 
+		//  });
 
-		};
-		(function(d){
-		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		 if (d.getElementById(id)) {return;}
-		 js = d.createElement('script'); js.id = id; js.async = true;
-		 js.src = "https://connect.facebook.net/en_US/all.js";
-		 ref.parentNode.insertBefore(js, ref);
-		}(document));
+		// };
+		// (function(d){
+		//  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		//  if (d.getElementById(id)) {return;}
+		//  js = d.createElement('script'); js.id = id; js.async = true;
+		//  js.src = "https://connect.facebook.net/en_US/all.js";
+		//  ref.parentNode.insertBefore(js, ref);
+		// }(document));
 		</script>
 
 	</head>
