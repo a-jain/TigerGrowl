@@ -24,7 +24,7 @@
 
 		FB.getLoginStatus(function(response) {
 			if (response.status != 'connected') {
-				window.location.replace(window.hostname + "/");
+				window.location.replace(window.protocol + "//" + window.hostname + "/");
 			} 
 		 });
 
