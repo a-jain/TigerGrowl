@@ -2,13 +2,14 @@ from wtforms import Form, BooleanField, TextField, IntegerField, DateField, vali
 from wtforms.validators import ValidationError, Required, Email, URL
 from wtforms.fields import HiddenField
 from wtforms_components import TimeField
+from wtforms.ext import dateutil
 
 class MealForm(Form):
     mealtable = IntegerField('Meal ID', [Required(), validators.NumberRange(min=40, max=110000000)])
     host = TextField('Host', [Required(), validators.Length(min=3, max=35)])
     place = TextField('Place', [Required(), validators.Length(min=3, max=35)])
     time = TimeField('Time')
-    date = DateField('Date')
+    date = DateField('Date', display_format='%m/%d')
 
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():
