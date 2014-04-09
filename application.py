@@ -30,11 +30,9 @@ def login(uid=None):
 	cursor.execute(sql)
 	results = cursor.fetchone()
 	if results:
-		redirect(url_for('feedPrototype'))
+		return redirect(url_for('feedPrototype'))
 	else:
-		redirect(url_for('registeruser'))
-
-	return render_template('fbids.html')
+		return redirect(url_for('registeruser'))
 
 @application.route('/timeline')
 def timeline():
