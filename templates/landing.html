@@ -72,7 +72,7 @@
       	function (response) {
       		if (response && !response.error) {
       			uid = response["id"];
-      			{{ url_for('login') }}
+      			// {{ url_for('login') }}
       			window.location.replace(window.location + "login/" + uid);
       		}
       	}
