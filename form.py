@@ -12,7 +12,7 @@ class MealForm(Form):
 
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():
-		raise ValidationError(u'Must be a Princetonian!')
+		raise ValidationError(u'Must have a @princeton.edu email address')
 
 class Signup(Form):
 	firstname = TextField('First', [Required(), validators.Length(min=2, max=35)])
@@ -20,4 +20,3 @@ class Signup(Form):
 	email = TextField('Email', [Required(), Email(), validate_email])
 	uid = HiddenField('', [Required()])
 	picurl = HiddenField('')
-
