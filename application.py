@@ -39,7 +39,7 @@ def feedPrototype(page=None):
 		
 	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
 	queryResults = cursor.fetchall()
-	mealList = json.dumps(queryResults)
+	mealList = json.dump(queryResults)
 	return render_template('feed.html', mealList=mealList)
 
 @application.route('/hello/')
