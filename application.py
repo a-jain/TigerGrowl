@@ -30,9 +30,9 @@ def login(uid=None):
 	cursor.execute(sql)
 	results = cursor.fetchone()
 	if results:
-		feedPrototype()
+		redirect(url_for('feedPrototype'))
 	else:
-		url_for('registeruser')
+		redirect(url_for('registeruser'))
 
 	return render_template('fbids.html')
 
