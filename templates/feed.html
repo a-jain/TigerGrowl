@@ -99,7 +99,8 @@
         <!-- Populate the rows of -->
         <script>
 
-        var obj = jQuery.parseJSON("\"" + {{mealList}} + "\"");
+
+        var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
 
         $( document ).ready(function() {
           $(".feed-row:nth-child(1) .name-identifier").text("Name 1" + "\'s Meal");
