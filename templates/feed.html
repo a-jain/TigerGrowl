@@ -99,8 +99,7 @@
         <!-- Populate the rows of -->
         <script>
 
-        var JSONstring = {{ mealList }};
-        obj = JSON.parse();
+        var obj = jQuery.parseJSON({{mealList}});
         console.log(obj);
 
         $( document ).ready(function() {
