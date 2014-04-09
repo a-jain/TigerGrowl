@@ -24,7 +24,16 @@ def feed():
 	return render_template('fbids.html')
 
 @application.route('/login')
+@application.route('/login/<uid>')
 def login():
+	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d", int(uid)
+	cursor.execute(sql)
+	results = query.fetchone()
+	if results:
+		url_for('feedPrototype')
+	else:
+		url_for('registeruser')
+
 	return render_template('fbids.html')
 
 @application.route('/timeline')
@@ -61,7 +70,7 @@ def registeruser():
 
 		cursor.execute(sql)
 
-		return redirect(url_for('hello'))
+		return redirect(url_for('feedPrototype'))
 	return render_template('registeruser.html', form=form)
 
 @application.route('/registermeal', methods=['GET', 'POST'])
