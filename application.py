@@ -26,7 +26,7 @@ def feed():
 @application.route('/login')
 @application.route('/login/<uid>')
 def login():
-	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d", int(uid)
+	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
 	cursor.execute(sql)
 	results = query.fetchone()
 	if results:
