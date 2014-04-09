@@ -28,7 +28,7 @@ def feed():
 def login(uid=None):
 	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
 	cursor.execute(sql)
-	results = query.fetchone()
+	results = cursor.fetchone()
 	if results:
 		url_for('feedPrototype')
 	else:
