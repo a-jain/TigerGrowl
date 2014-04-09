@@ -16,5 +16,5 @@ class Signup(Form):
 	lastname = TextField('Last', [Required(), validators.Length(min=2, max=35)])
 	email = TextField('Email', [Required(), Email(), validate_email])
 	uid = HiddenField('', [Required()])
-	picurl = HiddenField('', [URL()])
+	picurl = HiddenField('')
 
