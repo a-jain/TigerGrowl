@@ -53,9 +53,7 @@ FB.getLoginStatus(function(response) {
     function (response) {
       if (response && !response.error) {
       	console.log(response)
-      	$(document).ready(function() {$("#friendList").append(response["picture"]["data"]["url"]);});
       	$(document).ready(function() {$("#picurl").val(response["picture"]["data"]["url"]);});
-        /* handle the result */
       }
     }
 );
@@ -76,8 +74,6 @@ FB.getLoginStatus(function(response) {
  ref.parentNode.insertBefore(js, ref);
 }(document));
 
-</script>	
-
-<p id="friendList">Hi</p>
+</script>
 
 </html>

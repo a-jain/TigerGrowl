@@ -73,7 +73,7 @@
       		if (response && !response.error) {
       			uid = response["id"];
       			// {{ url_for('login') }}
-      			window.location.replace(window.location + "{{ url_for('login') }}" + "\"" + uid);
+      			window.location.replace(window.location + "login/" + uid);
       		}
       	}
 
