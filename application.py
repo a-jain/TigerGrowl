@@ -30,7 +30,7 @@ def login(uid=None):
 	cursor.execute(sql)
 	results = cursor.fetchone()
 	if results:
-		url_for('feedPrototype')
+		feedPrototype()
 	else:
 		url_for('registeruser')
 
