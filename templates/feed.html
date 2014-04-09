@@ -101,8 +101,6 @@
 
 
         var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
-        alert(obj);
-        alert(obj[0][1]);
 
         $( document ).ready(function() {
           $(".feed-row:nth-child(1) .name-identifier").text(obj[0][1] + "\'s Meal");
