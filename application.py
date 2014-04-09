@@ -23,6 +23,10 @@ def index():
 def feed():
 	return render_template('fbids.html')
 
+@application.route('/login')
+def login():
+	return render_template('fbids.html')
+
 @application.route('/timeline')
 def timeline():
 	return render_template('timeline.html')
