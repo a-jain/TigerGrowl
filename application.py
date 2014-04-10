@@ -16,16 +16,19 @@ cursor = db.cursor()
 
 @application.route('/')
 @application.route('/home')
-def index():
+def home():
 	return render_template('landing.html')
 
 @application.route('/feed')
 def feed():
 	return render_template('fbids.html')
 
-@application.route('/login')
+@application.route('/login/')
 @application.route('/login/<uid>')
 def login(uid=None):
+	if not uid:
+		return redirect(url_for('home'))
+
 	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
 	cursor.execute(sql)
 	results = cursor.fetchone()
