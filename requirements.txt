@@ -4,9 +4,10 @@ Jinja2==2.7.2
 MarkupSafe==0.18
 MySQL-python==1.2.5
 WTForms==1.0.5
+WTForms-Components==0.9.2
 Werkzeug==0.9.4
+decorator==3.4.0
 itsdangerous==0.23
 wsgiref==0.1.2
 WTForms-Components==0.9.2
 validators==0.5.0
-WTForms-Components==0.9.2
