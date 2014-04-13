@@ -101,12 +101,12 @@ def mymeals(uid=None):
 	yourmeals = []
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
-		query = "SELECT * FROM ebdb.meal_table WHERE guestString = %s;" % (uid)
+		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
 		cursor.execute(query)
 		queryResults = cursor.fetchall()
 		for each in queryResults:
 			yourmeals.append(each)
-	yourmeals = json.dumps()
+	yourmeals = json.dumps(yourmeals)
 
 	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
 
