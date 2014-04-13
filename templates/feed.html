@@ -18,7 +18,9 @@
 			window.onload = function() {
 				var a = document.getElementById("mymealslink")
 				a.onclick = function() {
+					setTimeout(function() {
 					window.location = location.protocol + '//' + location.host + "/mymeals/" + window.uid;
+				}, 100);
 				}
 			}
 
