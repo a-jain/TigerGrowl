@@ -49,6 +49,9 @@
 					<div class="navbar-header">
 						<a class="navbar-brand logo" style="color:white;" href="#">TigerGrowl</a>
 					</div>
+					<ul class="nav navbar-nav navbar-right">
+		              <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Meals</a></li>
+		            </ul>
 					
 					</div><!-- /.navbar-collapse -->
 				</div>
@@ -131,26 +134,7 @@
 				</div>
 
 				<!-- Populate the rows of -->
-				<script>
-
-
-				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
-
-				$( document ).ready(function() {
-					$(".feed-row:nth-child(1) .name-identifier").text(obj[0][1] + "\'s Meal");
-					$(".feed-row:nth-child(2) .name-identifier").text(obj[1][1] + "\'s Meal");
-					$(".feed-row:nth-child(3) .name-identifier").text(obj[2][1] + "\'s Meal");
-					$(".feed-row:nth-child(4) .name-identifier").text(obj[3][1] + "\'s Meal");
-					$(".feed-row:nth-child(5) .name-identifier").text(obj[4][1] + "\'s Meal");
-					$(".feed-row:nth-child(1) .setting-identifier").text(obj[0][2] + ", " + obj[0][3] + ", " + obj[0][4]);
-					$(".feed-row:nth-child(2) .setting-identifier").text(obj[1][2] + ", " + obj[1][3] + ", " + obj[1][4]);
-					$(".feed-row:nth-child(3) .setting-identifier").text(obj[2][2] + ", " + obj[2][3] + ", " + obj[2][4]);
-					$(".feed-row:nth-child(4) .setting-identifier").text(obj[3][2] + ", " + obj[3][3] + ", " + obj[3][4]);
-					$(".feed-row:nth-child(5) .setting-identifier").text(obj[4][2] + ", " + obj[4][3] + ", " + obj[4][4]);
-					
-
-				});
-				</script>
+				
 
 
 				<footer>
