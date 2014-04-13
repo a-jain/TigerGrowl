@@ -1,40 +1,10 @@
-""" this program will test the functions of our program on the sqlite database. I strongly recommend you keep the mysql
-database exactly the same as the sqlite, so that we will not have headaches when it is time to start testing our project."""
+#cursor = whatever
 
-import sqlite3
-from flask import g
-DATABASE = '/testDB'
+def query_db(query):
+    cur = cursor.execute(query)
+    return cur.fetchall()
 
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-app = Flask(__name__)
-
-def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    rv = cur.fetchall()
-    cur.close()
-    return (rv[0] if rv else None) if one else rv
-
-def signUp(facebookid):
-	""" get your id into the database """
-	#log into facebook
-	#get fb id from facebook data
-	#sanitize the input if necessary
-
-	#enter the facebook data with data obtained from graph API into users
-	query = "insert into users(facebookid) values(" + str(facebookid) + ");"
-	query_db(query)
-
-def seeMeals():
+def seeAllMeals():
 	""" return a list of all meals that your friends are hosting"""
 	#get user's facebookid
 	#get friendlist from graph API
@@ -43,13 +13,13 @@ def seeMeals():
 	#for each friend in friendlist
 		# get that friend's facebookid from graph API
 
-		# get that friend's dinerid from Users
-		query = "select * from users where facebookid = " + str(facebookid) + ");"
+		# get that friend's user_id from Users
+		query = "SELECT * FROM ebdb.user_table where facebookid = " + str(facebookid) + ");"
 		friend = query_db(query)
 		friend_dinerid = friend[dinerid]
 		
 		# see which meals that friend is hosting
-		query = "select * from meals where hostid = " + str(dinerid) + ");"
+		query = "SELECT * FROM ebdb.meal_table where hostid = " + str(dinerid) + ");"
 		meal = query_db(query)
 
 		#you can manipulate the contents of "meal" if you like, by putting them into say a list mealData
@@ -57,9 +27,45 @@ def seeMeals():
 
 	return allmeals
 
+def seeYourMeals(facebookid):
+	yourmeals = []
+
+	#meals that I'm hosting
+	yourmeals.append("hosting")
+	query = "SELECT * FROM ebdb.meal_table where userid = " + str(facebookid) + ");"
+	myHostedMeals = query_db(query)
+	for each in myHostedMeals:
+		yourmeals.append(each)
+
+	yourmeals.append("guesting")
+	for a in range(1, 13):
+		guestString = "guest" + str(a)
+		query = "SELECT * FROM ebdb.meal_table where guestString = " + str(facebookid) + ");"
+		myGuestXMeals = query_db(query)
+		for each in myGuestXMeals:
+			yourmeals.append(each)
+
+	return yourmeals
+	
 def hostMeal(location, currentHour, currentMin, currentSec, startHour, startMin, startSec, message):
 	#get the user's facebookid, and then dinerid from users
 	
-	query = "select * from meals where hostid = " + str(dinerid) + ");"
+	query = "SELECT * FROM ebdb.meal_table where hostid = " + str(dinerid) + ");"
 	meal = query_db(query)
 
+def joinMeal(meal_id):
+	#get the user's facebookid
+	
+	query = "SELECT * FROM ebdb.meal_table where meal_id = " + str(meal_id) + ");"
+	meal = query_db(query)
+
+	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
+	guest_x = 1
+	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
+		if (each == None):
+			break;
+		guest_x = guest_x + 1
+
+	guestString = "guest" + str(guest_x)
+	sql = "INSERT INTO ebdb.meal_table (\'%s\') VALUES (\'%s\');" % (guestString, user_id)
+	query_db(sql)
