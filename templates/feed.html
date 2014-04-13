@@ -36,7 +36,7 @@
 					    var uid = response.authResponse.userID;
 					    // var accessToken = response.authResponse.accessToken;
 					    
-					    window.location = window.location + "mymeals/" + uid;
+					    window.location = location.protocol + '//' + location.host + "/mymeals/" + uid;
 					  }
 					  else {
 					  	console.log("awk")

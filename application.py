@@ -88,10 +88,16 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/mymeals')
+<<<<<<< HEAD
 @application.route('/login/<uid>')
 def mymeals(uid=None):
 	
 	return render_template('mymeals.html', uid=uid)
+=======
+@application.route('/mymeals/<uid>')
+def mymeals(uid=None):
+	return render_template('mymeals.html')
+>>>>>>> FETCH_HEAD
 
 if __name__ == '__main__':
 	application.run(debug=True)
