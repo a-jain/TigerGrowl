@@ -80,7 +80,7 @@ def registermeal():
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
-		sql = "INSERT INTO ebdb.meal_table (meal_id, host, place, date, time) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (form.mealtable.data, form.host.data, form.place.data, form.date.data, form.time.data)
+		sql = "INSERT INTO ebdb.meal_table (host, place, date, time) VALUES (\'%s\', \'%s\', \'%s\', \'%s\');" % (form.host.data, form.place.data, form.date.data, form.time.data)
 		print sql
 		cursor.execute(sql)
 
