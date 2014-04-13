@@ -1,28 +1,17 @@
 from flask import Flask
 from flask import render_template, flash, url_for, request, redirect, abort
-from itsdangerous import URLSafeSerializer, BadSignature
 import MySQLdb
 import json
 from form import *
 
 application = Flask(__name__)
 application.debug = True
-app.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
+application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
 
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
 
 cursor = db.cursor()
-
-def get_serializer(secret_key=None):
-    if secret_key is None:
-        secret_key = app.secret_key
-    return URLSafeSerializer(secret_key)
-
-def get_activation_link(uid):
-    s = get_serializer()
-    payload = s.dumps(uid)
-    return url_for('activate_user', payload=payload, _external=True)
 
 @application.route('/')
 @application.route('/home')
