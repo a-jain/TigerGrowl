@@ -101,7 +101,11 @@ def registermeal():
 @application.route('/mymeals')
 @application.route('/login/<uid>')
 def mymeals():
-	return render_template('mymeals.html')
+	
+	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5" )
+	queryResults = cursor.fetchall()
+	mealList = json.dumps(queryResults)
+	return render_template('mymeals.html', mealList=mealList)
 
 if __name__ == '__main__':
 	application.run(debug=True)
