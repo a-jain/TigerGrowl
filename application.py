@@ -89,9 +89,9 @@ def registermeal():
 
 @application.route('/mymeals')
 @application.route('/login/<uid>')
-def mymeals():
+def mymeals(uid=None):
 	
-	return render_template('mymeals.html')
+	return render_template('mymeals.html', uid=uid)
 
 if __name__ == '__main__':
 	application.run(debug=True)
