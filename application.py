@@ -80,7 +80,7 @@ def registermeal():
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		
-		receivedDate = form.date.data.split('-')
+		receivedDate = str(form.date.data).split('-')
 		newDate = receivedDate[1] + '/' + receivedDate[2]
 
 		receivedTime = form.time.data[:-3]
