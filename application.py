@@ -89,7 +89,7 @@ def registermeal():
 
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
-def mymeals():
+def mymeals(uid=None):
 	return render_template('mymeals.html')
 
 if __name__ == '__main__':
