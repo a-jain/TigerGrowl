@@ -13,6 +13,7 @@
 
 		<div id="fb-root"></div>
 		<script type="text/javascript">
+		window.fbAsyncInit = function() {
 					FB.init({
 						appId      : '1423477091234772',
 						status     : true, // check login status
@@ -38,6 +39,7 @@
 					 js.src = "https://connect.facebook.net/en_US/all.js";
 					 ref.parentNode.insertBefore(js, ref);
 					}(document));
+				}
 		</script>
 
 		<!-- Necessary to verify user is logged in to fb -->
