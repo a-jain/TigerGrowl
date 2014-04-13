@@ -90,6 +90,9 @@ def registermeal():
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
 def mymeals(uid=None):
+
+	return render_template('mymeals.html', uid=uid)
+
 	if not uid:
 		return redirect(url_for('home'))
 
