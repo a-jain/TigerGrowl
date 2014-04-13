@@ -88,9 +88,8 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/mymeals')
-@application.route('/login/<uid>')
+@application.route('/mymeals/<uid>')
 def mymeals():
-	
 	return render_template('mymeals.html')
 
 if __name__ == '__main__':
