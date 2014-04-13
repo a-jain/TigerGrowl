@@ -7,7 +7,7 @@ class MealForm(Form):
     mealtable = IntegerField('Meal ID', [Required(), validators.NumberRange(min=40, max=110000000)])
     host = TextField('Host', [Required(), validators.Length(min=3, max=45)])
     place = TextField('Place', [Required(), validators.Length(min=3, max=45)])
-    time = TimeField('Time')
+    time = DateTimeField('Time')
     date = TextField('Date')
 
 def validate_email(form, field):
