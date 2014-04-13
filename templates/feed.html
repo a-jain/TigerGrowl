@@ -11,14 +11,9 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../static/js/bootstrap.min.js"></script>
 
-		<!-- Necessary to verify user is logged in to fb -->
 		<div id="fb-root"></div>
 		<script type="text/javascript">
-			window.onload = function() {
-
-				var a = document.getElementById("mymealslink")
-				a.onclick = function() {
-
+		window.fbAsyncInit = function() {
 					FB.init({
 						appId      : '1423477091234772',
 						status     : true, // check login status
@@ -28,22 +23,15 @@
 
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
-					    // the user is logged in and has authenticated your
-					    // app, and response.authResponse supplies
-					    // the user's ID, a valid access token, a signed
-					    // request, and the time the access token 
-					    // and signed request each expire
-					    var uid = response.authResponse.userID;
-					    // var accessToken = response.authResponse.accessToken;
-					    
-					    window.location = location.protocol + '//' + location.host + "/mymeals/" + uid;
+					    window.uid = response.authResponse.userID;
+					    console.log("uid retrieved")
 					  }
 					  else {
 					  	console.log("awk")
 					  } 
 					 });
 
-					};
+					
 					(function(d){
 					 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 					 if (d.getElementById(id)) {return;}
@@ -51,36 +39,18 @@
 					 js.src = "https://connect.facebook.net/en_US/all.js";
 					 ref.parentNode.insertBefore(js, ref);
 					}(document));
-					return false;
 				}
+		</script>
 
-				
-			
-		// window.fbAsyncInit = function() {
-		// FB.init({
-		// 	appId      : '1423477091234772',
-		// 	status     : true, // check login status
-		// 	cookie     : true, // enable cookies to allow the server to access the session
-		// 	xfbml      : true  // parse XFBML
-		// });
+		<!-- Necessary to verify user is logged in to fb -->
+		<script type="text/javascript">
+			window.onload = function() {
+				var a = document.getElementById("mymealslink")
+				a.onclick = function() {
+					window.location = location.protocol + '//' + location.host + "/mymeals/" + window.uid;
+				}
+			}
 
-		// FB.getLoginStatus(function(response) {
-		// 	if (response.status != 'connected') {
-		// 		str = window.location
-		// 		console.log(str)
-		// 		console.log(str.split("/"))
-		// 		window.location.replace(str.split("/")[2]);
-		// 	} 
-		//  });
-
-		// };
-		// (function(d){
-		//  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		//  if (d.getElementById(id)) {return;}
-		//  js = d.createElement('script'); js.id = id; js.async = true;
-		//  js.src = "https://connect.facebook.net/en_US/all.js";
-		//  ref.parentNode.insertBefore(js, ref);
-		// }(document));
 		</script>
 
 	</head>

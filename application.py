@@ -93,7 +93,22 @@ def mymeals(uid=None):
 	if not uid:
 		return redirect(url_for('home'))
 
-	return render_template('mymeals.html')
+	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
+	cursor.execute(query)
+	queryResults = cursor.fetchall()
+	hostingMeals = json.dumps(queryResults)
+
+	yourmeals = []
+	for a in range(1, 12):
+		guestString = "guest" + str(a)
+		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
+		cursor.execute(query)
+		queryResults = cursor.fetchall()
+		for each in queryResults:
+			yourmeals.append(each)
+	yourmeals = json.dumps(yourmeals)
+
+	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
 
 if __name__ == '__main__':
 	application.run(debug=True)

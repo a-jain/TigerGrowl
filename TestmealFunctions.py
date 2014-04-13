@@ -38,7 +38,7 @@ def seeYourMeals(facebookid):
 		yourmeals.append(each)
 
 	yourmeals.append("guesting")
-	for a in range(1, 13):
+	for a in range(1, 12):
 		guestString = "guest" + str(a)
 		query = "SELECT * FROM ebdb.meal_table where guestString = " + str(facebookid) + ");"
 		myGuestXMeals = query_db(query)
