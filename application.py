@@ -19,10 +19,6 @@ cursor = db.cursor()
 def home():
 	return render_template('landing.html')
 
-@application.route('/feed')
-def feed():
-	return render_template('fbids.html')
-
 @application.route('/login/')
 @application.route('/login/<uid>')
 def login(uid=None):
@@ -91,6 +87,10 @@ def registermeal():
 
 		return redirect(url_for('feedPrototype'))
 	return render_template('registermeal.html', form=form)
+
+@application.route('/mymeals')
+def mymeals():
+	return render_template('mymeals.html')
 
 if __name__ == '__main__':
 	application.run(debug=True)
