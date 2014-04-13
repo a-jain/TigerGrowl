@@ -14,6 +14,16 @@ db.autocommit(True)
 
 cursor = db.cursor()
 
+def get_serializer(secret_key=None):
+    if secret_key is None:
+        secret_key = app.secret_key
+    return URLSafeSerializer(secret_key)
+
+def get_activation_link(uid):
+    s = get_serializer()
+    payload = s.dumps(uid)
+    return url_for('activate_user', payload=payload, _external=True)
+
 @application.route('/')
 @application.route('/home')
 def home():
