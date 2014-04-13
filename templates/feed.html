@@ -11,7 +11,7 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../static/js/bootstrap.min.js"></script>
 
-		
+
 
 		<!-- Necessary to verify user is logged in to fb -->
 		<script type="text/javascript">
@@ -167,7 +167,7 @@
 					console.log("here")
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
-					    window.uid = response.authResponse.userID;
+					    uid = response.authResponse.userID;
 					    console.log("uid retrieved")
 					  }
 					  else {
