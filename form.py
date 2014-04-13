@@ -8,6 +8,7 @@ class MealForm(Form):
     place = TextField('Place', [Required(), validators.Length(min=3, max=45)])
     time = TimeField('Time', [Required()])
     date = DateField('Date (mm/dd)', format='%m/%d', validators=[Required()])
+    uid = HiddenField('', [Required()])
 
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():

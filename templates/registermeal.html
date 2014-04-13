@@ -1,5 +1,7 @@
 <html>
 
+<script src="../static/js/jquery-1.11.0.min.js"></script>
+
 {% from "formmacro.html" import render_field %}
 <form method=post action="/registermeal">
   <dl>
@@ -7,8 +9,50 @@
     {{ render_field(form.place) }}
     {{ render_field(form.time) }}
     {{ render_field(form.date) }}
+    {{ render_field(form.uid) }}
   </dl>
   <p><input type=submit value=Register>
 </form>
+
+
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+  appId      : '1423477091234772',
+  status     : true, // check login status
+  cookie     : true, // enable cookies to allow the server to access the session
+  xfbml      : true  // parse XFBML
+});
+
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    // the user is logged in and has authenticated your
+    // app, and response.authResponse supplies
+    // the user's ID, a valid access token, a signed
+    // request, and the time the access token 
+    // and signed request each expire
+    var userid = response.authResponse.userID;
+    var accessToken = response.authResponse.accessToken;
+    $(document).ready(function() {$("#uid").val(userid);});
+
+  } else if (response.status === 'not_authorized') {
+    // the user is logged in to Facebook, 
+    // but has not authenticated your app
+  } else {
+    // the user isn't logged in to Facebook.
+  }
+ });
+
+};
+(function(d){
+ var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement('script'); js.id = id; js.async = true;
+ js.src = "https://connect.facebook.net/en_US/all.js";
+ ref.parentNode.insertBefore(js, ref);
+}(document));
+
+</script>
 
 </html>
