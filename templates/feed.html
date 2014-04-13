@@ -22,8 +22,8 @@
 
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
-					    
 					    window.uid = response.authResponse.userID;
+					    console.log("uid retrieved")
 					  }
 					  else {
 					  	console.log("awk")
