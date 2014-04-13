@@ -9,5 +9,4 @@ Werkzeug==0.9.4
 decorator==3.4.0
 itsdangerous==0.23
 wsgiref==0.1.2
-WTForms-Appengine==0.1dev
 validators==0.5.0
