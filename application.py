@@ -94,17 +94,18 @@ def joinmeal(uid=None, mealid=None):
 
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
-	meal = cursor.fetchall()
+	meal = cursor.fetchone()
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
-		if (each == None):
-			break;
+		if not each:
+			break
 		guest_x += 1
 
 	guestString = "guest" + str(guest_x)
-	sql = "INSERT INTO ebdb.meal_table (\'%s\') VALUES (\'%s\');" % (guestString, uid)
+	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
+	cursor.execute(sql)
 
 	return redirect(url_for('mymeals', uid=uid))
 
