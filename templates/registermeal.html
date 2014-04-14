@@ -17,18 +17,18 @@
 	<script src="../static/js/jquery-1.11.0.min.js"></script>
 	
 	<body>
-	<div class = "container">
-	{% from "formmacro.html" import render_field %}
-	<form method=post action="/registermeal" class = "form-signin" role = "form">
-		<dl>
-			{{ render_field(form.host) }}
-			{{ render_field(form.place) }}
-			{{ render_field(form.time) }}
-			{{ render_field(form.date) }}
-			{{ render_field(form.uid) }}
-		</dl>
-	<p><button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>>
-	</form>
+		<div class = "container">
+		{% from "formmacro.html" import render_field %}
+		<form method=post action="/registermeal" class = "form-signin" role = "form">
+			<dl>
+				{{ render_field(form.host) }}
+				{{ render_field(form.place) }}
+				{{ render_field(form.time) }}
+				{{ render_field(form.date) }}
+				{{ render_field(form.uid) }}
+			</dl>
+			<p><button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+		</form>
 	</div>
 	
 	</body>
