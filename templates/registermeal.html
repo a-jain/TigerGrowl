@@ -9,7 +9,7 @@
 		<title>Register Meal- 50% off Today</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
-		<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
+		<link href="css/bootstrap.min.css" rel="stylesheet", media = "screen">
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	</head>
@@ -17,20 +17,17 @@
 	
 	<body>
 	
-		<div class="form1">
-			<div class="jumbotron">
-				</div>
-				{% from "formmacro.html" import render_field %}
-				<form method=post action="/registermeal">
-				  <dl>
-					{{ render_field(form.host) }}
-					{{ render_field(form.place) }}
-					{{ render_field(form.time) }}
-					{{ render_field(form.date) }}
-					{{ render_field(form.uid) }}
-				  </dl>
-				  <p><input type=submit value="Create Meal">
-				</form>
+	{% from "formmacro.html" import render_field %}
+	<form method=post action="/registermeal">
+		<dl>
+			{{ render_field(form.host) }}
+			{{ render_field(form.place) }}
+			{{ render_field(form.time) }}
+			{{ render_field(form.date) }}
+			{{ render_field(form.uid) }}
+		</dl>
+	<p><input type=submit value="Create Meal">
+	
 	
 	</body>
 
