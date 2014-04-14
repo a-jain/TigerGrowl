@@ -12,7 +12,6 @@
 		<script src="../static/js/bootstrap.min.js"></script>
 		<script src="../static/js/fb.js"></script>
 
-
 		<!-- Necessary to verify user is logged in to fb -->
 		<script type="text/javascript">
 			window.onload = function() {
@@ -35,10 +34,8 @@
 						<a class="navbar-brand logo" style="color:white;" href="#">TigerGrowl</a>
 					</div>
 
-
 					<a id = "mymealslink"><button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
-		              
 					
 					</div><!-- /.navbar-collapse -->
 				</div>
@@ -116,13 +113,10 @@
 						<div class="attendees">Who's Coming?</div>
 						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> 
 					</div>
-
 				<!-- The end of the container feed -->
 				</div>
-
 				<!-- Populate the rows of -->
 				<script>
-
 
 				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
 
@@ -138,10 +132,8 @@
 					$(".feed-row:nth-child(4) .setting-identifier").text(obj[3][2] + ", " + obj[3][3] + ", " + obj[3][4]);
 					$(".feed-row:nth-child(5) .setting-identifier").text(obj[4][2] + ", " + obj[4][3] + ", " + obj[4][4]);
 					
-
 				});
 				</script>
-
 
 				<footer>
 					<div class="container">
