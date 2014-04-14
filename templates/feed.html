@@ -12,18 +12,6 @@
 		<script src="../static/js/bootstrap.min.js"></script>
 		<script src="../static/js/fb.js"></script>
 
-		<!-- Necessary to verify user is logged in to fb -->
-		<script type="text/javascript">
-			// window.onload = function() {
-			// 	var a = document.getElementById("mymealslink")
-			// 	a.onclick = function() {
-			// 		setTimeout(function() {
-			// 		window.location = location.protocol + '//' + location.host + "/mymeals/" + window.uid;
-			// 	}, 100);
-			// 	}
-			// }
-		</script>
-
 	</head>
 	<body>
 					<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
@@ -174,6 +162,15 @@
 					  if (response.status === 'connected') {
 					    uid = response.authResponse.userID;
 					    $(document).trigger('fbInit');
+
+					    FB.api('me?fields=picture', function(response) {
+			          if (!response || response.error) {
+			            console.log('Error occured');
+			          } else {
+			            picurl = response["picture"]["data"]["url"];
+			            $(document).trigger('fbInitPicLoaded');
+			          }
+			        });
 					  }
 					  else {
 					  } 
