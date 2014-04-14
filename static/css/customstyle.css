@@ -27,8 +27,9 @@ body {
 
 .feed-row{
 	margin-top: 25px;
+	margin-left: 8.5%;
 	margin-bottom: 25px;
-	padding-top: 55px;
+	padding-top: 35px;
 	padding-bottom: 55px;
 	background-color: gainsboro;
 	border-style: outset;
@@ -50,6 +51,7 @@ body {
 }
 
 .attendees {
+	float:left;
 	margin-top: 50px;
 	margin-left: 45px;
 }
