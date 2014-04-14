@@ -99,7 +99,9 @@
 				<script>
 
 				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
+				console.log(objHost)
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
+				console.log(objGuest)
 
 				$( document ).ready(function() {
 					$(".feed-row:nth-child(1) .name-identifier").text(objHost[0][1] + "\'s Meal");
