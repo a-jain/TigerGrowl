@@ -36,6 +36,7 @@ def login(uid=None):
 def timeline():
 	return render_template('timeline.html')
 
+@application.route('/feed')
 @application.route('/feedPrototype')
 @application.route('/feedPrototype/<page>')
 def feedPrototype(page=None):
