@@ -45,7 +45,6 @@ def feedPrototype(page=None):
 		offset = page - 1
 
 	#What if page number gives an offset that is too large?
-		
 	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)

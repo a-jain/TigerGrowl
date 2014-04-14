@@ -131,9 +131,14 @@
 					$(".feed-row:nth-child(4) .setting-identifier").text(obj[3][2] + ", " + obj[3][3] + ", " + obj[3][4]);
 					$(".feed-row:nth-child(5) .setting-identifier").text(obj[4][2] + ", " + obj[4][3] + ", " + obj[4][4]);
 				});
-				$( window ).load(function() {
-					$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
-				});
+				
+				</script>
+
+				<script>
+					$(document).bind('fbInit',function(){
+    				console.log('fbInit complete; FB Object is Available');
+    				$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
+					});
 				</script>
 
 				<footer>
@@ -163,6 +168,7 @@
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
 					    uid = response.authResponse.userID;
+					    $(document).trigger('fbInit');
 					  }
 					  else {
 					  } 
