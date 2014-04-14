@@ -38,7 +38,6 @@ def timeline():
 
 @application.route('/feed')
 @application.route('/feedPrototype')
-@application.route('/feedPrototype/<page>')
 def feedPrototype(page=None):
 	if page is None:
 		offset = 0
@@ -49,6 +48,7 @@ def feedPrototype(page=None):
 	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
+
 	return render_template('feed.html', mealList=mealList)
 
 @application.route('/hello/')

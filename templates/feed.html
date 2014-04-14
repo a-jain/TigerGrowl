@@ -157,7 +157,6 @@
 						cookie     : true, // enable cookies to allow the server to access the session
 						xfbml      : true  // parse XFBML
 					});
-					console.log("here")
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
 					    uid = response.authResponse.userID;
