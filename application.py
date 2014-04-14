@@ -87,7 +87,7 @@ def registermeal():
 		return redirect(url_for('feedPrototype'))
 	return render_template('registermeal.html', form=form)
 
-@application.route('/joinmeal/<mealid>/<uid>', methods=['GET', 'POST'])
+@application.route('/joinmeal/<mealid>/<uid>')
 def joinmeal(uid=None, mealid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
