@@ -22,7 +22,6 @@
 				}, 100);
 				}
 			}
-
 		</script>
 
 	</head>
@@ -55,7 +54,7 @@
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div> 
-						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> 
+						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
@@ -131,6 +130,7 @@
 					$(".feed-row:nth-child(3) .setting-identifier").text(obj[2][2] + ", " + obj[2][3] + ", " + obj[2][4]);
 					$(".feed-row:nth-child(4) .setting-identifier").text(obj[3][2] + ", " + obj[3][3] + ", " + obj[3][4]);
 					$(".feed-row:nth-child(5) .setting-identifier").text(obj[4][2] + ", " + obj[4][3] + ", " + obj[4][4]);
+					$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
 					
 				});
 				</script>
