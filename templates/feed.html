@@ -170,7 +170,7 @@
 					    uid = response.authResponse.userID;
 					    $(document).trigger('fbInit');
 
-					    FB.api('me?fields=picture?type=medium', function(response) {
+					    FB.api('me?fields=picture.height(160)', function(response) {
 			          if (!response || response.error) {
 			            console.log('Error occured');
 			          } else {
