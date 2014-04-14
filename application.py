@@ -84,6 +84,7 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
+		# change to some exit page
 		return redirect(url_for('feedPrototype'))
 	return render_template('registermeal.html', form=form)
 
