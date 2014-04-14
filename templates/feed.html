@@ -135,7 +135,10 @@
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
     				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
     				$("#mymealslink").prop("href", "mymeals/" + window.uid);
-    				$("#FacebookPhoto").prop("src", window.picurl);
+    				
+					});
+					$(document).bind('fbInitPicLoaded',function(){
+						$("#FacebookPhoto").prop("src", window.picurl);
 					});
 				</script>
 
