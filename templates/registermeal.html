@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<style>
-	hr {color:sienna;}
-	p {margin-left:20px;}
-	body {background-color:#8abe9b;}
-	</style>
-	<head>
-		<title>Register Meal- 50% off Today</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet", media = "screen">
-		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	</head>
+	
 	<script src="../static/js/jquery-1.11.0.min.js"></script>
-	
-	<body>
-	
+
 	{% from "formmacro.html" import render_field %}
 	<form method=post action="/registermeal">
 		<dl>
@@ -27,9 +13,6 @@
 			{{ render_field(form.uid) }}
 		</dl>
 	<p><input type=submit value="Create Meal">
-	
-	
-	</body>
 
 <div id="fb-root"></div>
 <script>
