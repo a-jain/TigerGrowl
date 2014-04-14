@@ -11,17 +11,6 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../static/js/bootstrap.min.js"></script>
 
-		<script>
-			function popupwindow(url, title, w, h) {
-			  var left = (screen.width/2)-(w/2);
-			  var top = (screen.height/2)-(h/2);
-			  window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-			  return false;
-			} 
-			var el = document.getElementById('hostmeal');
-			el.onclick = "popupwindow("registermeal", "Meal", 300, 400)";
-		</script>
-
 	</head>
 	<body>
 					<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
@@ -36,7 +25,7 @@
 				</nav>
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<a id="hostmeal" href="#"><button type="button" class="btn btn-default btn-lg">
+							<a href="registermeal" onclick="javascript:void window.open('registermeal','1397500628517','width=300,height=300,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;"><button type="button" class="btn btn-default btn-lg">
 								Host a Meal
 							</button></a>
 					</div>
