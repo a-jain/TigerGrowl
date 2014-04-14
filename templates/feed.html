@@ -168,6 +168,7 @@
 			            console.log('Error occured');
 			          } else {
 			            picurl = response["picture"]["data"]["url"];
+			            console.log(picurl)
 			            $(document).trigger('fbInitPicLoaded');
 			          }
 			        });
