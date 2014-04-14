@@ -12,6 +12,14 @@
 		<script src="../static/js/bootstrap.min.js"></script>
 		<script src="../static/js/fb.js"></script>
 
+		<script>
+			function popupwindow(url, title, w, h) {
+			  var left = (screen.width/2)-(w/2);
+			  var top = (screen.height/2)-(h/2);
+			  return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+			} 
+		</script>
+
 	</head>
 	<body>
 					<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
@@ -24,7 +32,11 @@
 					<button type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button>
 
 					<div >
+<<<<<<< HEAD
 						<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px;">/>
+=======
+						<img id="FacebookPhoto" src="#" href="#"/>
+>>>>>>> FETCH_HEAD
 					</div>
 
 					
@@ -53,28 +65,28 @@
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
+						<a id="button2" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
+						<a id="button3" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 					
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
+						<a id="button4" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
+						<a id="button5" href="#"><button class="btn btn-primary btn-large" style="margin-right:20%; float:right; margin-top: 60px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
@@ -135,6 +147,10 @@
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
     				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
     				$("#mymealslink").prop("href", "mymeals/" + window.uid);
+    				
+					});
+					$(document).bind('fbInitPicLoaded',function(){
+						$("#FacebookPhoto").prop("src", window.picurl);
 					});
 				</script>
 
@@ -166,7 +182,7 @@
 					    uid = response.authResponse.userID;
 					    $(document).trigger('fbInit');
 
-					    FB.api('me?fields=picture', function(response) {
+					    FB.api('me?fields=picture.height(80)', function(response) {
 			          if (!response || response.error) {
 			            console.log('Error occured');
 			          } else {
