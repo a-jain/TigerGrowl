@@ -23,6 +23,10 @@
 
 					<a id = "mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
+					<div >
+						<img id="FacebookPhoto" href="#"/>
+					</div>
+
 					
 					</div><!-- /.navbar-collapse -->
 				</div>
@@ -157,7 +161,6 @@
 						cookie     : true, // enable cookies to allow the server to access the session
 						xfbml      : true  // parse XFBML
 					});
-					console.log("here")
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
 					    uid = response.authResponse.userID;
