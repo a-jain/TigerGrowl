@@ -41,3 +41,16 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+label {
+  font-family: 'Raleway', sans-serif;
+  font-size:large;
+}
+
+input {
+  border:2px solid #a1a1a1;
+  padding:10px 40px; 
+  background:#dddddd;
+  width:300px;
+  border-radius:20px;
+}
