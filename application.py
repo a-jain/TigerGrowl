@@ -51,6 +51,10 @@ def feedPrototype(page=None):
 
 	return render_template('feed.html', mealList=mealList)
 
+@application.route('/exit')
+def exitpage():
+	return render_template('exit.html')
+
 @application.route('/hello/')
 @application.route('/hello/<name>')
 def hello(name=None):
@@ -85,7 +89,7 @@ def registermeal():
 		cursor.execute(sql)
 
 		# change to some exit page
-		return redirect(url_for('feedPrototype'))
+		return redirect(url_for('exit'))
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
