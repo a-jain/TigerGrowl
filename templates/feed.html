@@ -14,14 +14,14 @@
 
 		<!-- Necessary to verify user is logged in to fb -->
 		<script type="text/javascript">
-			window.onload = function() {
-				var a = document.getElementById("mymealslink")
-				a.onclick = function() {
-					setTimeout(function() {
-					window.location = location.protocol + '//' + location.host + "/mymeals/" + window.uid;
-				}, 100);
-				}
-			}
+			// window.onload = function() {
+			// 	var a = document.getElementById("mymealslink")
+			// 	a.onclick = function() {
+			// 		setTimeout(function() {
+			// 		window.location = location.protocol + '//' + location.host + "/mymeals/" + window.uid;
+			// 	}, 100);
+			// 	}
+			// }
 		</script>
 
 	</head>
@@ -33,7 +33,7 @@
 						<a class="navbar-brand logo" style="color:white;" href="#">TigerGrowl</a>
 					</div>
 
-					<a id = "mymealslink"><button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+					<a id = "mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
 					
 					</div><!-- /.navbar-collapse -->
@@ -142,6 +142,7 @@
     				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
     				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
+    				$("#mymealslink").prop("href", "mymeals/" + window.uid);
 					});
 				</script>
 
