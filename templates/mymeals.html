@@ -15,8 +15,11 @@
 			function popupwindow(url, title, w, h) {
 			  var left = (screen.width/2)-(w/2);
 			  var top = (screen.height/2)-(h/2);
-			  return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+			  window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+			  return false;
 			} 
+			var el = document.getElementById('hostmeal');
+			el.onclick = popupwindow("registermeal", "Meal", 200, 400);
 		</script>
 
 	</head>
@@ -33,7 +36,7 @@
 				</nav>
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<a href="" onclick="popupwindow("registermeal", "Meal", 200, 400)"><button type="button" class="btn btn-default btn-lg">
+							<a id="hostmeal" href="#"><button type="button" class="btn btn-default btn-lg">
 								Host a Meal
 							</button></a>
 					</div>
