@@ -87,6 +87,27 @@ def registermeal():
 		return redirect(url_for('feedPrototype'))
 	return render_template('registermeal.html', form=form)
 
+@application.route('/joinmeal/<mealid>/<uid>', methods=['GET', 'POST'])
+def joinmeal():
+	if not uid or not mealid:
+		return redirect(url_for('home'))
+
+	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
+	cursor.execute(query)
+	queryResults = cursor.fetchall()
+
+	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
+	guest_x = 1
+	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
+		if (each == None):
+			break;
+		guest_x += 1
+
+	guestString = "guest" + str(guest_x)
+	sql = "INSERT INTO ebdb.meal_table (\'%s\') VALUES (\'%s\');" % (guestString, uid)
+
+	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
+
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
 def mymeals(uid=None):

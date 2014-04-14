@@ -170,10 +170,8 @@
 					FB.getLoginStatus(function(response) {
 					  if (response.status === 'connected') {
 					    uid = response.authResponse.userID;
-					    console.log("uid retrieved")
 					  }
 					  else {
-					  	console.log("awk")
 					  } 
 					 });
 				}
