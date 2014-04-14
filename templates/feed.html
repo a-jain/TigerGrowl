@@ -61,28 +61,28 @@
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button>  
+						<a id="button2" href="#"><button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button>  </a>
 					</div>
 
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button>  
+						<a id="button3" href="#"><button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 					
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> 
+						<a id="button4" href="#"><button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
-						<button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> 
+						<a id="button5" href="#"><button class="btn btn-primary btn-large" style="margin-left: 110px;margin-top: 75px;"><span class="glyphicon glyphicon-exclamation-sign"></span> Join Meal</button> </a>
 					</div>
 
 					<div class="row feed-row">
@@ -138,6 +138,10 @@
 					$(document).bind('fbInit',function(){
     				console.log('fbInit complete; FB Object is Available');
     				$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
+    				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
+    				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
+    				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
+    				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
 					});
 				</script>
 
