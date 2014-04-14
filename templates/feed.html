@@ -24,14 +24,6 @@
 			}
 		</script>
 
-		<script type="text/javascript">
-			window.onload = function() {
-				$( window ).load(function() {
-					$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
-				});
-			}
-		</script>
-
 	</head>
 	<body>
 					<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
@@ -141,9 +133,9 @@
 					
 					
 				});
-				// $( window ).load(function() {
-				// 	$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
-				// });
+				$( window ).load(function() {
+					$("#button1").prop("href", "joinmeal/" + obj[0][0] + "/" + window.uid);
+				});
 				</script>
 
 				<footer>
