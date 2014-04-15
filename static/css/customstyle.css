@@ -6,7 +6,7 @@ body {
 }
 
 @media (min-width:1325px) {
-	.container {
+	.feed-column {
 		float:none;
 	}
 
@@ -36,7 +36,7 @@ h1 {
 	text-align: center;
 }
 
-.feed-row{
+.feed-row, .host-row {
 	margin-top: 15px;
 	margin-left: 8.5%;
 	margin-bottom: 25px;
