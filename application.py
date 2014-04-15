@@ -225,8 +225,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('spritz', filename=filename))
-            # return redirect(url_for('uploaded_file',
-                                    filename=filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
     return '''
     <!doctype html>
     <title>Upload new File</title>
