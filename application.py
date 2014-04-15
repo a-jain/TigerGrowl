@@ -139,6 +139,19 @@ def mymeals(uid=None):
 	yourmeals = json.dumps(yourmeals)
 
 	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
+	
+@application.route('/invite/<mealid>/<host>/<guests>')
+def invite(mealid=None):
+	if not mealid:
+		return redirect(url_for('home'))
+
+	guestList = json.loads(guests)
+	
+	for each in guestList:
+		query = "INSERT INTO ebdb.invitees (meal_id, host, each) VALUES (%s, %d, %d);" % (form.meal.data, form.host.data, form.guest,data))
+		query_db(query)
+
+	return redirect(url_for('mymeals', uid=host))
 
 @application.route('/spritz')
 def spritz():
