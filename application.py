@@ -169,6 +169,7 @@ def spritz(filename=None):
 
 	else:
 		url = url_for('uploaded_file', filename=filename)
+		console.log(url)
 		with open(url) as fp:
 			doc=slate.PDF(fp)
 
