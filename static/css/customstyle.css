@@ -5,6 +5,14 @@ body {
 	background-color:#8abe9b;
 }
 
+@media (min-width:1325px) {
+	.container {
+		float:none;
+	}
+
+}
+
+
 .logo{
 	color:white;
 	font-family:'Patrick Hand SC',cursive;
