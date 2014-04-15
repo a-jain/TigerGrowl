@@ -195,7 +195,7 @@ def convert_pdf_to_txt(path):
 @application.route('/spritzme/<filename>')
 def spritz(filename=None):
 	if not filename:
-		return render_template('spritz/spritz.html', text=null)
+		return render_template('spritz/spritz.html', text="")
 
 	else:
 		url = "static/spritz/" + filename
