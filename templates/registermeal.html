@@ -38,7 +38,14 @@
 				{{ render_field(form.place) }}
 				{{ render_field(form.time) }}
 				{{ render_field(form.date) }}
-				{{ render_field(form.priv) }}
+
+				{% for subfield in form.priv %}
+				    
+				    {{ subfield }}
+				    {{ subfield.label }}
+				
+				{% endfor %}
+				
 				{{ render_field(form.uid) }}
 			</dl>
 			<dl>
