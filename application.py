@@ -11,11 +11,6 @@ application = Flask(__name__)
 application.debug = True
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
 
-UPLOAD_FOLDER = 'static/spritz/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf'])
-application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-application.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
-
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
 
@@ -161,20 +156,58 @@ def invite(mealid=None):
 
 ####################################################### 
 
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from cStringIO import StringIO
+import re
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+UPLOAD_FOLDER = 'static/spritz/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf'])
+application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+application.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
+
+def convert_pdf_to_txt(path):
+    rsrcmgr = PDFResourceManager()
+    retstr = StringIO()
+    codec = 'utf-8'
+    laparams = LAParams()
+    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+    fp = file(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password = ""
+    maxpages = 0
+    caching = True
+    pagenos=set()
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
+        interpreter.process_page(page)
+    fp.close()
+    device.close()
+    str = retstr.getvalue()
+    retstr.close()
+    return str
+
 @application.route('/spritz')
 @application.route('/spritzme/<filename>')
 def spritz(filename=None):
 	if not filename:
-		return render_template('spritz/spritz.html')
+		return render_template('spritz/spritz.html', text=null)
 
 	else:
-		url = url_for('uploaded_file', filename=filename)
-		console.log(url)
-		with open(url) as fp:
-			doc=slate.PDF(fp)
-
-		console.log(doc[0])
-		return render_template('spritz/spritz.html') 
+		url = "static/spritz/" + filename
+		print url
+		s = convert_pdf_to_txt(url)
+		s = re.sub(r'\s+', ' ', s)
+		s = s.replace('!', '')
+		# s = unicode(s, errors='replace')
+		# s = s.decode('utf8').encode('ascii')
+		print s
+		
+		return render_template('spritz/spritz.html', text=s) 
 
 @application.route('/spritz/login_success')
 def spritz_login():
