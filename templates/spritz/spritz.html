@@ -20,15 +20,17 @@
         }
     </style>
 
-
+    <script>
+		s = "{{text}}"
+		console.log(s)
+		$(document).ready(function() {
+			$("#inputText").text(s)});
+	</script>
 </head>
 
 <body>
 
-	<script>
-		var s = "{{text}}"
-		console.log(s)
-	</script>
+	
 
 	<p>
 	  	<div id="spritzer"></div>
