@@ -35,6 +35,7 @@ body {
 	border-style: outset;
 	border-width: 3px;
 	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+	border-radius:80px;
 	width:85%;
 }
 

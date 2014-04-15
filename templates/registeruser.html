@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 
-<script src="../static/js/jquery-1.11.0.min.js"></script>
+<html>
+  <style>
+  hr {color:sienna;}
+  p {margin-left:20px;}
+  body {background-color:#8abe9b;}
+  </style>
+  <head>
+    <title>Register User - TigerGrowl</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet", media = "screen">
+    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+    <link href="../static/css/form-signin.css" rel="stylesheet", media = "screen">
+    <script src="../static/js/jquery-1.11.0.min.js"></script>
+    
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  </head>
 
 {% from "formmacro.html" import render_field %}
 <form method=post action="/registeruser">
