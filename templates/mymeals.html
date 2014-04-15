@@ -63,7 +63,7 @@
 				</div>
 				
 
-				<div class="container" style="width:845px;float:right;padding:0px;">
+				<div class="container" style="width:66%;float:right;padding:0px;">
 					<div class="container" style="width:423px;float:left;padding:0px;">
 
 						<h1>Invites</h1>
@@ -159,7 +159,7 @@
 				console.log(objGuest)
 
 				$( document ).ready(function() {
-					for (var key in objHost.response) {
+					for (var key in parsed.response) {
 						$(".feed-row:nth-child(1) .name-identifier").text(key[1] + "\'s Meal");
 					}
 					// $(".feed-row:nth-child(2) .name-identifier").text(objHost[1][1] + "\'s Meal");
