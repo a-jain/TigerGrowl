@@ -4,6 +4,7 @@ from flask import send_from_directory
 from werkzeug.utils import secure_filename
 import MySQLdb
 import json
+import slate
 from form import *
 
 application = Flask(__name__)
@@ -167,13 +168,12 @@ def spritz(filename=None):
 		return render_template('spritz/spritz.html')
 
 	else:
-		url_for('uploaded_file', filename=filename)
+		url = url_for('uploaded_file', filename=filename)
+		with open(url) as fp:
+			doc=slate.PDF(fp)
 
+		console.log(doc[0])
 		return render_template('spritz/spritz.html') 
-
-
-
-	
 
 @application.route('/spritz/login_success')
 def spritz_login():
