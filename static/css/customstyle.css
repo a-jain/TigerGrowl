@@ -9,36 +9,36 @@ body {
     .guest-column {
     	margin-left:423px;
     }
-    #mymealslink {
-		margin-left:50%;
+    /*#mymealslink {
+		margin-left:50%;*/
 	}
 }
 
 @media screen and (min-width:800px) and (max-width: 850px) {
-    .guest-column {
+    .feed-column, .guest-column {
     	margin-left:25%;
     }
-    #mymealslink {
+    /*#mymealslink {
 		margin-left:5%;
-	}
+	}*/
 }
 
 @media screen and (min-width:800px) and (max-width: 799px) {
-    .guest-column {
+    .feed-column, .guest-column {
     	margin-left:23%;
     }
-    #mymealslink {
+    /*#mymealslink {
 		margin-left:5%;
-	}
+	}*/
 }
 
 @media screen and (min-width:620px) and (max-width: 799px) {
-    .guest-column {
+    .feed-column, .guest-column {
     	margin-left:16%;
     }
-    #mymealslink {
+    /*#mymealslink {
 		margin-left:5%;
-	}
+	}*/
 }
 
 
