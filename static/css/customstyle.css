@@ -71,7 +71,7 @@ h1 {
 
 
 .host-row .setting-identifier {
-	float:right;
+	float:left;
 	width:50%;
 	text-align: center;
 }
