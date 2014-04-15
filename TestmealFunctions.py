@@ -4,29 +4,23 @@ def query_db(query):
     cur = cursor.execute(query)
     return cur.fetchall()
 
-def seeAllMeals():
-	""" return a list of all meals that your friends are hosting"""
-	#get user's facebookid
-	#get friendlist from graph API
-	
-	allmeals = []
-	#for each friend in friendlist
-		# get that friend's facebookid from graph API
-
-		# get that friend's user_id from Users
-		query = "SELECT * FROM ebdb.user_table where facebookid = " + str(facebookid) + ");"
-		friend = query_db(query)
-		friend_dinerid = friend[dinerid]
+def seeAllMeals(facebookid):
+	#see meals that you are invited to
+	visibleMeals = [] 
+	query = "SELECT * FROM ebdb.invitees where guest = %s;"  % (str(facebookid))
+	myVisibleMeals = query_db(query)
+	for each in myVisibleMeals:
+		query1 = "SELECT * FROM ebdb.meal_table where guest = %s;"  % (str(facebookid))
+		mealData = query_db(query)	
+		visibleMeals.append(mealData)
 		
-		# see which meals that friend is hosting
-		query = "SELECT * FROM ebdb.meal_table where hostid = " + str(dinerid) + ");"
-		meal = query_db(query)
-
-		#you can manipulate the contents of "meal" if you like, by putting them into say a list mealData
-		allmeals.append(meal)
-
-	return allmeals
-
+	return visibleMeals
+	
+def invite():
+	#invites form data to meal. form.meal.data should be hidden and corresponding to meal_id of data, host.data to host, guest to facebookid of guest.
+	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (%s, %d, %d);" % (form.meal.data, form.host.data, form.guest,data))
+	query_db(query)
+	
 def seeYourMeals(facebookid):
 	yourmeals = []
 
@@ -54,8 +48,6 @@ def hostMeal(location, currentHour, currentMin, currentSec, startHour, startMin,
 	meal = query_db(query)
 
 def joinMeal(meal_id):
-	#get the user's facebookid
-	
 	query = "SELECT * FROM ebdb.meal_table where meal_id = " + str(meal_id) + ");"
 	meal = query_db(query)
 
