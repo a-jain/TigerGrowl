@@ -23,14 +23,13 @@
 
 
 		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-					<a id = "mymealslink"><button type="button" class="btn btn-default navbar-btn active"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>	
+				<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
-					<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
-			</div><!-- /.navbar-collapse -->
+				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
+			<!-- /.navbar-collapse -->
 		</nav>
 
 				<div class="container-fluid">
@@ -169,6 +168,11 @@
 					//$(".feed-row:nth-child(4) .setting-identifier").text(objGuest[3][2] + ", " + objGuest[3][3] + ", " + objGuest[3][4]);
 					//$(".feed-row:nth-child(5) .setting-identifier").text(objGuest[4][2] + ", " + objGuest[4][3] + ", " + objGuest[4][4]);
 				});
+
+				/* fb photo*/
+				$(document).bind('fbInitPicLoaded',function(){
+						$("#FacebookPhoto").prop("src", window.picurl);
+					});
 				
 				</script>
 
