@@ -9,7 +9,6 @@
 	   };
 	</script>
 
-	<script id="spritzjs" type="text/javascript" src="http://sdk.spritzinc.com/js/1.0/js/spritz.min.js"></script>
     <script type="text/javascript">
         function onTextSelected() {
         	var option = $('option:selected', this); 
@@ -26,18 +25,26 @@
         });
     </script>
 
+    <style type="text/css">
+       body {
+           background-color: #A9D0F5;
+           margin-left: 20px;           
+        }
+    </style>
+
 
 </head>
 
 <body>
 
 	<p>
-	   <div data-role="spritzer" 
-	   		data-url="http://sdk.spritzinc.com/sampleText/HelloWorld.html" 
-	   		data-options="{ "redicleWidth": 400, "redicleHeight": 150, "speedItems": [100, 200, 300, 400, 500, 1000], "defaultSpeed": 500 }"
-	   		height="200">
-	   </div>
-    </p>
+	  	<div 
+	  	    id="spritzer"
+	  	    data-role="spritzer" 
+	  	    data-url="http://sdk.spritzinc.com/sampleText/HelloWorld.html" 
+	  	    data-options='{ "redicleWidth": 250, "redicleHeight": 50, "speedItems": [100, 200, 300, 400, 500, 1000], "defaultSpeed": 400 }'></div>
+	  	</p>
+    <p>
 
     <p>
         <div>Choose a source:</div>
