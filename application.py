@@ -166,41 +166,41 @@ def spritz():
 def spritz_login():
 	return render_template('spritz/login_success.html')
 
-@application.route('/spritz/files')
-def files():
-	uploads = Upload.query.all()
-	return (
-		'<a href="/upload">New Upload</a><br>' +
-		u''.join(
-			u'<a href="%s">%s</a>'
-			u'<form action="/delete/%s" method="POST">'
-			u'  <button type="submit">Delete</button>'
-			u'</form><br>'
-			% (Storage().url(u.name), u.name, u.id)
-			for u in uploads
-		)
-	)
+# @application.route('/spritz/files')
+# def files():
+# 	uploads = Upload.query.all()
+# 	return (
+# 		'<a href="/upload">New Upload</a><br>' +
+# 		u''.join(
+# 			u'<a href="%s">%s</a>'
+# 			u'<form action="/delete/%s" method="POST">'
+# 			u'  <button type="submit">Delete</button>'
+# 			u'</form><br>'
+# 			% (Storage().url(u.name), u.name, u.id)
+# 			for u in uploads
+# 		)
+# 	)
 
-@application.route('/spritz/upload', methods=['GET', 'POST'])
-def upload():
-	"""Upload a new file."""
-	if request.method == 'POST':
-		print 'saving'
-		save(request.files['upload'])
-		return redirect(url_for('spritz'))
-	return (
-		u'<form method="POST" enctype="multipart/form-data">'
-		u'  <input name="upload" type="file">'
-		u'  <button type="submit">Upload</button>'
-		u'</form>'
-	)
+# @application.route('/spritz/upload', methods=['GET', 'POST'])
+# def upload():
+# 	"""Upload a new file."""
+# 	if request.method == 'POST':
+# 		print 'saving'
+# 		save(request.files['upload'])
+# 		return redirect(url_for('spritz'))
+# 	return (
+# 		u'<form method="POST" enctype="multipart/form-data">'
+# 		u'  <input name="upload" type="file">'
+# 		u'  <button type="submit">Upload</button>'
+# 		u'</form>'
+# 	)
 
-@application.route('/delete/<int:id>', methods=['POST'])
-def remove(id):
-	"""Delete an uploaded file."""
-	upload = Upload.query.get_or_404(id)
-	delete(upload)
-	return redirect(url_for('spritz'))
+# @application.route('/spritz/delete/<int:id>', methods=['POST'])
+# def remove(id):
+# 	"""Delete an uploaded file."""
+# 	upload = Upload.query.get_or_404(id)
+# 	delete(upload)
+# 	return redirect(url_for('spritz'))
 
 
 if __name__ == '__main__':
