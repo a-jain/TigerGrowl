@@ -10,22 +10,37 @@
 	</script>
 
 	<script id="spritzjs" type="text/javascript" src="http://sdk.spritzinc.com/js/1.0/js/spritz.min.js"></script>
-	<script type="text/javascript" src="backend.js"></script>
+    <script type="text/javascript">
+        function onTextSelected() {
+        	var option = $('option:selected', this); 
+            var name = option.text();
+            var url = option.val();
+            
+            $('#selectionTitle').text(name);
+            $('#spritzer').data('controller').setUrl(url);
+        }
+    
+        $(document).ready(function() {
+        	// Add selection handler
+            $("#textList").on("change", onTextSelected);            
+        });
+    </script>
 </head>
 
 <body>
 
-<center><p><div data-role="spritzer" data-url="http://www.princeton.edu/main/news/archive/S39/65/40I22/index.xml?section=announcements"></div><p></center>
+<center><p><div id="spritzer" data-role="spritzer"></div><p></center>
 
-<div>
-    <input id="autoStartOption" type="checkbox" checked/> Auto-Start
-</div>
-	
-<select id="textList" size="1">
-	<option value="">Select Text</option>
-	<option value="text1">Hello World</option>
-	<option value="text2">Wilbur Wright</option>
-</select>
+    <p>
+        <div>Choose a source:</div>
+        <select id="textList" size="1">
+            <option value="">Nothing</option>
+            <option value="http://sdk.spritzinc.com/sampleText/HelloWorld.html" selected>Hello World</option>
+            <option value="http://sdk.spritzinc.com/sampleText/WilburWrightLetter.html">Wilbur Wright</option>
+            <option value="http://www.archives.gov/exhibits/charters/print_friendly.html?page=declaration_transcript_content.html&title=NARA%20%7C%20The%20Declaration%20of%20Independence%3A%20A%20Transcription">Declaration of Independence</option>
+            <option value="http://www.archives.gov/exhibits/charters/print_friendly.html?page=bill_of_rights_transcript_content.html&title=The%20Bill%20of%20Rights%3A%20A%20Transcription">Bill Of Rights</option>
+	 	</select>
+    </p>
 
 </body>
 
