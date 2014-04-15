@@ -148,7 +148,7 @@ def invite(mealid=None):
 	guestList = json.loads(guests)
 	
 	for each in guestList:
-		query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (%s, %d, %d);" % (mealid, host, each))
+		query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
 		cursor.execute(query)
 	return redirect(url_for('mymeals', uid=host))
 
