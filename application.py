@@ -140,8 +140,9 @@ def mymeals(uid=None):
 @application.route('/spritz')
 def spritz():
 	return render_template('spritz/spritz.html')
+	
 @application.route('/spritz/login_success')
-def spritz():
+def spritz_login():
 	return render_template('spritz/login_success.html')
 
 
