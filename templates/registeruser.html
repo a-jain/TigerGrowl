@@ -15,13 +15,23 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
     <link href="../static/css/form-signin.css" rel="stylesheet", media = "screen">
     <script src="../static/js/jquery-1.11.0.min.js"></script>
+    <script>
+      function bigrefresh(){
+          window.onunload = refreshParent;
+          function refreshParent() {
+              window.opener.location.reload();
+          }
+      window.close();
+      }
+
+    </script>
     
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   </head>
 
 {% from "formmacro.html" import render_field %}
-<form method=post action="/registeruser">
+<form method=post class = "form-signin" action="/registeruser">
   <dl>
     {{ render_field(form.firstname) }}
     {{ render_field(form.lastname) }}
@@ -30,6 +40,8 @@
     {{ render_field(form.picurl) }}
   </dl>
   <p><input type=submit value="Register">
+
+  <button class="btn btn-default btn-success btn-lg" style="float:right;" type="submit" onclick="bigrefresh()"> <span class="glyphicon glyphicon-ok-sign"></span>   Register</button>
 </form>
 
 <div id="fb-root"></div>
