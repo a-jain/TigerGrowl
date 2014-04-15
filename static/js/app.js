@@ -33,7 +33,10 @@
 	// Customized options
 	var customOptions = {
 			"redicleWidth" : 	434,	// Specify Redicle width
-			"redicleHeight" : 	76		// Specify Redicle height
+			"redicleHeight" : 	150,	// Specify Redicle height
+			"defaultSpeed" : 600,
+			"speedItems" : [100, 200, 300, 400, 500, 600, 750, 1000] 
+			
 	};
 
 	var init = function() {
