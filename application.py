@@ -88,8 +88,7 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
-		x=1
-		sql = "INSERT INTO ebdb.invitees (meal_id, host) VALUES (\'%s\', \'%s\');" % (x, form.host.data)
+		sql = "INSERT INTO ebdb.invitees (meal_id, host) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, form.host.data)
 		cursor.execute(sql)
 
 		# change to some exit page
