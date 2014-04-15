@@ -28,7 +28,7 @@ def login(uid=None):
 	cursor.execute(sql)
 	results = cursor.fetchone()
 	if results:
-		return redirect(url_for('feedPrototype'))
+		return redirect(url_for('feed'))
 	else:
 		return redirect(url_for('registeruser'))
 
@@ -70,7 +70,7 @@ def registeruser():
 
 		cursor.execute(sql)
 
-		return redirect(url_for('feedPrototype'))
+		return redirect(url_for('feed'))
 	return render_template('registeruser.html', form=form)
 
 @application.route('/registermeal', methods=['GET', 'POST'])
