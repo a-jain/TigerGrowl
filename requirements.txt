@@ -10,3 +10,6 @@ decorator==3.4.0
 itsdangerous==0.23
 wsgiref==0.1.2
 validators==0.5.0
+
+pdfminer==20140328
+https://codeload.github.com/timClicks/slate/zip/master

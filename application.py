@@ -161,8 +161,19 @@ def invite(mealid=None):
 ####################################################### 
 
 @application.route('/spritz')
-def spritz():
-	return render_template('spritz/spritz.html')
+@application.route('/spritzme/<filename>')
+def spritz(filename=None):
+	if not filename:
+		return render_template('spritz/spritz.html')
+
+	else:
+		url_for('uploaded_file', filename=filename)
+
+		return render_template('spritz/spritz.html') 
+
+
+
+	
 
 @application.route('/spritz/login_success')
 def spritz_login():
