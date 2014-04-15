@@ -10,6 +10,3 @@ decorator==3.4.0
 itsdangerous==0.23
 wsgiref==0.1.2
 validators==0.5.0
-
--e git://github.com/FelixLoether/flask-uploads@d73fb8c8a4859019265e62f27e168a8bb09abfd5#egg=Flask_Uploads-master
--e git://github.com/kvesteri/flask-storage.git#egg=Flask-Storage

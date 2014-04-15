@@ -1,17 +1,11 @@
 import os.path
 from flask import Flask
 from flask import render_template, flash, url_for, request, redirect, abort
-from flask.ext.storage import get_default_storage_class
-from flask.ext.uploads import delete, init, save, Upload
 import MySQLdb
 import json
 from form import *
 
 application = Flask(__name__)
-application.config['DEFAULT_FILE_STORAGE'] = 'filesystem'
-application.config['UPLOADS_FOLDER'] = os.path.realpath('.') + '/static/spritz/'
-application.config['FILE_SYSTEM_STORAGE_FILE_VIEW'] = 'static'
-
 application.debug = True
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
 
@@ -166,41 +160,6 @@ def spritz():
 def spritz_login():
 	return render_template('spritz/login_success.html')
 
-# @application.route('/spritz/files')
-# def files():
-# 	uploads = Upload.query.all()
-# 	return (
-# 		'<a href="/upload">New Upload</a><br>' +
-# 		u''.join(
-# 			u'<a href="%s">%s</a>'
-# 			u'<form action="/delete/%s" method="POST">'
-# 			u'  <button type="submit">Delete</button>'
-# 			u'</form><br>'
-# 			% (Storage().url(u.name), u.name, u.id)
-# 			for u in uploads
-# 		)
-# 	)
-
-# @application.route('/spritz/upload', methods=['GET', 'POST'])
-# def upload():
-# 	"""Upload a new file."""
-# 	if request.method == 'POST':
-# 		print 'saving'
-# 		save(request.files['upload'])
-# 		return redirect(url_for('spritz'))
-# 	return (
-# 		u'<form method="POST" enctype="multipart/form-data">'
-# 		u'  <input name="upload" type="file">'
-# 		u'  <button type="submit">Upload</button>'
-# 		u'</form>'
-# 	)
-
-# @application.route('/spritz/delete/<int:id>', methods=['POST'])
-# def remove(id):
-# 	"""Delete an uploaded file."""
-# 	upload = Upload.query.get_or_404(id)
-# 	delete(upload)
-# 	return redirect(url_for('spritz'))
 
 
 if __name__ == '__main__':
