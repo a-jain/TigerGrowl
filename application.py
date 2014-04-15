@@ -207,7 +207,7 @@ def spritz(filename=None):
 		s = HTMLParser.HTMLParser().unescape(s)
 		# s = unicode(s, errors='replace')
 		# s = s.decode('utf8').encode('ascii')
-		print s
+		# print s
 		
 		return render_template('spritz/spritz.html', text=s) 
 
