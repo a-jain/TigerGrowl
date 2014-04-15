@@ -148,9 +148,8 @@ def invite(mealid=None):
 	guestList = json.loads(guests)
 	
 	for each in guestList:
-		query = "INSERT INTO ebdb.invitees (meal_id, host, each) VALUES (%s, %d, %d);" % (form.meal.data, form.host.data, form.guest.data))
-		query_db(query)
-
+		query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (%s, %d, %d);" % (mealid, host, each))
+		cursor.execute(query)
 	return redirect(url_for('mymeals', uid=host))
 
 @application.route('/spritz')
