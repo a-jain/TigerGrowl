@@ -1,6 +1,7 @@
 import os.path
-from flask import Flask
-from flask import render_template, flash, url_for, request, redirect, abort
+from flask import Flask, render_template, flash, url_for, request, redirect, abort
+from flask import send_from_directory
+from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
@@ -8,6 +9,11 @@ from form import *
 application = Flask(__name__)
 application.debug = True
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
+
+UPLOAD_FOLDER = 'static/spritz/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf'])
+application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+application.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
 
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
@@ -152,6 +158,8 @@ def invite(mealid=None):
 		cursor.execute(query)
 	return redirect(url_for('mymeals', uid=host))
 
+####################################################### 
+
 @application.route('/spritz')
 def spritz():
 	return render_template('spritz/spritz.html')
@@ -160,7 +168,33 @@ def spritz():
 def spritz_login():
 	return render_template('spritz/login_success.html')
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+@application.route('/spritz/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload File to be Spritzed</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
+
+@application.route('/spritz/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(application.config['UPLOAD_FOLDER'],
+                               filename)
 
 if __name__ == '__main__':
 	application.run(debug=True)
