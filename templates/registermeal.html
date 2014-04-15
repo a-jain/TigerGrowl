@@ -33,7 +33,7 @@
 		<div class = "container">
 		{% from "formmacro.html" import render_field %}
 		<form method=post action="/registermeal" class = "form-signin" role = "form">
-			<dl>
+			<!-- <dl> -->
 				{{ render_field(form.host) }}
 				{{ render_field(form.place) }}
 				{{ render_field(form.time) }}
@@ -47,7 +47,7 @@
 				{% endfor %}
 				
 				{{ render_field(form.uid) }}
-			</dl>
+			<!-- </dl> -->
 			<dl>
         <a href="/feed" class="btn btn-default btn-danger btn-lg" style="float:left;"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</a>
       
