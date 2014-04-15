@@ -163,6 +163,7 @@ from pdfminer.pdfpage import PDFPage
 from cStringIO import StringIO
 import re
 import sys
+import HTMLParser
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -203,6 +204,7 @@ def spritz(filename=None):
 		s = convert_pdf_to_txt(url)
 		s = re.sub(r'\s+', ' ', s)
 		s = s.replace('!', '')
+		s = HTMLParser.HTMLParser().unescape(s)
 		# s = unicode(s, errors='replace')
 		# s = s.decode('utf8').encode('ascii')
 		print s

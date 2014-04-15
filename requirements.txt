@@ -13,3 +13,4 @@ validators==0.5.0
 
 pdfminer==20140328
 https://codeload.github.com/timClicks/slate/zip/master
+HTMLParser==0.0.2

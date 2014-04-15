@@ -24,7 +24,12 @@
 		s = "{{text}}"
 		console.log(s)
 		$(document).ready(function() {
-			$("#inputText").text(s)});
+			$("#inputText").text(jDecode(s));
+
+		});
+		function jDecode(str) {
+    		return $("<div/>").html(str).text();
+		}
 	</script>
 </head>
 
