@@ -79,7 +79,7 @@ h1 {
 	padding-top: 25px;
 	padding-bottom: 25px;
 	background-color: gainsboro;
-	border-style: dashed;
+	border-style: ridge;
 	border-width: 2px;
 	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
 	border-radius:80px;
