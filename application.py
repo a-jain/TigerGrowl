@@ -137,5 +137,10 @@ def mymeals(uid=None):
 
 	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
 
+@application.route('/spritz')
+def spritz():
+	return render_template('spritz/spritz.html')
+
+
 if __name__ == '__main__':
 	application.run(debug=True)
