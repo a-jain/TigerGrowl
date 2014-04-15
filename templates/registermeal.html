@@ -13,10 +13,18 @@
     <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 		<link href="../static/css/form-signin.css" rel="stylesheet", media = "screen">
-		
+		<script src="../static/js/jquery-1.11.0.min.js"></script>
+		<script>
+			function bigrefresh(){
+			    window.onunload = refreshParent;
+			    function refreshParent() {
+			        window.opener.location.reload();
+			    }}
+		</script>
+
 				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	</head>
-	<script src="../static/js/jquery-1.11.0.min.js"></script>
+	
 	
 	<body>
 		<div class = "container">
@@ -32,7 +40,7 @@
 			<dl>
         <a href="/feed" class="btn btn-default btn-danger btn-lg" style="float:left;"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</a>
       
-        <button class="btn btn-default btn-success btn-lg" style="float:right;" type="submit"> <span class="glyphicon glyphicon-ok-sign"></span>   Register</button>
+        <button class="btn btn-default btn-success btn-lg" style="float:right;" type="submit" onclick="bigrefresh()"> <span class="glyphicon glyphicon-ok-sign"></span>   Register</button>
       </dl>
 		</form>
 	</div>
