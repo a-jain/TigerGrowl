@@ -25,17 +25,21 @@
             $("#textList").on("change", onTextSelected);            
         });
     </script>
+
+    <style type="text/css">
+       body {
+           background-color: #A9D0F5;
+           margin-left: 20px;           
+        }
+    </style>
 </head>
 
 <body>
 
 	<p>
-	   <div data-role="spritzer" data-url="http://sdk.spritzinc.com/sampleText/HelloWorld.html" data-options="{ "redicleWidth": 400, "redicleHeight": 150, "speedItems": [100, 200, 300, 400, 500, 1000], "defaultSpeed": 500 }" class="spritzer">
-	   		<div class="spritzer-container">
-	   			<div class="convas-container">
-	   				<canvas class="spritz-canvas" width="250" height="50">
-	   			</div>
-	   		</div>
+	   <div data-role="spritzer" 
+	   		data-url="http://sdk.spritzinc.com/sampleText/HelloWorld.html" 
+	   		data-options="{ "redicleWidth": 400, "redicleHeight": 150, "speedItems": [100, 200, 300, 400, 500, 1000], "defaultSpeed": 500 }">
 	   </div>
     </p>
 
