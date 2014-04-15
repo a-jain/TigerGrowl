@@ -37,8 +37,7 @@ def timeline():
 	return render_template('timeline.html')
 
 @application.route('/feed')
-@application.route('/feedPrototype')
-def feedPrototype(page=None):
+def feed(page=None):
 	if page is None:
 		offset = 0
 	else:
