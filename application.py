@@ -88,6 +88,10 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
+		x=1
+		sql = "INSERT INTO ebdb.invitees (meal_id, host) VALUES (\'%s\', \'%s\');" % (x, form.host.data)
+		cursor.execute(sql)
+
 		# change to some exit page
 		return redirect(url_for('exitpage'))
 	return render_template('registermeal.html', form=form)
@@ -140,7 +144,7 @@ def mymeals(uid=None):
 @application.route('/spritz')
 def spritz():
 	return render_template('spritz/spritz.html')
-	
+
 @application.route('/spritz/login_success')
 def spritz_login():
 	return render_template('spritz/login_success.html')
