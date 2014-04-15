@@ -84,7 +84,7 @@ def registermeal():
 
 		receivedTime = str(form.time.data)[:-3]
 
-		sql = "INSERT INTO ebdb.meal_table (host, place, date, time, user_id) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', %d);" % (form.host.data, form.place.data, newDate, receivedTime, int(form.uid.data))
+		sql = "INSERT INTO ebdb.meal_table (host, place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.host.data, form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
 		print sql
 		cursor.execute(sql)
 
