@@ -51,24 +51,38 @@ h1 {
 	width:85%;
 }
 
-.name-identifier{
+.feed-row .name-identifier{
 	float: left;
 	width: 50%;
 	padding-left:45px;
 
 }
 
-.setting-identifier {
+.feed-row .setting-identifier {
 	float:right;
 	width:50%;
 	text-align: center;
 }
 
-.attendees {
+.feed-row .attendees {
 	float:left;
 	margin-top: 50px;
 	margin-left: 45px;
 }
+
+
+.host-row .setting-identifier {
+	float:right;
+	width:50%;
+	text-align: center;
+}
+
+.host-row .attendees {
+	float:left;
+	margin-top: 50px;
+	margin-left: 45px;
+}
+
 footer{
 	border-top: 1px dashed #CCCCCC;
 	padding: 20px 0px;
