@@ -5,12 +5,42 @@ body {
 	background-color:#8abe9b;
 }
 
-@media (min-width:1325px) {
-	.feed-column {
-		float:none;
+@media screen and (min-width: 851px) and (max-width: 1270px) {
+    .guest-column {
+    	margin-left:423px;
+    }
+    #mymealslink {
+		margin-left:50%;
 	}
-
 }
+
+@media screen and (min-width:800px) and (max-width: 850px) {
+    .guest-column {
+    	margin-left:25%;
+    }
+    #mymealslink {
+		margin-left:5%;
+	}
+}
+
+@media screen and (min-width:800px) and (max-width: 799px) {
+    .guest-column {
+    	margin-left:23%;
+    }
+    #mymealslink {
+		margin-left:5%;
+	}
+}
+
+@media screen and (min-width:620px) and (max-width: 799px) {
+    .guest-column {
+    	margin-left:16%;
+    }
+    #mymealslink {
+		margin-left:5%;
+	}
+}
+
 
 .logo{
 	color:white;
@@ -34,6 +64,12 @@ body {
 
 h1 {
 	text-align: center;
+}
+
+.feed-column {
+	width:423px;
+	float:left;
+	padding:0px;
 }
 
 .feed-row, .host-row {

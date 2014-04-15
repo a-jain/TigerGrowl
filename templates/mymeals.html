@@ -20,16 +20,21 @@
 
 	</head>
 	<body>
-					<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
-					<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
+
+
+		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
+
+					<a id = "mymealslink"><button type="button" class="btn btn-default navbar-btn active"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>	
+
+					<div >
+						<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
 					</div>
-					<a id = "mymealslink"><button type="button" class="btn btn-default navbar-btn active"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>					
-					</div><!-- /.navbar-collapse -->
-				</div>
-				</nav>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+
 				<div class="container-fluid">
 					<div class="jumbotron">
 							<a onclick="openpopup()"><button type="button" class="btn btn-default btn-lg">
@@ -39,7 +44,7 @@
 				</div>
 
 				<!-- Main feed container -->
-				<div class="feed-column" style="width:423px;float:left;padding:0px;">
+				<div class="feed-column">
 					
 				<h1>Meals You are Hosting</h1>
 
@@ -60,88 +65,85 @@
 				</div>
 				
 
-				<div class="feed-column" style="width:888px;float:right;padding:0px;">
-					<div class="feed-column" style="width:423px;float:left;padding:0px;">
+				<div class="feed-column">
 
-						<h1>Invites</h1>
+					<h1>Invites</h1>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
-
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
-
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
-
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
-
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
-
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
 					</div>
 
-					<div class="feed-column" style="width:423px;float:right;padding:0px;">
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
 
-						<h1>Meals with You as Guest</h1>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+				</div>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+				<div class="feed-column guest-column">
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<h1>Meals with You as Guest</h1>
 
-						<div class="row feed-row">
-							<div class="name-identifier"> firstname lastname's Meal </div>
-							<div class="setting-identifier"> place date time </div>
-							<div class="attendees">Who's Coming?</div>
-						</div>
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
 
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
 					</div>
 				</div>
 
