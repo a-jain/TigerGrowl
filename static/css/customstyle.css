@@ -25,6 +25,10 @@ body {
 
 }
 
+h1 {
+	text-align: center;
+}
+
 .feed-row{
 	margin-top: 25px;
 	margin-left: 8.5%;
