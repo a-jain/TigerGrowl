@@ -157,7 +157,7 @@
 				// Hosted meal: place, date, time				
 				$(document).ready(function() {
 				    $(".host-row .setting-identifier").each(function(i) {
-				    	if objHost[i] !== undefined { 
+				    	if (objHost[i] !== undefined) { 
 				        	$(this).text(objHost[i][2] + ", " + objHost[i][3] + ", " + objHost[i++][4]);
 				        }
 				    });
@@ -166,7 +166,7 @@
 				// Guest meals: who?
 				$(document).ready(function() {
 				    $(".guest-column .feed-row .name-identifier").each(function(i) {
-				    	if objGuest[i] !== undefined {
+				    	if (objGuest[i] !== undefined ) {
 				        	$(this).text(objGuest[i++][1] + "'s Meal");
 				        }
 				    });
@@ -175,7 +175,7 @@
 				// Guest meals: setting
 				$(document).ready(function() {
 				    $(".guest-column .feed-row .setting-identifier").each(function(i) {
-				    	if objGuest[i] !== undefined {
+				    	if (objGuest[i] !== undefined) {
 				       		$(this).text(objGuest[i][2] + ", " + objGuest[i][3] + ", " + objGuest[i++][4]);
 				       	}
 				    });
