@@ -35,7 +35,7 @@
 			"redicleWidth" : 	434,	// Specify Redicle width
 			"redicleHeight" : 	150,	// Specify Redicle height
 			"defaultSpeed" : 600,
-			"speedItems" : [100, 200, 300, 400, 500, 600, 750, 1000] 
+			"speedItems" : [150, 200, 300, 400, 450, 500, 600, 750, 1000] 
 			
 	};
 
