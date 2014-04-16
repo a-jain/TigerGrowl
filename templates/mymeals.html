@@ -42,7 +42,7 @@
 				</div>
 
 				<!-- Main feed container -->
-				<div class="feed-column">
+				<div class="feed-column host-column">
 					
 				<h1>Meals You are Hosting</h1>
 
@@ -145,7 +145,6 @@
 					</div>
 				</div>
 
-				<!-- The end of the container feed -->
 				</div>
 
 				<script>
@@ -155,10 +154,26 @@
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 				console.log(objGuest)
 
-				$( document ).ready(function() {
-					for (var key in objHost.response) {
-						$(".feed-row:nth-child(1) .name-identifier").text(key[1] + "\'s Meal");
-					}
+				// Hosted meal: place, date, time				
+				$(document).ready(function() {
+				    $(".host-row .setting-identifier").each(function(i) {
+				        $(this).text(objHost[i][2] + ", " + objHost[i][3] + ", " + objHost[i++][4]);
+				    });
+				});
+
+				// Guest meals: who?
+				$(document).ready(function() {
+				    $(".guest-column .feed-row .name-identifier").each(function(i) {
+				        $(this).text(objGuest[i++][1] + "'s Meal");
+				    });
+				});
+
+				// Guest meals: setting
+				$(document).ready(function() {
+				    $(".guest-column .feed-row .setting-identifier").each(function(i) {
+				        $(this).text(objGuest[i][2] + ", " + objGuest[i][3] + ", " + objGuest[i++][4]);
+				    });
+				});
 					// $(".feed-row:nth-child(2) .name-identifier").text(objHost[1][1] + "\'s Meal");
 					// $(".feed-row:nth-child(3) .name-identifier").text(objHost[2][1] + "\'s Meal");
 					// $(".feed-row:nth-child(4) .name-identifier").text(objHost[3][1] + "\'s Meal");

@@ -5,6 +5,12 @@ body {
 	background-color:#8abe9b;
 }
 
+@media screen and (min-width:1271px) {
+	.host-column {
+		margin-left:5%;
+	}
+}
+
 @media screen and (min-width: 851px) and (max-width: 1270px) {
     .guest-column {
     	margin-left:423px;
