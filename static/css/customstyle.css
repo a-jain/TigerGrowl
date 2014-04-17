@@ -61,7 +61,7 @@ body {
 	background-size: cover;
 	color: #FFFFFF;
 	text-align: center;
-	background-color: #eceddc;
+	background-color: rgba(236, 237, 220, 0);
 }
 
 .jumbotron h1{
@@ -72,6 +72,8 @@ body {
 
 h1 {
 	text-align: center;
+	color:white;
+	text-shadow: 3px 3px black;
 }
 
 .feed-column {
