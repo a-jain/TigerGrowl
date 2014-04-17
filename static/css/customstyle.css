@@ -3,13 +3,16 @@
 
 body {
 	/*background-color:#8abe9b;*/
-	background-size:100% 100%;
 	background-repeat: no-repeat;
+	background-attachment:fixed;
 }
 
 @media screen and (min-width:1271px) {
 	.host-column {
 		margin-left:5%;
+	}
+	body {
+		background-size: 100% 100%;
 	}
 }
 
@@ -17,6 +20,9 @@ body {
     .guest-column {
     	margin-left:423px;
     }
+	body {
+		background-size: 1416px 1181px;
+	}
     /*#mymealslink {
 		margin-left:50%;*/
 	}
@@ -100,7 +106,6 @@ h1 {
 	float: left;
 	width: 50%;
 	padding-left:45px;
-
 }
 
 .feed-row .setting-identifier {
@@ -120,6 +125,7 @@ h1 {
 	float:left;
 	width:50%;
 	text-align: center;
+	padding-left:25px;
 }
 
 .host-row .attendees {
