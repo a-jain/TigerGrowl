@@ -2,7 +2,9 @@
 @import "bootstrap-theme.css";
 
 body {
-	background-color:#8abe9b;
+	/*background-color:#8abe9b;*/
+	background-size:100% 100%;
+	background-repeat: no-repeat;
 }
 
 @media screen and (min-width:1271px) {

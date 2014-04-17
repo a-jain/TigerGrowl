@@ -22,6 +22,12 @@
 	</head>
 	<body>
 
+	<style>
+	body {
+		background-image:url('http://princetonuniversityconcerts.princeton.edu/im_uploads/1073085120_59491dffa0_o.jpg');
+	}
+	</style>
+
 
 		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -29,7 +35,7 @@
 
 				<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
-				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
+				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
 		</nav>
 
@@ -150,9 +156,9 @@
 				<script>
 
 				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
-				console.log(objHost)
+				// console.log(objHost)
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
-				console.log(objGuest)
+				// console.log(objGuest)
 
 				// Hosted meal: place, date, time				
 				$(document).ready(function() {
