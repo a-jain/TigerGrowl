@@ -94,7 +94,7 @@ h1 {
 	padding:0px;
 }
 
-.feed-row:hover {
+.feed-row:hover, .host-row:hover {
 	border-width:5px;
 	border-color:red;
 }
