@@ -16,7 +16,7 @@ body {
 	}
 }
 
-@media screen and (min-width: 851px) and (max-width: 1270px) {
+@media screen and (min-width: 851px) and (max-width: 1270px) and (max-height: 900px) {
     .guest-column {
     	margin-left:423px;
     }
