@@ -94,6 +94,11 @@ h1 {
 	padding:0px;
 }
 
+.feed-row:hover {
+	border-width:5px;
+	border-color:red;
+}
+
 .feed-row, .host-row {
 	margin-top: 15px;
 	margin-left: 8.5%;
