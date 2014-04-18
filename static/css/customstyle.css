@@ -97,6 +97,9 @@ h1 {
 .feed-row:hover, .host-row:hover {
 	border-width:5px;
 	border-color:red;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-o-transition: all .25s ease;
 }
 
 .feed-row, .host-row {
