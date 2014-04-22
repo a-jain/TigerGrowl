@@ -20,7 +20,7 @@ cursor = db.cursor()
 
 @application.errorhandler(404)
 def page_not_found(error):
-	return "Sorry, this file/page doesn't exist", 404
+	return render_template('error.html'), 404
 
 @application.route('/')
 @application.route('/home')
