@@ -117,20 +117,21 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
-	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
+	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		if (not guest):
 			break
 		guest_x += 1
-		print("ABCDEFGHIJK")
 		print "##########"
+		print(str(guest))
+		print(uid)
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
 			return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 			
-	if guest_x == 13:
-		errorFlag = "Oops! This meal is full."
+	if guest_x == 12:
+		errorFlag = json.dumps("Oops! This meal is full.")
 		return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 		
 	guestString = "guest" + str(guest_x)
@@ -204,21 +205,10 @@ def invite(mealid=None, token=None):
 def inviters():
 	return render_template('invite.html')
 	
-@socketio.on('my event', namespace='/test')
-def test_message(message):
-    emit('my response', {'data': message['data']})
+@socketio.on('message')
+def handle_message(message):
+    send(message)
 
-@socketio.on('my broadcast event', namespace='/test')
-def test_message(message):
-    emit('my response', {'data': message['data']}, broadcast=True)
-
-@socketio.on('connect', namespace='/test')
-def test_connect():
-    emit('my response', {'data': 'Connected'})
-
-@socketio.on('disconnect', namespace='/test')
-def test_disconnect():
-    print('Client disconnected')
 if __name__ == '__main__':
 	application.run(debug=True)
 	socketio.run(app)
