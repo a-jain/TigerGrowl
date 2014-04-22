@@ -6,19 +6,6 @@
 		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
 		<script>
-			alluids = jQuery.parseJSON( {{alluids|tojson|safe}} );
-			// console.log(alluids)
-
-			$(document).ready(function() {
-				for (var i = 0; i < alluids.length; i++)
-				{
-					$("#TGids").append(alluids[i] + '<br/>');
-				}
-			  
-		  });
-		</script>
-
-		<script>
 			function filter(a, b)
 			{
 			  Array.prototype.diff = function(a) {
@@ -48,7 +35,7 @@
 
 	<div id="fb-root"></div>
 		<script>
-		var friendlist = [];
+		friendlist = [];
 		friendsUsingTG = [];
 
 		window.fbAsyncInit = function() {
@@ -69,9 +56,6 @@
 								  for (var i=0; i < list.length; i++)
 								  {
 									  friendlist.push(parseInt(list[i]["id"]));
-									  $(document).ready(function() {
-										  // $("#fbids").append(list[i]["id"] + '<br/>');
-									  });
 								  }
 								  
 		            }
@@ -119,6 +103,7 @@
 		<script type="text/javascript">
 		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
+		    	console.log(sumset)
 		    	excludeIds: sumset,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
