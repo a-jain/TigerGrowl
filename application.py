@@ -44,14 +44,10 @@ def timeline():
 	return render_template('timeline.html')
 
 @application.route('/feed')
-def feed(page=None):
-	if page is None:
-		offset = 0
-	else:
-		offset = page - 1
+def feed():
 
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
+	cursor.execute("SELECT * FROM ebdb.meal_table")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
