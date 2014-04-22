@@ -140,7 +140,7 @@
 				var guestrowDiv = inviterowDiv;
 
 				// self populate the Host divs
-				if (objHost === []) {
+				if (objHost == 0) {
 					$(".host-column").append("<h3>You aren't hosting any meals.</h3>")
 				}
 				$.each(objHost, function() {
@@ -148,7 +148,7 @@
 				});
 
 				// self populate the Invite divs
-				if (objInvite === []) {
+				if (objInvite.length == 0) {
 					$(".invite-column").append("<h3>You have no direct meal invitations at the moment.</h3>")
 				}
 				else {
