@@ -15,7 +15,9 @@
 		</script>
 
 		<script>
-					$(document).bind('fbInit',function(){
+					$(document).bind('fbInit',function() {
+						console.log(friendlist);
+						console.log(friendsUsingTG);
 						sumset = filter(friendlist, friendsUsingTG);
     				console.log(sumset);
     				$(document).trigger('sumsetta');    				
