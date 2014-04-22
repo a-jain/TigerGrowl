@@ -129,11 +129,11 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
-			return redirect(url_for('feed.html', mealList=mealList, errorFlag=errorFlag))
+			return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 			
 	if guest_x == 13:
 		errorFlag = "Oops! This meal is full."
-		return redirect(url_for('feed.html', mealList=mealList, errorFlag=errorFlag))
+		return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 		
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
