@@ -33,7 +33,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="homelink" href="feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+				<a id="homelink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span>Feed Me</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
@@ -49,12 +49,15 @@
 
 				<!-- Main feed container -->
 				<div class="feed-column host-column">
-					
+				<script> 
+					mealids = new Array();
+					hosts = new Array();
+				</script>
 				<h1>Meals You are Hosting</h1>
 
 					<div class="row host-row">
 						<div class="setting-identifier"> place date time </div>
-						<a id="button1" href="#">button class="btn btn-primary btn-large" style="margin-right:13%; float:right;"><span class="glyphicon glyphicon-exclamation-sign"></span> Invite Friends</button> </a>
+						<a id="button1" href="#"><button class="btn btn-primary btn-large" style="margin-right:13%; float:right;"><span class="glyphicon glyphicon-exclamation-sign"></span> Invite Friends</button> </a>
 						<br/><br/>
 						
 						<script>
@@ -84,10 +87,7 @@
 				<div class="feed-column">
 					<!-- Yo. So the way we're storing the array of all the mealids is by defining it here. Eventually
 					we'll create a method that adds things to it at the top; in the mean time we'll do it live/manually.-->
-					<script> 
-						mealids = new Array();
-						hosts = new Array();
-					</script>
+
 					<h1>Invites</h1>
 
 					<div class="row feed-row">
@@ -223,10 +223,12 @@
 				</script>
 				
 				<script>
+				console.log(mealids[0])
+				console.log(hosts[0])
 				/* This is about getting the invite button to work. */
 					$(document).bind('fbInit',function(){
     				console.log('fbInit complete; FB Object is Available');
-    				$("#button1").prop("href", "invite/" + mealid[0] + "/" + host[0] + window.uid);
+    				$("#button1").prop("href", "invite/" + mealids[0] + "/" + hosts[0]);
     				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
     				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
