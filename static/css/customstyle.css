@@ -95,8 +95,7 @@ h1 {
 }
 
 .feed-row:hover, .host-row:hover {
-	border-width:5px;
-	border-color:red;
+	
 }
 
 .feed-row, .host-row {
@@ -105,10 +104,12 @@ h1 {
 	margin-bottom: 25px;
 	padding-top: 25px;
 	padding-bottom: 25px;
-	background-color: gainsboro;
-	border-style: ridge;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	font-family:"Raleway";
+	/* border-style: ridge;
 	border-width: 2px;
-	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);*/
 	border-radius:80px;
 	width:85%;
 }

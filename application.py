@@ -70,18 +70,17 @@ def hello(name=None):
 def registeruser():
 	try: 
 		form = Signup(request.form)
+		if request.method == 'POST' and form.validate():
+
+			netid = form.email.data.split('@')[0]
+			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+
+			cursor.execute(sql)
+
+			return redirect(url_for('feed'))
+		return render_template('registeruser.html', form=form)
 	except ValidationError:
 		return render_template("Bad email, gotta be princeton")
-	if request.method == 'POST' and form.validate():
-
-		netid = form.email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-
-		cursor.execute(sql)
-
-		return redirect(url_for('feed'))
-	return render_template('registeruser.html', form=form)
-
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
@@ -116,10 +115,15 @@ def joinmeal(uid=None, mealid=None):
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
-		if not each:
+		if (not each):
 			break
 		guest_x += 1
-
+		if (each == uid):
+			#Handle the case of them being already in the meal 
+			break
+	if (guest_x == 13): 
+		pass
+		#Handle the meal being full.
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
