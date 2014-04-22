@@ -5,7 +5,6 @@
 		<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
-		<script type="text/javascript" src="/static/js/lazy.js"></script>
 		<script>
 			alluids = jQuery.parseJSON( {{alluids|tojson|safe}} );
 			console.log(alluids)
@@ -18,6 +17,35 @@
 			  
 		  });
 		</script>
+
+		<script>
+			function intersect_safe(a, b)
+			{
+			  var ai=0, bi=0;
+			  var result = new Array();
+
+			  while( ai < a.length && bi < b.length )
+			  {
+			     if      (a[ai] < b[bi] ){ ai++; }
+			     else if (a[ai] > b[bi] ){ bi++; }
+			     else /* they're equal */
+			     {
+			       result.push(a[ai]);
+			       ai++;
+			       bi++;
+			     }
+			  }
+
+			  return result;
+			}
+		</script>
+
+		<script>
+					$(document).bind('fbInit',function(){
+    				console.log(intersect_safe(friendlist, alluids))
+    				
+					});
+				</script>
 	</head>
 
 	<body>
@@ -53,11 +81,7 @@
 										  $("#fbids").append(list[i]["id"] + '<br/>');
 									  });
 								  }
-								  console.log(friendlist);
-								  console.log(alluids);
-								  var intersects = Lazy(friendlist).intersection(alluids);
-								  $("#intersects").text(intersects)
-									console.log(intersects);
+								  $(document).trigger('fbInit');
 		            }
 		          }
 		      );
