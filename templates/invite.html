@@ -49,6 +49,7 @@
 	<div id="fb-root"></div>
 		<script>
 		var friendlist = [];
+		friendsUsingTG = [];
 
 		window.fbAsyncInit = function() {
 		FB.init({
@@ -82,15 +83,18 @@
 		          function (response) {
 		            if (response && !response.error) {
 								  console.log(response);
-								  var queryResult = response.data[0].fql_result_set
+								  var queryResult = response.data[0].fql_result_set;
+
 								  console.log(queryResult);
 								  console.log(queryResult[2]);
-								  console.log(queryResult[2]["name"]);
+
 								  $(document).bind("sumsetta", function() {
 									  for (var i = 0; i < queryResult.length; i++)
 									  {
+										  friendsUsingTG.push(queryResult[i]["uid"]);
 										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
 									  }
+									  $(document).trigger('alldone');
 								  });
 		            }
 		            else {
@@ -113,9 +117,9 @@
 		</script>	
 
 		<script type="text/javascript">
-		  $(document).bind("sumsetta", function() {
+		  $(document).bind("alldone", function() {
 		    $(".bt-fs-dialog").fSelector({
-		    	excludeIds: sumset,
+		    	excludeIds: friendsUsingTG,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
 		        console.log(response);
