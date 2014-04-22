@@ -171,23 +171,12 @@ def mymeals(uid=None):
 # we call the fb friend selector with the blacklist
 # this returns some fb ids
 # we add this to the sql database	
-@application.route('/invite/<mealid>/<token>')
-def invite(mealid=None, token=None):
-	if not mealid or not token:
+@application.route('/invite/<mealid>')
+def invite(mealid=None):
+	if not mealid:
 		return redirect(url_for('home'))
 
-	query = "SELECT user_id FROM ebdb.user_table;"
-	cursor.execute(query)
-	queryResults = cursor.fetchall()
-	queryResultsJSON = json.dumps(queryResults)
-
-	newResults = []
-	for i in range(0, len(queryResults)):
-		newResults.append(queryResults[i][0])
-
-	print json.dumps(newResults)
 	
-	# pull user's friends from fb
 
 
 
@@ -198,7 +187,7 @@ def invite(mealid=None, token=None):
 	# for each in guestList:
 	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
 	# 	cursor.execute(query)
-	return render_template('invite.html', alluids=json.dumps(newResults))
+	return render_template('invite.html', mealid=mealid)
 	# return redirect(url_for('mymeals', uid=host))
 
 @application.route('/inviters')
