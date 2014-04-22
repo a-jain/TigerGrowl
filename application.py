@@ -115,10 +115,15 @@ def joinmeal(uid=None, mealid=None):
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
-		if not each:
+		if (not each):
 			break
 		guest_x += 1
-
+		if (each == uid):
+			#Handle the case of them being already in the meal 
+			break
+	if (guest_x == 13): 
+		pass
+		#Handle the meal being full.
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
