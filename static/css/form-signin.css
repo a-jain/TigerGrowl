@@ -46,6 +46,10 @@ body {
   width:25px;
 }
 
+input:focus { 
+  outline: none; 
+}
+
 label {
   font-family: 'Raleway', sans-serif;
   font-size:large;
@@ -53,7 +57,7 @@ label {
 
 input {
   border:2px solid #a1a1a1;
-  padding: 3px 40px; 
+  padding: 3px 10px; 
   background:#dddddd;
   width:300px;
   border-radius:20px;
