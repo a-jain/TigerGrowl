@@ -1,6 +1,7 @@
 import os.path
 from flask import Flask, render_template, flash, url_for, request, redirect, abort
 from flask import send_from_directory
+from flask.ext.socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 import MySQLdb
 import json
