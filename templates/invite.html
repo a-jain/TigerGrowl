@@ -19,7 +19,7 @@
 		</script>
 
 		<script>
-			function intersect_safe(a, b)
+			function filter(a, b)
 			{
 			  Array.prototype.diff = function(a) {
 				    return this.filter(function(i) {return a.indexOf(i) < 0;});
@@ -31,7 +31,7 @@
 
 		<script>
 					$(document).bind('fbInit',function(){
-						sumset = intersect_safe(friendlist, alluids);
+						sumset = filter(friendlist, friendsUsingTG);
     				// console.log(sumset);
     				$(document).trigger('sumsetta');    				
 					});
@@ -73,7 +73,7 @@
 										  $("#fbids").append(list[i]["id"] + '<br/>');
 									  });
 								  }
-								  $(document).trigger('fbInit');
+								  
 		            }
 		          }
 		      );
@@ -94,7 +94,7 @@
 										  friendsUsingTG.push(queryResult[i]["uid"]);
 										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
 									  }
-									  $(document).trigger('alldone');
+									  $(document).trigger('fbInit');
 								  });
 		            }
 		            else {
@@ -117,9 +117,9 @@
 		</script>	
 
 		<script type="text/javascript">
-		  $(document).bind("alldone", function() {
+		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
-		    	excludeIds: friendsUsingTG,
+		    	excludeIds: sumset,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
 		        console.log(response);
