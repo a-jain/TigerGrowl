@@ -43,7 +43,8 @@
 		<script>
 					$(document).bind('fbInit',function(){
 						sumset = intersect_safe(friendlist, alluids);
-    				console.log(sumset);    				
+    				console.log(sumset);
+    				$(document).trigger('sumsetta');    				
 					});
 		</script>
 	</head>
@@ -98,7 +99,7 @@
 		</script>	
 
 		<script type="text/javascript">
-		  jQuery(document).ready(function($) {
+		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
 		    	getStoredFriends: sumset,
 		      onSubmit: function(response){
