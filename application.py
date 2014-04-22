@@ -111,6 +111,11 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
+	
+	#What if page number gives an offset that is too large?
+	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(0) )
+	queryResults = cursor.fetchall()
+	mealList = json.dumps(queryResults)
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
