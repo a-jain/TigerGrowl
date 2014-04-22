@@ -34,7 +34,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+				<a id="homelink" href="feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
@@ -55,19 +55,13 @@
 
 					<div class="row host-row">
 						<div class="setting-identifier"> place date time </div>
-						<a href="#"><button class="btn btn-primary btn-large" style="margin-right:13%; float:right;"><span class="glyphicon glyphicon-exclamation-sign"></span> Invite Friends</button> </a>
+						<a id="button1" href="#">button class="btn btn-primary btn-large" style="margin-right:13%; float:right;"><span class="glyphicon glyphicon-exclamation-sign"></span> Invite Friends</button> </a>
 						<br/><br/>
-						<div id=”mealid”></div>
-						<div id=”host”></div>
-						<script type=”text/javascript”>
-							var mealid = 467259;
-							var host = 622993352;
-							document.getElementById('mealid').innerHTML = mealid;
-							document.getElementById('host').innerHTML = host;
-							alert(mealid);
-							alert("Just left first script area");
+						
+						<script>
+						mealids[0] = 467259
+						hosts[0] = 622993352
 						</script>
-						<script> alert(mealid);</script>
 						<div class="attendees">Who's Coming?</div> 
 					</div>
 
@@ -89,13 +83,20 @@
 				
 
 				<div class="feed-column">
-
+					<!-- Yo. So the way we're storing the array of all the mealids is by defining it here. Eventually
+					we'll create a method that adds things to it at the top; in the mean time we'll do it live/manually.-->
+					<script> 
+						mealids = new Array();
+						hosts = new Array();
+					</script>
 					<h1>Invites</h1>
 
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
+						<!-- To be replaced l8r -->
+
 					</div>
 
 					<div class="row feed-row">
@@ -175,7 +176,7 @@
 				<script>
 
 				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
-				// console.log(objHost)
+				console.log(objHost)
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 				// console.log(objGuest)
 
@@ -221,7 +222,23 @@
 					});
 				
 				</script>
-
+				
+				<script>
+				/* This is about getting the invite button to work. */
+					$(document).bind('fbInit',function(){
+    				console.log('fbInit complete; FB Object is Available');
+    				$("#button1").prop("href", "invite/" + mealid[0] + "/" + host[0] + window.uid);
+    				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
+    				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
+    				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
+    				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
+    				$("#homelink").prop("href", "feed/");
+    				
+					});
+					$(document).bind('fbInitPicLoaded',function(){
+						$("#FacebookPhoto").prop("src", window.picurl);
+					});
+				</script>
 				<!-- Populate the rows of -->
 				<footer style="clear:both;">
 					<div class="container">
