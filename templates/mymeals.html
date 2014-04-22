@@ -38,7 +38,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="homelink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span>Feed Me</button></a>
+				<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span>Feed Me</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
@@ -240,7 +240,6 @@
 				/* This is about getting the invite button to work. */
 					$(document).bind('fbInit',function(){
     				console.log('fbInit complete; FB Object is Available');
-    				$("#button1").prop("href", "feed");
 					//"invite/" + mealids[0] + "/" + hosts[0]);
     				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
     				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
