@@ -117,7 +117,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
 		if (not guest):
 			break
-		guest_x += 1]
+		guest_x += 1
 		print("ABCDEFGHIJK")
 		print "##########"
 		if (str(guest) is uid):
