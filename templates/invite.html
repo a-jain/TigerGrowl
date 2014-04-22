@@ -52,12 +52,13 @@
 		          "/me?fields=friends.fields(name)",
 		          function (response) {
 		            if (response && !response.error) {
+		            	
 								  list = response["friends"]["data"];
 								  for (var i=0; i < list.length; i++)
 								  {
 									  friendlist.push(parseInt(list[i]["id"]));
 								  }
-								  
+								  $(document).trigger('fbInit');
 		            }
 		          }
 		      );
@@ -77,7 +78,7 @@
 										  friendsUsingTG.push(queryResult[i]["uid"]);
 										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
 									  }
-									  $(document).trigger('fbInit');
+									  
 								  });
 		            }
 		            else {
