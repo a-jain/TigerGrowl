@@ -53,6 +53,8 @@
 										  $("#fbids").append(list[i]["id"] + '<br/>');
 									  });
 								  }
+								  console.log(friendlist);
+								  console.log(alluids)
 								  var intersects = Lazy(friendlist).intersection(alluids);
 								  $("#intersects").text(intersects)
 									console.log(intersects);
