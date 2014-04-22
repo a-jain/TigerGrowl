@@ -90,6 +90,11 @@
 		            }
 		          }
 		      );
+			FB.login(function(response) {
+				if (response.authResponse) {
+					access_token =   FB.getAuthResponse()['accessToken'];
+				}
+			});
 
 		  });
 		};

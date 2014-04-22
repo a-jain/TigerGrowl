@@ -175,14 +175,6 @@ def mymeals(uid=None):
 def invite(mealid=None):
 	if not mealid:
 		return redirect(url_for('home'))
-
-	
-
-
-
-
-
-	# guestList = json.loads(guests)
 	
 	# for each in guestList:
 	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
