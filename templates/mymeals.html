@@ -142,7 +142,9 @@
 
 				// self populate the Host divs
 				if (objHost == 0) {
-					$(".host-column").append("<h3>You aren't hosting any meals.</h3>");
+					$(".host-column").append("<div class='row feed-row'> \
+						<h4 style='color:white;'>You aren't hosting any meals at the moment.</h4> \
+					</div>");
 				}
 				$.each(objHost, function() {
 				    $(".host-column").append(hostrowDiv);
@@ -151,7 +153,7 @@
 				// self populate the Invite divs
 				if (objInvite.length == 0) {
 					$(".invite-column").append("<div class='row feed-row'> \
-						<h4>You don't have any direct meal invitations at the moment.</h4>
+						<h4 style='color:white;'>You don't have any direct meal invitations at the moment.</h4> \
 					</div>");
 				}
 				else {
@@ -163,7 +165,7 @@
 				// self populate the Guest divs
 				if (objGuest.length == 0) {
 					$(".guest-column").append("<div class='row feed-row'> \
-						<h4>You don't have any direct meal invitations at the moment.</h4>
+						<h4 style='color:white;'>You didn't join any meals yet.</h4> \
 					</div>");
 				}
 				else {
@@ -237,7 +239,7 @@
 				<footer style="clear:both;">
 					<div class="container">
 					<div class="row">
-						<div class="col" style="text-align:center;">&copy; 2014 TigerGrowl</div>
+						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
 						<div class="col-md-4">
 							<ul class="nav nav-pills">
 								
