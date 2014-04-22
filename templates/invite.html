@@ -94,10 +94,12 @@
 		          }
 		      );
 		FB.api(
-		          "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
+		          // "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
+		          "/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
 		          function (response) {
 		            if (response && !response.error) {
 								  console.log(response);
+								  console.log(response.data[0].fql_result_set);
 								  $(document).bind("sumsetta", function() {
 									  $("#newtest").text(response);
 								  });
