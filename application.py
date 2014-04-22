@@ -168,7 +168,7 @@ def invite(mealid=None, token=None):
 	if not mealid or not token:
 		return redirect(url_for('home'))
 
-	query = "SELECT user_id FROM ebdb.meal_table;"
+	query = "SELECT user_id FROM ebdb.user_table;"
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	queryResultsJSON = json.dumps(queryResults)
@@ -192,6 +192,10 @@ def invite(mealid=None, token=None):
 	# 	cursor.execute(query)
 	return render_template('invite.html', alluids=json.dumps(newResults))
 	# return redirect(url_for('mymeals', uid=host))
+
+@application.route('/inviters')
+def inviters():
+	return render_template('invite.html')
 
 if __name__ == '__main__':
 	application.run(debug=True)
