@@ -45,17 +45,16 @@
 		          "/me?fields=friends.fields(name)",
 		          function (response) {
 		            if (response && !response.error) {
-					  list = response["friends"]["data"];
-					  for (var i=0; i < list.length; i++)
-					  {
-						  friendlist.push(list[i]["id"]);
-						  $(document).ready(function() {
-							  $("#fbids").append(list[i]["id"] + '<br/>');
-							  var intersects = Lazy(friendlist).intersection(alluids);
-							  console.log(intersects);
-						  });
-					  }
-		              
+								  list = response["friends"]["data"];
+								  for (var i=0; i < list.length; i++)
+								  {
+									  friendlist.push(list[i]["id"]);
+									  $(document).ready(function() {
+										  $("#fbids").append(list[i]["id"] + '<br/>');
+									  });
+								  }
+								  var intersects = Lazy(friendlist).intersection(alluids);
+									console.log(intersects);
 		            }
 		          }
 		      );
