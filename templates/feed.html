@@ -99,7 +99,7 @@
 						<div class='name-identifier'> firstname lastname's Meal </div> \
 						<div class='setting-identifier'> place date time </div> \
 						<div class='attendees'>Who's Coming?</div> \
-						<a href='#'><button class='btn btn-primary btn-large joinbutton' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+						<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
 				</div> \
 				"
 
@@ -158,7 +158,7 @@
     				$(".joinbutton").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
     				$(".joinbutton").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
     				*/
-    				
+
     				$("#mymealslink").prop("href", "mymeals/" + window.uid);
 
     				
