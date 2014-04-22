@@ -21,6 +21,7 @@
 	</head>
 
 	<body>
+	<a href="javascript:{}" class="bt-fs-dialog">Click here</a>
 	<p id="TGids"></p>
 	<p id="fbids"></p>
 
@@ -69,6 +70,17 @@
 		}(document));
 
 		</script>	
+
+		<script type="text/javascript">
+		  jQuery(document).ready(function($) {
+		    $(".bt-fs-dialog").fSelector({
+		      onSubmit: function(response){
+		        console.log(response);
+		        alert(response);
+		      }
+		    });
+		  });
+		</script>
 	</body>
 
 </html>
