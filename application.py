@@ -11,6 +11,7 @@ from form import *
 application = Flask(__name__)
 application.debug = True
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
+socketio = SocketIO(app)
 
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
