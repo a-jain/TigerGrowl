@@ -155,6 +155,14 @@ def mymeals(uid=None):
 
 	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
 	
+
+# when invite friends is clicked, the following happens:
+# pull user's friends from fb
+# pull all userids in user_table
+# cross reference. all fbids that are not in userids are added to blacklist = []
+# we call the fb friend selector with the blacklist
+# this returns some fb ids
+# we add this to the sql database	
 @application.route('/invite/<mealid>/<host>/<guests>')
 def invite(mealid=None):
 	if not mealid:
