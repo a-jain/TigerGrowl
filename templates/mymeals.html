@@ -228,7 +228,8 @@
 				/* This is about getting the invite button to work. */
 					$(document).bind('fbInit',function(){
     				console.log('fbInit complete; FB Object is Available');
-    				$("#button1").prop("href", "invite/" + mealids[0] + "/" + hosts[0]);
+    				$("#button1").prop("href", "feed");
+					//"invite/" + mealids[0] + "/" + hosts[0]);
     				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
     				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
