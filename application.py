@@ -205,9 +205,10 @@ def invite(mealid=None, token=None):
 def inviters():
 	return render_template('invite.html')
 	
-@socketio.on('message')
-def handle_message(message):
-    send(message)
+@socketio.on('notify')
+def test_message(message):
+    emit('my response',
+         {'data': message['data']})
 
 if __name__ == '__main__':
 	application.run(debug=True)

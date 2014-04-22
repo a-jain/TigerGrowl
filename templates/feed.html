@@ -21,6 +21,18 @@
 		}
 		</script>
 
+		<!--
+		<script type="text/javascript" charset="utf-8"> 
+        $(document).ready(function(){
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+            socket.on('my response', function(msg) {
+                $('#log').append('<br>Received #' + msg.count + ': ' + msg.data);
+            });
+            $('form#emit').submit(function(event) {
+                socket.emit('notify', {data: $('#emit_data').val()});
+                return false;
+            });
+        </script> -->
 	</head>
 	<body>
 
@@ -139,7 +151,12 @@
 					});
 				</script>
 
-				<footer>
+				<footer> <!--
+					<form id="emit" method='POST' action='#'>
+       					<input type="text" name="emit_data" id="emit_data" placeholder="Message">
+        				<input type="submit" value="Echo"></div>
+   					</form>
+					-->
 					<div class="container">
 					<div class="row">
 						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
