@@ -18,7 +18,7 @@
 					$(document).bind('fbInit',function() {
 						console.log(friendlist);
 						console.log(friendsUsingTG);
-						sumset = filter(friendlist, friendsUsingTG);
+						sumset = filter(friendsUsingTG, friendlist);
     				console.log(sumset);
     				$(document).trigger('sumsetta');    				
 					});
