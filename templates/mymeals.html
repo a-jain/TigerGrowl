@@ -60,10 +60,11 @@
 				</script>
 				<h1>Meals You are Hosting</h1>
 
-					<div class="row host-row">
-						<div class="setting-identifier"> place date time </div>
+				<!--
+				<div class="row host-row">
+					<div class="setting-identifier"> place date time </div>
 
-							<a onclick="openpopup2()"><button type="button" class="btn btn-default btn-lg" style="font-family: Arial;font-weight: 100;font-size: medium;">
+						<a onclick="openpopup2()"><button type="button" class="btn btn-default btn-lg" style="font-family: Arial;font-weight: 100;font-size: medium;">
 								Invite Friends
 							</button></a>
 						<br/><br/>
@@ -74,111 +75,37 @@
 						</script>
 						<div class="attendees">Who's Coming?</div> 
 					</div>
-
-					<div class="row host-row">
-						<div class="setting-identifier"> place date time </div>
-
-							<a onclick="openpopup2()"><button type="button" class="btn btn-default btn-lg" style="font-family: Arial;font-weight: 100;font-size: medium;">
-								Invite Friends
-							</button></a>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row host-row">
-						<div class="setting-identifier"> place date time </div>
-
-							<a onclick="openpopup2()"><button type="button" class="btn btn-default btn-lg" style="font-family: Arial;font-weight: 100;font-size: medium;">
-								Invite Friends
-							</button></a>
-						<br/><br/>
-						<div class="attendees">Who's Coming?</div>
-					</div>
 				</div>
-				
+				-->
 
-				<div class="feed-column">
+				<div class="feed-column invite-column">
 					<!-- Yo. So the way we're storing the array of all the mealids is by defining it here. Eventually
 					we'll create a method that adds things to it at the top; in the mean time we'll do it live/manually.-->
 
 					<h1>Invites</h1>
 
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-						<!-- To be replaced l8r -->
-
-					</div>
-
+					<!--
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
 					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
+					-->
+					
 				</div>
 
 				<div class="feed-column guest-column">
 
 					<h1>Meals with You as Guest</h1>
 
+					<!--
 					<div class="row feed-row">
 						<div class="name-identifier"> firstname lastname's Meal </div>
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
 					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
+					-->
+					
 					</div>
 				</div>
 
@@ -187,9 +114,54 @@
 				<script>
 
 				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
-				console.log(objHost)
+				var objInvite = [];
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 				// console.log(objGuest)
+
+
+				var hostrowDiv = "<div class='row host-row'> \
+						<div class='setting-identifier'> place date time </div> \
+							<a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
+								Invite Friends \
+							</button></a> \
+						<div class='attendees'>Who's Coming?</div> \
+					</div>";
+
+				var inviterowDiv = "<div class='row feed-row'> \
+						<div class='name-identifier'> firstname lastname's Meal </div> \
+						<div class='setting-identifier'> place date time </div> \
+						<div class='attendees'>Who's Coming?</div> \
+					</div>";
+
+				var guestrowDiv = inviterowDiv;
+
+				// self populate the Host divs
+				if (objHost === []) {
+					$(".host-column").append("<h3>You aren't hosting any meals.</h3>")
+				}
+				$.each(objHost, function() {
+				    $(".host-column").append(hostrowDiv);
+				});
+
+				// self populate the Invite divs
+				if (objInvite === []) {
+					$(".invite-column").append("<h3>You have no direct meal invitations at the moment.</h3>")
+				}
+				else {
+					$.each(objInvite, function() {
+				    	$(".invite-column").append(inviterowDiv);
+					});
+				}
+
+				// self populate the Guest divs
+				if (objGuest === []) {
+					$(".guest-column").append("<h3>You have no direct meal invitations at the moment.</h3>")
+				}
+				else {
+					$.each(objGuest, function() {
+				    	$(".guest-column").append(guestrowDiv);
+					});
+				}
 
 				// Hosted meal: place, date, time				
 				$(document).ready(function() {

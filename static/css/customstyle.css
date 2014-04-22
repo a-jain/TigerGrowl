@@ -150,12 +150,13 @@ h1 {
 	float:left;
 	width:50%;
 	text-align: center;
-	padding-left:25px;
+	padding-left:20px;
+	padding-right:8px;
 }
 
 .host-row .attendees {
 	float:left;
-	margin-top: 50px;
+	margin-top: 5px;
 	margin-left: 45px;
 }
 
