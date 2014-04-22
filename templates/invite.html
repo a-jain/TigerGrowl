@@ -45,7 +45,7 @@
 						sumset = intersect_safe(friendlist, alluids);
     				console.log(sumset);    				
 					});
-				</script>
+		</script>
 	</head>
 
 	<body>
@@ -100,6 +100,7 @@
 		<script type="text/javascript">
 		  jQuery(document).ready(function($) {
 		    $(".bt-fs-dialog").fSelector({
+		    	getStoredFriends: sumset,
 		      onSubmit: function(response){
 		        console.log(response);
 		        alert(response);
