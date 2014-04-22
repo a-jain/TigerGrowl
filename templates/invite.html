@@ -57,7 +57,7 @@
 
 	<body>
 	<a href="javascript:{}" class="bt-fs-dialog">Click here</a>
-	<p id="newtest">newtest</p>
+	<p id="newtest"></p>
 	<p id="TGids"></p>
 	<p id="fbids"></p>
 
@@ -105,7 +105,7 @@
 								  console.log(queryResult[2]["name"]);
 								  for (var i = 0; i < queryResult.length; i++)
 								  {
-								  	$(document).ready(function() {
+								  	$(document).bind("sumsetta", function() {
 										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
 									  });
 								  }
