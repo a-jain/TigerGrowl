@@ -143,7 +143,7 @@
 				// self populate the Host divs
 				if (objHost == 0) {
 					$(".host-column").append("<div class='row feed-row'> \
-						<h4 style='color:white;'>You aren't hosting any meals at the moment.</h4> \
+						<h5 style='color:white;text-align:center;'>You aren't hosting any meals at the moment.</h5> \
 					</div>");
 				}
 				$.each(objHost, function() {
@@ -153,7 +153,7 @@
 				// self populate the Invite divs
 				if (objInvite.length == 0) {
 					$(".invite-column").append("<div class='row feed-row'> \
-						<h4 style='color:white;'>You don't have any direct meal invitations at the moment.</h4> \
+						<h5 style='color:white;text-align:center;'>You don't have any direct meal invitations at the moment.</h5> \
 					</div>");
 				}
 				else {
@@ -165,7 +165,7 @@
 				// self populate the Guest divs
 				if (objGuest.length == 0) {
 					$(".guest-column").append("<div class='row feed-row'> \
-						<h4 style='color:white;'>You didn't join any meals yet.</h4> \
+						<h5 style='color:white;text-align:center;'>You didn't join any meals yet.</h5> \
 					</div>");
 				}
 				else {
