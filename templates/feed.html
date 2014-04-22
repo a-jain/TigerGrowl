@@ -104,9 +104,9 @@
 				"
 
 				// for each meal object in the JSON string, create a div where it will be displayed
-				$.each(obj) {
+				$.each(obj function() {
 				    $(".container").append(rowDiv);
-				}
+				});
 
 				$( document ).ready(function() {
 					$(".feed-row:nth-child(1) .name-identifier").text(obj[0][1] + "\'s Meal");
