@@ -5,7 +5,7 @@
 		<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
-		<script type="text/javascript" src="/static/js/lazy.browser.js"></script>
+		<script type="text/javascript" src="/static/js/lazy.js"></script>
 		<script>
 			alluids = jQuery.parseJSON( {{alluids|tojson|safe}} );
 			console.log(alluids)
@@ -48,13 +48,13 @@
 								  list = response["friends"]["data"];
 								  for (var i=0; i < list.length; i++)
 								  {
-									  friendlist.push(list[i]["id"]);
+									  friendlist.push(parseInt(list[i]["id"]));
 									  $(document).ready(function() {
 										  $("#fbids").append(list[i]["id"] + '<br/>');
 									  });
 								  }
 								  console.log(friendlist);
-								  console.log(alluids)
+								  console.log(alluids);
 								  var intersects = Lazy(friendlist).intersection(alluids);
 								  $("#intersects").text(intersects)
 									console.log(intersects);
