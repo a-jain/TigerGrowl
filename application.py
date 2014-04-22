@@ -113,7 +113,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 	meal = cursor.fetchone()
 	
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(offset*5) )
+	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(0) )
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
