@@ -117,15 +117,18 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
 		if (not guest):
 			break
-		guest_x += 1
-		if (guest is uid):
+		guest_x += 1]
+		print("ABCDEFGHIJK")
+		print "##########"
+		if (str(guest) is uid):
+			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
 			return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
 			
 	if (guest_x == 13): 
-		pass
-		#Handle the meal being full.
+		errorFlag = "Oops! This meal is full."
+		return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
