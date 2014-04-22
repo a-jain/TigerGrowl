@@ -33,7 +33,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+				<a id="homelink" href="feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
@@ -230,7 +230,7 @@
     				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
     				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
     				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
-    				$("#mymealslink").prop("href", "mymeals/" + window.uid);
+    				$("#homelink").prop("href", "feed/");
     				
 					});
 					$(document).bind('fbInitPicLoaded',function(){
