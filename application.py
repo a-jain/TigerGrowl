@@ -70,18 +70,17 @@ def hello(name=None):
 def registeruser():
 	try: 
 		form = Signup(request.form)
+		if request.method == 'POST' and form.validate():
+
+			netid = form.email.data.split('@')[0]
+			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+
+			cursor.execute(sql)
+
+			return redirect(url_for('feed'))
+		return render_template('registeruser.html', form=form)
 	except ValidationError:
 		return render_template("Bad email, gotta be princeton")
-	if request.method == 'POST' and form.validate():
-
-		netid = form.email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-
-		cursor.execute(sql)
-
-		return redirect(url_for('feed'))
-	return render_template('registeruser.html', form=form)
-
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
