@@ -50,6 +50,7 @@
 		// see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
 
 		FB.Event.subscribe('auth.authResponseChange', function(response) {
+			console.log(response);
 		FB.api(
 		          "/me?fields=friends.fields(name)",
 		          function (response) {
