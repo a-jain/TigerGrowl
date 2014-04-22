@@ -57,6 +57,7 @@
 
 	<body>
 	<a href="javascript:{}" class="bt-fs-dialog">Click here</a>
+	<p id="newtest">newtest</p>
 	<p id="TGids"></p>
 	<p id="fbids"></p>
 
@@ -92,6 +93,16 @@
 		            }
 		          }
 		      );
+			FB.api('/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1',
+   			function(response) 
+   			{ 
+   				  if (response && !response.error) {
+   				  	console.log(response)
+   				  	$(document).ready(function() {
+							  $("#newtest").text(response);
+						  });
+   				  }
+   			});
 		  });
 		};
 		(function(d){
