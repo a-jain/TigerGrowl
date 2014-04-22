@@ -104,7 +104,7 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
-def joinmeal(uid=None, mealid=None):
+def joinmeal(uid=None, mealid=None, errorFlag=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 
@@ -114,13 +114,15 @@ def joinmeal(uid=None, mealid=None):
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
-	for each in meal[firstGuestIndex:firstGuestIndex + 12]:
-		if (not each):
+	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
+		if (not guest):
 			break
 		guest_x += 1
-		if (each == uid):
-			#Handle the case of them being already in the meal 
-			break
+		if (guest is uid):
+			#Handle the case of them being already in the meal
+			errorFlag = "Oops! You have already signed up for this meal."
+			return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
+			
 	if (guest_x == 13): 
 		pass
 		#Handle the meal being full.
