@@ -136,6 +136,7 @@
 		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
 		    	excludeIds: sumset,
+		    	closeOnSubmitL: true,
 		      onSubmit: function(response){
 		        console.log(response);
 		        alert(response);
