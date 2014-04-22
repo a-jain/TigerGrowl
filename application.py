@@ -163,17 +163,35 @@ def mymeals(uid=None):
 # we call the fb friend selector with the blacklist
 # this returns some fb ids
 # we add this to the sql database	
-@application.route('/invite/<mealid>/<host>/<guests>')
-def invite(mealid=None):
-	if not mealid:
+@application.route('/invite/<mealid>/<token>')
+def invite(mealid=None, token=None):
+	if not mealid or not token:
 		return redirect(url_for('home'))
 
-	guestList = json.loads(guests)
+	query = "SELECT user_id FROM ebdb.meal_table;"
+	cursor.execute(query)
+	queryResults = cursor.fetchall()
+	queryResultsJSON = json.dumps(queryResults)
+
+	newResults = []
+	for i in range(0, len(queryResults)):
+		newResults.append(queryResults[i][0])
+
+	print json.dumps(newResults)
 	
-	for each in guestList:
-		query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
-		cursor.execute(query)
-	return redirect(url_for('mymeals', uid=host))
+	# pull user's friends from fb
+
+
+
+
+
+	# guestList = json.loads(guests)
+	
+	# for each in guestList:
+	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
+	# 	cursor.execute(query)
+	return render_template('invite.html', alluids=json.dumps(newResults))
+	# return redirect(url_for('mymeals', uid=host))
 
 if __name__ == '__main__':
 	application.run(debug=True)
