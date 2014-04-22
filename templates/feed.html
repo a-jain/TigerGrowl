@@ -108,6 +108,21 @@
 				    $(".container").append(rowDiv);
 				});
 
+				// Now place the text inside the divs
+				$(document).ready(function() {
+					$(".feed-row .name-identifier").each(function(i) {
+				    	if (obj[i] !== undefined) { 
+				        	$(this).text(obj[i++][1] + "'s Meal");
+				        }
+				    });
+				    $(".feed-row .setting-identifier").each(function(i) {
+				    	if (obj[i] !== undefined) { 
+				        	$(this).text(obj[i][2] + ", " + obj[i][3] + ", " + obj[i++][4]);
+				        }
+				    });
+				});
+
+				/*
 				$( document ).ready(function() {
 					$(".feed-row:nth-child(1) .name-identifier").text(obj[0][1] + "\'s Meal");
 					$(".feed-row:nth-child(2) .name-identifier").text(obj[1][1] + "\'s Meal");
@@ -120,6 +135,7 @@
 					$(".feed-row:nth-child(4) .setting-identifier").text(obj[3][2] + ", " + obj[3][3] + ", " + obj[3][4]);
 					$(".feed-row:nth-child(5) .setting-identifier").text(obj[4][2] + ", " + obj[4][3] + ", " + obj[4][4]);
 				});
+				*/
 				
 				</script>
 
