@@ -116,7 +116,11 @@
 				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
 				var objInvite = [];
 				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
-				// console.log(objGuest)
+
+				console.log("objInvite");
+				console.log(objInvite);
+				console.log("objGuest:");
+				console.log(objGuest);
 
 
 				var hostrowDiv = "<div class='row host-row'> \
