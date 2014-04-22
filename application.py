@@ -118,7 +118,8 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 		if (not guest):
 			break
 		guest_x += 1
-		if (guest is uid):
+		if (str(guest) is uid):
+			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
 			return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
