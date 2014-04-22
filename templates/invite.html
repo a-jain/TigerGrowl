@@ -103,12 +103,12 @@
 								  console.log(queryResult);
 								  console.log(queryResult[2]);
 								  console.log(queryResult[2]["name"]);
-								  for (var i = 0; i < queryResult.length; i++)
-								  {
-								  	$(document).bind("sumsetta", function() {
+								  $(document).bind("sumsetta", function() {
+									  for (var i = 0; i < queryResult.length; i++)
+									  {
 										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
-									  });
-								  }
+									  }
+								  });
 								  // $(document).bind("sumsetta", function() {
 									 //  $("#newtest").text(response);
 								  // });
