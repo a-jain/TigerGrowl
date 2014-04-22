@@ -131,7 +131,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 			errorFlag = "Oops! You have already signed up for this meal."
 			return redirect(url_for('feed.html', mealList=mealList, errorFlag=errorFlag))
 			
-	if (guest_x == 13): 
+	if guest_x == 13:
 		errorFlag = "Oops! This meal is full."
 		return redirect(url_for('feed.html', mealList=mealList, errorFlag=errorFlag))
 		
