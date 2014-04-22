@@ -68,7 +68,10 @@ def hello(name=None):
 
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
-	form = Signup(request.form)
+	try: 
+		form = Signup(request.form)
+	except ValidationError:
+		return render_template("Bad email, gotta be princeton")
 	if request.method == 'POST' and form.validate():
 
 		netid = form.email.data.split('@')[0]
