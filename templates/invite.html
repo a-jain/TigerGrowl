@@ -99,10 +99,19 @@
 		          function (response) {
 		            if (response && !response.error) {
 								  console.log(response);
-								  console.log(response.data[0].fql_result_set);
-								  $(document).bind("sumsetta", function() {
-									  $("#newtest").text(response);
-								  });
+								  var queryResult = response.data[0].fql_result_set
+								  console.log(queryResult);
+								  console.log(queryResult[2]);
+								  console.log(queryResult[2]["name"]);
+								  for (var i = 0; i < queryResult.length; i++)
+								  {
+								  	$(document).ready(function() {
+										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
+									  });
+								  }
+								  // $(document).bind("sumsetta", function() {
+									 //  $("#newtest").text(response);
+								  // });
 		            }
 		            else {
 		            	console.log("error");
