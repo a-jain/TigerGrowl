@@ -145,7 +145,7 @@
 
 				    $(".joinbutton").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
+				        	$(this).prop("href", "joinmeal/" + obj[i++][0] + "/" + window.uid);
 				        }
 				    });
 
