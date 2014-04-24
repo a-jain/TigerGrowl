@@ -189,7 +189,7 @@ def invite(mealid=None):
 def inviters():
 	print request.form['mealid']
 	print request.form['names']
-	return render_template('invite.html')
+	return render_template('feed.html')
 	
 @socketio.on('message')
 def handle_message(message):
