@@ -146,7 +146,7 @@ def joinmeal(uid, mealid):
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
 @application.route('/mymeals/<uid>/<message>')
-def mymeals(uid=None):
+def mymeals(uid, message):
 	if not uid:
 		return redirect(url_for('/home'))
 	cursor = db.cursor()
