@@ -1,10 +1,14 @@
 @import "bootstrap.min.css";
 @import "bootstrap-theme.css";
 
+html {
+	height:100%;
+}
 body {
 	/*background-color:#8abe9b;*/
 	background-repeat: no-repeat;
 	background-attachment:fixed;
+	height:100%;
 }
 
 @media screen and (min-width:1271px) {
