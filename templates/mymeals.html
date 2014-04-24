@@ -3,17 +3,16 @@
 	<head>
 		<title>TigerGrowl</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap -->
-		<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
-
 
 		{% if message != "success" %}
+			<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
 			<link rel="shortcut icon" href="../static/img/favicon.ico" />
 			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 			<script src="../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../static/js/bootstrap.min.js"></script>
 		{% else %}
+			<link href="../../static/css/customstyle.css" rel="stylesheet" media="screen">		
 			<link rel="shortcut icon" href="../../static/img/favicon.ico" />
 			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 			<script src="../../static/js/jquery-1.11.0.min.js"></script>
