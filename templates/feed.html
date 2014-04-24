@@ -47,9 +47,11 @@
 		</nav>
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<a onclick="openpopup()"><button type="button" class="btn btn-default btn-lg">
-								Host a Meal
-							</button></a>
+							<!-- <a onclick="openpopup()"> -->
+								<button type="button" id="HostButton" class="btn btn-default btn-lg">
+									Host a Meal
+								</button>
+							<!-- </a> -->
 					</div>
 				</div>
 				
@@ -173,6 +175,13 @@
 					</div>
 				</footer>
 				<div id="fb-root"></div>
+
+		<script>
+			$('#HostButton').nivoLightbox({
+	            effect: 'fall',                       // The effect to use when showing the lightbox
+	        });
+		</script>
+
 		<script type="text/javascript">
 		window.fbAsyncInit = function() {
 					FB.init({
