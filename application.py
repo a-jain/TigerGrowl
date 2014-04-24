@@ -45,6 +45,7 @@ def timeline():
 	return render_template('timeline.html')
 
 @application.route('/feed')
+@application.route('/feed/<errorFlag>')
 def feed():
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
@@ -110,11 +111,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
-	
-	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table LIMIT 5 OFFSET %d" %(0) )
-	queryResults = cursor.fetchall()
-	mealList = json.dumps(queryResults)
+	cursor.close()
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
@@ -130,7 +127,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
 			cursor.close()
-			return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
+			return redirect(url_for('feed', errorFlag=errorFlag))
 			
 	if guest_x == 12:
 		errorFlag = json.dumps("Oops! This meal is full.")
