@@ -138,13 +138,18 @@ def joinmeal(uid=None, mealid=None):
 	cursor.execute(sql)
 	cursor.close()
 
-	return redirect(url_for('mymeals', uid=uid))
+	errorFlag = "success" # Success
+	# at this point we can consider the possibility that we actually want to send the user back to the feed page.
+	# If we're deadset on sending them to mymeals then we can add a similar script handling to mymeals, but I think it might be better
+	# to send them back to feed after joining a meal
+	return redirect(url_for('mymeals', uid=uid, message=errorFlag))
 
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
+@application.route('/mymeals/<uid>/<message>')
 def mymeals(uid=None):
 	if not uid:
-		return redirect(url_for('home'))
+		return redirect(url_for('/home'))
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
@@ -162,7 +167,7 @@ def mymeals(uid=None):
 	yourmeals = json.dumps(yourmeals)
 
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
+	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals, message=message)
 	
 
 # when invite friends is clicked, the following happens:
@@ -175,7 +180,7 @@ def mymeals(uid=None):
 @application.route('/invite/<mealid>')
 def invite(mealid=None):
 	if not mealid:
-		return redirect(url_for('home'))
+		return redirect(url_for('/home'))
 	
 	# for each in guestList:
 	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
