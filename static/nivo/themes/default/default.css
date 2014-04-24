@@ -37,9 +37,9 @@
 
 .nivo-lightbox-theme-default .nivo-lightbox-close {
 	display: block;
-	background: url(close.png) no-repeat 5px 5px;
-	width: 16px;
-	height: 16px;
+	background: url(close.png) no-repeat;
+	width: 48px;
+	height: 48px;
 	text-indent: -9999px;
 	padding: 5px;
 	opacity: 0.5;
