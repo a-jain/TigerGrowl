@@ -185,8 +185,10 @@ def invite(mealid=None):
 	return render_template('invite.html', mealid=mealid)
 	# return redirect(url_for('mymeals', uid=host))
 
-@application.route('/inviters')
+@application.route('/invite', methods=['POST'])
 def inviters():
+	print request.form['mealid']
+	print request.form['names']
 	return render_template('invite.html')
 	
 @socketio.on('message')

@@ -12,19 +12,15 @@
 			  Array.prototype.diff = function(a) {
 				    return this.filter(function(i) {return a.indexOf(i) < 0;});
 				};
-
 				return a.diff(b);
 			}
-		</script>
-
-		<script>
-					$(document).bind('fbInit',function() {
-						console.log(friendlist);
-						console.log(friendsUsingTG);
-						sumset = filter(friendlist, friendsUsingTG);
-    				console.log(sumset);
-    				$(document).trigger('sumsetta');    				
-					});
+			$(document).bind('fbInit',function() {
+				console.log(friendlist);
+				console.log(friendsUsingTG);
+				sumset = filter(friendlist, friendsUsingTG);
+				console.log(sumset);
+				$(document).trigger('sumsetta');    				
+			});
 		</script>
 	</head>
 
@@ -116,6 +112,11 @@
 		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
+		      	$.post("/invite", 
+		      	{
+		      		mealid: {{mealid}},
+		      		names: JSON.stringify(response)
+		      	})
 		        console.log(response);
 		        alert(response);
 		      }
