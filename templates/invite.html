@@ -112,6 +112,11 @@
 		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
+		      	$.post("http://requestb.in/yq42ypyq", 
+		      	{
+		      		"mealid": "{{mealid}}",
+		      		"names": JSON.stringify(response)
+		      	});
 		        console.log(response);
 		        alert(response);
 		      }
