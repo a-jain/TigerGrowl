@@ -186,10 +186,8 @@ def invite(mealid=None):
 @application.route('/invite', methods=['POST'])
 def inviters():
 	mealid = request.form['mealid']
-	names = request.form['names']
+	names = request.JSON['names']
 
-	mealid2 = request.args.get('mealid', '')
-	names2 = request.args.get('names', '')
 	return render_template('tester.html', mealid=mealid2, names=names2)
 	
 @socketio.on('message')
