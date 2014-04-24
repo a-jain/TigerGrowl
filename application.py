@@ -111,7 +111,6 @@ def joinmeal(uid=None, mealid=None):
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
-	cursor.close()
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
@@ -202,5 +201,5 @@ def handle_message(message):
     send(message)
 
 if __name__ == '__main__':
-	application.run(use_debugger=False, use_reloader=False)
-	#socketio.run(application)
+	application.run()
+	socketio.run(application)
