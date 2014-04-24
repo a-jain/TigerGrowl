@@ -187,13 +187,13 @@
 		
 			var error = "{{ errorFlag }}";
 			if (error != "") {
-				alert("{{errorFlag}}");
-				alert(error);
-				console.log(error);
-				console.log("there was an error");
-			}
-			console.log("we got hur");
-			
+				if (error == "1") {
+					alert("Oops! You are already a guest for this meal!");
+				}
+				else if (error == "2") {
+					alert("Sorry, this meal is full! You cannot join at this time.");
+				}	
+			}			
 		</script>
 	</body>
 </html>

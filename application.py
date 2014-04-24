@@ -47,6 +47,7 @@ def timeline():
 @application.route('/feed')
 @application.route('/feed/<errorFlag>')
 def feed():
+
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
 	cursor.execute("SELECT * FROM ebdb.meal_table")
@@ -54,7 +55,7 @@ def feed():
 	cursor.close()
 	mealList = json.dumps(queryResults)
 
-	return render_template('feed.html', mealList=mealList)
+	return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
 
 @application.route('/exitpage')
 def exitpage():
@@ -125,14 +126,14 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
-			errorFlag = "Oops! You have already signed up for this meal."
+			errorFlag = "1" # Already guest
 			cursor.close()
 			return redirect(url_for('feed', errorFlag=errorFlag))
 			
 	if guest_x == 12:
-		errorFlag = json.dumps("Oops! This meal is full.")
+		errorFlag = "2" # Full meal
 		cursor.close()
-		return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
+		return redirect(url_for('feed', errorFlag=errorFlag))
 		
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
