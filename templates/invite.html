@@ -112,14 +112,14 @@
 		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
-		      	responseRet = JSON.stringify(response)}
+		      	responseRet = JSON.stringify(response)};
 		      	$.ajax({
 		      		url: "http://requestb.in/yq42ypyq",
 		      		type:"POST",
   						data: JSON.stringify({"mealid": "{{mealid}}", "names": responseRet }),
   						contentType:"application/json; charset=utf-8",
   						dataType:"json"
-		      	})
+		      	});
 		        console.log(response);
 		        alert(response);
 		      }
