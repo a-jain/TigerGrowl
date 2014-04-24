@@ -189,9 +189,11 @@
 			if (error != "") {
 				if (error == "1") {
 					alert("Oops! You are already a guest for this meal!");
+					window.location = '../feed';
 				}
 				else if (error == "2") {
 					alert("Sorry, this meal is full! You cannot join at this time.");
+					window.location = '../feed';
 				}	
 			}			
 		</script>
