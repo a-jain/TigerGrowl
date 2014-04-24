@@ -587,7 +587,7 @@
     },
     maxFriendsCount: null,
     showRandom: false,
-    facebookInvite: true,
+    facebookInvite: false,
     onStart: function(response){ return null; },
     onClose: function(response){ return null; },
     onSubmit: function(response){ return null; }
