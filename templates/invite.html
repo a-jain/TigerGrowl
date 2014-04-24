@@ -3,7 +3,8 @@
 	<head>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
-		<script type="text/javascript" src="/static/js/jquery.friend.selector-1.2.1.js"></script>
+		
+		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
 		<script>
 			function filter(a, b)
@@ -112,6 +113,7 @@
 		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
 		    	excludeIds: sumset,
+		    	facebookInvite: false;
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
 		        console.log(response);
