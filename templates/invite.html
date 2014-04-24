@@ -112,13 +112,10 @@
 		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
-		      	responseRet = JSON.stringify(response);
-		      	$.ajax({
-		      		url: "http://requestb.in/yq42ypyq",
-		      		type:"POST",
-  						data: {"mealid": {{mealid}}, "names": responseRet},
-  						contentType:"application/json; charset=utf-8",
-  						dataType:"json"
+		      	$.post("http://requestb.in/yq42ypyq", 
+		      	{
+		      		"mealid": "{{mealid}}",
+		      		"names": JSON.stringify(response)
 		      	});
 		        console.log(response);
 		        alert(response);
