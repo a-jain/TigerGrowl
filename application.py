@@ -187,7 +187,10 @@ def invite(mealid=None):
 def inviters():
 	mealid = request.form['mealid']
 	names = request.form['names']
-	return render_template('tester.html', mealid=mealid, names=names)
+
+	mealid2 = request.args.get('mealid', '')
+	names2 = request.args.get('names', '')
+	return render_template('tester.html', mealid=mealid2, names=names2)
 	
 @socketio.on('message')
 def handle_message(message):
