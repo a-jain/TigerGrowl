@@ -66,13 +66,27 @@
 
 				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
 				console.log(obj);
-				var rowDiv = "<div class='row feed-row'> \
-						<div class='name-identifier'>  </div> \
-						<div class='setting-identifier'>  </div> \
-						<div class='attendees'>Who's Coming?</div> \
-						<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
-				</div> \
-				"
+
+				var error = "{{ errorFlag }}";
+
+				if (error != "1" && error != "2") {
+					var rowDiv = "<div class='row feed-row'> \
+							<div class='name-identifier'>  </div> \
+							<div class='setting-identifier'>  </div> \
+							<div class='attendees'>Who's Coming?</div> \
+							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+					</div> \
+					";
+				}
+				else {
+					var rowDiv = "<div class='row feed-row' style='visibility:hidden;'> \
+							<div class='name-identifier'>  </div> \
+							<div class='setting-identifier'>  </div> \
+							<div class='attendees'>Who's Coming?</div> \
+							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+					</div> \
+					";
+				}
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
@@ -193,6 +207,10 @@
 				}
 				else if (error == "2") {
 					alert("Sorry, this meal is full! You cannot join at this time.");
+					window.location = '../feed';
+				}	
+				else if (error == "0") {
+					alert("You have successfully joined this meal!");
 					window.location = '../feed';
 				}	
 			}			
