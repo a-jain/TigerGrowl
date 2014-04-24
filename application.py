@@ -5,7 +5,6 @@ from flask.ext.socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 import MySQLdb
 import json
-import slate
 from form import *
 
 application = Flask(__name__)
@@ -46,7 +45,7 @@ def timeline():
 
 @application.route('/feed')
 @application.route('/feed/<errorFlag>')
-def feed(errorFlag=None):
+def feed(errorFlag):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
@@ -105,7 +104,7 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
-def joinmeal(uid=None, mealid=None):
+def joinmeal(uid, mealid):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
