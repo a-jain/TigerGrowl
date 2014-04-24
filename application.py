@@ -190,8 +190,8 @@ def invite(mealid=None):
 
 @application.route('/invite', methods=['POST'])
 def inviters():
-	mealid = request.form['mealid']
-	names = request.JSON['names']
+	mealid = request.json['mealid']
+	names = request.json['names']
 
 	return redirect(url_for('feed'))
 	
