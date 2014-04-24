@@ -120,9 +120,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 		if (not guest):
 			break
 		guest_x += 1
-		print "##########"
-		print(str(guest))
-		print(uid)
+
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
