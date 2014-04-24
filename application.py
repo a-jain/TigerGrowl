@@ -105,7 +105,7 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
-def joinmeal(uid=None, mealid=None, errorFlag=None):
+def joinmeal(uid=None, mealid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
