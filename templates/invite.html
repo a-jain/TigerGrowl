@@ -112,11 +112,18 @@
 		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
-		      	$.post("/invite", 
-		      	{
-		      		mealid: {{mealid}},
-		      		names: JSON.stringify(response)
-		      	})
+		      	namesRet = JSON.stringify(response)
+		      	$.ajax({
+		      		type: "POST",
+						  contentType: "application/json; charset=utf-8",
+						  url: "invite",
+						  data: '{ "mealid": "{{mealid}}", "names": namesRet }',
+						  success: function (data) {
+						    console.log(data.mealid);
+						    console.log(data.names);
+						  },
+						  dataType: "json"
+		      	});
 		        console.log(response);
 		        alert(response);
 		      }
