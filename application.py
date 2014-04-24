@@ -194,9 +194,5 @@ def handle_message(message):
     send(message)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
 	application.run()
-=======
-	application.run(debug=False)
->>>>>>> FETCH_HEAD
-	socketio.run(app)
+	socketio.run(appliation)
