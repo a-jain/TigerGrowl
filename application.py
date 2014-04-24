@@ -45,7 +45,7 @@ def timeline():
 
 @application.route('/feed')
 @application.route('/feed/<errorFlag>')
-def feed(errorFlag):
+def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
@@ -104,7 +104,7 @@ def registermeal():
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
-def joinmeal(uid, mealid):
+def joinmeal(uid=None, mealid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
@@ -146,7 +146,7 @@ def joinmeal(uid, mealid):
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
 @application.route('/mymeals/<uid>/<message>')
-def mymeals(uid, message):
+def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
 	cursor = db.cursor()
