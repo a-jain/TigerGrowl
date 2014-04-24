@@ -193,7 +193,7 @@ def inviters():
 	mealid = request.form['mealid']
 	names = request.JSON['names']
 
-	return render_template('tester.html', mealid=mealid2, names=names2)
+	return redirect(url_for('feed'))
 	
 @socketio.on('message')
 def handle_message(message):
