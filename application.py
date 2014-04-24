@@ -81,7 +81,7 @@ def registeruser():
 			return redirect(url_for('feed'))
 		return render_template('registeruser.html', form=form)
 	except ValidationError:
-		return render_template("Bad email, gotta be princeton")
+		return "Bad email, gotta be Princeton"
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
@@ -194,5 +194,5 @@ def handle_message(message):
     send(message)
 
 if __name__ == '__main__':
-	application.run()
+	application.run(debug=True)
 	socketio.run(application)
