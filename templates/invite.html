@@ -116,7 +116,7 @@
 		      	$.ajax({
 		      		type: "POST",
 						  contentType: "application/json; charset=utf-8",
-						  url: "invite",
+						  url: "/invite",
 						  data: '{ "mealid": "{{mealid}}", "names": namesRet }',
 						  success: function (data) {
 						    console.log(data.mealid);
