@@ -202,5 +202,5 @@ def handle_message(message):
     send(message)
 
 if __name__ == '__main__':
-	application.run(debug=True)
-	socketio.run(application)
+	application.run(use_debugger=False, use_reloader=False)
+	#socketio.run(application)
