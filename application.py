@@ -15,8 +15,6 @@ socketio = SocketIO(application)
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
 
-cursor = db.cursor()
-
 @application.errorhandler(404)
 def page_not_found(error):
 	return render_template('error.html'), 404
@@ -32,9 +30,11 @@ def login(uid=None):
 	if not uid:
 		return redirect(url_for('home'))
 
+	cursor = db.cursor()
 	sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
 	cursor.execute(sql)
 	results = cursor.fetchone()
+	cursor.close()
 	if results:
 		return redirect(url_for('feed'))
 	else:
@@ -46,10 +46,11 @@ def timeline():
 
 @application.route('/feed')
 def feed():
-
+	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
 	cursor.execute("SELECT * FROM ebdb.meal_table")
 	queryResults = cursor.fetchall()
+	cursor.close()
 	mealList = json.dumps(queryResults)
 
 	return render_template('feed.html', mealList=mealList)
@@ -68,11 +69,12 @@ def registeruser():
 	try: 
 		form = Signup(request.form)
 		if request.method == 'POST' and form.validate():
-
+			cursor = db.cursor()
 			netid = form.email.data.split('@')[0]
 			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
 
 			cursor.execute(sql)
+			cursor.close()
 
 			return redirect(url_for('feed'))
 		return render_template('registeruser.html', form=form)
@@ -83,7 +85,7 @@ def registermeal():
 	form = MealForm(request.form)
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
-		
+		cursor = db.cursor()
 		receivedDate = str(form.date.data).split('-')
 		newDate = receivedDate[1] + '/' + receivedDate[2]
 
@@ -95,7 +97,7 @@ def registermeal():
 
 		sql = "INSERT INTO ebdb.invitees (meal_id, host) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, form.host.data)
 		cursor.execute(sql)
-
+		cursor.close()
 		# change to some exit page
 		return redirect(url_for('exitpage'))
 	return render_template('registermeal.html', form=form)
@@ -104,7 +106,7 @@ def registermeal():
 def joinmeal(uid=None, mealid=None, errorFlag=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
-
+	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
@@ -116,25 +118,29 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
-	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
+	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		if (not guest):
 			break
 		guest_x += 1
-		print("ABCDEFGHIJK")
 		print "##########"
+		print(str(guest))
+		print(uid)
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "Oops! You have already signed up for this meal."
+			cursor.close()
 			return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 			
-	if guest_x == 13:
-		errorFlag = "Oops! This meal is full."
+	if guest_x == 12:
+		errorFlag = json.dumps("Oops! This meal is full.")
+		cursor.close()
 		return redirect(url_for('feed', mealList=mealList, errorFlag=errorFlag))
 		
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
+	cursor.close()
 
 	return redirect(url_for('mymeals', uid=uid))
 
@@ -143,7 +149,7 @@ def joinmeal(uid=None, mealid=None, errorFlag=None):
 def mymeals(uid=None):
 	if not uid:
 		return redirect(url_for('home'))
-
+	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
@@ -159,6 +165,7 @@ def mymeals(uid=None):
 			yourmeals.append(each)
 	yourmeals = json.dumps(yourmeals)
 
+	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals)
 	
 
@@ -169,55 +176,29 @@ def mymeals(uid=None):
 # we call the fb friend selector with the blacklist
 # this returns some fb ids
 # we add this to the sql database	
-@application.route('/invite/<mealid>/<token>')
-def invite(mealid=None, token=None):
-	if not mealid or not token:
+@application.route('/invite/<mealid>')
+def invite(mealid=None):
+	if not mealid:
 		return redirect(url_for('home'))
-
-	query = "SELECT user_id FROM ebdb.user_table;"
-	cursor.execute(query)
-	queryResults = cursor.fetchall()
-	queryResultsJSON = json.dumps(queryResults)
-
-	newResults = []
-	for i in range(0, len(queryResults)):
-		newResults.append(queryResults[i][0])
-
-	print json.dumps(newResults)
-	
-	# pull user's friends from fb
-
-
-
-
-
-	# guestList = json.loads(guests)
 	
 	# for each in guestList:
 	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
 	# 	cursor.execute(query)
-	return render_template('invite.html', alluids=json.dumps(newResults))
+	return render_template('invite.html', mealid=mealid)
 	# return redirect(url_for('mymeals', uid=host))
 
 @application.route('/inviters')
 def inviters():
 	return render_template('invite.html')
 	
-@socketio.on('my event', namespace='/test')
-def test_message(message):
-    emit('my response', {'data': message['data']})
+@socketio.on('message')
+def handle_message(message):
+    send(message)
 
-@socketio.on('my broadcast event', namespace='/test')
-def test_message(message):
-    emit('my response', {'data': message['data']}, broadcast=True)
-
-@socketio.on('connect', namespace='/test')
-def test_connect():
-    emit('my response', {'data': 'Connected'})
-
-@socketio.on('disconnect', namespace='/test')
-def test_disconnect():
-    print('Client disconnected')
 if __name__ == '__main__':
+<<<<<<< HEAD
 	application.run()
+=======
+	application.run(debug=False)
+>>>>>>> FETCH_HEAD
 	socketio.run(app)
