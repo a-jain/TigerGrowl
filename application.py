@@ -9,7 +9,6 @@ import slate
 from form import *
 
 application = Flask(__name__)
-application.debug = True
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
 socketio = SocketIO(application)
 
@@ -220,5 +219,5 @@ def test_connect():
 def test_disconnect():
     print('Client disconnected')
 if __name__ == '__main__':
-	application.run(debug=True)
+	application.run()
 	socketio.run(app)
