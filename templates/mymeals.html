@@ -5,14 +5,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
 		<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
-		<link rel="shortcut icon" href="../static/img/favicon.ico" />
+
+
+		{% if message != "success" %}
+			<link rel="shortcut icon" href="../static/img/favicon.ico" />
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			<script src="../static/js/jquery-1.11.0.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+			<script src="../static/js/bootstrap.min.js"></script>
+		{% else %}
+			<link rel="shortcut icon" href="../../static/img/favicon.ico" />
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			<script src="../../static/js/jquery-1.11.0.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+			<script src="../../static/js/bootstrap.min.js"></script>
+		{% endif %}
+	
+
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../static/js/jquery-1.11.0.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../static/js/bootstrap.min.js"></script>
+		
 
+		{% if message != "success" %}
 		<script>
 		function openpopup() {
 			window.open('../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
@@ -24,6 +38,19 @@
 			return false;
 		}
 		</script>
+		{% else %}
+		<script>
+		function openpopup() {
+			window.open('../../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+			return false;
+		}
+
+		function openpopup2() {
+			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+			return false;
+		}
+		</script>
+		{% endif %}
 	</head>
 	<body>
 
@@ -80,8 +107,6 @@
 				
 
 				<div class="feed-column invite-column">
-					<!-- Yo. So the way we're storing the array of all the mealids is by defining it here. Eventually
-					we'll create a method that adds things to it at the top; in the mean time we'll do it live/manually.-->
 
 					<h1>Invites</h1>
 
@@ -200,15 +225,6 @@
 				       	}
 				    });
 				});
-					// $(".feed-row:nth-child(2) .name-identifier").text(objHost[1][1] + "\'s Meal");
-					// $(".feed-row:nth-child(3) .name-identifier").text(objHost[2][1] + "\'s Meal");
-					// $(".feed-row:nth-child(4) .name-identifier").text(objHost[3][1] + "\'s Meal");
-					// $(".feed-row:nth-child(5) .name-identifier").text(objHost[4][1] + "\'s Meal");
-					//$(".feed-row:nth-child(1) .setting-identifier").text(objGuest[0][2] + ", " + objGuest[0][3] + ", " + objGuest[0][4]);
-					//$(".feed-row:nth-child(2) .setting-identifier").text(objGuest[1][2] + ", " + objGuest[1][3] + ", " + objGuest[1][4]);
-					//$(".feed-row:nth-child(3) .setting-identifier").text(objGuest[2][2] + ", " + objGuest[2][3] + ", " + objGuest[2][4]);
-					//$(".feed-row:nth-child(4) .setting-identifier").text(objGuest[3][2] + ", " + objGuest[3][3] + ", " + objGuest[3][4]);
-					//$(".feed-row:nth-child(5) .setting-identifier").text(objGuest[4][2] + ", " + objGuest[4][3] + ", " + objGuest[4][4]);
 
 				/* fb photo*/
 				$(document).bind('fbInitPicLoaded',function(){
