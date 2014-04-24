@@ -53,11 +53,15 @@
 	</head>
 	<body>
 
-	<style>
-	body {
-		background-image:url('../static/img/arch.jpg');
-	}
-	</style>
+	{% if message != "success" %}
+		<style>
+		body {background-image:url('../static/img/arch.jpg');}
+		</style>
+	{% else %}
+		<style>
+		body {background-image:url('../../static/img/arch.jpg');}
+		</style>
+	{% endif %}
 
 
 		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
