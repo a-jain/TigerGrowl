@@ -46,7 +46,7 @@ def timeline():
 
 @application.route('/feed')
 @application.route('/feed/<errorFlag>')
-def feed():
+def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
