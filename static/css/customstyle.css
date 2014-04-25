@@ -88,6 +88,10 @@ body {
 
 }
 
+#HostButton {
+	border-color: black;
+}
+
 h1 {
 	text-align: center;
 	color:white;

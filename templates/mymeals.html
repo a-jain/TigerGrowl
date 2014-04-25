@@ -11,6 +11,9 @@
 			<script src="../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../static/js/bootstrap.min.js"></script>
+			<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	    	<link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+	    	<script src="../static/js/nivo-lightbox.min.js"></script>
 		{% else %}
 			<link href="../../static/css/customstyle.css" rel="stylesheet" media="screen">		
 			<link rel="shortcut icon" href="../../static/img/favicon.ico" />
@@ -18,7 +21,11 @@
 			<script src="../../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../../static/js/bootstrap.min.js"></script>
+			<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	    	<link href="../../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+	    	<script src="../../static/js/nivo-lightbox.min.js"></script>
 		{% endif %}
+			
 	
 
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
@@ -76,9 +83,11 @@
 
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<a onclick="openpopup()"><button type="button" class="btn btn-default btn-lg">
-								Host a Meal
-							</button></a>
+							<!-- <a onclick="openpopup()"> -->
+								<button type="button" id="HostButton" class="btn btn-default btn-lg">
+									Host a Meal
+								</button>
+							<!-- </a> -->
 					</div>
 				</div>
 
