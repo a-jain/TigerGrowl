@@ -30,7 +30,24 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
-		
+
+		{% if message != "success" %}
+			<script>
+			function openpopup2() {
+				window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+				return false;
+			}
+			</script>
+		{% else %}
+			<script>
+			function openpopup2() {
+				window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+				return false;
+			}
+			</script>
+		{% endif %}
+
+
 		<script>
 		$(document).ready(function () {
 			$('#HostButton').nivoLightbox({
@@ -38,22 +55,7 @@
 	        });
 		});
 		</script>
-		
-		{% if message != "success" %}
-		<script>
-		function openpopup2() {
-			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-		</script>
-		{% else %}
-		<script>
-		function openpopup2() {
-			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-		</script>
-		{% endif %}
+
 	</head>
 	<body>
 
