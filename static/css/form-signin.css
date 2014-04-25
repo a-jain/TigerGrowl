@@ -1,7 +1,7 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-image: url('../static/img/formback.jpg');
+  background-image: url('../img/formback.jpg');
 }
 
 .form-signin {
