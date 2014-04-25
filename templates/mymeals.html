@@ -16,6 +16,7 @@
 			<script src="../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../static/js/bootstrap.min.js"></script>
+			<script src="../static/js/fb.js"></script>
 		    <script src="../static/js/nivo-lightbox.min.js"></script>
 		{% else %}
 			<link href="../../static/css/customstyle.css" rel="stylesheet" media="screen">
@@ -26,6 +27,7 @@
 			<script src="../../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../../static/js/bootstrap.min.js"></script>
+			<script src="../../static/js/fb.js"></script>
 		    <script src="../../static/js/nivo-lightbox.min.js"></script>
 		{% endif %}
 			
@@ -73,7 +75,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span>Feed Me</button></a>
+				<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Feed</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 			<!-- /.navbar-collapse -->
@@ -276,6 +278,36 @@
 					</div>
 					</div>
 				</footer>
+			<div id="fb-root"></div>
+
+			<script type="text/javascript">
+			window.fbAsyncInit = function() {
+						FB.init({
+							appId      : '1423477091234772',
+							status     : true, // check login status
+							cookie     : true, // enable cookies to allow the server to access the session
+							xfbml      : true  // parse XFBML
+						});
+						FB.getLoginStatus(function(response) {
+						  if (response.status === 'connected') {
+						    uid = response.authResponse.userID;
+						    $(document).trigger('fbInit');
+
+						    FB.api('me?fields=picture.height(80)', function(response) {
+				          if (!response || response.error) {
+				            console.log('Error occured');
+				          } else {
+				            picurl = response["picture"]["data"]["url"];
+				            console.log(picurl)
+				            $(document).trigger('fbInitPicLoaded');
+				          }
+				        });
+						  }
+						  else {
+						  } 
+						 });
+					}
+			</script>
 
 			<script type="text/javascript">			
 		
