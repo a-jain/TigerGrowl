@@ -21,7 +21,7 @@
 			<script src="../../static/js/jquery-1.11.0.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="../../static/js/bootstrap.min.js"></script>
-			<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+			<link href="../../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
 	    	<link href="../../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
 	    	<script src="../../static/js/nivo-lightbox.min.js"></script>
 		{% endif %}
@@ -31,15 +31,16 @@
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 		
-
-		{% if message != "success" %}
 		<script>
 		$(document).ready(function () {
 			$('#HostButton').nivoLightbox({
-	            effect: 'fall',                       // The effect to use when showing the lightbox
+	            effect: 'fall'                       // The effect to use when showing the lightbox
 	        });
 		});
-
+		</script>
+		
+		{% if message != "success" %}
+		<script>
 		function openpopup2() {
 			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
 			return false;
@@ -47,12 +48,6 @@
 		</script>
 		{% else %}
 		<script>
-		$(document).ready(function () {
-			$('#HostButton').nivoLightbox({
-	            effect: 'fall',                       // The effect to use when showing the lightbox
-	        });
-		});
-
 		function openpopup2() {
 			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
 			return false;
