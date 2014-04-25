@@ -34,10 +34,11 @@
 
 		{% if message != "success" %}
 		<script>
-		function openpopup() {
-			window.open('../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
+		$(document).ready(function () {
+			$('#HostButton').nivoLightbox({
+	            effect: 'fall',                       // The effect to use when showing the lightbox
+	        });
+		});
 
 		function openpopup2() {
 			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
@@ -46,10 +47,11 @@
 		</script>
 		{% else %}
 		<script>
-		function openpopup() {
-			window.open('../../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
+		$(document).ready(function () {
+			$('#HostButton').nivoLightbox({
+	            effect: 'fall',                       // The effect to use when showing the lightbox
+	        });
+		});
 
 		function openpopup2() {
 			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
