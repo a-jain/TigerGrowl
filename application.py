@@ -112,36 +112,37 @@ def joinmeal(uid=None, mealid=None):
 	cursor.execute(query)
 	meal = cursor.fetchone()
 
-	f = open("TEMP_for_testing_joinmeal.txt", "w")
+	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		if (not guest):
 			break
 		guest_x += 1
-		"""
+		
+		
 		#Check type of guest
-		f.write("Type of guest is:")
-		f.write(type(guest))
+		print("Type of guest is:")
+		print(type(guest))
 		
-		f.write("Type of uid is:")
-		f.write(type(uid))
+		print("Type of uid is:")
+		print(type(uid))
 		
-		f.write("the guest is:")
-		f.write(guest)
+		print("the guest is:")
+		print(guest)
 		
-		f.write("the uid is:")
-		f.write(uid)
+		print("the uid is:")
+		print(uid)
 		
-		f.write("Do they match?")
-		f.write(uid is guest)
+		print("Do they match?")
+		print(uid is guest)
 		
-		f.write("Does str(guest) match uid?")
-		f.write(str(guest) is uid)
+		print("Does str(guest) match uid?")
+		print(str(guest) is uid)
 		
-		f.write("What about with == instead of is?"):
-		f.write(guest == uid)
-		"""
+		print("What about with == instead of is?"):
+		print(guest == uid)
+		
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
@@ -159,7 +160,7 @@ def joinmeal(uid=None, mealid=None):
 	cursor.execute(sql)
 	cursor.close()
 	
-	f.close()
+	#f.close()
 	
 	message = "success" # Success
 	# at this point we can consider the possibility that we actually want to send the user back to the feed page.
