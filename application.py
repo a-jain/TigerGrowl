@@ -120,31 +120,8 @@ def joinmeal(uid=None, mealid=None):
 			break
 		guest_x += 1
 		
-		
-		#Check type of guest
-		print("Type of guest is:")
-		print(type(guest))
-		
-		print("Type of uid is:")
-		print(type(uid))
-		
-		print("the guest is:")
-		print(guest)
-		
-		print("the uid is:")
-		print(uid)
-		
-		print("Do they match?")
-		print(uid is guest)
-		
-		print("Does str(guest) match uid?")
-		print(str(guest) is uid)
-		
-		print("What about with == instead of is?"):
-		print(guest == uid)
-		
-		if (str(guest) is uid):
-			print("uid match")
+		if (guest == uid):
+			#print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "1" # Already guest
 			cursor.close()
