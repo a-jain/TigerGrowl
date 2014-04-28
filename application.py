@@ -112,13 +112,36 @@ def joinmeal(uid=None, mealid=None):
 	cursor.execute(query)
 	meal = cursor.fetchone()
 
+	f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		if (not guest):
 			break
 		guest_x += 1
-
+		
+		#Check type of guest
+		f.write("Type of guest is:")
+		f.write(type(guest))
+		
+		f.write("Type of uid is:")
+		f.write(type(uid))
+		
+		f.write("the guest is:")
+		f.write(guest)
+		
+		f.write("the uid is:")
+		f.write(uid)
+		
+		f.write("Do they match?")
+		f.write(uid is guest)
+		
+		f.write("Does str(guest) match uid?")
+		f.write(str(guest) is uid)
+		
+		f.write("What about with == instead of is?"):
+		f.write(guest == uid)
+		
 		if (str(guest) is uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
@@ -135,7 +158,9 @@ def joinmeal(uid=None, mealid=None):
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
 	cursor.close()
-
+	
+	f.close()
+	
 	message = "success" # Success
 	# at this point we can consider the possibility that we actually want to send the user back to the feed page.
 	# If we're deadset on sending them to mymeals then we can add a similar script handling to mymeals, but I think it might be better
