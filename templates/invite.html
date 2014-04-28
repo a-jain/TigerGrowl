@@ -3,6 +3,7 @@
 	<head>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
+		
 		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
 		<script>
@@ -11,19 +12,15 @@
 			  Array.prototype.diff = function(a) {
 				    return this.filter(function(i) {return a.indexOf(i) < 0;});
 				};
-
 				return a.diff(b);
 			}
-		</script>
-
-		<script>
-					$(document).bind('fbInit',function() {
-						console.log(friendlist);
-						console.log(friendsUsingTG);
-						sumset = filter(friendlist, friendsUsingTG);
-    				console.log(sumset);
-    				$(document).trigger('sumsetta');    				
-					});
+			$(document).bind('fbInit',function() {
+				console.log(friendlist);
+				console.log(friendsUsingTG);
+				sumset = filter(friendlist, friendsUsingTG);
+				console.log(sumset);
+				$(document).trigger('sumsetta');    				
+			});
 		</script>
 	</head>
 
@@ -90,6 +87,11 @@
 		            }
 		          }
 		      );
+			FB.login(function(response) {
+				if (response.authResponse) {
+					access_token =   FB.getAuthResponse()['accessToken'];
+				}
+			});
 
 		  });
 		};
@@ -107,8 +109,14 @@
 		  $(document).bind("sumsetta", function() {
 		    $(".bt-fs-dialog").fSelector({
 		    	excludeIds: sumset,
+		    	facebookInvite: false,
 		    	closeOnSubmit: true,
 		      onSubmit: function(response){
+		      	$.post("/inviter", 
+		      	{
+		      		"mealid": "{{mealid}}",
+		      		"names": JSON.stringify(response)
+		      	});
 		        console.log(response);
 		        alert(response);
 		      }

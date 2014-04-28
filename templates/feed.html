@@ -3,8 +3,11 @@
 	<head>
 		<title>TigerGrowl</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap -->
+		<!-- Bootstrap and other CSS -->
 		<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
+	    <link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	    <link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+
 		<link rel="shortcut icon" href="../static/img/favicon.ico" />
 		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
@@ -13,12 +16,23 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../static/js/bootstrap.min.js"></script>
 		<script src="../static/js/fb.js"></script>
+	    <script src="../static/js/nivo-lightbox.min.js"></script>
 
+	    <!--
 		<script>
 		function openpopup() {
 			window.open('../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
 			return false;
 		}
+		</script>
+		-->
+
+		<script>
+		$(document).ready(function () {
+			$('#HostButton').nivoLightbox({
+	            effect: 'fall'                       // The effect to use when showing the lightbox
+	        });
+		});
 		</script>
 
 		<!--
@@ -54,9 +68,11 @@
 		</nav>
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<a onclick="openpopup()"><button type="button" class="btn btn-default btn-lg">
-								Host a Meal
-							</button></a>
+							<!-- <a onclick="openpopup()"> -->
+								<button type="button" id="HostButton" href="/registermeal" class="btn btn-default btn-lg">
+									Host a Meal
+								</button>
+							<!-- </a> -->
 					</div>
 				</div>
 				
@@ -78,13 +94,27 @@
 
 				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
 				console.log(obj);
-				var rowDiv = "<div class='row feed-row'> \
-						<div class='name-identifier'> firstname lastname's Meal </div> \
-						<div class='setting-identifier'> place date time </div> \
-						<div class='attendees'>Who's Coming?</div> \
-						<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
-				</div> \
-				"
+
+				var error = "{{ errorFlag }}";
+
+				if (error != "1" && error != "2") {
+					var rowDiv = "<div class='row feed-row'> \
+							<div class='name-identifier'>  </div> \
+							<div class='setting-identifier'>  </div> \
+							<div class='attendees'>Who's Coming?</div> \
+							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+					</div> \
+					";
+				}
+				else {
+					var rowDiv = "<div class='row feed-row' style='visibility:hidden;'> \
+							<div class='name-identifier'>  </div> \
+							<div class='setting-identifier'>  </div> \
+							<div class='attendees'>Who's Coming?</div> \
+							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+					</div> \
+					";
+				}
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
@@ -171,6 +201,7 @@
 					</div>
 				</footer>
 				<div id="fb-root"></div>
+
 		<script type="text/javascript">
 		window.fbAsyncInit = function() {
 					FB.init({
@@ -204,13 +235,19 @@
 		
 			var error = "{{ errorFlag }}";
 			if (error != "") {
-				alert("{{errorFlag}}");
-				alert(error);
-				console.log(error);
-				console.log("there was an error");
-			}
-			console.log("we got hur");
-			
+				if (error == "1") {
+					alert("Oops! You are already a guest for this meal!");
+					window.location = '../feed';
+				}
+				else if (error == "2") {
+					alert("Sorry, this meal is full! You cannot join at this time.");
+					window.location = '../feed';
+				}	
+				else if (error == "0") {
+					alert("You have successfully joined this meal!");
+					window.location = '../feed';
+				}	
+			}			
 		</script>
 	</body>
 </html>

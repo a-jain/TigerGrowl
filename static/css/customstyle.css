@@ -1,10 +1,14 @@
 @import "bootstrap.min.css";
 @import "bootstrap-theme.css";
 
+html {
+	height:100%;
+}
 body {
 	/*background-color:#8abe9b;*/
 	background-repeat: no-repeat;
 	background-attachment:fixed;
+	height:100%;
 }
 
 @media screen and (min-width:1271px) {
@@ -82,6 +86,10 @@ body {
 	color: #FFFFFF;
 	text-shadow: 0px 0px 5px #888888;
 
+}
+
+#HostButton {
+	border-color: black;
 }
 
 h1 {
