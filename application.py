@@ -120,7 +120,19 @@ def joinmeal(uid=None, mealid=None):
 			break
 		guest_x += 1
 		
-		if (guest == uid):
+		#type bashing
+		if (type(uid) is int):
+			str_uid = str(uid)
+		else:
+			str_uid = uid
+
+		if (type(guest) is int):
+			str_guest = str(guest)
+		else:
+			str_guest = guest
+
+
+		if (str_guest == str_uid):
 			#print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "1" # Already guest

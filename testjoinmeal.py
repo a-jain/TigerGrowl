@@ -45,7 +45,22 @@ def testjoinmeal(uid, mealid):
 		print("What about with == instead of is?")
 		print(guest == uid)
 		
-		if (str(guest) is uid):
+		#type bashing
+		if (type(uid) is int):
+			str_uid = str(uid)
+		else:
+			str_uid = uid
+
+		if (type(guest) is int):
+			str_guest = str(guest)
+		else:
+			str_guest = guest
+
+
+		if (str_guest == str_uid):
+			print("uid match1")
+
+		if (guest == uid):
 			print("uid match")
 			#Handle the case of them being already in the meal
 			errorFlag = "1" # Already guest
@@ -71,4 +86,4 @@ def testjoinmeal(uid, mealid):
 
 
 	
-testjoinmeal('1486930511', '467244')
+testjoinmeal(1486930511, '467244')
