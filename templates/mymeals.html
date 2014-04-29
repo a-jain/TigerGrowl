@@ -275,7 +275,7 @@
 			
 				    $(document).bind('fbInit',function(){
     					console.log('fbInit complete; FB Object is Available');
-					});
+					
 
 					$(".invitebutton").each(function(i) {
 				    	if (objHost[i] !== undefined) { 
@@ -288,7 +288,7 @@
 				        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
 				        }
 				    });
-					
+					});
 				</script>
 			
 
