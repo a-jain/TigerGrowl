@@ -54,6 +54,9 @@
 			$('#HostButton').nivoLightbox({
 	            effect: 'fall'                       // The effect to use when showing the lightbox
 	        });
+	        $('#helpLink').nivoLightbox({
+	            effect: 'fall'                       // The effect to use when showing the lightbox
+	        });
 		});
 		</script>
 
@@ -78,6 +81,15 @@
 				<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Feed</button></a>
 
 				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
+
+				<a href="/welcome" id="helpLink">
+					<div class="help" style="float:right;color:white;margin-right:15px;">
+						<img src="../static/img/fork-white.png">
+						<img src="../static/img/dish-white.png">
+						<img src="../static/img/knife-white.png">
+						Help 
+					</div>
+				</a>
 			<!-- /.navbar-collapse -->
 		</nav>
 
@@ -239,10 +251,12 @@
 				});
 
 				/* fb photo*/
+				/*
 				$(document).bind('fbInitPicLoaded',function(){
 						$("#FacebookPhoto").prop("src", window.picurl);
 					});
-				
+				*/
+								
 				</script>
 				
 				<script>
