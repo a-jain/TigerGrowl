@@ -306,7 +306,7 @@ def remove(mealid=None, uid=None):
 	cursor.close()
 	
 	print("got to here13")
-	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message = "werked/twerked")
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb
