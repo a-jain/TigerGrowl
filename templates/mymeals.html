@@ -121,7 +121,7 @@
 			mealids = new Array();
 			hosts = new Array();
 		</script>
-		<h1>Meals You are Hosting</h1>
+		<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Meals You are Hosting</h1>
 
 				<!--
 				<div class="row host-row">
@@ -144,7 +144,7 @@
 
 			<div class="feed-column invite-column">
 
-				<h1>Invites</h1>
+				<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Invites</h1>
 
 					<!--
 					<div class="row feed-row">
@@ -158,7 +158,7 @@
 
 			<div class="feed-column guest-column">
 
-				<h1>Meals with You as Guest</h1>
+				<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Meals with You as Guest</h1>
 
 					<!--
 					<div class="row feed-row">
@@ -179,12 +179,6 @@
 		var objInvite = [];
 		var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 		var hostnameList = jQuery.parseJSON( {{hostnameList|tojson|safe}} );
-
-		console.log("objInvite");
-		console.log(objInvite);
-		console.log("hostnameList");
-		console.log(hostnameList);
-
 
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='setting-identifier'> </div> \

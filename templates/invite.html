@@ -84,10 +84,10 @@
 												for (var i = 0; i < queryResult.length; i++)
 												{
 													friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
-													$("#newtest").append(queryResult[i]["name"] + '<br/>');
+													// $("#newtest").append(queryResult[i]["name"] + '<br/>');
 													var friendItem = document.createElement('div');
 													friendItem.id = 'friend_' + queryResult[i]["uid"];
-													friendItem.innerHTML = '<input type="checkbox" name="friends" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
+													friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
 													mfsForm.appendChild(friendItem);
 												}
 												container.appendChild(mfsForm);
