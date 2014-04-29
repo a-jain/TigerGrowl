@@ -86,7 +86,7 @@ def registeruser():
 		return render_template('registeruser.html', form=form)
 	except ValidationError:
 		return "Bad email, gotta be Princeton"
-@application.route('/registermeal', methods=['GET', 'POST'])
+@application.route('/registermeal/<uid>', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
 	if request.method == 'POST' and form.validate():
@@ -97,11 +97,11 @@ def registermeal():
 
 		receivedTime = str(form.time.data)[:-3]
 
-		sql = "INSERT INTO ebdb.meal_table (host, place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.host.data, form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
+		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
 		print sql
 		cursor.execute(sql)
 
-		sql = "INSERT INTO ebdb.invitees (meal_id, host) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, form.host.data)
+		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, int(form.uid.data))
 		cursor.execute(sql)
 		cursor.close()
 		# change to some exit page
