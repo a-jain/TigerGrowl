@@ -270,12 +270,12 @@ def remove(mealid=None, uid=None):
 	cursor.execute(sql)
 	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
-	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
+	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % ("guest8", mealid)
 	cursor.execute(sql)
 	print("got to here 8 - we've finished the removal (ostensibly)")
 
 	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
-
+	"""
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
@@ -307,6 +307,9 @@ def remove(mealid=None, uid=None):
 	
 	print("got to here13")
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message = "werked/twerked")
+	"""
+	
+	return redirect(url_for('mymeals', uid=uid, message="heyitwerked"))
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb
