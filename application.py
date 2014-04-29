@@ -59,7 +59,16 @@ def feed(errorFlag=None):
 	cursor.close()
 	mealList = json.dumps(queryResults)
 
-	return render_template('feed.html', mealList=mealList, errorFlag=errorFlag)
+	queryresultList = []
+	for i in range(0, len(mealList)):
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
+		cursor.execute(sql)
+		queryresultList.append(cursor.fetchone())
+
+
+	hostList = json.dumps(queryresultList)
+
+	return render_template('feed.html', mealList=mealList, hostList=hostList, errorFlag=errorFlag)
 
 @application.route('/exitpage')
 def exitpage():
