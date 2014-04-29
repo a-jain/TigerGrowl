@@ -259,8 +259,8 @@ def remove(mealid=None, uid=None):
 	print("got to here 6")
 	last_full_index = guest_Y - 1
 	last_full = guests[last_full_index]
-	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem
-	# we've fucked up
+	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
+	# we've made some kind of error
 	
 	guestUIDString = "guest" + str(user_index)
 	guestLastString = "guest" + str(last_full_index)
@@ -285,6 +285,7 @@ def remove(mealid=None, uid=None):
 	yourmeals = []
 	mealuids = []
 
+	print("got to here11")
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
@@ -295,6 +296,7 @@ def remove(mealid=None, uid=None):
 			mealuids.append(each[15])
 	yourmeals = json.dumps(yourmeals)
 
+	print("got to here12")
 	queryresultList = []
 	for i in range(0, len(mealuids)):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
@@ -303,6 +305,8 @@ def remove(mealid=None, uid=None):
 
 	hostnameList = json.dumps(queryresultList)
 	cursor.close()
+	
+	print("got to here13")
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 	
 # when invite friends is clicked, the following happens:
