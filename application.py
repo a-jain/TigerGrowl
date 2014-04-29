@@ -257,7 +257,7 @@ def invite(mealid=None):
 	return render_template('invite.html', mealid=mealid)
 	# return redirect(url_for('mymeals', uid=host))
 
-@application.route('/inviter', methods=['POST'])
+@application.route('/inviter/<mealid>/asd', methods=['POST'])
 def inviters():
 	# mealid = request.form['mealid']
 	# names = request.form['names']
