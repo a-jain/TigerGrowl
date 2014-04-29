@@ -270,7 +270,37 @@ def remove():
 	cursor.execute(sql)
 
 	cursor.close()
+	
+	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
+	cursor = db.cursor()
+	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
+	cursor.execute(query)
+	queryResults = cursor.fetchall()
+	hostingMeals = json.dumps(queryResults)
 
+	yourmeals = []
+	mealuids = []
+
+	for a in range(1, 12):
+		guestString = "guest" + str(a)
+		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
+		cursor.execute(query)
+		queryResults = cursor.fetchall()
+		for each in queryResults:
+			yourmeals.append(each)
+			mealuids.append(each[15])
+	yourmeals = json.dumps(yourmeals)
+
+	queryresultList = []
+	for i in range(0, len(mealuids)):
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
+		cursor.execute(sql)
+		queryresultList.append(cursor.fetchone())
+
+	hostnameList = json.dumps(queryresultList)
+	cursor.close()
+	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb
 # pull all userids in user_table
