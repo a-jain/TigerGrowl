@@ -198,6 +198,7 @@ def mymeals(uid=None, message=None):
 		for each in queryResults:
 			yourmeals.append(each)
 			mealuids.append(each[15])
+			print each[15]
 	yourmeals = json.dumps(yourmeals)
 
 	queryresultList = []
