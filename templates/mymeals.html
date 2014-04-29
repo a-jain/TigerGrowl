@@ -96,9 +96,15 @@
 
 		<a href="/welcome" id="helpLink">
 			<div class="help" style="float:right;color:white;margin-right:15px;">
-				<img src="../static/img/fork-white.png">
-				<img src="../static/img/dish-white.png">
-				<img src="../static/img/knife-white.png">
+				{% if message != "success" %}
+					<img src="../static/img/fork-white.png">
+					<img src="../static/img/dish-white.png">
+					<img src="../static/img/knife-white.png">
+				{% else %}
+					<img src="../../static/img/fork-white.png">
+					<img src="../../static/img/dish-white.png">
+					<img src="../../static/img/knife-white.png">
+
 				Help 
 			</div>
 		</a>
