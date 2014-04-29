@@ -87,13 +87,11 @@ def registeruser():
 	except ValidationError:
 		return "Bad email, gotta be Princeton"
 		
-@application.route('/registermeal')
-#, methods=['GET', 'POST'])
+@application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
 	
-	#if request.method == 'POST' and
-	if form.validate():
+	if ((request.method == 'POST') and (form.validate()):
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		receivedDate = str(form.date.data).split('-')
@@ -105,7 +103,8 @@ def registermeal():
 		print sql
 		cursor.execute(sql)
 
-		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, int(form.uid.data))
+		#sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, int(form.uid.data))
+		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (10, int(form.uid.data))
 		cursor.execute(sql)
 		cursor.close()
 		# change to some exit page
