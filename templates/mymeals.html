@@ -121,7 +121,7 @@
 			mealids = new Array();
 			hosts = new Array();
 		</script>
-		<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Meals You are Hosting</h1>
+		<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Meals You are Hosting</h1>
 
 				<!--
 				<div class="row host-row">
@@ -144,7 +144,7 @@
 
 			<div class="feed-column invite-column">
 
-				<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Invites</h1>
+				<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Invites</h1>
 
 					<!--
 					<div class="row feed-row">
@@ -158,7 +158,7 @@
 
 			<div class="feed-column guest-column">
 
-				<h1 style="background-color:rgba(27, 27, 27, 0.9);border-radius: 25px;">Meals with You as Guest</h1>
+				<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Meals with You as Guest</h1>
 
 					<!--
 					<div class="row feed-row">
@@ -266,18 +266,6 @@
 </script>
 
 <script>
-	
-	/* This is about getting the invite button to work. */
-	$(document).bind('fbInit',function(){
-		console.log('fbInit complete; FB Object is Available');
-					//"invite/" + mealids[0] + "/" + hosts[0]);
-	$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
-	$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
-	$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
-	$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
-	$("#homelink").prop("href", "feed/");
-	
-});
 	$(document).bind('fbInitPicLoaded',function(){
 		$("#FacebookPhoto").prop("src", window.picurl);
 	});
@@ -297,7 +285,7 @@
 					
 					$(".removebutton").each(function(i) {
 				    	if (objHost[i] !== undefined) { 
-				        	$(this).prop("href", "../invite/" + objHost[i++][0]);
+				        	$(this).prop("href", "../remove/" + objHost[i++][0]);
 				        }
 				    });
 					
