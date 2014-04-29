@@ -188,7 +188,7 @@
 
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='setting-identifier'> </div> \
-		<a class='invitebutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Invite Dawgs</button> </a> \
+		<a class='invitebutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Invite Friends</button> </a> \
 		<div class='attendees'>Who's Coming?</div> \
 		</div>";
 
@@ -196,9 +196,7 @@
 		<div class='name-identifier'> </div> \
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming?</div> \
-		<button type='button' class='btn btn-default btn-lg' style='font-family:Arial;font-weight:100;font-size:medium;margin-left:20px;margin-top:10px;'> \
-		Leave the Meal \
-		</button> \
+		<a class='removebutton' href='#'><button class='btn btn-default btn-lg' style='font-family:Arial;font-weight:100;font-size:medium;margin-left:20px;margin-top:10px;'> Leave the Meal </button></a> \
 		</div>";
 
 		var guestrowDiv = inviterowDiv;
@@ -303,6 +301,11 @@
 				        }
 				    });
 					
+					$(".removebutton").each(function(i) {
+				    	if (objHost[i] !== undefined) { 
+				        	$(this).prop("href", "../invite/" + objHost[i++][0]);
+				        }
+				    });
 					
 				</script>
 			
