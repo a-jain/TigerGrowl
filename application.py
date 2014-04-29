@@ -105,7 +105,7 @@ def registermeal():
 		cursor.execute(sql)
 		cursor.close()
 		# change to some exit page
-		return redirect(url_for('exitpage'))
+		#return redirect(url_for('exitpage'))
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
