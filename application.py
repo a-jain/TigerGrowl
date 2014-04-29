@@ -199,7 +199,7 @@ def remove():
 	meal = cursor.fetchone()
 	
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
-	guests = meal[firstGuestIndex:firstGuestIndex + 11]:
+	guests = meal[firstGuestIndex:firstGuestIndex + 11]
 	
 	# search guests for uid
 	guest_X = 0
