@@ -332,7 +332,11 @@ def inviters(mealid=None):
 	print "check this kevin"
 	# print request.data
 	print request.form['friend1']
-	print request.form.itervalues()
+	# print request.form.itervalues()
+
+	for i in request.form.itervalues():
+		print i
+		
 	print "wtf"
 
 	return redirect(url_for('feed'))
