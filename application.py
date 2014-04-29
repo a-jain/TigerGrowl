@@ -221,18 +221,19 @@ def mymeals(uid=None, message=None):
 
 @application.route('/remove/<mealid>/<uid>')
 def remove():
+	print("got to here1")
 	if not uid or not mealid:
 		return redirect(url_for('home'))
-		
+	print("got to here 2")
 	# get the guest table for the given uid
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
-	
+	print("got to here 3")
 	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
 	guests = meal[firstGuestIndex:firstGuestIndex + 11]
-	
+	print("got to here 4")
 	# search guests for uid
 	guest_X = 0
 	for guest in guests:
@@ -243,7 +244,7 @@ def remove():
 		guest_X += 1
 
 	user_index = guest_x
-	
+	print("got to here 5")
 	# search guests for final non-null array index
 	guest_Y = 0
 	for guest in guests:
@@ -252,7 +253,7 @@ def remove():
 		if (not guest):
 			break
 		guest_Y += 1
-
+	print("got to here 6")
 	last_full_index = guest_Y - 1
 	last_full = guests[last_full_index]
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem
@@ -264,13 +265,13 @@ def remove():
 	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
 	cursor.execute(sql)
-	
+	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
 	cursor.execute(sql)
-
+	print("got to here 8")
 	cursor.close()
-	print("got to here1")
+	print("got to here9")
 	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
