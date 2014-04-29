@@ -56,18 +56,21 @@ def feed(errorFlag=None):
 	#What if page number gives an offset that is too large?
 	cursor.execute("SELECT * FROM ebdb.meal_table")
 	queryResults = cursor.fetchall()
-	cursor.close()
 	mealList = json.dumps(queryResults)
 
+	mealuids = []
+	for meal in queryResults:
+		mealuids.append(meal[15])
+
 	queryresultList = []
-	for i in range(0, len(mealList)):
-		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(uid))
+	for i in range(0, len(mealuids)):
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
 
 
 	hostList = json.dumps(queryresultList)
-
+	cursor.close()
 	return render_template('feed.html', mealList=mealList, hostList=hostList, errorFlag=errorFlag)
 
 @application.route('/exitpage')
@@ -287,5 +290,5 @@ def test_message(message):
          {'data': message['data']})
 
 if __name__ == '__main__':
-	application.run()
+	application.run(debug=True)
 	socketio.run(application)
