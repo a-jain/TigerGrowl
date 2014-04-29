@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>TigerGrowl</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap and other CSS -->
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../static/css/bootstrap-theme.css" rel="stylesheet" media="screen">
+        <link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+        <link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+
+        <link rel="shortcut icon" href="../static/img/favicon.ico" />
+        <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../static/js/jquery-1.11.0.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../static/js/bootstrap.min.js"></script>
+        <script src="../static/js/nivo-lightbox.min.js"></script>
+
+    </head>
+    <body style="background-image: url('../static/img/formback.jpg');">
+        <section id="about" style="z-index: 30;">
+            <div class="container">
+                <style>
+                    h2, h4 {
+                        font-family:'Raleway';
+                        text-align: center;
+                        color:white;
+                        padding:7px;
+                    }
+
+                    img {
+                        height:200px;
+                        width:200px;
+                    }
+
+                    .pulse_hover:hover {
+                        -webkit-animation: pulsate 1s ease-out;
+                    }
+
+                    @-webkit-keyframes pulsate {
+                        0% { 
+                            -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.2);
+
+                        }
+                        50% { 
+                            -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.9); 
+                            width:225px; 
+                            height:225px;
+                        }
+                        100% {
+                            -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.2);
+                            width:200px;
+                            height:200px; 
+                        }
+                    }
+                </style>
+                
+                <div class="row animated fadeInDown" id="about_intro">
+                    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" style="height:135px;">
+                        
+                        <h1 style="font-weight:bolder;color:white;font-family:'Patrick Hand SC',Arial;text-align:center;">What is TigerGrowl?</h1>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                
+
+                <h4>TigerGrowl makes setting up meals on the fly even easier through the use of indirect invitations. Broadcast to your Facebook friends on campus when and where you are getting a meal, or look through your Feed to see when others are eating.</h4>
+
+                <div class="row">
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 animated fadeInDown" id="service_1">
+                        <div style="height: 200px;text-align:center;">
+                            <img class="pulse_hover" src="../static/img/fork.png" height="150px">
+                        </div>
+                        <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#compass"></use></svg>-->
+                        <h2 style="font-weight: bolder; color: white;">Join</h2>
+                        <h4 style="color: white;">See when and where your friends are having meals around campus.</h4>
+                    </div>
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 animated fadeInDown" id="service_2">
+                        <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#map"></use></svg>-->
+                        <div style="height: 200px;text-align:center;">
+                            <img class="pulse_hover" src="../static/img/dish.png" height="150px">
+                        </div>
+                        <h2 style="font-weight: bolder; color: white;">Host</h2>
+                        <h4 style="color: white;">Set up your own meals for all your friends to see and join.</h4>
+                    </div>
+                    
+                    <div class="col-sm-4 col-md-4 col-lg-4 animated fadeInDown" id="service_3">
+                        <!--<svg viewBox="0 0 32 32" class="services_icon"><use xlink:href="#calendar"></use></svg>-->
+                        <div style="height: 200px;text-align:center;">
+                            <img class="pulse_hover" src="../static/img/knife.png" height="150px">
+                        </div>
+                        <h2 style="font-weight: bolder; color: white;">Connect</h2>
+                        <h4 style="color: white;">Invite friends both old and new to meals you host and catch up over a meal.</h4>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </section>
+    </body>
+</html>
