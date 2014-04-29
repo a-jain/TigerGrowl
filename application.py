@@ -102,24 +102,23 @@ def registeruser():
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
-	print "got to here 0"
 	
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
-		print("got to here 1")
+		
 		receivedDate = str(form.date.data).split('-')
 		newDate = receivedDate[1] + '/' + receivedDate[2]
-		print("got to here1.5")
+		
 		receivedTime = str(form.time.data)[:-3]
-		print("got to here2")
+		
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
 		cursor.execute(sql)
-		print("got to here 3")
+		
+		"""
 		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (%d, %d);" % (int(cursor.lastrowid), int(form.uid.data))
-		cursor.execute(sql)
+		cursor.execute(sql)"""
 		cursor.close()
-		print("got to here 4")
 		# change to some exit page
 		return redirect(url_for('exitpage'))
 	return render_template('registermeal.html', form=form)
