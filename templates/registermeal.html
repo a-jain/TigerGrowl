@@ -20,7 +20,6 @@
 		<script src="../static/js/jquery-1.11.0.min.js"></script>
 		<script>
 			function bigrefresh(){
-			    window.onunload = refreshParent;
 			    $(window).on('beforeunload', function() {
 					return 'Success! Your meal is being hosted!';
 				});
