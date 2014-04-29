@@ -3,6 +3,7 @@
 <head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
+	<title>Invite Friends</title>
 
 	<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
@@ -88,6 +89,7 @@
 													friendItem.innerHTML = '<input type="checkbox" name="friends" value="' + queryResult[i]["id"] + '" />' + queryResult[i]["name"];
 													mfsForm.appendChild(friendItem);
 												}
+												container.appendChild(mfsForm);
 
 												 var sendButton = document.createElement('input');
 										     sendButton.type = 'button';
@@ -101,11 +103,11 @@
 										}
 									}
 									);
-FB.login(function(response) {
-	if (response.authResponse) {
-		access_token =   FB.getAuthResponse()['accessToken'];
-	}
-});
+// FB.login(function(response) {
+// 	if (response.authResponse) {
+// 		access_token =   FB.getAuthResponse()['accessToken'];
+// 	}
+// });
 
 });
 };
