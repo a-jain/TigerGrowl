@@ -270,7 +270,7 @@ def remove():
 	cursor.execute(sql)
 
 	cursor.close()
-	
+	print("got to here1")
 	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
