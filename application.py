@@ -115,7 +115,7 @@ def registermeal():
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
 		cursor.execute(sql)
 		print("got to here 3")
-		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', %d);" % (cursor.lastrowid, int(form.uid.data))
+		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (%d, %d);" % (cursor.lastrowid, int(form.uid.data))
 		cursor.execute(sql)
 		cursor.close()
 		print("got to here 4")
