@@ -94,8 +94,6 @@
 
 				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
 				var hostList = jQuery.parseJSON( {{hostList|tojson|safe}} );
-				console.log(obj);
-				console.log(hostList);
 
 				var error = "{{ errorFlag }}";
 
@@ -125,15 +123,9 @@
 
 				// Now place the text inside the divs
 				$(document).ready(function() {
-					$(".feed-row .name-identifier").each(function(j) {
-				    	if (fbNames[j] !== undefined) { 
-				    		fbNum = obj[i++][15];
-							fbNum = fbNum.toString();
-							FB.api(fbNum, function(response) {
-								console.log(response.name);
-							});
-							$(this).text(fbNames[j] + "'s Meal");
-
+					$(".feed-row .name-identifier").each(function(i) {
+				    	if (hostList[i] !== undefined) { 
+							$(this).text(hostList[i][1] + hostList[i++][2] + "'s Meal");
 				        }
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
