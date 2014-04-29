@@ -208,6 +208,7 @@ def mymeals(uid=None, message=None):
 		queryresultList.append(cursor.fetchone())
 
 	hostnameList = json.dumps(queryresultList)
+	print hostnameList
 	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
