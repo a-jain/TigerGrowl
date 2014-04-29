@@ -20,10 +20,8 @@
 		<script src="../static/js/jquery-1.11.0.min.js"></script>
 		<script>
 			function bigrefresh(){
-			    $(window).on('beforeunload', function() {
-					return 'Success! Your meal is being hosted!';
-				});
-				top.location.href = document.location.href;
+				alert('Success! Your meal is being hosted!');
+				top.location.href = "http://www.tigergrowl.info/feed";
 			}
 
 		</script>
