@@ -132,7 +132,7 @@
 							fbNum = fbNum.toString();
 							FB.api(fbNum, function(response) {
 								console.log(response.name);
-								fbHost=response.name;
+								var fbHost=response.name;
 							});
 							$(this).text(fbHost + "'s Meal");
 				        }
