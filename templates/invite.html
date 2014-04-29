@@ -5,24 +5,6 @@
 	<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 	<title>Invite Friends</title>
 
-	<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
-
-	<script>
-		function filter(a, b)
-		{
-			Array.prototype.diff = function(a) {
-				return this.filter(function(i) {return a.indexOf(i) < 0;});
-			};
-			return a.diff(b);
-		}
-		$(document).bind('fbInit',function() {
-			console.log(friendlist);
-			console.log(friendsUsingTG);
-			sumset = filter(friendlist, friendsUsingTG);
-			console.log(sumset);
-			$(document).trigger('sumsetta');                    
-		});
-	</script>
 </head>
 
 <body>
@@ -105,12 +87,6 @@
 											console.log(response);
 										}
 									});
-// FB.login(function(response) {
-// 	if (response.authResponse) {
-// 		access_token =   FB.getAuthResponse()['accessToken'];
-// 	}
-// });
-
 });
 };
 (function(d){
@@ -123,28 +99,6 @@
 
 </script>   
 
-
-
-<script type="text/javascript">
-	$(document).bind("sumsetta", function() {
-		console.log("Sumset:")
-		console.log(sumset);
-		$(".bt-fs-dialog").fSelector({
-			excludeIds: sumset,
-			facebookInvite: false,
-			closeOnSubmit: true,
-			onSubmit: function(response){
-				$.post("/inviter", 
-				{
-					"mealid": "{{mealid}}",
-					"names": JSON.stringify(response)
-				});
-				console.log(response);
-				alert(response);
-			}
-		});
-	});
-</script>
 </body>
 
 </html>
