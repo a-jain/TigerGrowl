@@ -219,8 +219,10 @@ def mymeals(uid=None, message=None):
 	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
+@application.route('/remove')
+@application.route('/remove/<mealid>')
 @application.route('/remove/<mealid>/<uid>')
-def remove(mealid = None, uid = None):
+def remove(mealid=None, uid=None):
 	print("got to here1")
 	if not uid or not mealid:
 		return redirect(url_for('home'))
