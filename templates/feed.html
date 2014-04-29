@@ -131,8 +131,10 @@
 				    		fbNum = obj[i++][15];
 							fbNum = fbNum.toString();
 							FB.api(fbNum, function(response) {
-								$(this).text(response.name + "'s Meal");
+								console.log(response.name);
+								fbHost=response.name;
 							});
+							$(this).text(fbHost + "'s Meal");
 				        }
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
