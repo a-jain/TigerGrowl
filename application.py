@@ -102,6 +102,7 @@ def registeruser():
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
+	print "got to here 0"
 	
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
