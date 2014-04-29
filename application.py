@@ -206,6 +206,7 @@ def mymeals(uid=None, message=None):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
+		print queryresultList
 
 	hostnameList = json.dumps(queryresultList)
 	print hostnameList
