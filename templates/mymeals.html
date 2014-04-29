@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>TigerGrowl</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<title>TigerGrowl</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>		
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>		
 
-		{% if message != "success" %}
-			<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
-		    <link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
-		    <link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
-			<link rel="shortcut icon" href="../static/img/favicon.ico" />
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<script src="../static/js/jquery-1.11.0.min.js"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script src="../static/js/bootstrap.min.js"></script>
-			<script src="../static/js/fb.js"></script>
-		    <script src="../static/js/nivo-lightbox.min.js"></script>
-		{% else %}
-			<link href="../../static/css/customstyle.css" rel="stylesheet" media="screen">
-		    <link href="../../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
-		    <link href="../../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
-			<link rel="shortcut icon" href="../../static/img/favicon.ico" />
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<script src="../../static/js/jquery-1.11.0.min.js"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script src="../../static/js/bootstrap.min.js"></script>
-			<script src="../../static/js/fb.js"></script>
-		    <script src="../../static/js/nivo-lightbox.min.js"></script>
-		{% endif %}
-			
+	{% if message != "success" %}
+	<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
+	<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	<link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+	<link rel="shortcut icon" href="../static/img/favicon.ico" />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../static/js/jquery-1.11.0.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/fb.js"></script>
+	<script src="../static/js/nivo-lightbox.min.js"></script>
+	{% else %}
+	<link href="../../static/css/customstyle.css" rel="stylesheet" media="screen">
+	<link href="../../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	<link href="../../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+	<link rel="shortcut icon" href="../../static/img/favicon.ico" />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../../static/js/jquery-1.11.0.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../../static/js/bootstrap.min.js"></script>
+	<script src="../../static/js/fb.js"></script>
+	<script src="../../static/js/nivo-lightbox.min.js"></script>
+	{% endif %}
+	
 
-		{% if message != "success" %}
-			<script>
-			function openpopup2() {
-				window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-				return false;
-			}
-			</script>
-		{% else %}
-			<script>
-			function openpopup2() {
-				window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-				return false;
-			}
-			</script>
-		{% endif %}
+	{% if message != "success" %}
+	<script>
+		function openpopup2() {
+			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+			return false;
+		}
+	</script>
+	{% else %}
+	<script>
+		function openpopup2() {
+			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+			return false;
+		}
+	</script>
+	{% endif %}
 
 
-		<script>
+	<script>
 		$(document).ready(function () {
 			$('#HostButton').nivoLightbox({
 	            effect: 'fall'                       // The effect to use when showing the lightbox
 	        });
-	        $('#helpLink').nivoLightbox({
+			$('#helpLink').nivoLightbox({
 	            effect: 'fall'                       // The effect to use when showing the lightbox
 	        });
 		});
-		</script>
+	</script>
 
-	</head>
-	<body>
+</head>
+<body>
 
 	{% if message != "success" %}
-		<style>
+	<style>
 		body {background-image:url('../static/img/arch.jpg');}
-		</style>
+	</style>
 	{% else %}
-		<style>
+	<style>
 		body {background-image:url('../../static/img/arch.jpg');}
-		</style>
+	</style>
 	{% endif %}
 
 	<style>
-	.navbar-fixed-top .help img {
+		.navbar-fixed-top .help img {
 			height:50px;
 			width: 50px;
 			color:white;
 			margin-left:-15px;
 			margin-right:-15px;
 			padding:0px;
-	}
+		}
 	</style>
 
 
-		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
+	<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Feed</button></a>
+		<a id="homelink" href="/feed"><button type="button" class="btn btn-default navbar-btn active" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Feed</button></a>
 
-				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
+		<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">
 
-				<a href="/welcome" id="helpLink">
-					<div class="help" style="float:right;color:white;margin-right:15px;">
-						<img src="../static/img/fork-white.png">
-						<img src="../static/img/dish-white.png">
-						<img src="../static/img/knife-white.png">
-						Help 
-					</div>
-				</a>
-			<!-- /.navbar-collapse -->
-		</nav>
+		<a href="/welcome" id="helpLink">
+			<div class="help" style="float:right;color:white;margin-right:15px;">
+				<img src="../static/img/fork-white.png">
+				<img src="../static/img/dish-white.png">
+				<img src="../static/img/knife-white.png">
+				Help 
+			</div>
+		</a>
+		<!-- /.navbar-collapse -->
+	</nav>
 
-				<div class="container-fluid">
-					<div class="jumbotron">
-							<!-- <a onclick="openpopup()"> -->
-								<button type="button" id="HostButton" href="/registermeal" class="btn btn-default btn-lg">
-									Host a Meal
-								</button>
-							<!-- </a> -->
-					</div>
-				</div>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<!-- <a onclick="openpopup()"> -->
+			<button type="button" id="HostButton" href="/registermeal" class="btn btn-default btn-lg">
+				Host a Meal
+			</button>
+			<!-- </a> -->
+		</div>
+	</div>
 
-				<!-- Main feed container -->
-				<div class="feed-column host-column">
-				<script> 
-					mealids = new Array();
-					hosts = new Array();
-				</script>
-				<h1>Meals You are Hosting</h1>
+	<!-- Main feed container -->
+	<div class="feed-column host-column">
+		<script> 
+			mealids = new Array();
+			hosts = new Array();
+		</script>
+		<h1>Meals You are Hosting</h1>
 
 				<!--
 				<div class="row host-row">
@@ -137,27 +137,27 @@
 						</script>
 						<div class="attendees">Who's Coming?</div> 
 					</div>
-					-->
-				</div>
+				-->
+			</div>
+			
+
+			<div class="feed-column invite-column">
+
+				<h1>Invites</h1>
+
+					<!--
+					<div class="row feed-row">
+						<div class="name-identifier"> firstname lastname's Meal </div>
+						<div class="setting-identifier"> place date time </div>
+						<div class="attendees">Who's Coming?</div>
+					</div>
+				-->
 				
+			</div>
 
-				<div class="feed-column invite-column">
+			<div class="feed-column guest-column">
 
-					<h1>Invites</h1>
-
-					<!--
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-					-->
-					
-				</div>
-
-				<div class="feed-column guest-column">
-
-					<h1>Meals with You as Guest</h1>
+				<h1>Meals with You as Guest</h1>
 
 					<!--
 					<div class="row feed-row">
@@ -165,40 +165,40 @@
 						<div class="setting-identifier"> place date time </div>
 						<div class="attendees">Who's Coming?</div>
 					</div>
-					-->
-					
-					</div>
-				</div>
+				-->
+				
+			</div>
+		</div>
 
-				</div>
+	</div>
 
-				<script>
+	<script>
 
-				var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
-				var objInvite = [];
-				var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
+		var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
+		var objInvite = [];
+		var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 
-				console.log("objInvite");
-				console.log(objInvite);
-				console.log("objGuest:");
-				console.log(objGuest);
+		console.log("objInvite");
+		console.log(objInvite);
+		console.log("objGuest:");
+		console.log(objGuest);
 
 
-				var hostrowDiv = "<div class='row host-row'> \
-						<div class='setting-identifier'> </div> \
-							<a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
-								Invite Friends \
-							</button></a> \
-						<div class='attendees'>Who's Coming?</div> \
-					</div>";
+		var hostrowDiv = "<div class='row host-row'> \
+		<div class='setting-identifier'> </div> \
+		<a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
+			Invite Friends \
+		</button></a> \
+		<div class='attendees'>Who's Coming?</div> \
+	</div>";
 
-				var inviterowDiv = "<div class='row feed-row'> \
-						<div class='name-identifier'> </div> \
-						<div class='setting-identifier'> </div> \
-						<div class='attendees'>Who's Coming?</div> \
-					</div>";
+	var inviterowDiv = "<div class='row feed-row'> \
+	<div class='name-identifier'> </div> \
+	<div class='setting-identifier'> </div> \
+	<div class='attendees'>Who's Coming?</div> \
+</div>";
 
-				var guestrowDiv = inviterowDiv;
+var guestrowDiv = inviterowDiv;
 
 				// self populate the Host divs
 				if (objHost == 0) {
@@ -207,7 +207,7 @@
 					</div>");
 				}
 				$.each(objHost, function() {
-				    $(".host-column").append(hostrowDiv);
+					$(".host-column").append(hostrowDiv);
 				});
 
 				// self populate the Invite divs
@@ -218,7 +218,7 @@
 				}
 				else {
 					$.each(objInvite, function() {
-				    	$(".invite-column").append(inviterowDiv);
+						$(".invite-column").append(inviterowDiv);
 					});
 				}
 
@@ -230,35 +230,35 @@
 				}
 				else {
 					$.each(objGuest, function() {
-				    	$(".guest-column").append(guestrowDiv);
+						$(".guest-column").append(guestrowDiv);
 					});
 				}
 
 				// Hosted meal: place, date, time				
 				$(document).ready(function() {
-				    $(".host-row .setting-identifier").each(function(i) {
-				    	if (objHost[i] !== undefined) { 
-				        	$(this).text(objHost[i][2] + ", " + objHost[i][3] + ", " + objHost[i++][4]);
-				        }
-				    });
+					$(".host-row .setting-identifier").each(function(i) {
+						if (objHost[i] !== undefined) { 
+							$(this).text(objHost[i][2] + ", " + objHost[i][3] + ", " + objHost[i++][4]);
+						}
+					});
 				});
 
 				// Guest meals: who?
 				$(document).ready(function() {
-				    $(".guest-column .feed-row .name-identifier").each(function(i) {
-				    	if (objGuest[i] !== undefined ) {
-				        	$(this).text(objGuest[i++][1] + "'s Meal");
-				        }
-				    });
+					$(".guest-column .feed-row .name-identifier").each(function(i) {
+						if (objGuest[i] !== undefined ) {
+							$(this).text(objGuest[i++][1] + "'s Meal");
+						}
+					});
 				});
 
 				// Guest meals: setting
 				$(document).ready(function() {
-				    $(".guest-column .feed-row .setting-identifier").each(function(i) {
-				    	if (objGuest[i] !== undefined) {
-				       		$(this).text(objGuest[i][2] + ", " + objGuest[i][3] + ", " + objGuest[i++][4]);
-				       	}
-				    });
+					$(".guest-column .feed-row .setting-identifier").each(function(i) {
+						if (objGuest[i] !== undefined) {
+							$(this).text(objGuest[i][2] + ", " + objGuest[i][3] + ", " + objGuest[i++][4]);
+						}
+					});
 				});
 
 				/* fb photo*/
@@ -266,80 +266,80 @@
 				$(document).bind('fbInitPicLoaded',function(){
 						$("#FacebookPhoto").prop("src", window.picurl);
 					});
-				*/
+*/
 
-				</script>
-				
-				<script>
-				console.log(mealids[0])
-				console.log(hosts[0])
-				/* This is about getting the invite button to work. */
-					$(document).bind('fbInit',function(){
-    				console.log('fbInit complete; FB Object is Available');
+</script>
+
+<script>
+	console.log(mealids[0])
+	console.log(hosts[0])
+	/* This is about getting the invite button to work. */
+	$(document).bind('fbInit',function(){
+		console.log('fbInit complete; FB Object is Available');
 					//"invite/" + mealids[0] + "/" + hosts[0]);
-    				$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
-    				$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
-    				$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
-    				$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
-    				$("#homelink").prop("href", "feed/");
-    				
-					});
-					$(document).bind('fbInitPicLoaded',function(){
-						$("#FacebookPhoto").prop("src", window.picurl);
-					});
-				</script>
-				<!-- Populate the rows of -->
-				<footer style="clear:both;">
-					<div class="container">
-					<div class="row">
-						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
-						<div class="col-md-4">
-							<ul class="nav nav-pills">
-								
-							</ul>
-						</div>
+	$("#button2").prop("href", "joinmeal/" + obj[1][0] + "/" + window.uid);
+	$("#button3").prop("href", "joinmeal/" + obj[2][0] + "/" + window.uid);
+	$("#button4").prop("href", "joinmeal/" + obj[3][0] + "/" + window.uid);
+	$("#button5").prop("href", "joinmeal/" + obj[4][0] + "/" + window.uid);
+	$("#homelink").prop("href", "feed/");
+	
+});
+	$(document).bind('fbInitPicLoaded',function(){
+		$("#FacebookPhoto").prop("src", window.picurl);
+	});
+</script>
+<!-- Populate the rows of -->
+<footer style="clear:both;">
+	<div class="container">
+		<div class="row">
+			<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
+			<div class="col-md-4">
+				<ul class="nav nav-pills">
+					
+				</ul>
+			</div>
 
-						</div>
-					</div>
-					</div>
-				</footer>
-			<div id="fb-root"></div>
+		</div>
+	</div>
+</div>
+</footer>
+<div id="fb-root"></div>
 
-			<script type="text/javascript">
-			window.fbAsyncInit = function() {
-						FB.init({
-							appId      : '1423477091234772',
+<script type="text/javascript">
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '1423477091234772',
 							status     : true, // check login status
 							cookie     : true, // enable cookies to allow the server to access the session
 							xfbml      : true  // parse XFBML
 						});
-						FB.getLoginStatus(function(response) {
-						  if (response.status === 'connected') {
-						    uid = response.authResponse.userID;
-						    $(document).trigger('fbInit');
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				uid = response.authResponse.userID;
+				$(document).trigger('fbInit');
 
-						    FB.api('me?fields=picture.height(80)', function(response) {
-				          if (!response || response.error) {
-				            console.log('Error occured');
-				          } else {
-				            picurl = response["picture"]["data"]["url"];
-				            console.log(picurl)
-				            $(document).trigger('fbInitPicLoaded');
-				          }
-				        });
-						  }
-						  else {
-						  } 
-						 });
+				FB.api('me?fields=picture.height(80)', function(response) {
+					if (!response || response.error) {
+						console.log('Error occured');
+					} else {
+						picurl = response["picture"]["data"]["url"];
+						console.log(picurl)
+						$(document).trigger('fbInitPicLoaded');
 					}
-			</script>
+				});
+			}
+			else {
+			} 
+		});
+	}
+</script>
 
-			<script type="text/javascript">			
-		
-			var message = "{{ message }}";
-			if (message == "success") {
-				alert("You have successfully joined the meal!");
-			}		
-		</script>
-	</body>
+<script type="text/javascript">			
+	
+	var message = "{{ message }}";
+	if (message == "success") {
+		alert("You have successfully joined the meal!");
+	}		
+</script>
+</body>
 </html>
