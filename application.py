@@ -187,10 +187,9 @@ def mymeals(uid=None, message=None):
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
 
-
 	yourmeals = []
 	mealuids = []
-	
+
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
@@ -199,22 +198,15 @@ def mymeals(uid=None, message=None):
 		for each in queryResults:
 			yourmeals.append(each)
 			mealuids.append(each[15])
-			print each[15]
 	yourmeals = json.dumps(yourmeals)
-
-	print "mealuids: "
-	print mealuids
 
 	queryresultList = []
 	for i in range(0, len(mealuids)):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
-		print "queryresultList " 
-		print queryresultList
 
 	hostnameList = json.dumps(queryresultList)
-	print hostnameList
 	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
