@@ -297,7 +297,7 @@
     				console.log('fbInit complete; FB Object is Available');
 
 				    $(".invitebutton").each(function(i) {
-				    	if (obj[i] !== undefined) { 
+				    	if (objGuest[i] !== undefined) { 
 				        	$(this).prop("href", "invite/" + objGuest[i++][0]);
 				        }
 				    });
