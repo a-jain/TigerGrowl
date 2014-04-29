@@ -119,8 +119,9 @@
 				
 				function returnName(fbNum) {
 					FB.api(fbNum, function(response) {
-						console.log(response.name);
-						return response.name;
+						// console.log(response.name);
+						var result = response.name
+						return result;
 					});
 				}
 
