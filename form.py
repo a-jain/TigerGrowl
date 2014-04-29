@@ -4,7 +4,7 @@ from wtforms.fields import HiddenField, DateField, RadioField, SelectField
 from wtforms_components import TimeField
 
 class MealForm(Form):
-    place = SelectField(u'Choose a place', choices=[('forbes', 'Forbes'), ('mathey', 'Mathey'), ('rocky', 'Rocky'), ('whitman', 'Whitman'), ('wilcox', 'Wilcox'), ('wu', 'Wu'), ('cannon', 'Cannon'), ('capandgown', 'Cap and Gown'), ('charter', 'Charter'), ('cloister', 'Cloister'), ('colonial', 'Colonial'), ('cottage', 'Cottage'), ('ivy', 'Ivy'), ('quad', 'Quad'), ('terrace', 'Terrace'), ('tigerinn', 'Tiger Inn'), ('tower', 'Tower')])
+    place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger inn', 'Tiger Inn'), ('Tower', 'Tower')])
     time = TimeField('Time', [Required()])
     date = DateField('Date (mm/dd)', format='%m/%d', validators=[Required()])
     priv = RadioField('Friends-only or Public', choices=[('pvt', 'Private'), ('pub', 'Public')])
