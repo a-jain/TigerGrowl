@@ -91,7 +91,7 @@ def registeruser():
 def registermeal():
 	form = MealForm(request.form)
 	
-	if ((request.method == 'POST') and (form.validate()):
+	if ((request.method == 'POST') and (form.validate())):
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		receivedDate = str(form.date.data).split('-')
