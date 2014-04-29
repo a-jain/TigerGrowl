@@ -332,11 +332,16 @@ def inviters(mealid=None):
 
 	print "check this kevin"
 	# print request.data
-	print request.form['friend1']
+	# print request.form['friend1']
 	# print request.form.itervalues()
 
 	for i in request.form.itervalues():
+		cursor = db.cursor()
+		sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+		cursor.execute(sql)
 		print i
+
+	cursor.close()
 		
 	print "wtf"
 
