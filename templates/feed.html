@@ -125,7 +125,7 @@
 				$(document).ready(function() {
 					$(".feed-row .name-identifier").each(function(i) {
 				    	if (hostList[i] !== undefined) { 
-							$(this).text(hostList[i][1] + hostList[i++][2] + "'s Meal");
+							$(this).text(hostList[i][1] + ' ' + hostList[i++][2] + "'s Meal");
 				        }
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
