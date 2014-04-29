@@ -298,7 +298,7 @@
 
 				    $(".invitebutton").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).prop("href", "invite/" + objGuest[i][0]);
+				        	$(this).prop("href", "invite/" + objGuest[i++][0]);
 				        }
 				    });
 					
