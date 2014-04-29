@@ -29,7 +29,7 @@
 
 		<script>
 		$(document).ready(function () {
-			$('#HostButton').nivoLightbox({
+			$('#hostbuttonlink').nivoLightbox({
 	            effect: 'fall'                       // The effect to use when showing the lightbox
 	        });
 	        $('#helpLink').nivoLightbox({
@@ -76,11 +76,11 @@
 		</nav>
 				<div class="container-fluid">
 					<div class="jumbotron">
-							<!-- <a onclick="openpopup()"> -->
-								<button type="button" id="HostButton" href="/registermeal" class="btn btn-default btn-lg">
-									Host a Meal
-								</button>
-							<!-- </a> -->
+						<a id="hostbuttonlink" href="#">
+							<button type="button" id="HostButton" class="btn btn-default btn-lg">
+								Host a Meal
+							</button>
+						</a>
 					</div>
 				</div>
 				
@@ -149,7 +149,7 @@
 
 
     				$("#mymealslink").prop("href", "mymeals/" + window.uid);
-    				$("#HostButton").prop("href", "registermeal/" + window.uid);
+    				$("#hostbuttonlink").prop("href", "registermeal/" + window.uid);
 
     				
 					});
