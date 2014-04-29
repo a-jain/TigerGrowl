@@ -129,7 +129,7 @@
 					$(".feed-row .name-identifier").each(function(i) {
 				    	if (obj[i] !== undefined) { 
 				    		fbNum = obj[i++][15];
-							fbNum = fbHost.toString();
+							fbNum = fbNum.toString();
 							FB.api(fbNum, function(response) {
 								$(this).text(response.name + "'s Meal");
 							});
