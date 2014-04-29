@@ -201,12 +201,14 @@ def mymeals(uid=None, message=None):
 			print each[15]
 	yourmeals = json.dumps(yourmeals)
 
+	print "mealuids: " + mealuids
+
 	queryresultList = []
 	for i in range(0, len(mealuids)):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
-		print queryresultList
+		print "queryresultList " + queryresultList
 
 	hostnameList = json.dumps(queryresultList)
 	print hostnameList
