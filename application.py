@@ -244,7 +244,8 @@ def remove(mealid=None, uid=None):
 		if (guest == uid):
 			break
 		guest_X += 1
-
+	print(guest_X)
+	print(guest)
 	user_index = guest_X
 	print("got to here 5")
 	# search guests for final non-null array index
