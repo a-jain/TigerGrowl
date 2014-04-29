@@ -103,8 +103,7 @@ def registermeal(uid=None):
 		print sql
 		cursor.execute(sql)
 
-		#sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, int(form.uid.data))
-		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (10, int(form.uid.data))
+		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', \'%s\');" % (cursor.lastrowid, int(form.uid.data))
 		cursor.execute(sql)
 		cursor.close()
 		# change to some exit page
