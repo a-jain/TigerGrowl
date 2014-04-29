@@ -237,7 +237,7 @@ def remove(mealid=None, uid=None):
 	guests = meal[firstGuestIndex:firstGuestIndex + 11]
 	print("got to here 4")
 	# search guests for uid
-	guest_X = 0
+	guest_X = 1
 	for guest in guests:
 	
 		# check if the guest matches the selected user id
