@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
-		
-		<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 
-		<script>
-			function filter(a, b)
-			{
-			  Array.prototype.diff = function(a) {
-				    return this.filter(function(i) {return a.indexOf(i) < 0;});
-				};
-				return a.diff(b);
-			}
-			$(document).bind('fbInit',function() {
-				console.log(friendlist);
-				console.log(friendsUsingTG);
-				sumset = filter(friendlist, friendsUsingTG);
-				console.log(sumset);
-				$(document).trigger('sumsetta');    				
-			});
-		</script>
-	</head>
+	<script type="text/javascript" src="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
-	<body>
+	<script>
+		function filter(a, b)
+		{
+			Array.prototype.diff = function(a) {
+				return this.filter(function(i) {return a.indexOf(i) < 0;});
+			};
+			return a.diff(b);
+		}
+		$(document).bind('fbInit',function() {
+			console.log(friendlist);
+			console.log(friendsUsingTG);
+			sumset = filter(friendlist, friendsUsingTG);
+			console.log(sumset);
+			$(document).trigger('sumsetta');                    
+		});
+	</script>
+</head>
+
+<body>
 	<a href="javascript:{}" class="bt-fs-dialog">Click here</a>
 	<p id="newtest"></p>
 	<p id="TGids"></p>
@@ -33,98 +33,113 @@
 	<p id="intersects">Intersects </p>
 
 	<div id="fb-root"></div>
-		<script>
+	<script>
 		friendlist = [];
 		friendsUsingTG = [];
 
 		window.fbAsyncInit = function() {
-		FB.init({
-		  appId      : '1423477091234772',
-		  status     : true, // check login status
-		  cookie     : true, // enable cookies to allow the server to access the session
-		  xfbml      : true  // parse XFBML
+			FB.init({
+				appId      : '1423477091234772',
+					status     : true, // check login status
+					cookie     : true, // enable cookies to allow the server to access the session
+					xfbml      : true  // parse XFBML
+				});
+				// see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
+
+				FB.Event.subscribe('auth.authResponseChange', function(response) {
+					console.log(response);
+					FB.api(
+						"/me?fields=friends.fields(name)",
+						function (response) {
+							if (response && !response.error) {
+
+								list = response["friends"]["data"];
+								for (var i=0; i < list.length; i++)
+								{
+									friendlist.push(parseInt(list[i]["id"]));
+								}
+								$(document).trigger('fbInit');
+							}
+						}
+						);
+					FB.api(
+									// "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
+									"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
+									function (response) {
+										if (response && !response.error) {
+											console.log(response);
+											var queryResult = response.data[0].fql_result_set;
+
+											console.log(queryResult);
+
+											var container = document.getElementById('mfs');
+										   var mfsForm = document.createElement('form');
+										   mfsForm.id = 'mfsForm';
+
+											$(document).ready(function() {
+												for (var i = 0; i < queryResult.length; i++)
+												{
+													friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
+													$("#newtest").append(queryResult[i]["name"] + '<br/>');
+													var friendItem = document.createElement('div');
+													friendItem.id = 'friend_' + queryResult[i]["id"];
+													friendItem.innerHTML = '<input type="checkbox" name="friends" value="' + queryResult[i]["id"] + '" />' + queryResult[i]["name"];
+													mfsForm.appendChild(friendItem);
+												}
+
+												 var sendButton = document.createElement('input');
+										     sendButton.type = 'button';
+										     sendButton.value = 'Send Request';
+										     sendButton.onclick = sendRequest;
+										     mfsForm.appendChild(sendButton);
+											});
+										}
+										else {
+											console.log("error");
+											console.log(response);
+										}
+									}
+									);
+FB.login(function(response) {
+	if (response.authResponse) {
+		access_token =   FB.getAuthResponse()['accessToken'];
+	}
+});
+
+});
+};
+(function(d){
+	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement('script'); js.id = id; js.async = true;
+	js.src = "https://connect.facebook.net/en_US/all.js";
+	ref.parentNode.insertBefore(js, ref);
+}(document));
+
+</script>   
+
+
+
+<script type="text/javascript">
+	$(document).bind("sumsetta", function() {
+		console.log("Sumset:")
+		console.log(sumset);
+		$(".bt-fs-dialog").fSelector({
+			excludeIds: sumset,
+			facebookInvite: false,
+			closeOnSubmit: true,
+			onSubmit: function(response){
+				$.post("/inviter", 
+				{
+					"mealid": "{{mealid}}",
+					"names": JSON.stringify(response)
+				});
+				console.log(response);
+				alert(response);
+			}
 		});
-		// see here: https://developers.facebook.com/docs/facebook-login/login-flow-for-web/
-
-		FB.Event.subscribe('auth.authResponseChange', function(response) {
-			console.log(response);
-		FB.api(
-		          "/me?fields=friends.fields(name)",
-		          function (response) {
-		            if (response && !response.error) {
-
-								  list = response["friends"]["data"];
-								  for (var i=0; i < list.length; i++)
-								  {
-									  friendlist.push(parseInt(list[i]["id"]));
-								  }
-								  $(document).trigger('fbInit');
-		            }
-		          }
-		      );
-		FB.api(
-		          // "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
-		          "/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
-		          function (response) {
-		            if (response && !response.error) {
-								  console.log(response);
-								  var queryResult = response.data[0].fql_result_set;
-
-								  console.log(queryResult);
-
-								  $(document).ready(function() {
-									  for (var i = 0; i < queryResult.length; i++)
-									  {
-										  friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
-										  $("#newtest").append(queryResult[i]["name"] + '<br/>');
-									  }
-									  
-								  });
-		            }
-		            else {
-		            	console.log("error");
-		            	console.log(response);
-		            }
-		          }
-		      );
-			FB.login(function(response) {
-				if (response.authResponse) {
-					access_token =   FB.getAuthResponse()['accessToken'];
-				}
-			});
-
-		  });
-		};
-		(function(d){
-		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		 if (d.getElementById(id)) {return;}
-		 js = d.createElement('script'); js.id = id; js.async = true;
-		 js.src = "https://connect.facebook.net/en_US/all.js";
-		 ref.parentNode.insertBefore(js, ref);
-		}(document));
-
-		</script>	
-
-		<script type="text/javascript">
-		  $(document).bind("sumsetta", function() {
-		  	console.log("Sumset:")
-		  	console.log(sumset);
-		    $(".bt-fs-dialog").fSelector({
-		    	excludeIds: sumset,
-		    	facebookInvite: false,
-		    	closeOnSubmit: true,
-		      onSubmit: function(response){
-		      	$.post("/inviter", 
-		      	{
-		      		"mealid": "{{mealid}}",
-		      		"names": JSON.stringify(response)
-		      	});
-		        console.log(response);
-		        alert(response);
-		      }
-		    });
-		  });
-		</script>
-	</body>
+	});
+</script>
+</body>
 
 </html>
