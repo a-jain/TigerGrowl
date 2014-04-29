@@ -185,14 +185,8 @@ def mymeals(uid=None, message=None):
 			yourmeals.append(each)
 	yourmeals = json.dumps(yourmeals)
 
-	query2 = "SELECT * FROM ebdb.user_table where user_id='1362325282';"
-	cursor.execute(query2)
-	query2Results = cursor.fetchall()
-	# use for first name last name
-	user = json.dumps(query2Results)
-
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals, user=user, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, myguests=yourmeals, message=message)
 
 @application.route('/remove/<mealid>/<uid>')
 def remove():

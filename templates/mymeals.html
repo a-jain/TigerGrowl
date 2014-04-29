@@ -178,7 +178,6 @@
 		var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
 		var objInvite = [];
 		var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
-		var user = jQuery.parseJSON( {{user|tojson|safe}} );
 
 		console.log("objInvite");
 		console.log(objInvite);
@@ -199,7 +198,7 @@
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming?</div> \
 		<button type='button' class='btn btn-default btn-lg' style='font-family:Arial;font-weight:100;font-size:medium;margin-left:20px;margin-top:10px;'> \
-		Leave Meal \
+		Leave the Meal \
 		</button> \
 		</div>";
 
@@ -252,7 +251,12 @@
 				$(document).ready(function() {
 					$(".guest-column .feed-row .name-identifier").each(function(i) {
 						if (objGuest[i] !== undefined ) {
-							$(this).text(user[0][1] + user[0][2] + "'s Meal");
+				    		fbNum = objGuest[i++][15];
+							fbNum = fbHost.toString();
+							FB.api(fbNum, function(response) {
+								fbHost = response.name;
+							});
+				        	$(this).text(fbHost + "'s Meal");
 						}
 					});
 				});
