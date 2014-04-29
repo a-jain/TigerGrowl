@@ -285,7 +285,7 @@
 					
 					$(".removebutton").each(function(i) {
 				    	if (objHost[i] !== undefined) { 
-				        	$(this).prop("href", "../remove/" + objHost[i++][0]);
+				        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
 				        }
 				    });
 					
