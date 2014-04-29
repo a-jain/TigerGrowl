@@ -40,6 +40,56 @@ def seeYourMeals(facebookid):
 			yourmeals.append(each)
 
 	return yourmeals
+def remove:
+	if not uid or not mealid:
+		return redirect(url_for('home'))
+		
+	# get the guest table for the given uid
+	cursor = db.cursor()
+	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
+	cursor.execute(query)
+	meal = cursor.fetchone()
+	
+	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
+	guests = meal[firstGuestIndex:firstGuestIndex + 11]:
+	
+	# search guests for uid
+	guest_X = 0
+	for guest in guests:
+	
+		# check if the guest matches the selected user id
+		if (guest == uid):
+			break
+		guest_X += 1
+
+	user_index = guest_x
+	
+	# search guests for final non-null array index
+	guest_Y = 0
+	for guest in guests:
+	
+		# check if the guest matches the selected user id
+		if (not guest):
+			break
+		guest_Y += 1
+
+	last_full_index = guest_Y - 1
+	last_full = guests[last_full_index]
+	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem
+	# we've fucked up
+	
+	guestUIDString = "guest" + str(user_index)
+	guestLastString = "guest" + str(last_full_index)
+	
+	# Now, update the uid at position user_index with uid at last_full_index.
+	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
+	cursor.execute(sql)
+	
+	# Then, update uid at position last_full_index with null.
+	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
+	cursor.execute(sql)
+
+	cursor.close()
 	
 def hostMeal(location, currentHour, currentMin, currentSec, startHour, startMin, startSec, message):
 	#get the user's facebookid, and then dinerid from users
