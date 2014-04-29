@@ -266,11 +266,11 @@ def inviters(mealid=None):
 	# print mealid
 	# print json.loads(names)
 
-	return request.form
+	# return request.form
 
-	# print request.form
+	print request.form
 
-	# return redirect(url_for('feed'))
+	return redirect(url_for('feed'))
 
 @socketio.on('notify')
 def test_message(message):
