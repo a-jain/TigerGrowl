@@ -125,12 +125,12 @@
 				$(document).ready(function() {
 					$(".feed-row .name-identifier").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).text(obj[i++][1] + "'s Meal");
+				        	$(this).text(obj[i++][16] + "'s Meal");
 				        }
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).text(obj[i][2] + ", " + obj[i][3] + ", " + obj[i++][4]);
+				        	$(this).text(obj[i][1] + ", " + obj[i][2] + ", " + obj[i++][3]);
 				        }
 				    });
 				});
