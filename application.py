@@ -300,6 +300,7 @@ def inviters(mealid=None):
 	# return request.form
 
 	print request.data
+	print request.form
 
 	return redirect(url_for('feed'))
 
