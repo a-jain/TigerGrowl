@@ -120,9 +120,9 @@
 				function returnName(fbNum) {
 					FB.api(fbNum, function(response) {
 						// console.log(response.name);
-						var result = response.name
-						return result;
+						result = response.name;
 					});
+					return result;
 				}
 
 				// for each meal object in the JSON string, create a div where it will be displayed
