@@ -48,6 +48,7 @@
 	</script>
 	{% endif %}
 
+	
 
 	<script>
 		$(document).ready(function () {
@@ -189,6 +190,11 @@
 		<a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
 			Invite Friends \
 		</button></a> \
+		
+		<a onclick='openpopup3()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
+			Leave this meal! \
+		</button></a> \
+		
 		<div class='attendees'>Who's Coming?</div> \
 	</div>";
 
@@ -242,7 +248,7 @@ var guestrowDiv = inviterowDiv;
 						}
 					});
 				});
-
+				
 				// Guest meals: who?
 				$(document).ready(function() {
 					$(".guest-column .feed-row .name-identifier").each(function(i) {
@@ -288,6 +294,18 @@ var guestrowDiv = inviterowDiv;
 		$("#FacebookPhoto").prop("src", window.picurl);
 	});
 </script>
+				<!-- This sets up the remove from meal button.-->
+				<script>
+			
+				    $(".joinbutton").each(function(i) {
+				    	if (obj[i] !== undefined) { 
+				        	$(this).prop("href", "joinmeal/" + obj[i++][0] + "/" + window.uid + window.mealid);
+				        }
+				    });
+					});
+				</script>
+				
+				
 <!-- Populate the rows of -->
 <footer style="clear:both;">
 	<div class="container">
