@@ -61,4 +61,9 @@ input {
   background:#dddddd;
   width:300px;
   border-radius:20px;
+  color:black;
+}
+
+select {
+  color:black;
 }
