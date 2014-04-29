@@ -252,12 +252,7 @@
 				$(document).ready(function() {
 					$(".guest-column .feed-row .name-identifier").each(function(i) {
 						if (objGuest[i] !== undefined ) {
-				    		fbNum = objGuest[i++][15];
-							fbNum = fbHost.toString();
-							FB.api(fbNum, function(response) {
-								fbHost = response.name;
-							});
-				        	$(this).text(fbHost + "'s Meal");
+							$(this).text(hostnameList[i][1] + ' ' + hostnameList[i++][2] + "'s Meal");
 						}
 					});
 				});
