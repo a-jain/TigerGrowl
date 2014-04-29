@@ -264,13 +264,18 @@ def remove(mealid=None, uid=None):
 	
 	guestUIDString = "guest" + str(user_index)
 	guestLastString = "guest" + str(last_full_index)
-	
+	print("guestUIDString is")
+	print(guestUIDString)
+	print("guestLastString is")
+	print(guestLastString)
+	print("last_full is")
+	print(last_full)
 	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
 	cursor.execute(sql)
 	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
-	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % ("guest8", mealid)
+	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
 	cursor.execute(sql)
 	print("got to here 8 - we've finished the removal (ostensibly)")
 
@@ -309,7 +314,7 @@ def remove(mealid=None, uid=None):
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message = "werked/twerked")
 	"""
 	
-	return redirect(url_for('mymeals', uid=uid, message="heyitwerked"))
+	return redirect(url_for('mymeals', uid=uid, message="success"))
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb
