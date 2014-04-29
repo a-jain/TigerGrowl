@@ -259,11 +259,13 @@ def invite(mealid=None):
 
 @application.route('/inviter', methods=['POST'])
 def inviters():
-	mealid = request.form['mealid']
-	names = request.form['names']
+	# mealid = request.form['mealid']
+	# names = request.form['names']
 
-	print mealid
-	print json.loads(names)
+	# print mealid
+	# print json.loads(names)
+
+	print request.form
 
 	return redirect(url_for('feed'))
 

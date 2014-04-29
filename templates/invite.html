@@ -94,8 +94,9 @@
 
 												var sendButton = document.createElement('input');
 												sendButton.type = 'button';
-												sendButton.value = 'Send Request';
-												sendButton.onclick = '/invite/{{mealid}}/asd/';
+												sendButton.value = 'Invite!';
+												sendButton.formmethod = 'POST';
+												sendButton.formaction = 'invite/{{mealid}}/asd/';
 												mfsForm.appendChild(sendButton);
 											});
 										}
