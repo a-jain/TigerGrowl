@@ -272,11 +272,10 @@ def remove(mealid=None, uid=None):
 	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
 	cursor.execute(sql)
-	print("got to here 8")
-	cursor.close()
-	print("got to here9")
+	print("got to here 8 - we've finished the removal (ostensibly)")
+
 	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
-	cursor = db.cursor()
+
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
@@ -285,7 +284,7 @@ def remove(mealid=None, uid=None):
 	yourmeals = []
 	mealuids = []
 
-	print("got to here11")
+	print("got to here9 2.0")
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
@@ -296,7 +295,7 @@ def remove(mealid=None, uid=None):
 			mealuids.append(each[15])
 	yourmeals = json.dumps(yourmeals)
 
-	print("got to here12")
+	print("got to here10")
 	queryresultList = []
 	for i in range(0, len(mealuids)):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
