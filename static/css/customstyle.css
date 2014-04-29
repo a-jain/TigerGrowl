@@ -80,6 +80,8 @@ body {
 	color: #FFFFFF;
 	text-align: center;
 	background-color: rgba(236, 237, 220, 0);
+	padding-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .jumbotron h1{
