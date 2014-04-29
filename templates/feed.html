@@ -116,13 +116,14 @@
 					";
 				}
 
-				
+				/*
 				function returnName(fbNum) {
 					FB.api(fbNum, function(response) {
 						console.log(response.name);
 						return response.name;
 					});
 				}
+				*/
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
@@ -135,8 +136,10 @@
 				    	if (obj[i] !== undefined) { 
 				    		fbNum = obj[i++][15];
 							fbNum = fbNum.toString();
-							fbHost = returnName(fbNum);
-							$(this).text(fbHost + "'s Meal");
+							FB.api(fbNum, function(response) {
+								console.log(response.name);
+								$(this).text(response.name + "'s Meal");
+							});
 				        }
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
