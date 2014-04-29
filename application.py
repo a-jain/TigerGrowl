@@ -91,7 +91,7 @@ def registeruser():
 def registermeal():
 	form = MealForm(request.form)
 	
-	if ((request.method == 'POST') and (form.validate())):
+	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		receivedDate = str(form.date.data).split('-')
@@ -100,7 +100,6 @@ def registermeal():
 		receivedTime = str(form.time.data)[:-3]
 
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
-		print sql
 		cursor.execute(sql)
 
 		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (\'%s\', %d);" % (cursor.lastrowid, int(form.uid.data))
