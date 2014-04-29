@@ -250,7 +250,7 @@ def remove():
 @application.route('/invite/<mealid>')
 def invite(mealid=None):
 	if not mealid:
-		return redirect(url_for('/home'))
+		return redirect(url_for('home'))
 	
 	# for each in guestList:
 	# 	query = "INSERT INTO ebdb.invitees (meal_id, host, guest) VALUES (\'%s\', \'%s\', \'%s\');" % (mealid, host, each)
@@ -259,7 +259,7 @@ def invite(mealid=None):
 	# return redirect(url_for('mymeals', uid=host))
 
 @application.route('/inviter/<mealid>/asd', methods=['POST'])
-def inviters():
+def inviters(mealid=None):
 	# mealid = request.form['mealid']
 	# names = request.form['names']
 
