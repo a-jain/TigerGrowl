@@ -86,7 +86,9 @@ def registeruser():
 		return render_template('registeruser.html', form=form)
 	except ValidationError:
 		return "Bad email, gotta be Princeton"
-@application.route('/registermeal/<uid>', methods=['GET', 'POST'])
+		
+@application.route('/registermeal/<uid>')
+#, methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
 	if request.method == 'POST' and form.validate():
