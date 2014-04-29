@@ -116,15 +116,16 @@
 					";
 				}
 
-				/*
-				function returnName(fbNum) {
+				// grab all of the fb names
+				fbNames = new Array(obj.length); 
+				for (i =0; i < fbNames.length; i++) {
+					fbNum = obj[i][15];
+					fbNum = fbNum.toString();
 					FB.api(fbNum, function(response) {
 						console.log(response.name);
-						return response.name;
+						fbNames[i] = response.name;
 					});
 				}
-				*/
-				var fbNames = new Array(obj.length); 
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
@@ -133,14 +134,16 @@
 
 				// Now place the text inside the divs
 				$(document).ready(function() {
-					$(".feed-row .name-identifier").each(function(i) {
-				    	if (obj[i] !== undefined) { 
+					$(".feed-row .name-identifier").each(function(j) {
+				    	if (fbNames[j] !== undefined) { 
+				    		/*
 				    		fbNum = obj[i++][15];
 							fbNum = fbNum.toString();
 							FB.api(fbNum, function(response) {
 								console.log(response.name);
 							});
-							$(this).text(response.name + "'s Meal");
+							*/
+							$(this).text(fbNames[j] + "'s Meal");
 
 				        }
 				    });
