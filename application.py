@@ -189,12 +189,13 @@ def mymeals(uid=None, message=None):
 
 
 	yourmeals = []
+	mealuids = []
+	
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
 		cursor.execute(query)
 		queryResults = cursor.fetchall()
-		mealuids = []
 		for each in queryResults:
 			yourmeals.append(each)
 			mealuids.append(each[15])
