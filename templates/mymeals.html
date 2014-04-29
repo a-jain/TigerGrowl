@@ -192,15 +192,15 @@
 		</button></a> \
 		
 		<div class='attendees'>Who's Coming?</div> \
-	</div>";
+		</div>";
 
-	var inviterowDiv = "<div class='row feed-row'> \
-	<div class='name-identifier'> </div> \
-	<div class='setting-identifier'> </div> \
-	<div class='attendees'>Who's Coming?</div> \
-</div>";
+		var inviterowDiv = "<div class='row feed-row'> \
+		<div class='name-identifier'> </div> \
+		<div class='setting-identifier'> </div> \
+		<div class='attendees'>Who's Coming?</div> \
+		</div>";
 
-var guestrowDiv = inviterowDiv;
+		var guestrowDiv = inviterowDiv;
 
 				// self populate the Host divs
 				if (objHost == 0) {
@@ -300,60 +300,60 @@ var guestrowDiv = inviterowDiv;
 				    });
 					});
 				</script>
-				-->
-				
-<!-- Populate the rows of -->
-<footer style="clear:both;">
-	<div class="container">
-		<div class="row">
-			<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
-			<div class="col-md-4">
-				<ul class="nav nav-pills">
-					
-				</ul>
+			-->
+
+			<!-- Populate the rows of -->
+			<footer style="clear:both;">
+				<div class="container">
+					<div class="row">
+						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
+						<div class="col-md-4">
+							<ul class="nav nav-pills">
+
+							</ul>
+						</div>
+
+					</div>
+				</div>
 			</div>
+		</footer>
+		<div id="fb-root"></div>
 
-		</div>
-	</div>
-</div>
-</footer>
-<div id="fb-root"></div>
-
-<script type="text/javascript">
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId      : '1423477091234772',
+		<script type="text/javascript">
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '1423477091234772',
 							status     : true, // check login status
 							cookie     : true, // enable cookies to allow the server to access the session
 							xfbml      : true  // parse XFBML
 						});
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				uid = response.authResponse.userID;
-				$(document).trigger('fbInit');
+				FB.getLoginStatus(function(response) {
+					if (response.status === 'connected') {
+						uid = response.authResponse.userID;
+						$(document).trigger('fbInit');
 
-				FB.api('me?fields=picture.height(80)', function(response) {
-					if (!response || response.error) {
-						console.log('Error occured');
-					} else {
-						picurl = response["picture"]["data"]["url"];
-						console.log(picurl)
-						$(document).trigger('fbInitPicLoaded');
+						FB.api('me?fields=picture.height(80)', function(response) {
+							if (!response || response.error) {
+								console.log('Error occured');
+							} else {
+								picurl = response["picture"]["data"]["url"];
+								console.log(picurl)
+								$(document).trigger('fbInitPicLoaded');
+							}
+						});
 					}
+					else {
+					} 
 				});
 			}
-			else {
-			} 
-		});
-	}
-</script>
+		</script>
 
-<script type="text/javascript">			
-	
-	var message = "{{ message }}";
-	if (message == "success") {
-		alert("You have successfully joined the meal!");
-	}		
-</script>
-</body>
-</html>
+		<script type="text/javascript">			
+
+			var message = "{{ message }}";
+			if (message == "success") {
+				alert("You have successfully joined the meal!");
+			}		
+		</script>
+	</body>
+	</html>
