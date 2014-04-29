@@ -84,27 +84,26 @@ def hello(name=None):
 
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
+
 	try: 
-		print("got to here 1")
-		form = Signup(request.form)
-		if request.method == 'POST' and form.validate():
-			cursor = db.cursor()
+	print("got to here 1")
+	form = Signup(request.form)
+	if request.method == 'POST' and form.validate():
+		cursor = db.cursor()
 		
-			print("got to here 2")
-			netid = form.email.data.split('@')[0]
-			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-			print("got to here3")
-			cursor.execute(sql)
-			cursor.close()
-			print ("got to here 4")
-			return redirect(url_for('feed'))
-			print ("got to here 5")
-		return render_template('registeruser.html', form=form)
-			
+		print("got to here 2")
+		netid = form.email.data.split('@')[0]
+		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+		print("got to here3")
+		cursor.execute(sql)
+		cursor.close()
+		print("got to here 4")
+		return redirect(url_for('feed'))
+		print("got to here 5")
+	return render_template('registeruser.html', form=form)
 	except ValidationError:
-		print("got to here 6")
-		return render_template('Bad email, gotta be Princeton')
-		
+		return "Bad email, gotta be Princeton"
+	
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
