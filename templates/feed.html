@@ -117,7 +117,12 @@
 				}
 
 				
-				
+				function returnName(fbNum) {
+					FB.api(fbNum, function(response) {
+						console.log(response.name);
+						return response.name;
+					});
+				}
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
@@ -130,10 +135,7 @@
 				    	if (obj[i] !== undefined) { 
 				    		fbNum = obj[i++][15];
 							fbNum = fbNum.toString();
-							FB.api(fbNum, function(response) {
-								console.log(response.name);
-								var fbHost=response.name;
-							});
+							fbHost = returnName(fbNum);
 							$(this).text(fbHost + "'s Meal");
 				        }
 				    });
