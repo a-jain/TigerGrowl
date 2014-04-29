@@ -23,6 +23,11 @@ def page_not_found(error):
 def home():
 	return render_template('landing.html')
 
+@application.route('/welcome')
+def welcome():
+	return render_template('welcome.html')
+
+
 @application.route('/login/')
 @application.route('/login/<uid>')
 def login(uid=None):
