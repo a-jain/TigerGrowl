@@ -188,9 +188,10 @@
 
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='setting-identifier'> </div> \
-		<a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
+		<!-- <a onclick='openpopup2()'><button type='button' class='btn btn-default btn-lg' style='font-family: Arial;font-weight: 100;font-size: medium;'> \
 			Invite Friends \
-		</button></a> \
+		</button></a> \ -->
+		<a class='invitebutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Invite Friends!</button> </a> \
 		<div class='attendees'>Who's Coming?</div> \
 		</div>";
 
@@ -292,17 +293,22 @@
 		$("#FacebookPhoto").prop("src", window.picurl);
 	});
 </script>
-				<!-- This sets up the remove from meal button.
+				<!-- This sets up the invite to meal button. -->
 				<script>
 			
-				    $(".joinbutton").each(function(i) {
+				    $(document).bind('fbInit',function(){
+    				console.log('fbInit complete; FB Object is Available');
+
+				    $(".invitebutton").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).prop("href", "joinmeal/" + obj[i++][0] + "/" + window.uid + window.mealid);
+				        	$(this).prop("href", "invite/" + window.mealid);
 				        }
 				    });
+					
 					});
+					
 				</script>
-			-->
+			
 
 			<!-- Populate the rows of -->
 			<footer style="clear:both;">
