@@ -84,20 +84,20 @@ def hello(name=None):
 
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
-	try: 
-		form = Signup(request.form)
-		if request.method == 'POST' and form.validate():
-			cursor = db.cursor()
-			netid = form.email.data.split('@')[0]
-			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+	#try: 
+	form = Signup(request.form)
+	if request.method == 'POST' and form.validate():
+		cursor = db.cursor()
+		netid = form.email.data.split('@')[0]
+		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
 
-			cursor.execute(sql)
-			cursor.close()
+		cursor.execute(sql)
+		cursor.close()
 
-			return redirect(url_for('feed'))
-		return render_template('registeruser.html', form=form)
-	except ValidationError:
-		return "Bad email, gotta be Princeton"
+		return redirect(url_for('feed'))
+	return render_template('registeruser.html', form=form)
+	#except ValidationError:
+	#	return "Bad email, gotta be Princeton"
 		
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
