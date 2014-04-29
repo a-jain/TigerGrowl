@@ -78,6 +78,7 @@
 											var container = document.getElementById('mfs');
 										   var mfsForm = document.createElement('form');
 										   mfsForm.id = 'mfsForm';
+										   msForm.method = "POST";
 
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
@@ -94,6 +95,7 @@
 												 var sendButton = document.createElement('input');
 										     sendButton.type = 'button';
 										     sendButton.value = 'Send Request';
+										     sendButton.onclick = '/invite/{{mealid}}/asd/';
 										     mfsForm.appendChild(sendButton);
 											});
 										}
@@ -102,6 +104,14 @@
 											console.log(response);
 										}
 									}
+
+										function sendacross() {
+											$.post("/inviter", 
+											{
+												"mealid": "{{mealid}}",
+												"names": JSON.stringify(response)
+											});
+										}
 									);
 // FB.login(function(response) {
 // 	if (response.authResponse) {
