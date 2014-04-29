@@ -178,11 +178,12 @@
 		var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
 		var objInvite = [];
 		var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
+		var hostnameList = jQuery.parseJSON( {{hostnameList|tojson|safe}} );
 
 		console.log("objInvite");
 		console.log(objInvite);
-		console.log("objGuest:");
-		console.log(objGuest);
+		console.log("hostnameList");
+		console.log(hostnameList);
 
 
 		var hostrowDiv = "<div class='row host-row'> \
@@ -251,12 +252,7 @@
 				$(document).ready(function() {
 					$(".guest-column .feed-row .name-identifier").each(function(i) {
 						if (objGuest[i] !== undefined ) {
-				    		fbNum = objGuest[i++][15];
-							fbNum = fbHost.toString();
-							FB.api(fbNum, function(response) {
-								fbHost = response.name;
-							});
-				        	$(this).text(fbHost + "'s Meal");
+							$(this).text(hostnameList[i][1] + ' ' + hostnameList[i++][2] + "'s Meal");
 						}
 					});
 				});
@@ -280,8 +276,7 @@
 </script>
 
 <script>
-	console.log(mealids[0])
-	console.log(hosts[0])
+	
 	/* This is about getting the invite button to work. */
 	$(document).bind('fbInit',function(){
 		console.log('fbInit complete; FB Object is Available');
