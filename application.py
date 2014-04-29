@@ -87,11 +87,13 @@ def registeruser():
 	except ValidationError:
 		return "Bad email, gotta be Princeton"
 		
-@application.route('/registermeal/<uid>', methods=['GET', 'POST'])
+@application.route('/registermeal/<uid>')
+#, methods=['GET', 'POST'])
 def registermeal(uid=None):
 	form = MealForm(request.form)
 	
-	if request.method == 'POST' and form.validate():
+	#if request.method == 'POST' and
+	if form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		receivedDate = str(form.date.data).split('-')
