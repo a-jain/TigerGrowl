@@ -294,15 +294,15 @@
 				<script>
 			
 				    $(document).bind('fbInit',function(){
-    				console.log('fbInit complete; FB Object is Available');
+    					console.log('fbInit complete; FB Object is Available');
+					});
 
-				    $(".invitebutton").each(function(i) {
+					$(".invitebutton").each(function(i) {
 				    	if (objHost[i] !== undefined) { 
 				        	$(this).prop("href", "../invite/" + objHost[i++][0]);
 				        }
 				    });
 					
-					});
 					
 				</script>
 			
