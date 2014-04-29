@@ -76,9 +76,9 @@
 											console.log(queryResult);
 
 											var container = document.getElementById('mfs');
-										   var mfsForm = document.createElement('form');
-										   mfsForm.id = 'mfsForm';
-										   msForm.method = "POST";
+											var mfsForm = document.createElement('form');
+											mfsForm.id = 'mfsForm';
+											mfsForm.method = "POST";
 
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
@@ -92,19 +92,19 @@
 												}
 												container.appendChild(mfsForm);
 
-												 var sendButton = document.createElement('input');
-										     sendButton.type = 'button';
-										     sendButton.value = 'Send Request';
-										     sendButton.onclick = '/invite/{{mealid}}/asd/';
-										     mfsForm.appendChild(sendButton);
+												var sendButton = document.createElement('input');
+												sendButton.type = 'button';
+												sendButton.value = 'Invite!';
+												sendButton.formmethod = 'POST';
+												sendButton.formaction = 'invite/{{mealid}}/asd/';
+												mfsForm.appendChild(sendButton);
 											});
 										}
 										else {
 											console.log("error");
 											console.log(response);
 										}
-									};
-									);
+									});
 // FB.login(function(response) {
 // 	if (response.authResponse) {
 // 		access_token =   FB.getAuthResponse()['accessToken'];

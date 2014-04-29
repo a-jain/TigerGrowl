@@ -105,7 +105,7 @@ def registermeal():
 		cursor.execute(sql)
 		cursor.close()
 		# change to some exit page
-		return redirect(url_for('exitpage'))
+		#return redirect(url_for('exitpage'))
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
@@ -259,11 +259,13 @@ def invite(mealid=None):
 
 @application.route('/inviter', methods=['POST'])
 def inviters():
-	mealid = request.form['mealid']
-	names = request.form['names']
+	# mealid = request.form['mealid']
+	# names = request.form['names']
 
-	print mealid
-	print json.loads(names)
+	# print mealid
+	# print json.loads(names)
+
+	print request.form
 
 	return redirect(url_for('feed'))
 
