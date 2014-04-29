@@ -239,11 +239,11 @@ def remove(mealid=None, uid=None):
 	# search guests for uid
 	guest_X = 1
 	for guest in guests:
-	
 		# check if the guest matches the selected user id
 		if (guest == uid):
 			break
 		guest_X += 1
+
 	print(guest_X)
 	print(guest)
 	user_index = guest_X
