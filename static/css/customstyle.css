@@ -35,36 +35,6 @@ body {
 	body {
 		background-size: 1720px 900px;
 	}
-    /*#mymealslink {
-		margin-left:50%;*/
-	}
-}
-
-@media screen and (min-width:800px) and (max-width: 850px) {
-    .feed-column, .guest-column {
-    	margin-left:25%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
-}
-
-@media screen and (min-width:800px) and (max-width: 799px) {
-    .feed-column, .guest-column {
-    	margin-left:23%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
-}
-
-@media screen and (min-width:620px) and (max-width: 799px) {
-    .feed-column, .guest-column {
-    	margin-left:16%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
 }
 
 
