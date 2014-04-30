@@ -29,9 +29,6 @@ body {
 */
 
 @media screen and (min-width: 851px) and (max-width: 1270px) {
-    .guest-column {
-    	margin-left:423px;
-    }
 	body {
 		background-size: 1720px 900px;
 	}
