@@ -122,13 +122,13 @@ h1 {
 	float:left;
 	width:50%;
 	text-align: center;
-	padding-left:20px;
+	padding-left:45px;
 	padding-right:8px;
 }
 
 .host-row .attendees {
 	float:left;
-	margin-top: 5px;
+	margin-top: 20px;
 	margin-left: 45px;
 }
 
