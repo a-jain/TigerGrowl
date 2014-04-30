@@ -112,9 +112,10 @@ h1 {
 }
 
 .feed-row .attendees {
-	float:left;
+	float: left;
 	margin-top: 20px;
-	margin-left: 45px;
+	padding-left: 45px;
+	width: 50%;
 }
 
 
