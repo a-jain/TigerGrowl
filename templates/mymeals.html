@@ -125,26 +125,55 @@
 		h1 {
 			background-color: rgba(27, 27, 27, 0.9);
 			border-radius: 25px;
+			border: outset;
+			padding: 13px 0px 13px 0px;
 		}
 	</style>
 
 	<!-- Main feed container -->
 	<div class="container" style="height:100%;">
-		<h1 data-toggle="collapse" data-target=".host-column">Meals You are Hosting</h1>
+		<h1 data-toggle="collapse" data-target=".host-column"><span class="glyphicon glyphicon-search"></span> Meals You are Hosting</h1>
 		<div class="feed-column host-column">
 			<!-- Hosted Meals Go Here-->
 		</div>
 
-		<h1 data-toggle="collapse" data-target=".invite-column">Invites</h1>
+		<h1 data-toggle="collapse" data-target=".invite-column"><span class="glyphicon glyphicon-search"></span> Invites</h1>
 		<div class="feed-column invite-column">
 			<!-- Invite Meals Go Here-->
 		</div>
 
-		<h1 data-toggle="collapse" data-target=".guest-column">Meals with You as Guest</h1>
+		<h1 data-toggle="collapse" data-target=".guest-column"><span class="glyphicon glyphicon-search"></span> Meals with You as Guest</h1>
 		<div class="feed-column guest-column" style="margin-bottom:100px;">
 				<!-- Guest Meals Go Here -->
 		</div>
 	</div>
+
+	<!-- Glyphicon switches -->
+	<script>
+		$('.host-column').on('shown.bs.collapse', function() {
+			$(".servicedrop").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+
+		$('.host-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+
+		$('.invite-column').on('shown.bs.collapse', function() {
+			$(".servicedrop").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+
+		$('.invite-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+
+		$('.guest-column').on('shown.bs.collapse', function() {
+			$(".servicedrop").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+
+		$('.guest-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+	</script>
 
 	<script>
 
