@@ -100,12 +100,6 @@ h1 {
 	text-shadow: 5px -1px black;
 }
 
-.feed-column {
-	width:430px;
-	float:left;
-	padding:0px;
-}
-
 .feed-row:hover, .host-row:hover {
 	background-color:rgba(229, 148, 0, 0.8);;
 	color:black;
