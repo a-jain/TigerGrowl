@@ -140,7 +140,7 @@ def joinmeal(uid=None, mealid=None):
 	meal = cursor.fetchone()
 
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
-	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
+	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		if (not guest):
@@ -233,7 +233,7 @@ def remove(mealid=None, uid=None):
 	cursor.execute(query)
 	meal = cursor.fetchone()
 	print("got to here 3")
-	firstGuestIndex = 5 #hardcoded; this is the index of the first guest
+	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guests = meal[firstGuestIndex:firstGuestIndex + 11]
 	print("got to here 4")
 	# search guests for uid
@@ -249,7 +249,7 @@ def remove(mealid=None, uid=None):
 	user_index = guest_X
 	print("got to here 5")
 	# search guests for final non-null array index
-	guest_Y = 0
+	guest_Y = -1
 	for guest in guests:
 	
 		# check if the guest matches the selected user id
@@ -257,7 +257,7 @@ def remove(mealid=None, uid=None):
 			break
 		guest_Y += 1
 	print("got to here 6")
-	last_full_index = guest_Y - 1
+	last_full_index = guest_Y
 	last_full = guests[last_full_index]
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
