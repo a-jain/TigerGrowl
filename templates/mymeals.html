@@ -293,8 +293,8 @@
 			    });
 				
 				$(".removebutton").each(function(i) {
-			    	if (objHost[i] !== undefined) { 
-			        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
+			    	if (objGuest[i] !== undefined) { 
+			        	$(this).prop("href", "../remove/" + objGuest[i++][0] + '/' + window.uid);
 			        }
 				});
 			});
