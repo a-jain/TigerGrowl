@@ -54,7 +54,7 @@ def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table")
+	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\';" % "pub")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
@@ -64,7 +64,7 @@ def feed(errorFlag=None):
 
 	queryresultList = []
 	for i in range(0, len(mealuids)):
-		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d;" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
 
