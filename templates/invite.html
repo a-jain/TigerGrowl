@@ -2,17 +2,24 @@
 <html>
 <head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 	<title>Invite Friends</title>
 
 </head>
 
 <body>
+	<p id="TGids"></p>
+	<p id="fbids"></p>
+
 	<div id="mfs"></div>
 
 	<!-- <p id="intersects">Intersects </p> -->
 
 	<div id="fb-root"></div>
 	<script>
+		friendlist = [];
+		friendsUsingTG = [];
+
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId      : '1423477091234772',
@@ -25,44 +32,58 @@
 				FB.Event.subscribe('auth.authResponseChange', function(response) {
 					console.log(response);
 					FB.api(
-						// "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
-						"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
+						"/me?fields=friends.fields(name)",
 						function (response) {
 							if (response && !response.error) {
-								console.log(response);
-								var queryResult = response.data[0].fql_result_set;
 
-								console.log(queryResult);
-
-								var container = document.getElementById('mfs');
-								var mfsForm = document.createElement('form');
-								mfsForm.id = 'mfsForm';
-								mfsForm.method = "POST";
-
-								$(document).ready(function() {
-									for (var i = 0; i < queryResult.length; i++)
-									{
-										friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
-										var friendItem = document.createElement('div');
-										friendItem.id = 'friend_' + queryResult[i]["uid"];
-										friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
-										mfsForm.appendChild(friendItem);
-									}
-									container.appendChild(mfsForm);
-
-									var sendButton = document.createElement('input');
-									sendButton.type = 'submit';
-									sendButton.value = 'Invite!';
-									mfsForm.action = '/inviter/{{mealid}}';
-									// mfsForm.action = 'http://requestb.in/s4vrids4';
-									mfsForm.appendChild(sendButton);
-								});
+								list = response["friends"]["data"];
+								for (var i=0; i < list.length; i++)
+								{
+									friendlist.push(parseInt(list[i]["id"]));
+								}
+								$(document).trigger('fbInit');
 							}
-							else {
-								console.log("error");
-								console.log(response);
-							}
-						});
+						}
+						);
+					FB.api(
+									// "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
+									"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
+									function (response) {
+										if (response && !response.error) {
+											console.log(response);
+											var queryResult = response.data[0].fql_result_set;
+
+											console.log(queryResult);
+
+											var container = document.getElementById('mfs');
+											var mfsForm = document.createElement('form');
+											mfsForm.id = 'mfsForm';
+											mfsForm.method = "POST";
+
+											$(document).ready(function() {
+												for (var i = 0; i < queryResult.length; i++)
+												{
+													friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
+													var friendItem = document.createElement('div');
+													friendItem.id = 'friend_' + queryResult[i]["uid"];
+													friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
+													mfsForm.appendChild(friendItem);
+												}
+												container.appendChild(mfsForm);
+
+												var sendButton = document.createElement('input');
+												sendButton.type = 'submit';
+												sendButton.value = 'Invite!';
+												mfsForm.action = '../inviter/{{mealid}}';
+												// mfsForm.action = 'http://requestb.in/s4vrids4';
+												mfsForm.appendChild(sendButton);
+											});
+										}
+										else {
+											console.log("error");
+											console.log(response);
+										}
+									});
 });
 };
 (function(d){
