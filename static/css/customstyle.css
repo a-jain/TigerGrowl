@@ -65,7 +65,7 @@ h1 {
 }
 
 .collapsed {
-	margin-bottom:100px;
+	/*margin-bottom:100px;*/
 }
 
 .feed-row:hover, .host-row:hover {
