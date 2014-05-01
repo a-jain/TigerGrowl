@@ -333,9 +333,15 @@
 			var message = "{{ message }}";
 			if (message == "success") {
 				alert("You have successfully joined the meal!");
+				newurl = location.pathname.split("/");
+				newurl = "/"+newurl[1]+"/"+newurl[2];
+				location.pathname=newurl;
+
 			}
 			else if (message == "success1") {
-				alert("You have succesffully left the meal!");
+				alert("You have successfully left the meal!");
+				location.pathname = "";
+				window.history.back(-1);
 			}		
 		</script>
 	</body>
