@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
+from datetime import date
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
@@ -115,7 +116,7 @@ def registermeal():
 		cursor = db.cursor()
 		
 		receivedDate = str(form.date.data).split('-')
-		newDate = receivedDate[1] + '/' + receivedDate[2]
+		newDate = receivedDate[1] + '-' + receivedDate[2]
 		
 		receivedTime = str(form.time.data)[:-3]
 		
