@@ -178,11 +178,10 @@ def joinmeal(uid=None, mealid=None):
 	
 	#f.close()
 	
-	message = "success" # Success
 	# at this point we can consider the possibility that we actually want to send the user back to the feed page.
 	# If we're deadset on sending them to mymeals then we can add a similar script handling to mymeals, but I think it might be better
 	# to send them back to feed after joining a meal
-	return redirect(url_for('mymeals', uid=uid, message=message))
+	return redirect(url_for('mymeals', uid=uid, message="success"))
 
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
