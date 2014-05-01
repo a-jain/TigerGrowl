@@ -314,7 +314,7 @@ def remove(mealid=None, uid=None):
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message = "werked/twerked")
 	"""
 	
-	return redirect(url_for('mymeals', uid=uid, message='success'))
+	return redirect(url_for('mymeals', uid=uid, message='success1'))
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb

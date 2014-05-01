@@ -64,7 +64,7 @@
 </head>
 <body>
 
-	{% if message != "success" %}
+	{% if message != "success" or message != "success1" %}
 	<style>
 		body {background-image:url('../static/img/arch.jpg');}
 	</style>
@@ -96,7 +96,7 @@
 
 		<a href="/welcome" id="helpLink">
 			<div class="help" style="float:right;color:white;margin-right:15px;">
-				{% if message != "success" %}
+				{% if message != "success" or message != "success1" %}
 					<img src="../static/img/fork-white.png">
 					<img src="../static/img/dish-white.png">
 					<img src="../static/img/knife-white.png">
@@ -352,6 +352,9 @@
 			var message = "{{ message }}";
 			if (message == "success") {
 				alert("You have successfully joined the meal!");
+			}
+			else if (message = "success1") {
+				alert("You have succesffully left the meal!");
 			}		
 		</script>
 	</body>
