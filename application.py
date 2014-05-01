@@ -249,7 +249,7 @@ def remove(mealid=None, uid=None):
 	user_index = guest_X
 	print("got to here 5")
 	# search guests for final non-null array index
-	guest_Y = -1
+	guest_Y = 0
 	for guest in guests:
 	
 		# check if the guest matches the selected user id
