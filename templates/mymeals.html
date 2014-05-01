@@ -53,10 +53,10 @@
 	<script>
 		$(document).ready(function () {
 			$('#HostButton').nivoLightbox({
-	            effect: 'fall'                       // The effect to use when showing the lightbox
+	            effect: 'fall'
 	        });
 			$('#helpLink').nivoLightbox({
-	            effect: 'fall'                       // The effect to use when showing the lightbox
+	            effect: 'fall'
 	        });
 		});
 	</script>
@@ -121,63 +121,59 @@
 		</div>
 	</div>
 
+	<style>
+		h1 {
+			background-color: rgba(27, 27, 27, 0.9);
+			border-radius: 25px;
+			border: outset;
+			padding: 13px 0px 13px 0px;
+		}
+	</style>
+
 	<!-- Main feed container -->
-	<div class="feed-column host-column">
-		<script> 
-			mealids = new Array();
-			hosts = new Array();
-		</script>
-		<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Meals You are Hosting</h1>
-
-				<!--
-				<div class="row host-row">
-					<div class="setting-identifier"> place date time </div>
-
-						<a onclick="openpopup2()"><button type="button" class="btn btn-default btn-lg" style="font-family: Arial;font-weight: 100;font-size: medium;">
-								Invite Friends
-							</button></a>
-						<br/><br/>
-						
-						<script>
-						mealids[0] = 467259
-						hosts[0] = 622993352
-						</script>
-						<div class="attendees">Who's Coming?</div> 
-					</div>
-				-->
-			</div>
-			
-
-			<div class="feed-column invite-column">
-
-				<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Invites</h1>
-
-					<!--
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-				-->
-				
-			</div>
-
-			<div class="feed-column guest-column">
-
-				<h1 style="background-color:rgba(27, 27, 27, 0.4);border-radius: 25px;">Meals with You as Guest</h1>
-
-					<!--
-					<div class="row feed-row">
-						<div class="name-identifier"> firstname lastname's Meal </div>
-						<div class="setting-identifier"> place date time </div>
-						<div class="attendees">Who's Coming?</div>
-					</div>
-				-->
-				
-			</div>
+	<div class="container" style="height:100%;">
+		<h1 data-toggle="collapse" data-target=".host-column"><span class="servicedrop1 glyphicon glyphicon-chevron-down"></span> Meals You are Hosting</h1>
+		<div class="feed-column host-column">
+			<!-- Hosted Meals Go Here-->
 		</div>
 
+		<h1 data-toggle="collapse" data-target=".invite-column"><span class="servicedrop2 glyphicon glyphicon-chevron-down"></span> Invites</h1>
+		<div class="feed-column invite-column">
+			<!-- Invite Meals Go Here-->
+		</div>
+
+		<h1 data-toggle="collapse" data-target=".guest-column"><span class="servicedrop3 glyphicon glyphicon-chevron-down"></span> Meals with You as Guest</h1>
+		<div class="feed-column guest-column" style="margin-bottom:100px;">
+				<!-- Guest Meals Go Here -->
+		</div>
 	</div>
+
+	<!-- Glyphicon switches -->
+	<script>
+		$('.host-column').on('shown.bs.collapse', function() {
+			$(".servicedrop1").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+
+		$('.host-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop1").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+
+		$('.invite-column').on('shown.bs.collapse', function() {
+			$(".servicedrop2").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+
+		$('.invite-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop2").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+
+		$('.guest-column').on('shown.bs.collapse', function() {
+			$(".servicedrop3").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+		});
+
+		$('.guest-column').on('hidden.bs.collapse', function() {
+		    $(".servicedrop3").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+		});
+	</script>
 
 	<script>
 
@@ -199,107 +195,111 @@
 		<a class='removebutton' href='#'><button class='btn btn-default btn-lg' style='font-family:Arial;font-weight:100;font-size:medium;margin-left:20px;margin-top:10px;'> Leave the Meal </button></a> \
 		</div>";
 
-		var guestrowDiv = inviterowDiv;
+		var guestrowDiv = "<div class='row feed-row'> \
+		<div class='name-identifier'> </div> \
+		<div class='setting-identifier'> </div> \
+		<div class='attendees'>Who's Coming?</div> \
+		<div class='buttondiv' style='width: 50%; float: right;padding-right:15%;'> \
+		<a class='removebutton' href='../remove/467244/1362325282'><button class='btn btn-default btn-lg' style='font-family:Arial;font-weight:100;font-size:medium;margin-right: 20px;margin-top:10px;float: right;'> Leave the Meal </button></a> \
+		</div> \
+		</div>";
 
-				// self populate the Host divs
-				if (objHost == 0) {
-					$(".host-column").append("<div class='row feed-row'> \
-						<h5 style='color:white;text-align:center;'>You aren't hosting any meals at the moment.</h5> \
-					</div>");
-				}
-				$.each(objHost, function() {
-					$(".host-column").append(hostrowDiv);
-				});
+		
 
-				// self populate the Invite divs
-				if (objInvite.length == 0) {
-					$(".invite-column").append("<div class='row feed-row'> \
-						<h5 style='color:white;text-align:center;'>You don't have any direct meal invitations at the moment.</h5> \
-					</div>");
-				}
-				else {
-					$.each(objInvite, function() {
-						$(".invite-column").append(inviterowDiv);
-					});
-				}
+		// self populate the Host divs
+		if (objHost == 0) {
+			$(".host-column").append("<div class='row feed-row'> \
+				<h5 style='color:white;text-align:center;'>You aren't hosting any meals at the moment.</h5> \
+			</div>");
+		}
+		$.each(objHost, function() {
+			$(".host-column").append(hostrowDiv);
+		});
 
-				// self populate the Guest divs
-				if (objGuest.length == 0) {
-					$(".guest-column").append("<div class='row feed-row'> \
-						<h5 style='color:white;text-align:center;'>You didn't join any meals yet.</h5> \
-					</div>");
-				}
-				else {
-					$.each(objGuest, function() {
-						$(".guest-column").append(guestrowDiv);
-					});
-				}
+		// self populate the Invite divs
+		if (objInvite.length == 0) {
+			$(".invite-column").append("<div class='row feed-row'> \
+				<h5 style='color:white;text-align:center;'>You don't have any direct meal invitations at the moment.</h5> \
+			</div>");
+		}
+		else {
+			$.each(objInvite, function() {
+				$(".invite-column").append(inviterowDiv);
+			});
+		}
 
-				// Hosted meal: place, date, time				
-				$(document).ready(function() {
-					$(".host-row .setting-identifier").each(function(i) {
-						if (objHost[i] !== undefined) { 
-							$(this).text(objHost[i][1] + ", " + objHost[i][2] + ", " + objHost[i++][3]);
-						}
-					});
-				});
+		// self populate the Guest divs
+		if (objGuest.length == 0) {
+			$(".guest-column").append("<div class='row feed-row'> \
+				<h5 style='color:white;text-align:center;'>You didn't join any meals yet.</h5> \
+			</div>");
+		}
+		else {
+			$.each(objGuest, function() {
+				$(".guest-column").append(guestrowDiv);
+			});
+		}
+
+		// Hosted meal: place, date, time				
+		$(document).ready(function() {
+			$(".host-row .setting-identifier").each(function(i) {
+				if (objHost[i] !== undefined) { 
+					$(this).text(objHost[i][1] + ", " + objHost[i][2] + ", " + objHost[i++][3]);
+				}
+			});
+		});
+		
+		// Guest meals: who?
+		$(document).ready(function() {
+			$(".guest-column .feed-row .name-identifier").each(function(i) {
+				if (objGuest[i] !== undefined ) {
+					$(this).text(hostnameList[i][1] + ' ' + hostnameList[i++][2] + "'s Meal");
+				}
+			});
+		});
+
+		// Guest meals: setting
+		$(document).ready(function() {
+			$(".guest-column .feed-row .setting-identifier").each(function(i) {
+				if (objGuest[i] !== undefined) {
+					$(this).text(objGuest[i][1] + ", " + objGuest[i][2] + ", " + objGuest[i++][3]);
+				}
+			});
+		});
+
+		/* fb photo*/
+		/*
+		$(document).bind('fbInitPicLoaded',function(){
+				$("#FacebookPhoto").prop("src", window.picurl);
+			});
+		*/
+
+		</script>
+
+		<script>
+			$(document).bind('fbInitPicLoaded',function(){
+				$("#FacebookPhoto").prop("src", window.picurl);
+			});
+			//This sets up the invite to meal button.
+		
+		    $(document).bind('fbInit',function(){
+				console.log('fbInit complete; FB Object is Available');
+
+				$(".invitebutton").each(function(i) {
+			    	if (objHost[i] !== undefined) { 
+			        	$(this).prop("href", "../invite/" + objHost[i++][0]);
+			        }
+			    });
 				
-				// Guest meals: who?
-				$(document).ready(function() {
-					$(".guest-column .feed-row .name-identifier").each(function(i) {
-						if (objGuest[i] !== undefined ) {
-							$(this).text(hostnameList[i][1] + ' ' + hostnameList[i++][2] + "'s Meal");
-						}
-					});
+				$(".removebutton").each(function(i) {
+			    	if (objHost[i] !== undefined) { 
+			        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
+			        }
 				});
-
-				// Guest meals: setting
-				$(document).ready(function() {
-					$(".guest-column .feed-row .setting-identifier").each(function(i) {
-						if (objGuest[i] !== undefined) {
-							$(this).text(objGuest[i][1] + ", " + objGuest[i][2] + ", " + objGuest[i++][3]);
-						}
-					});
-				});
-
-				/* fb photo*/
-				/*
-				$(document).bind('fbInitPicLoaded',function(){
-						$("#FacebookPhoto").prop("src", window.picurl);
-					});
-*/
-
-</script>
-
-<script>
-	$(document).bind('fbInitPicLoaded',function(){
-		$("#FacebookPhoto").prop("src", window.picurl);
-	});
-</script>
-				<!-- This sets up the invite to meal button. -->
-				<script>
+			});
+		</script>
 			
-				    $(document).bind('fbInit',function(){
-    					console.log('fbInit complete; FB Object is Available');
-					
-
-					$(".invitebutton").each(function(i) {
-				    	if (objHost[i] !== undefined) { 
-				        	$(this).prop("href", "../invite/" + objHost[i++][0]);
-				        }
-				    });
-					
-					$(".removebutton").each(function(i) {
-				    	if (objHost[i] !== undefined) { 
-				        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
-				        }
-				    });
-					});
-				</script>
-			
-
-			<!-- Populate the rows of -->
-			<footer style="clear:both;">
+			<footer>
 				<div class="container">
 					<div class="row">
 						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
@@ -315,6 +315,7 @@
 		</footer>
 		<div id="fb-root"></div>
 
+		<!-- Facebook verification -->
 		<script type="text/javascript">
 			window.fbAsyncInit = function() {
 				FB.init({
@@ -344,6 +345,7 @@
 			}
 		</script>
 
+		<!-- Error Handling: Success -->
 		<script type="text/javascript">			
 
 			var message = "{{ message }}";

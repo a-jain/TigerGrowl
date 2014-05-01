@@ -12,9 +12,6 @@ body {
 }
 
 @media screen and (min-width:1271px) {
-	.host-column {
-		margin-left:5%;
-	}
 	body {
 		background-size: 100% 100%;
 	}
@@ -29,42 +26,9 @@ body {
 */
 
 @media screen and (min-width: 851px) and (max-width: 1270px) {
-    .guest-column {
-    	margin-left:423px;
-    }
 	body {
 		background-size: 1720px 900px;
 	}
-    /*#mymealslink {
-		margin-left:50%;*/
-	}
-}
-
-@media screen and (min-width:800px) and (max-width: 850px) {
-    .feed-column, .guest-column {
-    	margin-left:25%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
-}
-
-@media screen and (min-width:800px) and (max-width: 799px) {
-    .feed-column, .guest-column {
-    	margin-left:23%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
-}
-
-@media screen and (min-width:620px) and (max-width: 799px) {
-    .feed-column, .guest-column {
-    	margin-left:16%;
-    }
-    /*#mymealslink {
-		margin-left:5%;
-	}*/
 }
 
 
@@ -100,10 +64,8 @@ h1 {
 	text-shadow: 5px -1px black;
 }
 
-.feed-column {
-	width:430px;
-	float:left;
-	padding:0px;
+.collapsed {
+	margin-bottom:100px;
 }
 
 .feed-row:hover, .host-row:hover {
@@ -113,7 +75,7 @@ h1 {
 
 .feed-row, .host-row {
 	margin-top: 15px;
-	margin-left: 8.5%;
+	margin-left: 7.5%;
 	margin-bottom: 25px;
 	padding-top: 25px;
 	padding-bottom: 25px;
@@ -150,9 +112,10 @@ h1 {
 }
 
 .feed-row .attendees {
-	float:left;
+	float: left;
 	margin-top: 20px;
-	margin-left: 45px;
+	padding-left: 45px;
+	width: 50%;
 }
 
 
@@ -160,13 +123,13 @@ h1 {
 	float:left;
 	width:50%;
 	text-align: center;
-	padding-left:20px;
+	padding-left:45px;
 	padding-right:8px;
 }
 
 .host-row .attendees {
 	float:left;
-	margin-top: 5px;
+	margin-top: 20px;
 	margin-left: 45px;
 }
 
@@ -174,4 +137,8 @@ footer{
 	border-top: 1px solid #CCCCCC;
 	padding: 20px 0px;
 	background-color:black;
+	clear:both;
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
