@@ -116,7 +116,7 @@ def registermeal():
 		cursor = db.cursor()
 		
 		receivedDate = str(form.date.data).split('-')
-		newDate = str(date.today().year) + '-' + receivedDate[1] + '-' + receivedDate[2]
+		newDate = "2014" + '-' + receivedDate[1] + '-' + receivedDate[2]
 		
 		receivedTime = str(form.time.data)[:-3]
 		
