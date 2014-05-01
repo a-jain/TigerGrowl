@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
-from datetime import date
+# from datetime import date
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
@@ -55,7 +55,7 @@ def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\';" % "pub")
+	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date" % "pub")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
