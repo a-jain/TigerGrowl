@@ -13,9 +13,6 @@
 
 	<div id="fb-root"></div>
 	<script>
-		friendlist = [];
-		friendsUsingTG = [];
-
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId      : '1423477091234772',
@@ -45,7 +42,6 @@
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
 												{
-													friendsUsingTG.push(parseInt(queryResult[i]["uid"]));
 													var friendItem = document.createElement('div');
 													friendItem.id = 'friend_' + queryResult[i]["uid"];
 													friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
