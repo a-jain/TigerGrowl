@@ -2,15 +2,11 @@
 <html>
 <head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<link type="text/css" href="//facebook-friend-selector.codersgrave.com/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 	<title>Invite Friends</title>
 
 </head>
 
 <body>
-	<p id="TGids"></p>
-	<p id="fbids"></p>
-
 	<div id="mfs"></div>
 
 	<!-- <p id="intersects">Intersects </p> -->
@@ -31,20 +27,6 @@
 
 				FB.Event.subscribe('auth.authResponseChange', function(response) {
 					console.log(response);
-					FB.api(
-						"/me?fields=friends.fields(name)",
-						function (response) {
-							if (response && !response.error) {
-
-								list = response["friends"]["data"];
-								for (var i=0; i < list.length; i++)
-								{
-									friendlist.push(parseInt(list[i]["id"]));
-								}
-								$(document).trigger('fbInit');
-							}
-						}
-						);
 					FB.api(
 									// "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
 									"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
