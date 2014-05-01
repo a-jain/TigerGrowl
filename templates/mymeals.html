@@ -7,7 +7,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>		
 
-	{% if message != "success" %}
+	{% if message != "success" and message != "success1"%}
 	<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
 	<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
 	<link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
@@ -29,26 +29,7 @@
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/fb.js"></script>
 	<script src="../../static/js/nivo-lightbox.min.js"></script>
-	{% endif %}
-	
-
-	{% if message != "success" %}
-	<script>
-		function openpopup2() {
-			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-	</script>
-	{% else %}
-	<script>
-		function openpopup2() {
-			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-	</script>
-	{% endif %}
-
-	
+	{% endif %}	
 
 	<script>
 		$(document).ready(function () {
@@ -64,7 +45,7 @@
 </head>
 <body>
 
-	{% if message != "success" or message != "success1" %}
+	{% if message != "success" and message != "success1" %}
 	<style>
 		body {background-image:url('../static/img/arch.jpg');}
 	</style>
@@ -96,7 +77,7 @@
 
 		<a href="/welcome" id="helpLink">
 			<div class="help" style="float:right;color:white;margin-right:15px;">
-				{% if message != "success" or message != "success1" %}
+				{% if message != "success" and message != "success1" %}
 					<img src="../static/img/fork-white.png">
 					<img src="../static/img/dish-white.png">
 					<img src="../static/img/knife-white.png">
