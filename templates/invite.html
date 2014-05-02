@@ -20,6 +20,16 @@
 			float: none;
 			margin-right: 25px;
 		}
+		#mfs {
+			text-align: center;
+			font-family: "Raleway"; 
+			font-size: 20px;
+		}
+
+	    .checkbox input[type=checkbox] {
+	    	float:none;
+	    	margin-right:20px;
+	    }
 	</style>
 
 	<div id="fb-root"></div>
@@ -49,9 +59,6 @@
 											var mfsForm = document.createElement('form');
 											mfsForm.id = 'mfsForm';
 											mfsForm.method = "POST";
-											mfs.style = 'CSSStyleDeclaration {0: "text-align", 1: "font-family", 2: "font-size", parentRule: null, length: 3, cssText: "text-align: center; font-family: "Raleway"; font-size: 20px;", alignContent: "", alignItems: ""…}'
-											$("#mfsForm").attr("role", "form")
-
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
 												{
