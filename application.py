@@ -343,7 +343,9 @@ def inviters(mealid=None):
 	# print mealid
 	# print json.loads(names)
 
-	# return request.form
+	# with some error code
+	if not request.form:
+		return redirect(url_for('feed'))
 
 	print "check this kevin"
 	# print request.data
