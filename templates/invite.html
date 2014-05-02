@@ -66,6 +66,7 @@
 												sendButton.text = '1Invite!';
 												sendButton.value = '2Invite!';
 												sendButton.innnerHTML="3Invite!";
+												$(document).trigger('buttondone');
 											});
 										}
 										else {
@@ -82,7 +83,7 @@
 	js.src = "https://connect.facebook.net/en_US/all.js";
 	ref.parentNode.insertBefore(js, ref);
 }(document));
-$(document).ready(function () {
+$(document).bind('buttondone', function () {
 	$('#sendButton span').text('Some Remove Text');
 });
 </script>   
