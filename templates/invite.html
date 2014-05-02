@@ -46,7 +46,7 @@
 												{
 													var friendItem = document.createElement('div');
 													friendItem.id = 'friend_' + queryResult[i]["uid"];
-													friendItem.classname = 'checkbox';
+													friendItem.className = 'checkbox';
 													friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
 													mfsForm.appendChild(friendItem);
 												}
