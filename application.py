@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
+# from datetime import date
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
@@ -54,7 +55,7 @@ def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table")
+	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date, time" % "pub")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
@@ -64,7 +65,7 @@ def feed(errorFlag=None):
 
 	queryresultList = []
 	for i in range(0, len(mealuids)):
-		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d;" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
 
@@ -115,7 +116,7 @@ def registermeal():
 		cursor = db.cursor()
 		
 		receivedDate = str(form.date.data).split('-')
-		newDate = receivedDate[1] + '/' + receivedDate[2]
+		newDate = "2014" + '-' + receivedDate[1] + '-' + receivedDate[2]
 		
 		receivedTime = str(form.time.data)[:-3]
 		
@@ -248,7 +249,7 @@ def remove(mealid=None, uid=None):
 	user_index = guest_X
 	print("got to here 5")
 	# search guests for final non-null array index
-	guest_Y = -1
+	guest_Y = 0
 	for guest in guests:
 	
 		# check if the guest matches the selected user id
@@ -274,8 +275,8 @@ def remove(mealid=None, uid=None):
 	cursor.execute(sql)
 	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
-	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
-	cursor.execute(sql)
+	#sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
+	#cursor.execute(sql)
 	print("got to here 8 - we've finished the removal (ostensibly)")
 
 	##### This is what happens when you route to mymeals; you need to query to get an updated version of this information.
@@ -341,7 +342,9 @@ def inviters(mealid=None):
 	# print mealid
 	# print json.loads(names)
 
-	# return request.form
+	# with some error code
+	if not request.form:
+		return redirect(url_for('feed'))
 
 	print "check this kevin"
 	# print request.data
