@@ -52,9 +52,10 @@
 												}
 												container.appendChild(mfsForm);
 
-												var sendButton = document.createElement('input');
+												var sendButton = document.createElement('button');
 												sendButton.type = 'submit';
 												sendButton.value = 'Invite!';
+												sendButton.className = 'btn btn-default';
 												mfsForm.action = '../inviter/{{mealid}}';
 												// mfsForm.action = 'http://requestb.in/s4vrids4';
 												mfsForm.appendChild(sendButton);
