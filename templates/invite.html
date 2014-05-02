@@ -39,14 +39,14 @@
 											var mfsForm = document.createElement('form');
 											mfsForm.id = 'mfsForm';
 											mfsForm.method = "POST";
-											mfsForm.role = "form";
+											$("#mfsForm").attr("role", "form")
 
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
 												{
 													var friendItem = document.createElement('div');
 													friendItem.id = 'friend_' + queryResult[i]["uid"];
-													friendItem.class = 'checkbox';
+													friendItem.classname = 'checkbox';
 													friendItem.innerHTML = '<input type="checkbox" name="friend' + i + '" value="' + queryResult[i]["uid"] + '" />' + queryResult[i]["name"];
 													mfsForm.appendChild(friendItem);
 												}
