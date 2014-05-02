@@ -53,9 +53,11 @@
 												container.appendChild(mfsForm);
 
 												var sendButton = document.createElement('button');
+												sendButton.id = 'sendButton';
 												sendButton.type = 'submit';
 												// sendButton.value = 'Invite!';
-												sendButton.innnerHTML="Invite!";
+												// sendButton.innnerHTML="Invite!";
+												$("#sendButton").html('Invite!');
 
 												sendButton.className = 'btn btn-default';
 												mfsForm.action = '../inviter/{{mealid}}';
