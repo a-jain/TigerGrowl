@@ -57,7 +57,7 @@
 												sendButton.type = 'submit';
 												// sendButton.value = 'Invite!';
 												// sendButton.innnerHTML="Invite!";
-												$("#sendButton").html('Invite!');
+												
 
 												sendButton.className = 'btn btn-default';
 												mfsForm.action = '../inviter/{{mealid}}';
@@ -79,7 +79,9 @@
 	js.src = "https://connect.facebook.net/en_US/all.js";
 	ref.parentNode.insertBefore(js, ref);
 }(document));
-
+$(document).ready(function () {
+	$("#sendButton").html('Invite!');
+});
 </script>   
 
 </body>
