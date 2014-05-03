@@ -258,7 +258,7 @@ def remove(mealid=None, uid=None):
 		guest_Y += 1
 	print("got to here 6")
 	last_full_index = guest_Y
-	last_full = guests[last_full_index]
+	last_full = guests[last_full_index - 1]
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
 	
