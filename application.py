@@ -81,26 +81,25 @@ def exitpage():
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 
+	print("got to here 1")
 	form = Signup(request.form)
 	if request.method == 'POST' and form.validate():
 		cursor = db.cursor()
 		
+		print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
 		#check to make sure that this netid was not already present in the database
-		checkDup = "SELECT * FROM ebdb.user_table where netid = %s;" % (netid)
-		cursor.execute(checkDup);
-
-		if not cursor.rowcount:
-			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-		else:
-			return render_template('registeruser2.html', form=form)
-
+		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+		
+		print("got to here3")
 		cursor.execute(sql)
 		cursor.close()
 		
+		print("got to here 4")
 		return redirect(url_for('feed'))
 		
+		print("got to here 5")
 	return render_template('registeruser.html', form=form)
 
 @application.route('/registermeal', methods=['GET', 'POST'])
@@ -200,7 +199,7 @@ def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
 	cursor = db.cursor()
-	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s ORDER BY date, time;" % (uid)
+	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
@@ -210,6 +209,7 @@ def mymeals(uid=None, message=None):
 
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
+
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s ORDER BY date, time" % (uid)
 		cursor.execute(query)
 		queryResults = cursor.fetchall()
@@ -267,7 +267,7 @@ def remove(mealid=None, uid=None):
 		guest_Y += 1
 #	print("got to here 6")
 	last_full_index = guest_Y
-	last_full = guests[last_full_index - 1]
+	last_full = guests[last_full_index]
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
 	
