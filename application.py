@@ -204,11 +204,8 @@ def mymeals(uid=None, message=None):
 
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
-<<<<<<< HEAD
-		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s;" % (uid)
-=======
+
 		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s ORDER BY date, time" % (uid)
->>>>>>> FETCH_HEAD
 		cursor.execute(query)
 		queryResults = cursor.fetchall()
 		for each in queryResults:
