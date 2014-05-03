@@ -29,6 +29,11 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   </head>
 
+  <!-- Slight variation -->
+  <script>
+    alert("Oops! There is already an account under that netid.");
+  </script>
+
 {% from "formmacro.html" import render_field %}
 <form method=post class = "form-signin" action="/registeruser">
   <dl>

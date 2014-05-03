@@ -78,35 +78,31 @@ def feed(errorFlag=None):
 def exitpage():
 	return render_template('exit.html')
 
-@application.route('/hello/')
-@application.route('/hello/<name>')
-def hello(name=None):
-	return render_template('hello.html', name=name)
-
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 
-	print("got to here 1")
 	form = Signup(request.form)
 	if request.method == 'POST' and form.validate():
 		cursor = db.cursor()
 		
-		print("got to here 2")
 		netid = form.email.data.split('@')[0]
-		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-		
-		print("got to here3")
+
+		#check to make sure that this netid was not already present in the database
+		checkDup = "SELECT * FROM ebdb.user_table where netid = %s;" % (netid)
+		cursor.execute(checkDup);
+
+		if not cursor.rowcount:
+			sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+		else:
+			return render_template('registeruser2.html', form=form)
+
 		cursor.execute(sql)
 		cursor.close()
 		
-		print("got to here 4")
 		return redirect(url_for('feed'))
 		
-		print("got to here 5")
 	return render_template('registeruser.html', form=form)
-	"""except ValidationError:
-		return "Bad email, gotta be Princeton"
-	"""
+
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
@@ -179,11 +175,10 @@ def joinmeal(uid=None, mealid=None):
 	
 	#f.close()
 	
-	message = "success" # Success
 	# at this point we can consider the possibility that we actually want to send the user back to the feed page.
 	# If we're deadset on sending them to mymeals then we can add a similar script handling to mymeals, but I think it might be better
 	# to send them back to feed after joining a meal
-	return redirect(url_for('mymeals', uid=uid, message=message))
+	return redirect(url_for('mymeals', uid=uid, message="success"))
 
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
@@ -315,7 +310,7 @@ def remove(mealid=None, uid=None):
 	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message = "werked/twerked")
 	"""
 	
-	return redirect(url_for('mymeals', uid=uid, message='success'))
+	return redirect(url_for('mymeals', uid=uid, message='success1'))
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb

@@ -7,7 +7,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>		
 
-	{% if message != "success" %}
+	{% if message != "success" and message != "success1"%}
 	<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
 	<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
 	<link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
@@ -29,26 +29,7 @@
 	<script src="../../static/js/bootstrap.min.js"></script>
 	<script src="../../static/js/fb.js"></script>
 	<script src="../../static/js/nivo-lightbox.min.js"></script>
-	{% endif %}
-	
-
-	{% if message != "success" %}
-	<script>
-		function openpopup2() {
-			window.open('../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-	</script>
-	{% else %}
-	<script>
-		function openpopup2() {
-			window.open('../../invite','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-			return false;
-		}
-	</script>
-	{% endif %}
-
-	
+	{% endif %}	
 
 	<script>
 		$(document).ready(function () {
@@ -64,7 +45,7 @@
 </head>
 <body>
 
-	{% if message != "success" %}
+	{% if message != "success" and message != "success1" %}
 	<style>
 		body {background-image:url('../static/img/arch.jpg');}
 	</style>
@@ -96,7 +77,7 @@
 
 		<a href="/welcome" id="helpLink">
 			<div class="help" style="float:right;color:white;margin-right:15px;">
-				{% if message != "success" %}
+				{% if message != "success" and message != "success1" %}
 					<img src="../static/img/fork-white.png">
 					<img src="../static/img/dish-white.png">
 					<img src="../static/img/knife-white.png">
@@ -132,20 +113,21 @@
 
 	<!-- Main feed container -->
 	<div class="container" style="height:100%;">
-		<h1 data-toggle="collapse" data-target=".host-column"><span class="servicedrop1 glyphicon glyphicon-chevron-down"></span> Meals You are Hosting</h1>
-		<div class="feed-column host-column">
+		<h1 data-toggle="collapse" data-target=".host-column"><span class="servicedrop1 glyphicon glyphicon-chevron-up"></span> Meals You are Hosting</h1>
+		<div class="feed-column host-column collapse">
 			<!-- Hosted Meals Go Here-->
 		</div>
 
-		<h1 data-toggle="collapse" data-target=".invite-column"><span class="servicedrop2 glyphicon glyphicon-chevron-down"></span> Invites</h1>
-		<div class="feed-column invite-column">
+		<h1 data-toggle="collapse" data-target=".invite-column"><span class="servicedrop2 glyphicon glyphicon-chevron-up"></span> Invites</h1>
+		<div class="feed-column invite-column collapse">
 			<!-- Invite Meals Go Here-->
 		</div>
 
-		<h1 data-toggle="collapse" data-target=".guest-column"><span class="servicedrop3 glyphicon glyphicon-chevron-down"></span> Meals with You as Guest</h1>
-		<div class="feed-column guest-column" style="margin-bottom:100px;">
+		<h1 data-toggle="collapse" data-target=".guest-column"><span class="servicedrop3 glyphicon glyphicon-chevron-up"></span> Meals with You as Guest</h1>
+		<div class="feed-column guest-column collapse" style="margin-bottom:100px;">
 				<!-- Guest Meals Go Here -->
 		</div>
+		<div style="width:100%;height:100px;"></div>
 	</div>
 
 	<!-- Glyphicon switches -->
@@ -292,8 +274,8 @@
 			    });
 				
 				$(".removebutton").each(function(i) {
-			    	if (objHost[i] !== undefined) { 
-			        	$(this).prop("href", "../remove/" + objHost[i++][0] + '/' + window.uid);
+			    	if (objGuest[i] !== undefined) { 
+			        	$(this).prop("href", "../remove/" + objGuest[i++][0] + '/' + window.uid);
 			        }
 				});
 			});
@@ -351,6 +333,15 @@
 			var message = "{{ message }}";
 			if (message == "success") {
 				alert("You have successfully joined the meal!");
+				newurl = location.pathname.split("/");
+				newurl = "/"+newurl[1]+"/"+newurl[2];
+				location.pathname=newurl;
+
+			}
+			else if (message == "success1") {
+				alert("You have successfully left the meal!");
+				location.pathname = "";
+				window.history.back(-1);
 			}		
 		</script>
 	</body>

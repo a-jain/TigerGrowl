@@ -3,8 +3,11 @@
 <head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../static/js/bootstrap.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>	
+	<link rel="shortcut icon" href="../static/img/favicon.ico" />
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<title>Invite Friends</title>
+	<title>Invite Friends - TigerGrowl</title>
 
 </head>
 
@@ -12,6 +15,22 @@
 	<div id="mfs"></div>
 
 	<!-- <p id="intersects">Intersects </p> -->
+	<style>
+		input {
+			float: none;
+			margin-right: 25px;
+		}
+		#mfs {
+			text-align: center;
+			font-family: "Raleway"; 
+			font-size: 20px;
+		}
+
+	    .checkbox input[type=checkbox] {
+	    	float:none;
+	    	margin-right:20px;
+	    }
+	</style>
 
 	<div id="fb-root"></div>
 	<script>
@@ -40,8 +59,6 @@
 											var mfsForm = document.createElement('form');
 											mfsForm.id = 'mfsForm';
 											mfsForm.method = "POST";
-											$("#mfsForm").attr("role", "form")
-
 											$(document).ready(function() {
 												for (var i = 0; i < queryResult.length; i++)
 												{
@@ -63,9 +80,7 @@
 												mfsForm.action = '../inviter/{{mealid}}';
 												// mfsForm.action = 'http://requestb.in/s4vrids4';
 												mfsForm.appendChild(sendButton);
-												sendButton.text = '1Invite!';
-												sendButton.value = '2Invite!';
-												sendButton.innnerHTML="3Invite!";
+												sendButton.innerHTML = "Invite!"
 												$(document).trigger('buttondone');
 											});
 										}
