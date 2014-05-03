@@ -217,6 +217,11 @@
 				else if (error == "2") {
 					alert("Sorry, this meal is full! You cannot join at this time.");
 					window.location = '../feed';
+				}
+				
+				else if (error == "3") {
+					alert("You can't join a meal you're hosting!");
+					window.location = '../feed';
 				}	
 				else if (error == "0") {
 					alert("You have successfully joined this meal!");
