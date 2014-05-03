@@ -138,15 +138,15 @@ def joinmeal(uid=None, mealid=None):
 	hostid = meal[15]
 	
 	#type bashing
-		if (type(uid) is int):
-			str_uid = str(uid)
-		else:
-			str_uid = uid
-		
-		if (type(hostid) is int):
-			str_hostid = str(hostid)
-		else:
-			str_hostid = hostid
+	if (type(uid) is int):
+		str_uid = str(uid)
+	else:
+		str_uid = uid
+	
+	if (type(hostid) is int):
+		str_hostid = str(hostid)
+	else:
+		str_hostid = hostid
 			
 	if str_hostid == str_uid: 
 			errorFlag = "3" # They are the host
