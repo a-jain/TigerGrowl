@@ -138,31 +138,36 @@ def joinmeal(uid=None, mealid=None):
 	
 	hostid = meal[15]
 	
+	#type bashing
+		if (type(uid) is int):
+			str_uid = str(uid)
+		else:
+			str_uid = uid
+		
+		if (type(hostid) is int):
+			str_hostid = str(hostid)
+		else:
+			str_hostid = hostid
+			
+	if str_hostid == str_uid: 
+			errorFlag = "3" # They are the host
+			cursor.close()
+			return redirect(url_for('feed', errorFlag=errorFlag))
+				
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
 	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		
-		if hostid == uid: 
-			errorFlag = "3" # They are the host
-			cursor.close()
-			return redirect(url_for('feed', errorFlag=errorFlag))
-			
 		if (not guest):
 			break
 		guest_x += 1
 		
-		#type bashing
-		if (type(uid) is int):
-			str_uid = str(uid)
-		else:
-			str_uid = uid
-
+		# even more type bashing
 		if (type(guest) is int):
 			str_guest = str(guest)
 		else:
 			str_guest = guest
-
 
 		if (str_guest == str_uid):
 			#print("uid match")
