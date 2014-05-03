@@ -141,7 +141,7 @@ def joinmeal(uid=None, mealid=None):
 	if (type(uid) is int):
 		str_uid = str(uid)
 	else:
-		str_uid = uid	
+		str_uid = uid 
 	
 	if (type(hostid) is int):
 		str_hostid = str(hostid)
