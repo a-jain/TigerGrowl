@@ -192,7 +192,7 @@ def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
 	cursor = db.cursor()
-	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
+	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s ORDER BY date, time;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
@@ -202,7 +202,7 @@ def mymeals(uid=None, message=None):
 
 	for a in range(1, 12):
 		guestString = "guest" + str(a)
-		query = "SELECT * FROM ebdb.meal_table WHERE " + guestString + " = %s ORDER BY date, time" % (uid)
+		query = "SELECT * FROM ebdb.meal_table WHERE %s = %s" % (guestString, uid)
 		cursor.execute(query)
 		queryResults = cursor.fetchall()
 		for each in queryResults:
