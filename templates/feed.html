@@ -130,7 +130,8 @@
 				    });
 				    $(".feed-row .setting-identifier").each(function(i) {
 				    	if (obj[i] !== undefined) { 
-				        	$(this).text(obj[i][1] + ", " + obj[i][2] + ", " + obj[i++][3]);
+				    		date = obj[i][2].split("-");
+				        	$(this).text(obj[i][1] + ", " + date[1] + "/" + date[2] + ", " + obj[i++][3]);
 				        }
 				    });
 				});
