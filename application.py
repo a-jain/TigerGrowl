@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
+# from datetime import date
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
@@ -54,7 +55,7 @@ def feed(errorFlag=None):
 
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table")
+	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date, time" % "pub")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
@@ -64,7 +65,7 @@ def feed(errorFlag=None):
 
 	queryresultList = []
 	for i in range(0, len(mealuids)):
-		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d;" % (int(mealuids[i]))
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
 
@@ -115,7 +116,7 @@ def registermeal():
 		cursor = db.cursor()
 		
 		receivedDate = str(form.date.data).split('-')
-		newDate = receivedDate[1] + '/' + receivedDate[2]
+		newDate = "2014" + '-' + receivedDate[1] + '-' + receivedDate[2]
 		
 		receivedTime = str(form.time.data)[:-3]
 		
@@ -342,7 +343,9 @@ def inviters(mealid=None):
 	# print mealid
 	# print json.loads(names)
 
-	# return request.form
+	# with some error code
+	if not request.form:
+		return redirect(url_for('feed'))
 
 	print "check this kevin"
 	# print request.data
