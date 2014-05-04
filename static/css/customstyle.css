@@ -31,6 +31,13 @@ body {
 	}
 }
 
+/*
+@media screen and (max-width: 1080px) {
+	.feed-row .attendees {
+		visibility: hidden;
+	}
+}
+*/
 
 .logo{
 	color:white;
