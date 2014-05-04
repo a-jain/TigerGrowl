@@ -129,8 +129,7 @@ h1 {
 .host-row .setting-identifier {
 	float:right;
 	text-align: center;
-	padding-left:45px;
-	padding-right:8px;
+	padding-right:30px;
 	width: 50%;
 }
 

@@ -350,7 +350,7 @@
 		$(document).ready(function() {
 			$(".guest-column .feed-row .setting-identifier").each(function(i) {
 				if (objGuest[i] !== undefined) {
-					date = obj[i][2].split("-");
+					date = objGuest[i][2].split("-");
 		        	$(this).text(objGuest[i][1] + ", " + date[1] + "/" + date[2] + ", " + objGuest[i++][3]);
 				}
 			});
