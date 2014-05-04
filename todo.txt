@@ -1,4 +1,5 @@
 Before demo:
+Who's coming
 Make invite.html better workflow-wise
 Stop inviting twice to same meal
 Fix meals you are invited to section of my meals

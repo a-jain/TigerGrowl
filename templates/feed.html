@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>TigerGrowl</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap and other CSS -->
-		<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
-	    <link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
-	    <link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
+<head>
+	<title>TigerGrowl</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap and other CSS -->
+	<link href="../static/css/customstyle.css" rel="stylesheet" media="screen">
+	<link href="../static/css/nivo-lightbox.css" rel="stylesheet" media="screen">
+	<link href="../static/nivo/themes/default/default.css" rel="stylesheet" media="screen">
 
-		<link rel="shortcut icon" href="../static/img/favicon.ico" />
-		<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../static/js/jquery-1.11.0.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../static/js/bootstrap.min.js"></script>
-		<script src="../static/js/fb.js"></script>
-	    <script src="../static/js/nivo-lightbox.min.js"></script>
+	<link rel="shortcut icon" href="../static/img/favicon.ico" />
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../static/js/jquery-1.11.0.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/fb.js"></script>
+	<script src="../static/js/nivo-lightbox.min.js"></script>
 
-	    <!--
+			<!--
 		<script>
 		function openpopup() {
 			window.open('../registermeal','1397500628517','width=400,height=700,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
 			return false;
 		}
 		</script>
-		-->
+	-->
 
-		<script>
+	<script>
 		$(document).ready(function () {
 			$('#hostbuttonlink').nivoLightbox({
-	            effect: 'fall'                       // The effect to use when showing the lightbox
-	        });
-	        $('#helpLink').nivoLightbox({
-	            effect: 'fall'                       // The effect to use when showing the lightbox
-	        });
+							effect: 'fall'                       // The effect to use when showing the lightbox
+						});
+			$('#helpLink').nivoLightbox({
+							effect: 'fall'                       // The effect to use when showing the lightbox
+						});
 		});
-		</script>
-	</head>
-	<body>
+	</script>
+</head>
+<body>
 
 	<style>
 		body {
@@ -55,165 +55,165 @@
 		}
 	</style>
 
-		
-		<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
+	
+	<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-				<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+		<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
-				<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
+		<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
 
-				<a href="/welcome" id="helpLink">
-					<div class="help" style="float:right;color:white;margin-right:15px;">
-						<img src="../static/img/fork-white.png">
-						<img src="../static/img/dish-white.png">
-						<img src="../static/img/knife-white.png">
-						Help 
-					</div>
-				</a>
-			<!-- /.navbar-collapse -->
-		</nav>
-				<div class="container-fluid">
-					<div class="jumbotron">
-						<a id="hostbuttonlink" href="registermeal">
-							<button type="button" id="HostButton" class="btn btn-default btn-lg">
-								Host a Meal
-							</button>
-						</a>
-					</div>
-				</div>
-				
-				<!-- Main feed container -->
-				<div class="container" style="margin-bottom:100px;">
+		<a href="/welcome" id="helpLink">
+			<div class="help" style="float:right;color:white;margin-right:15px;">
+				<img src="../static/img/fork-white.png">
+				<img src="../static/img/dish-white.png">
+				<img src="../static/img/knife-white.png">
+				Help 
+			</div>
+		</a>
+		<!-- /.navbar-collapse -->
+	</nav>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<a id="hostbuttonlink" href="registermeal">
+				<button type="button" id="HostButton" class="btn btn-default btn-lg">
+					Host a Meal
+				</button>
+			</a>
+		</div>
+	</div>
+	
+	<!-- Main feed container -->
+	<div class="container" style="margin-bottom:100px;">
 
-				<!-- The end of the container feed -->
-				</div>
-				<!-- Populate the rows -->
-				<script>
+		<!-- The end of the container feed -->
+	</div>
+	<!-- Populate the rows -->
+	<script>
 
-				var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
-				var hostList = jQuery.parseJSON( {{hostList|tojson|safe}} );
+		var obj = jQuery.parseJSON( {{mealList|tojson|safe}} );
+		var hostList = jQuery.parseJSON( {{hostList|tojson|safe}} );
 
-				var error = "{{ errorFlag }}";
+		var error = "{{ errorFlag }}";
 
-				if (error != "1" && error != "2") {
-					var rowDiv = "<div class='row feed-row'> \
-							<div class='name-identifier'>  </div> \
-							<div class='setting-identifier'>  </div> \
-							<div class='attendees'>Who's Coming? \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee2' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee3' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee4 href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee5' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee6' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee7' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee8' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee9' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee10' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-								<div style='height:50px;width:50px;display:inline;'> \
-								<img id='attendee11' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-								</div> \
-							</div> \
-							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
-					</div> \
-					";
-				}
-				else {
-					var rowDiv = "<div class='row feed-row' style='visibility:hidden;'> \
-							<div class='name-identifier'>  </div> \
-							<div class='setting-identifier'>  </div> \
-							<div class='attendees'>Who's Coming?</div> \
-							<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
-					</div> \
-					";
-				}
+		if (error != "1" && error != "2") {
+			var rowDiv = "<div class='row feed-row'> \
+			<div class='name-identifier'>  </div> \
+			<div class='setting-identifier'>  </div> \
+			<div class='attendees'>Who's Coming? \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee2' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee3' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee4 href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee5' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee6' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee7' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee8' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee9' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee10' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+				<div style='height:50px;width:50px;display:inline;'> \
+					<img id='attendee11' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+				</div> \
+			</div> \
+			<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+		</div> \
+		";
+	}
+	else {
+		var rowDiv = "<div class='row feed-row' style='visibility:hidden;'> \
+		<div class='name-identifier'>  </div> \
+		<div class='setting-identifier'>  </div> \
+		<div class='attendees'>Who's Coming?</div> \
+		<a class='joinbutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
+	</div> \
+	";
+}
 
 				// for each meal object in the JSON string, create a div where it will be displayed
 				$.each(obj, function() {
-				    $(".container").append(rowDiv);
+					$(".container").append(rowDiv);
 				});
 
 				// Now place the text inside the divs
 				$(document).ready(function() {
 					$(".feed-row .name-identifier").each(function(i) {
-				    	if (hostList[i] !== undefined) { 
+						if (hostList[i] !== undefined) { 
 							$(this).text(hostList[i][1] + ' ' + hostList[i++][2] + "'s Meal");
-				        }
-				    });
-				    $(".feed-row .setting-identifier").each(function(i) {
-				    	if (obj[i] !== undefined) { 
-				    		date = obj[i][2].split("-");
-				        	$(this).text(obj[i][1] + ", " + date[1] + "/" + date[2] + ", " + obj[i++][3]);
-				        }
-				    });
+						}
+					});
+					$(".feed-row .setting-identifier").each(function(i) {
+						if (obj[i] !== undefined) { 
+							date = obj[i][2].split("-");
+							$(this).text(obj[i][1] + ", " + date[1] + "/" + date[2] + ", " + obj[i++][3]);
+						}
+					});
 				});
 				
-				</script>
+			</script>
 
-				<script>
-					$(document).bind('fbInit',function(){
-    				console.log('fbInit complete; FB Object is Available');
+			<script>
+				$(document).bind('fbInit',function(){
+					console.log('fbInit complete; FB Object is Available');
 
-				    $(".joinbutton").each(function(i) {
-				    	if (obj[i] !== undefined) { 
-				        	$(this).prop("href", "joinmeal/" + obj[i++][0] + "/" + window.uid);
-				        }
-				    });
-
-
-    				$("#mymealslink").prop("href", "mymeals/" + window.uid);
-    				
+					$(".joinbutton").each(function(i) {
+						if (obj[i] !== undefined) { 
+							$(this).prop("href", "joinmeal/" + obj[i++][0] + "/" + window.uid);
+						}
 					});
-					$(document).bind('fbInitPicLoaded',function(){
-						$("#FacebookPhoto").prop("src", window.picurl);
-					});
-				</script>
+
+
+					$("#mymealslink").prop("href", "mymeals/" + window.uid);
+					
+				});
+				$(document).bind('fbInitPicLoaded',function(){
+					$("#FacebookPhoto").prop("src", window.picurl);
+				});
+			</script>
 
 				<footer> <!--
 					<form id="emit" method='POST' action='#'>
-       					<input type="text" name="emit_data" id="emit_data" placeholder="Message">
-        				<input type="submit" value="Echo"></div>
-   					</form>
+								<input type="text" name="emit_data" id="emit_data" placeholder="Message">
+								<input type="submit" value="Echo"></div>
+						</form>
 					-->
 					<div class="container">
-					<div class="row">
-						<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
-						<div class="col-md-4">
-							<ul class="nav nav-pills">
-								
-							</ul>
-						</div>
+						<div class="row">
+							<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
+							<div class="col-md-4">
+								<ul class="nav nav-pills">
+									
+								</ul>
+							</div>
 
 						</div>
 					</div>
-					</div>
-				</footer>
-				<div id="fb-root"></div>
+				</div>
+			</footer>
+			<div id="fb-root"></div>
 
-		<script type="text/javascript">
-		window.fbAsyncInit = function() {
+			<script type="text/javascript">
+				window.fbAsyncInit = function() {
 					FB.init({
 						appId      : '1423477091234772',
 						status     : true, // check login status
@@ -221,48 +221,48 @@
 						xfbml      : true  // parse XFBML
 					});
 					FB.getLoginStatus(function(response) {
-					  if (response.status === 'connected') {
-					    uid = response.authResponse.userID;
-					    $(document).trigger('fbInit');
+						if (response.status === 'connected') {
+							uid = response.authResponse.userID;
+							$(document).trigger('fbInit');
 
-					    FB.api('me?fields=picture.height(80)', function(response) {
-			          if (!response || response.error) {
-			            console.log('Error occured');
-			          } else {
-			            picurl = response["picture"]["data"]["url"];
-			            console.log(picurl)
-			            $(document).trigger('fbInitPicLoaded');
-			          }
-			        });
-					  }
-					  else {
-					  } 
-					 });
+							FB.api('me?fields=picture.height(80)', function(response) {
+								if (!response || response.error) {
+									console.log('Error occured');
+								} else {
+									picurl = response["picture"]["data"]["url"];
+									console.log(picurl)
+									$(document).trigger('fbInitPicLoaded');
+								}
+							});
+						}
+						else {
+						} 
+					});
 				}
-		</script>
-		
-		<script type="text/javascript">			
-		
-			var error = "{{ errorFlag }}";
-			if (error != "") {
-				if (error == "1") {
-					alert("Oops! You are already a guest for this meal!");
-					window.location = '../feed';
-				}
-				else if (error == "2") {
-					alert("Sorry, this meal is full! You cannot join at this time.");
-					window.location = '../feed';
-				}
+			</script>
+			
+			<script type="text/javascript">			
 				
-				else if (error == "3") {
-					alert("You can't join a meal you're hosting!");
-					window.location = '../feed';
-				}	
-				else if (error == "0") {
-					alert("You have successfully joined this meal!");
-					window.location = '../feed';
-				}	
-			}			
-		</script>
-	</body>
-</html>
+				var error = "{{ errorFlag }}";
+				if (error != "") {
+					if (error == "1") {
+						alert("Oops! You are already a guest for this meal!");
+						window.location = '../feed';
+					}
+					else if (error == "2") {
+						alert("Sorry, this meal is full! You cannot join at this time.");
+						window.location = '../feed';
+					}
+					
+					else if (error == "3") {
+						alert("You can't join a meal you're hosting!");
+						window.location = '../feed';
+					}	
+					else if (error == "0") {
+						alert("You have successfully joined this meal!");
+						window.location = '../feed';
+					}	
+				}			
+			</script>
+		</body>
+		</html>
