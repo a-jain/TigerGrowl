@@ -331,7 +331,8 @@
 		$(document).ready(function() {
 			$(".host-row .setting-identifier").each(function(i) {
 				if (objHost[i] !== undefined) { 
-					$(this).text(objHost[i][1] + ", " + objHost[i][2] + ", " + objHost[i++][3]);
+					date = objHost[i][2].split("-");
+				    $(this).text(objHost[i][1] + ", " + date[1] + "/" + date[2] + ", " + objHost[i++][3]);
 				}
 			});
 		});
@@ -349,7 +350,8 @@
 		$(document).ready(function() {
 			$(".guest-column .feed-row .setting-identifier").each(function(i) {
 				if (objGuest[i] !== undefined) {
-					$(this).text(objGuest[i][1] + ", " + objGuest[i][2] + ", " + objGuest[i++][3]);
+					date = obj[i][2].split("-");
+		        	$(this).text(objGuest[i][1] + ", " + date[1] + "/" + date[2] + ", " + objGuest[i++][3]);
 				}
 			});
 		});
