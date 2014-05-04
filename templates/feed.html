@@ -18,6 +18,20 @@
 	<script src="../static/js/fb.js"></script>
 	<script src="../static/js/nivo-lightbox.min.js"></script>
 
+	<script>
+		function createArray(length) {
+			var arr = new Array(length || 0),
+			i = length;
+
+			if (arguments.length > 1) {
+				var args = Array.prototype.slice.call(arguments, 1);
+				while(i--) arr[length-1 - i] = createArray.apply(this, args);
+			}
+
+			return arr;
+		}
+	</script>
+
 			<!--
 		<script>
 		function openpopup() {
@@ -55,7 +69,7 @@
 		}
 	</style>
 
-	
+
 	<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
@@ -83,7 +97,7 @@
 			</a>
 		</div>
 	</div>
-	
+
 	<!-- Main feed container -->
 	<div class="container" style="margin-bottom:100px;">
 
@@ -184,7 +198,7 @@
 
 
 					$("#mymealslink").prop("href", "mymeals/" + window.uid);
-					
+
 				});
 				$(document).bind('fbInitPicLoaded',function(){
 					$("#FacebookPhoto").prop("src", window.picurl);
@@ -202,7 +216,7 @@
 							<div class="col" style="text-align:center;color:white;">&copy; 2014 TigerGrowl</div>
 							<div class="col-md-4">
 								<ul class="nav nav-pills">
-									
+
 								</ul>
 							</div>
 
@@ -234,15 +248,24 @@
 									$(document).trigger('fbInitPicLoaded');
 								}
 							});
+
+							// uidsPics = 
+							// FB.api('1362325282/?fields=picture', function(response) {
+
+
+
+
+
+							// });
 						}
 						else {
 						} 
 					});
 				}
 			</script>
-			
+
 			<script type="text/javascript">			
-				
+
 				var error = "{{ errorFlag }}";
 				if (error != "") {
 					if (error == "1") {
@@ -253,7 +276,7 @@
 						alert("Sorry, this meal is full! You cannot join at this time.");
 						window.location = '../feed';
 					}
-					
+
 					else if (error == "3") {
 						alert("You can't join a meal you're hosting!");
 						window.location = '../feed';
