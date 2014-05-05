@@ -270,7 +270,8 @@ def mymeals(uid=None, message=None):
 		queryresultList.append(cursor.fetchone())
 
 	# Notifications
-	notify = Notifications(uid)	
+	notify = Notifications(uid)
+	notify = json.dumps(notify)
 
 	hostnameList = json.dumps(queryresultList)
 	invitenameList = json.dumps(InviteMealNames)
