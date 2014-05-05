@@ -195,17 +195,18 @@
 
 					$(".joinbutton").each(function(i) {
 						if (obj[i] !== undefined) { 
-							if (parseInt(window.uid) == obj[i++][15]) {
+							if (parseInt(window.uid) == obj[i][15]) {
 								$(this).hide();
 							}
 							else {
 								$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
 							}
+							i++;
 						}
 					});
 					
 				});
-				
+
 				$(document).bind('fbInitPicLoaded',function(){
 					$("#FacebookPhoto").prop("src", window.picurl);
 				});
@@ -431,10 +432,7 @@
 									$(document).trigger('fbInitPicLoaded');
 								}
 							});
-
-							
 						}
-						
 					});
 				}
 			</script>
