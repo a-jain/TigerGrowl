@@ -536,7 +536,8 @@ def clearOldMeals():
 	cursor.execute(sql)
 
 	cursor.close()	
-		
+	print("if you get here Gil's code worked fine")
+	
 if __name__ == '__main__':
 	application.run(debug=True)
 	socketio.run(application)
