@@ -1,10 +1,10 @@
 from wtforms import Form, BooleanField, TextField, IntegerField, validators
 from wtforms.validators import ValidationError, Required, Email, URL
-from wtforms.fields import HiddenField, RadioField, SelectField
+from wtforms.fields import HiddenField, RadioField, SelectField, DateField
 from wtforms_components import TimeField
 
 # from datetime import date
-from wtforms_html5 import DateField
+# from wtforms_html5 import DateField
 
 class MealForm(Form):
     place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
