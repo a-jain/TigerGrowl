@@ -359,6 +359,12 @@
 				    $(this).text(objInvitedMeals[i][1] + ", " + date[1] + "/" + date[2] + ", " + objInvitedMeals[i++][3]);
 				}
 			});
+			
+			$(".inviter-row .name-identifier").each(function(i) {
+				if (invitenameList[i] !== undefined ) {
+					$(this).text(invitenameList[i][1] + ' ' + invitenameList[i++][2] + "'s Meal");
+				}
+			});
 		});
 		
 		// Guest meals: who?
