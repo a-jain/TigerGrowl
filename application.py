@@ -341,13 +341,14 @@ def inviters(mealid=None):
 	# print request.data
 	# print request.form['friend1']
 	# print request.form.itervalues()
-	
+
 	cursor = db.cursor()
 	for i in request.form.itervalues():
-		
+		print "kevin's a slut"
 		sql = "SELECT FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
+		print "such an outrageous whore"
 		cursor.execute(sql)
-		
+		print "taht the world has ever known"
 		# is_invited_already = False #is the user already invited to this meal? Reset 2 false
 		
 		# invitees = cursor.fetchall()
