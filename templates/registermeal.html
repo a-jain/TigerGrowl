@@ -5,7 +5,7 @@
 	p {margin-left:20px;}
 	body {background-color:#8abe9b;}
 	#priv {
-    	float: left;
+		float: left;
 	}
 	</style>
 	<head>
@@ -14,8 +14,8 @@
 		<!-- Bootstrap -->
 		<link href="../static/css/bootstrap.min.css" rel="stylesheet", media = "screen">
 		<link rel="shortcut icon" href="../static/img/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 		<link href="../static/css/form-signin.css" rel="stylesheet", media = "screen">
 		<script src="../static/js/jquery-1.11.0.min.js"></script>
 		<script>
@@ -40,18 +40,18 @@
 				{{ render_field(form.date) }}
 
 				{% for subfield in form.priv %}
-				    {{ subfield }}
-				    {{ subfield.label }}
-				    <br/>
+					{{ subfield }}
+					{{ subfield.label }}
+					<br/>
 				{% endfor %}
 				
 				{{ render_field(form.uid) }}
 			<!-- </dl> -->
-	  <dl style="text-align: center;">
-        <button class="btn btn-default btn-success btn-lg" type="submit" onclick="bigrefresh()"> <span class="glyphicon glyphicon-ok-sign"></span>   Register</button>
-      </dl>
+		<dl style="text-align: center;">
+			<button class="btn btn-default btn-success btn-lg" type="submit" onclick="bigrefresh()"> <span class="glyphicon glyphicon-ok-sign"></span>   Register</button>
+		</dl>
 		</form>
-	</div>
+		</div>
 	
 	</body>
 
@@ -67,20 +67,20 @@ FB.init({
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
-    // the user is logged in and has authenticated your
-    // app, and response.authResponse supplies
-    // the user's ID, a valid access token, a signed
-    // request, and the time the access token 
-    // and signed request each expire
-    var userid = response.authResponse.userID;
-    var accessToken = response.authResponse.accessToken;
-    $(document).ready(function() {$("#uid").val(userid);});
+	// the user is logged in and has authenticated your
+	// app, and response.authResponse supplies
+	// the user's ID, a valid access token, a signed
+	// request, and the time the access token 
+	// and signed request each expire
+	var userid = response.authResponse.userID;
+	var accessToken = response.authResponse.accessToken;
+	$(document).ready(function() {$("#uid").val(userid);});
 
   } else if (response.status === 'not_authorized') {
-    // the user is logged in to Facebook, 
-    // but has not authenticated your app
+	// the user is logged in to Facebook, 
+	// but has not authenticated your app
   } else {
-    // the user isn't logged in to Facebook.
+	// the user isn't logged in to Facebook.
   }
  });
 
