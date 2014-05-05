@@ -32,6 +32,20 @@
 	{% endif %}	
 
 	<script>
+		function createArray(length) {
+			var arr = new Array(length || 0),
+			i = length;
+
+			if (arguments.length > 1) {
+				var args = Array.prototype.slice.call(arguments, 1);
+				while(i--) arr[length-1 - i] = createArray.apply(this, args);
+			}
+
+			return arr;
+		}
+	</script>
+
+	<script>
 		$(document).ready(function () {
 			$('#HostButton').nivoLightbox({
 	            effect: 'fall'
@@ -498,6 +512,183 @@
 				});
 
 			});
+
+			// WHO'S COMING: HOST
+			// Set up the tool tips
+			$(document).ready(function() {
+				$('.attendee1').tooltip();
+				$('.attendee2').tooltip();
+				$('.attendee3').tooltip();
+				$('.attendee4').tooltip();
+				$('.attendee5').tooltip();
+				$('.attendee6').tooltip();
+				$('.attendee7').tooltip();
+				$('.attendee8').tooltip();
+				$('.attendee9').tooltip();
+				$('.attendee10').tooltip();
+				$('.attendee11').tooltip();
+			});
+
+			RowNum = $('.host-row').length;
+			pics = createArray(RowNum,12);
+			for (i=0;i<RowNum;i++)
+			{
+				for (j=4;j<16;j++)
+				{
+					if (objHost[i][j] != null) {
+						pics[i][j-4] = "http://graph.facebook.com/" + objHost[i][j] + "/picture";
+					}
+					else
+					{
+						pics[i][j-4] = null;
+					}
+				}
+			}
+
+			$(".attendee1").each(function(i) {
+				if (pics[i][0] !== undefined){
+					$(this).attr("src", pics[i][0]);
+					$(this).prop('title', hostGuestNames[i][0]);
+				
+					if (pics[i][0] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee2").each(function(i) {
+				if (pics[i][1] !== undefined){
+					$(this).attr("src", pics[i][1]);
+					$(this).prop('title', hostGuestNames[i][1]);
+				
+					if (pics[i][1] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee3").each(function(i) {
+				if (pics[i][2] !== undefined){
+					$(this).attr("src", pics[i][2]);
+					$(this).prop('title', hostGuestNames[i][2]);
+				
+					if (pics[i][2] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee4").each(function(i) {
+				if (pics[i][3] !== undefined){
+					$(this).attr("src", pics[i][3]);
+					$(this).prop('title', hostGuestNames[i][3]);
+				
+					if (pics[i][3] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee5").each(function(i) {
+				if (pics[i][4] !== undefined){
+					$(this).attr("src", pics[i][4]);
+					$(this).prop('title', hostGuestNames[i][4]);
+				
+					if (pics[i][4] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee6").each(function(i) {
+				if (pics[i][5] !== undefined){
+					$(this).attr("src", pics[i][5]);
+					$(this).prop('title', hostGuestNames[i][5]);
+				
+					if (pics[i][5] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee7").each(function(i) {
+				if (pics[i][6] !== undefined){
+					$(this).attr("src", pics[i][6]);
+					$(this).prop('title', hostGuestNames[i][6]);
+				
+					if (pics[i][6] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee8").each(function(i) {
+				if (pics[i][7] !== undefined){
+					$(this).attr("src", pics[i][7]);
+					$(this).prop('title', hostGuestNames[i][7]);
+				
+					if (pics[i][7] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee9").each(function(i) {
+				if (pics[i][8] !== undefined){
+					$(this).attr("src", pics[i][8]);
+					$(this).prop('title', hostGuestNames[i][8]);
+				
+					if (pics[i][8] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee10").each(function(i) {
+				if (pics[i][9] !== undefined){
+					$(this).attr("src", pics[i][9]);
+					$(this).prop('title', hostGuestNames[i][9]);
+				
+					if (pics[i][9] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+			$(".attendee11").each(function(i) {
+				if (pics[i][10] !== undefined){
+					$(this).attr("src", pics[i][10]);
+					$(this).prop('title', hostGuestNames[i][10]);
+				
+					if (pics[i][10] === null) {
+						$(this).css('display','none');
+						$(this).prop('title', '');
+						$(this).tooltip('destroy');
+					}
+				}
+				i++;
+			});
+
 
 			// refresh-time notifications
 
