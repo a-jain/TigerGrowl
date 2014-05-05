@@ -209,6 +209,7 @@ def mymeals(uid=None, message=None):
 	invitedMeals = json.dumps(queryInviteResults)
 
 	yourInvites = []
+	InviteNames = []
 
 	tempQuery1 = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(tempQuery1)
