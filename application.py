@@ -453,13 +453,13 @@ def inviters(mealid=None):
 				mistake = True
 
 		# check that user is not already a guest
-		if not mistake:
+		is_guest_already = False
+		if not is_invited_already:
 			sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = %d" % int(mealid)
 			cursor.execute(sql)
 			mealinfo = cursor.fetchall()
 			firstGuestIndex = 4
 			guests = mealinfo[firstGuestIndex:firstGuestIndex + 10]
-			is_guest_already = False
 			for guest in guests:
 				if guest == i:
 					is_guest_already = True
