@@ -126,8 +126,13 @@ def registermeal():
 		print("registermealarrived2")
 		receivedTime = str(form.time.data)[:-3]
 		print receivedTime
+
+		if not form.uid.data:
+			uid = 0
+		else:
+			uid = int(form.uid.data)
 		
-		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, str(form.date.data), receivedTime, int(form.uid.data), form.priv.data)
+		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, str(form.date.data), receivedTime, uid, form.priv.data)
 		print(sql)
 		print("registermealarrived3")
 		cursor.execute(str(sql))

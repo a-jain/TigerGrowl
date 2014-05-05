@@ -12,7 +12,7 @@ class MealForm(Form):
     # format='%m/%d/%y', 
     date = DateField('Date (mm/dd)', validators=[Required()])
     priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
-    uid = HiddenField('', [Required()])
+    uid = HiddenField('')
 
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():
