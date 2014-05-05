@@ -553,7 +553,9 @@ def getGuestNames(mealList):
 			j=j+1
 		ListofLists.append(newList)
 
-	return ListofLists
+		dump = json.dumps(ListofLists)
+
+	return dump
 
 
 	
