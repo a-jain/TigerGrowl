@@ -106,7 +106,7 @@ h1 {
 	transition: color 0.4s ease-out;
 }
 
-.feed-row .name-identifier{
+.feed-row .name-identifier, .host-row .name-identifier {
 	float: left;
 	width: 50%;
 	padding-left:45px;
