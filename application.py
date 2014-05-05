@@ -544,11 +544,11 @@ def clearOldMeals():
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
+# find guest names for every meal to be shown on mymeals. mealsList is a list of mealids
 def getGuestNames(mealList):
 	# get all the guest names for guest1
 	cursor = db.cursor()
 	ListofLists = []
-
 
 	for i in range(0, len(mealList)):
 		newList = []
@@ -567,8 +567,6 @@ def getGuestNames(mealList):
 
 	return dump
 
-
-	
 	
 if __name__ == '__main__':
 	application.run(debug=True)
