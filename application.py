@@ -130,7 +130,7 @@ def registermeal():
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, str(form.date.data), receivedTime, int(form.uid.data), form.priv.data)
 		print(sql)
 		print("registermealarrived3")
-		cursor.execute(sql)
+		cursor.execute(str(sql))
 		
 		print "all done"
 		cursor.close()
