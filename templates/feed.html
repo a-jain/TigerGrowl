@@ -197,7 +197,9 @@
 							if (parseInt(window.uid) == obj[i++][15]) {
 								$(this).hide();
 							}
-							else $(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
+							else {
+								$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
+							}
 						}
 					});
 
@@ -230,7 +232,7 @@
 					if (pics[i][0] !== undefined){
 						$(this).attr("src", pics[i][0]);
 						$(this).prop('title', GuestNames[i][0]);
-					
+
 						if (pics[i][0] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -243,7 +245,7 @@
 					if (pics[i][1] !== undefined){
 						$(this).attr("src", pics[i][1]);
 						$(this).prop('title', GuestNames[i][1]);
-					
+
 						if (pics[i][1] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -256,7 +258,7 @@
 					if (pics[i][2] !== undefined){
 						$(this).attr("src", pics[i][2]);
 						$(this).prop('title', GuestNames[i][2]);
-					
+
 						if (pics[i][2] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -269,7 +271,7 @@
 					if (pics[i][3] !== undefined){
 						$(this).attr("src", pics[i][3]);
 						$(this).prop('title', GuestNames[i][3]);
-					
+
 						if (pics[i][3] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -282,7 +284,7 @@
 					if (pics[i][4] !== undefined){
 						$(this).attr("src", pics[i][4]);
 						$(this).prop('title', GuestNames[i][4]);
-					
+
 						if (pics[i][4] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -295,7 +297,7 @@
 					if (pics[i][5] !== undefined){
 						$(this).attr("src", pics[i][5]);
 						$(this).prop('title', GuestNames[i][5]);
-					
+
 						if (pics[i][5] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -308,7 +310,7 @@
 					if (pics[i][6] !== undefined){
 						$(this).attr("src", pics[i][6]);
 						$(this).prop('title', GuestNames[i][6]);
-					
+
 						if (pics[i][6] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -321,7 +323,7 @@
 					if (pics[i][7] !== undefined){
 						$(this).attr("src", pics[i][7]);
 						$(this).prop('title', GuestNames[i][7]);
-					
+
 						if (pics[i][7] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -334,7 +336,7 @@
 					if (pics[i][8] !== undefined){
 						$(this).attr("src", pics[i][8]);
 						$(this).prop('title', GuestNames[i][8]);
-					
+
 						if (pics[i][8] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -347,7 +349,7 @@
 					if (pics[i][9] !== undefined){
 						$(this).attr("src", pics[i][9]);
 						$(this).prop('title', GuestNames[i][9]);
-					
+
 						if (pics[i][9] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -360,7 +362,7 @@
 					if (pics[i][10] !== undefined){
 						$(this).attr("src", pics[i][10]);
 						$(this).prop('title', GuestNames[i][10]);
-					
+
 						if (pics[i][10] === null) {
 							$(this).css('display','none');
 							$(this).prop('title', '');
@@ -455,7 +457,7 @@
 					}	
 					else if (error == "0") {
 						alert("You have successfully joined this meal!");
-						window.location = '/feed';
+						// window.location = '/feed';
 					}
 					else if (error == "0a") {
 						alert("Invites sent!");
@@ -465,7 +467,7 @@
 					else if (error == "4") {
 						alert("You've selected some people who have already been invited - don't worry, we've invited everyone else!");
 						top.location.href = "/feed";
-				
+
 					}
 				}			
 			</script>
