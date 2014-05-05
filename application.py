@@ -514,10 +514,10 @@ def cancelMeal(mealid=None, uid=None):
 	
 	cursor = db.cursor()
 	
-	sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = \'%s\';" % (mealid)
+	sql = "DELETE FROM ebdb.meal_table WHERE meal_id = \'%s\';" % (mealid)
 	cursor.execute(sql)
 	
-	sql = "SELECT * FROM ebdb.invitees WHERE meal_id = \'%s\';" % (mealid)
+	sql = "DELETE FROM ebdb.invitees WHERE meal_id = \'%s\';" % (mealid)
 	cursor.execute(sql)
 	
 	cursor.close()
@@ -525,7 +525,6 @@ def cancelMeal(mealid=None, uid=None):
 	return redirect(url_for('mymeals', uid=uid, message="success2"))
 	
 def clearOldMeals():
-
 	currentDate = datetime.now().strftime('%Y-%m-%d')
 	thisHour = int(datetime.now().strftime('%H'))
 	currentMin = int(datetime.now().strftime('%M'))
