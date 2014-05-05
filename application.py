@@ -359,7 +359,7 @@ def inviters(mealid=None):
 			if (str(each[2]) == str(i)):
 
 				is_invited_already = True
-				# mistake = True
+				mistake = True
 				
 		#is the user already invited to this meal?
 		if not is_invited_already:
