@@ -85,7 +85,7 @@
 
 		<a href="/welcome" id="helpLink">
 			<div class="help" style="float:right;color:white;margin-right:15px;">
-				{% if message != "success" and message != "success1" %}
+				{% if message != "success" and message != "success1" and message != "success2"%}
 					<img src="../static/img/fork-white.png">
 					<img src="../static/img/dish-white.png">
 					<img src="../static/img/knife-white.png">
@@ -173,7 +173,11 @@
 		var hostnameList = jQuery.parseJSON( {{hostnameList|tojson|safe}} );
 		var objInvitedMeals = jQuery.parseJSON( {{yourinvites|tojson|safe}} );
 		var invitenameList = jQuery.parseJSON( {{invitenameList|tojson|safe}} );
+<<<<<<< HEAD
 		var inviteGuestNames = jQuery.parseJSON( {{inviteGuestNames|tojson|safe}} );
+=======
+		var notify = jQuery.parseJSON( {{notify|tojson|safe}} );
+>>>>>>> 2e4e2b6195f62299106541e329b9b4a9bc9bf16e
 
 
 		var hostrowDiv = "<div class='row host-row'> \
@@ -215,6 +219,7 @@
 			</div> \
 		</div> \
 		<a class='invitebutton' href='#'><button type='button' class='btn btn-primary inviteSomeFriends' class='btn btn-primary btn-large gilead' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-heart'></span> Invite Friends</button> </a> \
+		<a class='cancelbutton' href='#'><button type='button' class='btn btn-primary inviteSomeFriends' class='btn btn-primary btn-large gilead' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-heart'></span> Cancel This Meal</button> </a> \
 		</div>";
 
 
@@ -410,6 +415,13 @@
 			        	$(this).prop("href", "/invite/" + objHost[i++][0]);
 			        }
 			    });
+				
+				$(".cancelbutton").each(function(i) {
+			    	if (objHost[i] !== undefined) { 
+			        	$(this).prop("href", "/cancel/" + objHost[i][15] + "/" + objHost[i++][0]);
+			        }
+			    });
+				
 			    // $(".inviteSomeFriends").each(function(i) {
 			    // 	if (objHost[i] !== undefined) { 
 			    //     	$(this).attr("href", "/invite/" + objHost[i++][0]);
@@ -497,8 +509,13 @@
 			else if (message == "success1") {
 				alert("You have successfully left the meal!");
 				location.pathname = "";
-				window.history.back(-1);
-			}		
+				reload();
+			}	
+			else if (message == "success2") {
+				alert("You have successfully cancelled the meal!");
+				location.pathname = "";
+				reload();
+			}					
 		</script>
 	</body>
 	</html>
