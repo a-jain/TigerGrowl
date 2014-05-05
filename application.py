@@ -28,7 +28,6 @@ def home():
 def welcome():
 	return render_template('welcome.html')
 
-
 @application.route('/login/')
 @application.route('/login/<uid>')
 def login(uid=None):
@@ -245,6 +244,70 @@ def mymeals(uid=None, message=None):
 	hostnameList = json.dumps(queryresultList)
 	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+
+@application.route('/accept/<mealid>/<uid>')
+def accept(mealid=None, uid=None):
+	if not uid or not mealid:
+		return redirect(url_for('home'))
+	cursor = db.cursor()
+	deletequery = "DELETE * FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
+	cursor.execute(deletequery)
+	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
+	cursor.execute(query)
+	meal = cursor.fetchone()
+	if not meal:
+		abort(404)
+
+
+	hostid = meal[15]
+	
+	#type bashing
+	if (type(uid) is int):
+		str_uid = str(uid)
+	else:
+		str_uid = uid
+	
+	if (type(hostid) is int):
+		str_hostid = str(hostid)
+	else:
+		str_hostid = hostid
+			
+	if str_hostid == str_uid: 
+			errorFlag = "3" # They are the host
+			cursor.close()
+			return redirect(url_for('feed', errorFlag=errorFlag))
+				
+	#f = open("TEMP_for_testing_joinmeal.txt", "w")
+	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
+	guest_x = 1
+	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
+		
+		if (not guest):
+			break
+		guest_x += 1
+		
+		# even more type bashing
+		if (type(guest) is int):
+			str_guest = str(guest)
+		else:
+			str_guest = guest
+
+		if (str_guest == str_uid):
+			#print("uid match")
+			#Handle the case of them being already in the meal
+			errorFlag = "1" # Already guest
+			cursor.close()
+			return redirect(url_for('feed', errorFlag=errorFlag))
+			
+	if guest_x == 12:
+		errorFlag = "2" # Full meal
+		cursor.close()
+		return redirect(url_for('feed', errorFlag=errorFlag))
+		
+	guestString = "guest" + str(guest_x)
+	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
+	cursor.execute(sql)
+	cursor.close()
 
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
