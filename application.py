@@ -261,6 +261,7 @@ def mymeals(uid=None, message=None):
 		for each in queryResults:
 			yourmeals.append(each)
 			mealuids.append(each[15])
+	invitedToGuestNames = getGuestNames(yourmeals)	
 	yourmeals = json.dumps(yourmeals)
 	
 	queryresultList = []
@@ -276,7 +277,7 @@ def mymeals(uid=None, message=None):
 	hostnameList = json.dumps(queryresultList)
 	invitenameList = json.dumps(InviteMealNames)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, hostGuestNames=hostGuestNames, notify=notify, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, hostGuestNames=hostGuestNames, invitedToGuestNames=invitedToGuestNames, notify=notify, message=message)
 
 @application.route('/accept/<mealid>/<uid>')
 def accept(mealid=None, uid=None):
