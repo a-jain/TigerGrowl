@@ -557,7 +557,7 @@ def getGuestNames(mealList):
 			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
 			cursor.execute(sql)
 			temp = cursor.fetchone()
-			temp2 = temp[1] + temp[2]
+			temp2 = temp[1] + " " + temp[2]
 			newList.append(temp2)
 			j=j+1
 		ListofLists.append(newList)
