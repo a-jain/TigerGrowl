@@ -344,23 +344,23 @@ def inviters(mealid=None):
 
 	cursor = db.cursor()
 	for i in request.form.itervalues():
-		print "kevin's a slut"
+		# print "kevin's a slut"
 		sql = "SELECT * FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
-		print "such an outrageous whore"
+		# print "such an outrageous whore"
 		cursor.execute(sql)
-		print "taht the world has ever known"
-		# is_invited_already = False #is the user already invited to this meal? Reset 2 false
+		# print "taht the world has ever known"
+		is_invited_already = False #is the user already invited to this meal? Reset 2 false
 		
-		# invitees = cursor.fetchall()
-		# for each in invitees:
-		# 	if (str(each) == str(i)):
-		# 		is_invited_already = True
+		invitees = cursor.fetchall()
+		for each in invitees:
+			if (str(each) == str(i)):
+				is_invited_already = True
 		
-		# #is the user already invited to this meal?
-		# if not is_invited_already:
-		# 	sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
-		#  	cursor.execute(sql)
-		# print i
+		#is the user already invited to this meal?
+		if not is_invited_already:
+			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+		 	cursor.execute(sql)
+		print i
 
 	cursor.close()
 		
