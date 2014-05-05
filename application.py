@@ -121,7 +121,7 @@ def registermeal():
 		# print newDate
 
 		print "date:"
-		print str(form.date.data)
+		print form.date.data
 
 		print("registermealarrived2")
 		receivedTime = str(form.time.data)[:-3]
@@ -144,7 +144,7 @@ def registermeal():
 	else:
 		print("registermealarrived1b")
 
-	return redirect(url_for('feed'))
+	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
 def joinmeal(uid=None, mealid=None):
