@@ -141,6 +141,12 @@ def joinmeal(uid=None, mealid=None):
 	
 	print("this is the hostid")
 	print(hostid)
+	print("hostid type:")
+	print(type(hostid))
+	print("uid type:")
+	print(type(uid))
+	print("uid is:")
+	print(uid)
 	
 	#type bashing
 	if (type(uid) is int):
