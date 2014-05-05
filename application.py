@@ -412,7 +412,7 @@ def remove(mealid=None, uid=None):
 	
 	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
-	print (sql)
+	#print (sql)
 	cursor.execute(sql)
 	
 	# Then, update uid at position last_full_index with null.
@@ -451,7 +451,7 @@ def inviters(mealid=None):
 	if not request.form:
 		return redirect(url_for('feed'))
 
-	print ("check this kevin")
+	#print ("check this kevin")
 	# print request.data
 	# print request.form['friend1']
 	# print request.form.itervalues()
@@ -493,11 +493,11 @@ def inviters(mealid=None):
 		if not is_invited_already and not is_guest_already:
 			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 0, 0)
 		 	cursor.execute(sql)
-		print i
+		#print i
 
 	cursor.close()
 		
-	print "wtf"
+	#print "wtf"
 	
 	if (mistake == True):
 		errorFlag = "4"
@@ -530,19 +530,19 @@ def clearOldMeals():
 			lastHour = 0
 			lastMin = 0
 		
-	print("0.9")
+	#print("0.9")
 	cursor = db.cursor()
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate) 
 	cursor.execute(sql)
 	
-	print("1")
+	#print("1")
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
-	print("2")
+	#print("2")
 	cursor.close()	
-	print("if you get here Gil's code worked fine")
+	#print("if you get here Gil's code worked fine")
 
 def getGuestNames(mealList):
 	# get all the guest names for guest1
