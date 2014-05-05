@@ -264,6 +264,50 @@
 		</div> \
 		</div>";
 
+		var newinviterowDiv = "<div class='row feed-row newinviter-row'> \
+		<div class='name-identifier'> </div> \
+		<div class='setting-identifier'> </div> \
+		<div class='attendees'>Who's Coming? \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee2' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee3' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee4 href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee5' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee6' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee7' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee8' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee9' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee10' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+			<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee11' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
+			</div> \
+		</div> \
+		<div style='width: 35%;float: right;text-align: center; margin-top:25px;'>	<a style='margin-right:35px;margin-left:-40%;' href='#' class='btn btn-default btn-success btn-lg accept-invite'><span class='glyphicon glyphicon-ok'></span></a> \
+			<a href='#' class='btn btn-default btn-danger btn-lg reject-invite'><span class='glyphicon glyphicon-remove'></span></a> \
+		</div> \
+		</div>";
+
+
 
 		var guestrowDiv = "<div class='row feed-row'> \
 		<div class='name-identifier'> </div> \
@@ -308,8 +352,6 @@
 		</div> \
 		</div>";
 
-		
-
 		// self populate the Host divs
 		if (objHost == 0) {
 			$(".host-column").append("<div class='row feed-row'> \
@@ -328,7 +370,20 @@
 		}
 		else {
 			$.each(objInvite, function() {
-				$(".invite-column").append(inviterowDiv);
+				truth = 0;
+				for (i=0;i<notify.length;i++){
+					if (notify[i] == objInvite[i][0])
+					{
+						truth = 1
+					}
+				}
+
+				if (truth){
+					$(".invite-column").append(newinviterowDiv);
+				}
+				else {	
+					$(".invite-column").append(inviterowDiv);
+				}
 			});
 		}
 
@@ -368,6 +423,7 @@
 					$(this).text(invitenameList[i][1] + ' ' + invitenameList[i++][2] + "'s Meal");
 				}
 			});
+			
 		});
 		
 		// Guest meals: who?
@@ -444,6 +500,9 @@
 				});
 
 			});
+
+			// refresh-time notifications
+
 		</script>
 			
 			<footer>
