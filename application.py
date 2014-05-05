@@ -58,7 +58,7 @@ def feed(errorFlag=None):
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
-	GuestNames = getGuestNames(queryResults)
+	GuestNames = getGuestNames(queryResults, "mealTable")
 
 	mealuids = []
 	for meal in queryResults:
@@ -139,16 +139,6 @@ def joinmeal(uid=None, mealid=None):
 	
 	hostid = meal[15]
 	
-	
-	print("this is the hostid")
-	print(hostid)
-	print("hostid type:")
-	print(type(hostid))
-	print("uid type:")
-	print(type(uid))
-	print("uid is:")
-	print(uid) 
-	
 	#type bashing
 	if (type(uid) is int):
 		str_uid = str(uid)
@@ -161,12 +151,11 @@ def joinmeal(uid=None, mealid=None):
 		str_hostid = hostid
 			
 	if str(hostid) == str(uid):
-		print("host and uid match yo!")
+
 		errorFlag = "3" # They are the host
 		cursor.close()
 		return redirect(url_for('feed', errorFlag=errorFlag))
 	else:
-		print("don't match yo")
 		print(str(hostid))
 		print(str(uid))
 				
@@ -229,8 +218,10 @@ def mymeals(uid=None, message=None):
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
-	inviteGuestNames = getGuestNames(queryInviteResults)
+	# inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
+	# invitedMeals = []
+	# inviteGuestNames = []
 	yourInvites = []
 	InviteNames = []
 
@@ -244,6 +235,9 @@ def mymeals(uid=None, message=None):
 		for each in queryResults:
 			yourInvites.append(each)
 			InviteNames.append(each[15])
+
+	# function call to get all guest names, given a list of meals that you're invited to
+	inviteGuestNames = getGuestNames(yourInvites)
 	yourInvites = json.dumps(yourInvites)
 
 	InviteMealNames = []
@@ -525,8 +519,17 @@ def clearOldMeals():
 		
 	#print("0.9")
 	cursor = db.cursor()
+
+	sql = "SELECT * FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
+	cursor.execute(sql)
+	oldMeals = cursor.fetchall()
+	print "######"
+
+	print oldMeals
+
+	print "#######"
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
 	cursor.execute(sql)
 	
 	#print("1")
@@ -534,19 +537,38 @@ def clearOldMeals():
 	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
 	#print("2")
+
+	# now akash is going to also delete expired meals
+
+
+
+
+
+
+	# end akash code
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
+
+# find guest names for every meal to be shown on mymeals. mealsList is a list of mealids
 def getGuestNames(mealList):
 	# get all the guest names for guest1
+
+	# print mealList
+	# print "################"
 	cursor = db.cursor()
 	ListofLists = []
 
+	
+	minIndex = 4
+	maxIndex = 15
+	
 
+		
 	for i in range(0, len(mealList)):
 		newList = []
-		j = 4	
-		while mealList[i][j] is not None and j < 15: 
+		j = minIndex
+		while mealList[i][j] is not None and j < maxIndex: 
 			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
 			cursor.execute(sql)
 			temp = cursor.fetchone()
@@ -560,6 +582,7 @@ def getGuestNames(mealList):
 
 	return dump
 
+<<<<<<< HEAD
 def Notifications(uid):
 	cursor = db.cursor()
 	# find all of the meals where the guest is uid, and the guest has not yet been notified
@@ -572,8 +595,15 @@ def Notifications(uid):
 
 
 
+=======
+# def getGuestNamesAkash(mealList):
+# 	print mealList
+# 	firstGuestIndex = 4
+# 	lastGuestIndex = 14
 
-	
+# 	for meal in mealList:
+>>>>>>> FETCH_HEAD
+
 	
 if __name__ == '__main__':
 	application.run(debug=True)
