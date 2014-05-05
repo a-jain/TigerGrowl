@@ -341,9 +341,10 @@ def inviters(mealid=None):
 	# print request.data
 	# print request.form['friend1']
 	# print request.form.itervalues()
-
+	
+	cursor = db.cursor()
 	for i in request.form.itervalues():
-		cursor = db.cursor()
+		
 		sql = "SELECT FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
 		cursor.execute(sql)
 		
