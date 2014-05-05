@@ -342,10 +342,10 @@ def reject(mealid=None, uid=None):
 
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
-	print("got to here1")
+	
 	if not uid or not mealid:
 		return redirect(url_for('home'))
-	print("got to here 2")
+	
 	# get the guest table for the given uid
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
@@ -354,13 +354,12 @@ def remove(mealid=None, uid=None):
 	if not meal:
 		abort(404)
 
-	print("got to here 3")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	if not meal[firstGuestIndex]:
 		abort(404)
 
 	guests = meal[firstGuestIndex:firstGuestIndex + 10]
-	print("got to here 4")
+	#print("got to here 4")
 	# search guests for uid
 	guest_X = 1
 	for guest in guests:
@@ -372,10 +371,7 @@ def remove(mealid=None, uid=None):
 	if guest_X >= 11: # i.e. said guest is not in meal
 		abort(404)
 
-	print(guest_X)
-	print(guest)
 	user_index = guest_X
-	print("got to here 5")
 	# search guests for final non-null array index
 	guest_Y = 0
 	for guest in guests:
@@ -384,36 +380,25 @@ def remove(mealid=None, uid=None):
 			break
 		guest_Y += 1
 
-	print("got to here 6")
 	last_full_index = guest_Y
-	print (guest_Y)
-	print (guests)
+	
 	last_full = guests[last_full_index-1]
-	print ("#####")
-	print (last_full_index)
-	print (guests)
-	print ("######")
+	
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
 	
 	guestUIDString = "guest" + str(user_index)
 	guestLastString = "guest" + str(last_full_index)
-	print("guestUIDString is")
-	print(guestUIDString)
-	print("guestLastString is")
-	print(guestLastString)
-	print("last_full_index is")
-	print (last_full_index)
-#	# Now, update the uid at position user_index with uid at last_full_index.
+	
+	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
 	print (sql)
 	cursor.execute(sql)
-	print ("got to here 7")
+	
 	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
 	cursor.execute(sql)
-	print("got to here 8 - we've finished the removal (ostensibly)")
-
+	
 	return redirect(url_for('mymeals', uid=uid, message='success1'))
 	
 # when invite friends is clicked, the following happens:
