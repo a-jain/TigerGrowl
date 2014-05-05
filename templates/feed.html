@@ -212,9 +212,17 @@
 				{
 					for (j=4;j<16;j++)
 					{
-						pics[i][j] = obj[i][j];
+						if (obj[i][j] != null) {
+							pics[i][j] = "http://graph.facebook.com/" + obj[i][j] + "/picture";
+						}
+						else
+						{
+							pics[i][j] = null;
+						}
 					}
 				}
+
+
 			</script>
 
 				<footer> <!--

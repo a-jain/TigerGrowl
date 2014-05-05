@@ -204,6 +204,11 @@ def mymeals(uid=None, message=None):
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
 
+	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %d" % (uid)
+	cursor.execute(queryInvite)
+	queryInviteResults = cursor.fetchall()
+	invitedMeals = json.dumps(queryInviteResults)
+
 	yourmeals = []
 	mealuids = []
 
@@ -217,7 +222,7 @@ def mymeals(uid=None, message=None):
 			yourmeals.append(each)
 			mealuids.append(each[15])
 	yourmeals = json.dumps(yourmeals)
-
+	
 	queryresultList = []
 	for i in range(0, len(mealuids)):
 		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(mealuids[i]))
@@ -226,7 +231,7 @@ def mymeals(uid=None, message=None):
 
 	hostnameList = json.dumps(queryresultList)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
 @application.route('/remove')
 @application.route('/remove/<mealid>')
