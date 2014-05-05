@@ -435,6 +435,8 @@ def remove(mealid=None, uid=None):
 	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
 	cursor.execute(sql)
+
+	cursor.close()	
 	
 	return redirect(url_for('mymeals', uid=uid, message='success1'))
 	
@@ -633,6 +635,7 @@ def getGuestNames(mealList):
 
 		dump = json.dumps(ListofLists)
 
+	cursor.close()
 	return dump
 
 def Notifications(uid):
