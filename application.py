@@ -355,9 +355,9 @@ def inviters(mealid=None):
 		
 		invitees = cursor.fetchall()
 		for each in invitees:
-			if (str(each)[2] == str(i)):
+			if (str(each[2]) == str(i)):
 				is_invited_already = True
-				mistake = True
+				# mistake = True
 				
 		#is the user already invited to this meal?
 		if not is_invited_already:
@@ -368,7 +368,7 @@ def inviters(mealid=None):
 	cursor.close()
 		
 	print "wtf"
-	if 
+	
 	return redirect(url_for('feed'))
 
 @socketio.on('notify')
