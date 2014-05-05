@@ -500,7 +500,7 @@ def inviters(mealid=None):
 	else: 
 		errorFlag = "0a"
 		
-	return render_template('lightboxclose.html')
+	return redirect(url_for('feed', errorFlag = errorFlag))
 	
 @socketio.on('notify')
 def test_message(message):
@@ -539,6 +539,7 @@ def clearOldMeals():
 	print("2")
 	cursor.close()	
 	print("if you get here Gil's code worked fine")
+	
 	
 if __name__ == '__main__':
 	application.run(debug=True)
