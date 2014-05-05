@@ -141,7 +141,7 @@ def joinmeal(uid=None, mealid=None):
 	if (type(uid) is int):
 		str_uid = str(uid)
 	else:
-		str_uid = uid 
+		str_uid = uid
 	
 	if (type(hostid) is int):
 		str_hostid = str(hostid)
@@ -326,8 +326,20 @@ def inviters(mealid=None):
 
 	for i in request.form.itervalues():
 		cursor = db.cursor()
-		sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+		sql = "SELECT FROM ebdb.invitees WHERE mealid = %d" % int(mealid)
 		cursor.execute(sql)
+		
+		is_invited_already = False #is the user already invited to this meal? Reset 2 false
+		
+		invitees = cursor.fetchall()
+		for each in invitees:
+			if (str(each) == str(i)):
+				is_invited_already = True
+		
+		#is the user already invited to this meal?
+		if (!is_invited_already):
+			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+			cursor.execute(sql)
 		print i
 
 	cursor.close()
