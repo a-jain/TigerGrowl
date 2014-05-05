@@ -167,6 +167,10 @@ def joinmeal(uid=None, mealid=None):
 		errorFlag = "3" # They are the host
 		cursor.close()
 		return redirect(url_for('feed', errorFlag=errorFlag))
+	else:
+		print("don't match yo")
+		print(str(hostid))
+		print(str(uid))
 				
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
