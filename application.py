@@ -139,6 +139,9 @@ def joinmeal(uid=None, mealid=None):
 	
 	hostid = meal[15]
 	
+	print("this is the hostid")
+	print(hostid)
+	
 	#type bashing
 	if (type(uid) is int):
 		str_uid = str(uid)
@@ -158,7 +161,7 @@ def joinmeal(uid=None, mealid=None):
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
-	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
+	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
 		
 		if (not guest):
 			break
