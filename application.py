@@ -660,4 +660,4 @@ def Notifications(uid):
 
 	
 if __name__ == '__main__':
-	application.run(debug=False)
+	application.run(debug=True)
