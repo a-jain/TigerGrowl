@@ -589,7 +589,12 @@ def Notifications(uid):
 	cursor.execute(sql);
 	temp = cursor.fetchall();
 
+	NotificationList = [] # contains mealids of meals that need notifications
+
 	for item in temp:
+		NotificationList.append(item[0])
+
+	return NotificationList
 
 # def getGuestNamesAkash(mealList):
 # 	print mealList
