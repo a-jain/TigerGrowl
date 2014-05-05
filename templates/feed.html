@@ -225,29 +225,37 @@
 				$(".attendee1").each(function(i) {
 					if (pics[i][0] !== undefined){
 						$(this).attr("src", pics[i++][0]);
+						$(this).attr('title', 'hi there11');
 						$(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
+						$(this).tooltip('destroy');
 					}
 				});
 				$(".attendee2").each(function(i) {
 					if (pics[i][1] !== undefined){
 						$(this).attr("src", pics[i++][1]);
+						$(this).attr('title', 'hi there12');
 						$(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
-						$(this).tooltip();
+						$(this).attr('title', '');
+						$(this).tooltip('destroy');
 					}
 				});
 				$(".attendee3").each(function(i) {
 					if (pics[i][2] !== undefined){
 						$(this).attr("src", pics[i++][2]);
+						$(this).attr('title', 'hi there13');
 						$(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
+						$(this).tooltip('destroy');
 					}
 				});
 				$(".attendee4").each(function(i) {
@@ -257,6 +265,8 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
+						$(this).tooltip('destroy');
 					}
 				});
 				$(".attendee5").each(function(i) {
@@ -266,6 +276,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee6").each(function(i) {
@@ -275,6 +286,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee7").each(function(i) {
@@ -284,6 +296,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee8").each(function(i) {
@@ -293,6 +306,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee9").each(function(i) {
@@ -302,6 +316,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee10").each(function(i) {
@@ -311,6 +326,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 				$(".attendee11").each(function(i) {
@@ -320,6 +336,7 @@
 					}
 					else {
 						$( this ).css('display','none');
+						$(this).attr('title', '');
 					}
 				});
 
