@@ -121,6 +121,7 @@ def registermeal():
 		print receivedTime
 		
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
+		print(sql)
 		cursor.execute(sql)
 		
 		"""
