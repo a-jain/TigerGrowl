@@ -386,13 +386,13 @@ def remove(mealid=None, uid=None):
 
 	print("got to here 6")
 	last_full_index = guest_Y
-	print guest_Y
-	print guests
+	print (guest_Y)
+	print (guests)
 	last_full = guests[last_full_index-1]
-	print "#####"
-	print last_full_index
-	print guests
-	print "######"
+	print ("#####")
+	print (last_full_index)
+	print (guests)
+	print ("######")
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
 	
@@ -403,10 +403,10 @@ def remove(mealid=None, uid=None):
 	print("guestLastString is")
 	print(guestLastString)
 	print("last_full_index is")
-	print last_full_index
+	print (last_full_index)
 #	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
-	print sql
+	print (sql)
 	cursor.execute(sql)
 	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
@@ -446,7 +446,7 @@ def inviters(mealid=None):
 	if not request.form:
 		return redirect(url_for('feed'))
 
-	print "check this kevin"
+	print ("check this kevin")
 	# print request.data
 	# print request.form['friend1']
 	# print request.form.itervalues()
