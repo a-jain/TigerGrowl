@@ -310,9 +310,9 @@ def remove(mealid=None, uid=None):
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
 	cursor.execute(sql)
 	print ("got to here 7")
-	Then, update uid at position last_full_index with null.
+	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
-	# cursor.execute(sql)
+	cursor.execute(sql)
 	print("got to here 8 - we've finished the removal (ostensibly)")
 
 	return redirect(url_for('mymeals', uid=uid, message='success1'))
