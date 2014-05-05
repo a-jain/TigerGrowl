@@ -241,9 +241,9 @@ def mymeals(uid=None, message=None):
 			InviteNames.append(each[15])
 
 	# function call to get all guest names, given a list of meals that you're invited to
-	print yourInvites
+	# print yourInvites
 	inviteGuestNames = getGuestNames(yourInvites)
-	print inviteGuestNames
+	# print inviteGuestNames
 	yourInvites = json.dumps(yourInvites)
 
 	InviteMealNames = []
