@@ -345,7 +345,7 @@ def inviters(mealid=None):
 	cursor = db.cursor()
 	for i in request.form.itervalues():
 		print "kevin's a slut"
-		sql = "SELECT FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
+		sql = "SELECT * FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
 		print "such an outrageous whore"
 		cursor.execute(sql)
 		print "taht the world has ever known"
