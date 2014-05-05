@@ -483,7 +483,7 @@ def inviters(mealid=None):
 				
 		# if the user isn't already invited and isn't already a guest, then invite him
 		if not is_invited_already and not is_guest_already:
-			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 0, 0)
+			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 1, 1)
 		 	cursor.execute(sql)
 		#print i
 
