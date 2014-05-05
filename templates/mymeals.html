@@ -213,7 +213,7 @@
 
 
 
-		var inviterowDiv = "<div class='row feed-row'> \
+		var inviterowDiv = "<div class='row inviter-row'> \
 		<div class='name-identifier'> </div> \
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming? \
@@ -340,6 +340,16 @@
 				if (objHost[i] !== undefined) { 
 					date = objHost[i][2].split("-");
 				    $(this).text(objHost[i][1] + ", " + date[1] + "/" + date[2] + ", " + objHost[i++][3]);
+				}
+			});
+		});
+
+		// Invited meal: place, date, time
+		$(document).ready(function() {
+			$(".inviter-row .setting-identifier").each(function(i) {
+				if (objInvitedMeals[i] !== undefined) { 
+					date = objInvitedMeals[i][2].split("-");
+				    $(this).text(objInvitedMeals[i][1] + ", " + date[1] + "/" + date[2] + ", " + objInvitedMeals[i++][3]);
 				}
 			});
 		});
