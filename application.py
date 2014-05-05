@@ -124,17 +124,16 @@ def registermeal():
 		print(sql)
 		print("registermealarrived3")
 		cursor.execute(sql)
-		"""
-		sql = "INSERT INTO ebdb.invitees (meal_id, user_id) VALUES (%d, %d);" % (int(cursor.lastrowid), int(form.uid.data))
-		cursor.execute(sql)"""
 		cursor.close()
 		# change to some exit page
 		return redirect(url_for('exitpage'))
+
 	elif request.method == 'POST':
 		print("registermealarrived1a")
 		print "form not validated"
 	else:
 		print("registermealarrived1b")
+		
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
