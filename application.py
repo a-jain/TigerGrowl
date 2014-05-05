@@ -111,8 +111,9 @@ def registermeal():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		
-		receivedDate = str(form.date.data).split('-')
-		newDate = "2014" + '-' + receivedDate[1] + '-' + receivedDate[2]
+		# received as month-day-year
+		receivedDate = str(form.date.data).split('/')
+		newDate = receivedDate[2] + '-' + receivedDate[0] + '-' + receivedDate[1]
 		
 		receivedTime = str(form.time.data)[:-3]
 		
@@ -523,6 +524,7 @@ def clearOldMeals():
 	print("2")
 	cursor.close()	
 	print("if you get here Gil's code worked fine")
+	
 	
 if __name__ == '__main__':
 	application.run(debug=True)

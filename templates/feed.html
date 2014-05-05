@@ -226,7 +226,7 @@
 					if (pics[i][0] !== undefined){
 						$(this).attr("src", pics[i++][0]);
 						$(this).attr('title', 'hi there11');
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -238,7 +238,7 @@
 					if (pics[i][1] !== undefined){
 						$(this).attr("src", pics[i++][1]);
 						$(this).attr('title', 'hi there12');
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -250,7 +250,7 @@
 					if (pics[i][2] !== undefined){
 						$(this).attr("src", pics[i++][2]);
 						$(this).attr('title', 'hi there13');
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -261,7 +261,7 @@
 				$(".attendee4").each(function(i) {
 					if (pics[i][3] !== undefined){
 						$(this).attr("src", pics[i++][3]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -272,7 +272,7 @@
 				$(".attendee5").each(function(i) {
 					if (pics[i][4] !== undefined){
 						$(this).attr("src", pics[i++][4]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -282,7 +282,7 @@
 				$(".attendee6").each(function(i) {
 					if (pics[i][5] !== undefined){
 						$(this).attr("src", pics[i++][5]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -292,7 +292,7 @@
 				$(".attendee7").each(function(i) {
 					if (pics[i][6] !== undefined){
 						$(this).attr("src", pics[i++][6]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -302,7 +302,7 @@
 				$(".attendee8").each(function(i) {
 					if (pics[i][7] !== undefined){
 						$(this).attr("src", pics[i++][7]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -312,7 +312,7 @@
 				$(".attendee9").each(function(i) {
 					if (pics[i][8] !== undefined){
 						$(this).attr("src", pics[i++][8]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -322,7 +322,7 @@
 				$(".attendee10").each(function(i) {
 					if (pics[i][9] !== undefined){
 						$(this).attr("src", pics[i++][9]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -332,7 +332,7 @@
 				$(".attendee11").each(function(i) {
 					if (pics[i][10] !== undefined){
 						$(this).attr("src", pics[i++][10]);
-						$(this).tooltip();
+						// $(this).tooltip();
 					}
 					else {
 						$( this ).css('display','none');
@@ -340,19 +340,19 @@
 					}
 				});
 
-				// $(document).ready(function() {
-				// 	$('.attendee1').tooltip();
-				// 	$('.attendee2').tooltip();
-				// 	$('.attendee3').tooltip();
-				// 	$('.attendee4').tooltip();
-				// 	$('.attendee5').tooltip();
-				// 	$('.attendee6').tooltip();
-				// 	$('.attendee7').tooltip();
-				// 	$('.attendee8').tooltip();
-				// 	$('.attendee9').tooltip();
-				// 	$('.attendee10').tooltip();
-				// 	$('.attendee11').tooltip();
-				// });
+				$(document).ready(function() {
+					$('.attendee1').tooltip();
+					$('.attendee2').tooltip();
+					$('.attendee3').tooltip();
+					$('.attendee4').tooltip();
+					$('.attendee5').tooltip();
+					$('.attendee6').tooltip();
+					$('.attendee7').tooltip();
+					$('.attendee8').tooltip();
+					$('.attendee9').tooltip();
+					$('.attendee10').tooltip();
+					$('.attendee11').tooltip();
+				});
 
 			</script>
 
@@ -430,12 +430,14 @@
 					}
 					else if (error == "0a") {
 						alert("Invites sent!");
-						window.location = '../feed';
+						top.location.href = "http://www.tigergrowl.info/feed";
+
 					}
 					
 					else if (error == "4") {
 						alert("You've selected some people who have already been invited - don't worry, we've invited everyone else!");
-						window.location = '../feed';
+						top.location.href = "http://www.tigergrowl.info/feed";
+
 					}
 				}			
 			</script>
