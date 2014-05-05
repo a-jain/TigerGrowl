@@ -204,7 +204,7 @@ def mymeals(uid=None, message=None):
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
 
-	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %d" % (uid)
+	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %d" % (int(uid))
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
