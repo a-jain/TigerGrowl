@@ -486,7 +486,7 @@ def inviters(mealid=None):
 				
 		# if the user isn't already invited and isn't already a guest, then invite him
 		if not is_invited_already and not is_guest_already:
-			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 0, 0)
 		 	cursor.execute(sql)
 		print i
 
@@ -536,7 +536,8 @@ def clearOldMeals():
 	cursor.execute(sql)
 
 	cursor.close()	
-		
+	print("if you get here Gil's code worked fine")
+	
 if __name__ == '__main__':
 	application.run(debug=True)
 	socketio.run(application)
