@@ -213,7 +213,8 @@ def mymeals(uid=None, message=None):
 
 	tempQuery1 = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(tempQuery1)
-	for row in cursor:
+	queryTempResults = cursor.fetchall()
+	for row in queryTempResults:
 		tempQuery2 = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s" % row[0]
 		cursor.execute(tempQuery2)
 		queryResults = cursor.fetchall()
