@@ -257,8 +257,14 @@ def remove(mealid=None, uid=None):
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
 	meal = cursor.fetchone()
+	if not meal:
+		abort(404)
+
 	print("got to here 3")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
+	if not meal[firstGuestIndex]:
+		abort(404)
+
 	guests = meal[firstGuestIndex:firstGuestIndex + 10]
 	print("got to here 4")
 	# search guests for uid
@@ -269,6 +275,9 @@ def remove(mealid=None, uid=None):
 			break
 		guest_X += 1
 
+	if guest_X >= 11: # i.e. said guest is not in meal
+		abort(404)
+
 	print(guest_X)
 	print(guest)
 	user_index = guest_X
@@ -277,12 +286,14 @@ def remove(mealid=None, uid=None):
 	guest_Y = 0
 	for guest in guests:
 		# check if the guest matches the selected user id
-		if (not guest):
+		if not guest:
 			break
 		guest_Y += 1
-		
+
 	print("got to here 6")
-	last_full_index = guest_Y
+	last_full_index = guest_Y-1
+	print guest_Y
+	print guests
 	last_full = guests[last_full_index]
 	# The last_full_index will be -1 if the meal is empty. This should be impossible, so if we run into this problem then
 	# we've made some kind of error
@@ -294,6 +305,7 @@ def remove(mealid=None, uid=None):
 	print("guestLastString is")
 	print(guestLastString)
 	print("last_full is")
+	print last_full
 #	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
 	cursor.execute(sql)
