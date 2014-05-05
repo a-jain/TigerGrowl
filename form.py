@@ -3,7 +3,7 @@ from wtforms.validators import ValidationError, Required, Email, URL
 from wtforms.fields import HiddenField, RadioField, SelectField
 from wtforms_components import TimeField
 
-from datetime import date
+# from datetime import date
 from wtforms_html5 import DateField
 
 class MealForm(Form):

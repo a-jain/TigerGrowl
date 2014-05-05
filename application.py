@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import MySQLdb
 import json
 from form import *
-# from datetime import date
+from datetime import datetime
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
@@ -519,7 +519,7 @@ def clearOldMeals():
 	else:
 	
 		if (thisHour != 0):
-			lastHour = lastHour - 1
+			lastHour = thisHour - 1
 			lastMin = currentMin + 50
 		else:
 			lastHour = 0
@@ -529,10 +529,10 @@ def clearOldMeals():
 	
 	cursor = db.cursor()
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date < %s;" (currentDate) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date < %s;" % (currentDate) 
 	cursor.execute(sql)
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date = %s AND time < %02d%:%02d%;" (currentDate, lastTime) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date = %s AND time < %02d%s%02d;" % (currentDate, lastHour, ":", lastMin) 
 	cursor.execute(sql)
 
 	cursor.close()	
