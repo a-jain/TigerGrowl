@@ -391,16 +391,16 @@
 		    $(document).bind('fbInit',function(){
 			//	console.log('fbInit complete; FB Object is Available');
 
-				// $(".invitebutton").each(function(i) {
-			 //    	if (objHost[i] !== undefined) { 
-			 //        	$(this).prop("href", "/invite/" + objHost[i++][0]);
-			 //        }
-			 //    });
-			    $(".inviteSomeFriends").each(function(i) {
+				$(".invitebutton").each(function(i) {
 			    	if (objHost[i] !== undefined) { 
-			        	$(this).attr("href", "/invite/" + objHost[i++][0]);
+			        	$(this).prop("href", "/invite/" + objHost[i++][0]);
 			        }
 			    });
+			    // $(".inviteSomeFriends").each(function(i) {
+			    // 	if (objHost[i] !== undefined) { 
+			    //     	$(this).attr("href", "/invite/" + objHost[i++][0]);
+			    //     }
+			    // });
 				
 				$(".removebutton").each(function(i) {
 			    	if (objGuest[i] !== undefined) { 
