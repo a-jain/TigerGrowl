@@ -214,7 +214,7 @@ def mymeals(uid=None, message=None):
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
-	hostGuestNames = getGuestNames(queryResults, "mealTable")
+	hostGuestNames = getGuestNames(queryResults)
 
 	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(queryInvite)
@@ -223,7 +223,7 @@ def mymeals(uid=None, message=None):
 	# inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
 	# invitedMeals = []
-	inviteGuestNames = []
+	# inviteGuestNames = []
 	yourInvites = []
 	InviteNames = []
 
@@ -237,6 +237,9 @@ def mymeals(uid=None, message=None):
 		for each in queryResults:
 			yourInvites.append(each)
 			InviteNames.append(each[15])
+
+	# function call to get all guest names, given a list of meals that you're invited to
+	inviteGuestNames = getGuestNames(yourInvites)
 	yourInvites = json.dumps(yourInvites)
 
 	InviteMealNames = []
@@ -523,8 +526,17 @@ def clearOldMeals():
 		
 	#print("0.9")
 	cursor = db.cursor()
+
+	sql = "SELECT * FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
+	cursor.execute(sql)
+	oldMeals = cursor.fetchall()
+	print "######"
+
+	print oldMeals
+
+	print "#######"
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
 	cursor.execute(sql)
 	
 	#print("1")
@@ -532,13 +544,25 @@ def clearOldMeals():
 	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
 	#print("2")
+
+	# now akash is going to also delete expired meals
+
+
+
+
+
+
+	# end akash code
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
 
 # find guest names for every meal to be shown on mymeals. mealsList is a list of mealids
-def getGuestNames(mealList, type):
+def getGuestNames(mealList):
 	# get all the guest names for guest1
+
+	# print mealList
+	# print "################"
 	cursor = db.cursor()
 	ListofLists = []
 
@@ -564,6 +588,14 @@ def getGuestNames(mealList, type):
 		dump = json.dumps(ListofLists)
 
 	return dump
+
+# def getGuestNamesAkash(mealList):
+# 	print mealList
+# 	firstGuestIndex = 4
+# 	lastGuestIndex = 14
+
+# 	for meal in mealList:
+
 	
 if __name__ == '__main__':
 	application.run(debug=True)
