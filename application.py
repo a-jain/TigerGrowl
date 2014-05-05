@@ -115,9 +115,12 @@ def registermeal():
 		
 		# received as month-day-year
 		receivedDate = str(form.date.data).split('/')
+		print "received date: "
 		print receivedDate
 		newDate = receivedDate[2] + '-' + receivedDate[0] + '-' + receivedDate[1]
+		print "new date: "
 		print newDate
+		
 		print("registermealarrived2")
 		receivedTime = str(form.time.data)[:-3]
 		print receivedTime
