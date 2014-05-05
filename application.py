@@ -209,6 +209,18 @@ def mymeals(uid=None, message=None):
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
 
+	yourInvites = []
+
+	tempQuery1 = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
+	cursor.execute(tempQuery1)
+	for row in cursor:
+		tempQuery2 = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s" % row[0]
+		cursor.execute(tempQuery2)
+		queryResults = cursor.fetchall()
+		for each in queryResults:
+			yourInvites.append(each)
+	yourInvites = json.dumps(yourInvites)
+
 	yourmeals = []
 	mealuids = []
 
