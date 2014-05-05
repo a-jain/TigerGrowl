@@ -543,8 +543,6 @@ def getGuestNames(mealList, type):
 	if type == "mealTable": 
 		min = 4
 		max = 15
-	
-	if type == "invite":
 		
 	for i in range(0, len(mealList)):
 		newList = []
