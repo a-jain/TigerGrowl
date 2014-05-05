@@ -130,7 +130,7 @@ def registermeal():
 		cursor.close()
 		# change to some exit page
 		return redirect(url_for('exitpage'))
-	else if request.method == 'POST':
+	elif request.method == 'POST':
 		print "form not validated"
 	return render_template('registermeal.html', form=form)
 
