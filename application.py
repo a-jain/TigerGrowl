@@ -243,7 +243,7 @@ def mymeals(uid=None, message=None):
 
 	hostnameList = json.dumps(queryresultList)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
 @application.route('/remove')
 @application.route('/remove/<mealid>')
