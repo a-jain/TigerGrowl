@@ -527,32 +527,44 @@ def clearOldMeals():
 	#print("0.9")
 	cursor = db.cursor()
 
+	# akash start: retrieve old meal ids before deleting them
 	sql = "SELECT * FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
 	cursor.execute(sql)
-	oldMeals = cursor.fetchall()
+	oldMealsSQL = cursor.fetchall()
+	oldMeals = []
 	print "######"
-
-	print oldMeals
-
+	print oldMealsSQL
+	for meal in oldMealsSQL:
+		oldMeals.append(meal[0])
 	print "#######"
+	# akash end
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
 	cursor.execute(sql)
 	
 	#print("1")
+
+	# akash start: retrieve old meal ids before deleting them
+	sql = "SELECT * FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
+	cursor.execute(sql)
+	oldMealsSQL = cursor.fetchall()
+	print "###**###"
+	print oldMealsSQL
+	for meal in oldMealsSQL:
+		oldMeals.append(meal[0])
+	print "###**###"
+	# akash end
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
 	#print("2")
 
-	# now akash is going to also delete expired meals
-
-
-
-
-
-
+	# now akash is going to also delete expired meals in invite table
+	for mealid in oldMeals:
+		sql = "DELETE FROM ebdb.invitees WHERE meal_id = %d;" % (int(mealid)) 
+		cursor.execute(sql)
 	# end akash code
+
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
