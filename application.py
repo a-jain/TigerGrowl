@@ -52,7 +52,7 @@ def timeline():
 @application.route('/feed/<errorFlag>')
 def feed(errorFlag=None):
 
-	# clearOldMeals()
+	clearOldMeals()
 	
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
@@ -533,7 +533,7 @@ def clearOldMeals():
 	
 	print("1")
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\', time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
 	print("2")
 	cursor.close()	
