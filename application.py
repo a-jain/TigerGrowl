@@ -578,7 +578,7 @@ def getGuestNames(mealList):
 	minIndex = 4
 	maxIndex = 15
 	
-
+	dump = json.dumps([])
 		
 	for i in range(0, len(mealList)):
 		newList = []
