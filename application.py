@@ -141,7 +141,7 @@ def joinmeal(uid=None, mealid=None):
 	
 	hostid = meal[15]
 	
-	"""
+	
 	print("this is the hostid")
 	print(hostid)
 	print("hostid type:")
@@ -149,7 +149,7 @@ def joinmeal(uid=None, mealid=None):
 	print("uid type:")
 	print(type(uid))
 	print("uid is:")
-	print(uid) """
+	print(uid) 
 	
 	#type bashing
 	if (type(uid) is int):
@@ -162,10 +162,11 @@ def joinmeal(uid=None, mealid=None):
 	else:
 		str_hostid = hostid
 			
-	if str(hostid) == str(uid): 
-			errorFlag = "3" # They are the host
-			cursor.close()
-			return redirect(url_for('feed', errorFlag=errorFlag))
+	if str(hostid) == str(uid):
+		print("host and uid match yo!")
+		errorFlag = "3" # They are the host
+		cursor.close()
+		return redirect(url_for('feed', errorFlag=errorFlag))
 				
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
