@@ -191,6 +191,7 @@
 				$(document).bind('fbInit',function(){
 					console.log('fb loaded');
 					$("#mymealsbutton").removeAttr("disabled"); 
+					$("#mymealslink").prop("href", "mymeals/" + window.uid);
 
 					$(".joinbutton").each(function(i) {
 						if (obj[i] !== undefined) { 
@@ -202,10 +203,9 @@
 							}
 						}
 					});
-
-					$("#mymealslink").prop("href", "mymeals/" + window.uid);
-
+					
 				});
+				
 				$(document).bind('fbInitPicLoaded',function(){
 					$("#FacebookPhoto").prop("src", window.picurl);
 				});
