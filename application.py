@@ -342,7 +342,7 @@ def inviters(mealid=None):
 				is_invited_already = True
 		
 		#is the user already invited to this meal?
-		if (!is_invited_already):
+		if not is_invited_already:
 			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
 			cursor.execute(sql)
 		print i
