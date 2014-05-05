@@ -312,6 +312,11 @@
 	                }
 				});
 
+				// tooltips
+				$(document).bind('fbInit',function(){
+					
+				});
+
 
 			</script>
 
@@ -389,12 +394,14 @@
 					}
 					else if (error == "0a") {
 						alert("Invites sent!");
-						window.location = '../feed';
+						top.location.href = "http://www.tigergrowl.info/feed";
+
 					}
 					
 					else if (error == "4") {
 						alert("You've selected some people who have already been invited - don't worry, we've invited everyone else!");
-						window.location = '../feed';
+						top.location.href = "http://www.tigergrowl.info/feed";
+
 					}
 				}			
 			</script>
