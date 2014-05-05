@@ -206,7 +206,9 @@
 			</script>
 
 			<script> // for loading who's coming
-				for (i=0;i<4;i++)
+				RowNum = $('.feed-row').length;
+				pics = createArray(RowNum,12);
+				for (i=0;i<RowNum;i++)
 				{
 					for (j=4;j<16;j++)
 					{
