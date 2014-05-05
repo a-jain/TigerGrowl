@@ -582,7 +582,6 @@ def getGuestNames(mealList):
 
 	return dump
 
-<<<<<<< HEAD
 def Notifications(uid):
 	cursor = db.cursor()
 	# find all of the meals where the guest is uid, and the guest has not yet been notified
@@ -592,17 +591,12 @@ def Notifications(uid):
 
 	for item in temp:
 
-
-
-
-=======
 # def getGuestNamesAkash(mealList):
 # 	print mealList
 # 	firstGuestIndex = 4
 # 	lastGuestIndex = 14
 
 # 	for meal in mealList:
->>>>>>> FETCH_HEAD
 
 	
 if __name__ == '__main__':
