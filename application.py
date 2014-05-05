@@ -113,9 +113,12 @@ def registermeal():
 		
 		# received as month-day-year
 		receivedDate = str(form.date.data).split('/')
+		print receivedDate
 		newDate = receivedDate[2] + '-' + receivedDate[0] + '-' + receivedDate[1]
+		print newDate
 		
 		receivedTime = str(form.time.data)[:-3]
+		print receivedTime
 		
 		sql = "INSERT INTO ebdb.meal_table (place, date, time, user_id, publicprivate) VALUES (\'%s\', \'%s\', \'%s\', %d, \'%s\');" % (form.place.data, newDate, receivedTime, int(form.uid.data), form.priv.data)
 		cursor.execute(sql)
