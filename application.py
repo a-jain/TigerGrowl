@@ -355,10 +355,14 @@ def inviters(mealid=None):
 		
 		invitees = cursor.fetchall()
 		for each in invitees:
+<<<<<<< HEAD
 			#compare to i to guest (3rd field)
 			if (str(each)[2] == str(i)):
+=======
+			if (str(each[2]) == str(i)):
+>>>>>>> origin/master
 				is_invited_already = True
-				mistake = True
+				# mistake = True
 				
 		#is the user already invited to this meal?
 		if not is_invited_already:
@@ -369,12 +373,17 @@ def inviters(mealid=None):
 	cursor.close()
 		
 	print "wtf"
+<<<<<<< HEAD
 	if (mistake = True):
 		errorFlag = "4"
 	else: 
 		errorFlag = "0a"
 		
 	return redirect(url_for('feed', errorFlag = errorFlag))
+=======
+	
+	return redirect(url_for('feed'))
+>>>>>>> origin/master
 
 @socketio.on('notify')
 def test_message(message):
