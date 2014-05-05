@@ -25,11 +25,6 @@
 			}
 
 		</script>
-		<script type="text/javascript">
-            $(function () {
-                $('#date').datetimepicker();
-            });
-        </script>
 
 				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	</head>
@@ -41,13 +36,8 @@
 		<form method=post action="/registermeal" class = "form-signin" role = "form">
 			<!-- <dl> -->
 				{{ render_field(form.place) }}
-
-				<!-- <label for=​"time">​Time (hh:mm)​</label>​
-				<input id=​"time" name=​"time" required type=​"time" value>​
-				<label for=​"date">​Date (mm/dd)​</label>​
-				<input id=​"date" name=​"date" type=​"text" class="form-control" value>​ -->
-				{{ render_field(form.date) }}
 				{{ render_field(form.time) }}
+				{{ render_field(form.date) }}
 
 				{% for subfield in form.priv %}
 				    {{ subfield }}
