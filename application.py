@@ -360,7 +360,6 @@ def inviters(mealid=None):
 		#  	cursor.execute(sql)
 		# print i
 
->>>>>>> origin/master
 	cursor.close()
 		
 	print "wtf"
