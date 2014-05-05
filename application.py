@@ -499,7 +499,7 @@ def inviters(mealid=None):
 	else: 
 		errorFlag = "0a"
 		
-	return render_template('lightboxclose.html')
+	return redirect(url_for('feed', errorFlag = errorFlag))
 	
 @socketio.on('notify')
 def test_message(message):
