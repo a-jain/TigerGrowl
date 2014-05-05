@@ -269,10 +269,13 @@ def mymeals(uid=None, message=None):
 		cursor.execute(sql)
 		queryresultList.append(cursor.fetchone())
 
+	# Notifications
+	notify = Notifications(uid)	
+
 	hostnameList = json.dumps(queryresultList)
 	invitenameList = json.dumps(InviteMealNames)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, notify=notify, message=message)
 
 @application.route('/accept/<mealid>/<uid>')
 def accept(mealid=None, uid=None):
