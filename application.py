@@ -370,6 +370,7 @@ def accept(mealid=None, uid=None):
 def reject(mealid=None, uid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
+
 	cursor = db.cursor()
 	#print "accept: cursor opened"
 	deletequery = "DELETE FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
@@ -379,7 +380,6 @@ def reject(mealid=None, uid=None):
 
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
-	
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	
@@ -552,7 +552,6 @@ def clearOldMeals():
 		lastHour = thisHour
 		
 	else:
-	
 		if (thisHour != 0):
 			lastHour = thisHour - 1
 			lastMin = currentMin + 50

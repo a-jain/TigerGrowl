@@ -435,35 +435,34 @@
 			</script>
 
 			<script type="text/javascript">			
-
 				var error = "{{ errorFlag }}";
 				if (error != "") {
 					if (error == "1") {
 						alert("Oops! You are already a guest for this meal!");
-						window.location = '../feed';
+						window.location = '/feed';
 					}
 					else if (error == "2") {
 						alert("Sorry, this meal is full! You cannot join at this time.");
-						window.location = '../feed';
+						window.location = '/feed';
 					}
 
 					else if (error == "3") {
 						alert("You can't join a meal you're hosting!");
-						window.location = '../feed';
+						window.location = '/feed';
 					}	
 					else if (error == "0") {
 						alert("You have successfully joined this meal!");
-						window.location = '../feed';
+						window.location = '/feed';
 					}
 					else if (error == "0a") {
 						alert("Invites sent!");
-						top.location.href = "http://www.tigergrowl.info/feed";
+						top.location.href = "/feed";
 
 					}
 					
 					else if (error == "4") {
 						alert("You've selected some people who have already been invited - don't worry, we've invited everyone else!");
-						top.location.href = "http://www.tigergrowl.info/feed";
+						top.location.href = "/feed";
 				
 					}
 				}			
