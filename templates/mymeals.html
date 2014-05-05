@@ -37,6 +37,10 @@
 	            effect: 'fall'
 	        });
 
+	        $('.gilead').nivoLightbox({
+	            effect: 'fall'
+	        });
+
 			$('#helpLink').nivoLightbox({
 	            effect: 'fall'
 	        });
@@ -425,7 +429,7 @@
 								console.log('Error occured');
 							} else {
 								picurl = response["picture"]["data"]["url"];
-								console.log(picurl)
+								// console.log(picurl)
 								$(document).trigger('fbInitPicLoaded');
 							}
 						});
