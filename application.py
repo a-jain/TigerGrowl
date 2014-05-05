@@ -462,19 +462,21 @@ def inviters(mealid=None):
 			if (str(each[2]) == str(i)):
 				is_invited_already = True
 				mistake = True
+				break
 
 		# check that user is not already a guest
 		is_guest_already = False
 		if not is_invited_already:
 			sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = %d" % int(mealid)
 			cursor.execute(sql)
-			mealinfo = cursor.fetchall()
+			mealinfo = cursor.fetchone()
 			firstGuestIndex = 4
-			guests = mealinfo[firstGuestIndex:firstGuestIndex + 10]
+			guests = mealinfo[firstGuestIndex:firstGuestIndex + 11]
 			for guest in guests:
-				if guest == i:
+				if str(guest) == str(i):
 					is_guest_already = True
 					mistake = True
+					break
 
 				
 		# if the user isn't already invited and isn't already a guest, then invite him
