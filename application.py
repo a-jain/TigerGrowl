@@ -106,13 +106,11 @@ def registeruser():
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
-	print form
 	print request.method
 	print("registermealarrived1")
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
-		cursor = db.cursor()
-		
+		cursor = db.cursor()		
 
 		# # received as month-day-year
 		# receivedDate = str(form.date.data).split('/')
@@ -130,13 +128,15 @@ def registermeal():
 		print(sql)
 		print("registermealarrived3")
 		cursor.execute(sql)
-		cursor.close()
+		
 		print "all done"
+		cursor.close()
+		print "all done 3 "
 		# change to some exit page
 		return redirect(url_for('feed'))
 
 	elif request.method == 'POST':
-		print("registermealarrived1a")
+		
 		print "form not validated"
 	else:
 		print("registermealarrived1b")
