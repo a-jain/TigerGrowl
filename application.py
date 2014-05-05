@@ -505,6 +505,23 @@ def inviters(mealid=None):
 		
 	return redirect(url_for('feed', errorFlag = errorFlag))
 
+@application.route('/cancel/<uid>/<mealid>')
+def cancelMeal(mealid=None, uid=None):
+	if not mealid or not uid:
+		return redirect(url_for('home'))
+	
+	cursor = db.cursor()
+	
+	sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = \'%s\';" % (mealid)
+	cursor.execute(sql)
+	
+	sql = "SELECT * FROM ebdb.invitees WHERE meal_id = \'%s\';" % (mealid)
+	cursor.execute(sql)
+	
+	cursor.close()
+	
+	return redirect(url_for('mymeals', uid=uid, message="success2"))
+	
 def clearOldMeals():
 
 	currentDate = datetime.now().strftime('%Y-%m-%d')
