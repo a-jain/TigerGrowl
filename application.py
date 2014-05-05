@@ -250,12 +250,16 @@ def accept(mealid=None, uid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
+	print "accept: cursor opened"
 	deletequery = "DELETE FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
 	cursor.execute(deletequery)
+	print "accept: row deleted"
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
+	print "accept: meal fetched"
 	meal = cursor.fetchone()
 	if not meal:
+		print "accept: this is not a meal"
 		abort(404)
 
 
@@ -276,7 +280,7 @@ def accept(mealid=None, uid=None):
 			errorFlag = "3" # They are the host
 			cursor.close()
 			return redirect(url_for('feed', errorFlag=errorFlag))
-				
+	print "accept: type bashed"	
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
@@ -307,6 +311,7 @@ def accept(mealid=None, uid=None):
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
+	print "accept: accepted"
 	cursor.close()
 
 @application.route('/remove/<mealid>/<uid>')
