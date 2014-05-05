@@ -202,12 +202,13 @@
 								j = 4
 								while ((obj[i][j] != null) && (j < 15) && (j != -1)){
 									if (obj[i][j] == parseInt(window.uid)) {
-										$(this).removeClass('btn-primary');
-										$(this).addClass('btn-warning');
-										$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
-										$(this).text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
+										//$(this).removeClass('btn-primary');
+										//$(this).addClass('btn-warning');
+										//$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
+										//$(this).text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
 										j = -1
 									}
+									
 									j++  
 								}
 								if (j != -1) {
