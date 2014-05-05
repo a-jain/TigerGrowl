@@ -371,7 +371,7 @@ def inviters(mealid=None):
 		
 	print "wtf"
 	
-	if (mistake = True):
+	if (mistake == True):
 		errorFlag = "4"
 	else: 
 		errorFlag = "0a"
