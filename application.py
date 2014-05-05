@@ -291,7 +291,7 @@ def remove(mealid=None, uid=None):
 		guest_Y += 1
 
 	print("got to here 6")
-	last_full_index = guest_Y-1
+	last_full_index = guest_Y
 	print guest_Y
 	print guests
 	last_full = guests[last_full_index]
@@ -304,15 +304,15 @@ def remove(mealid=None, uid=None):
 	print(guestUIDString)
 	print("guestLastString is")
 	print(guestLastString)
-	print("last_full is")
-	print last_full
+	print("last_full_index is")
+	print last_full_index
 #	# Now, update the uid at position user_index with uid at last_full_index.
 	sql = "UPDATE ebdb.meal_table SET %s = %s WHERE meal_id=%s;" % (guestUIDString, last_full, mealid)
-	cursor.execute(sql)
+	# cursor.execute(sql)
 	print ("got to here 7")
 	# Then, update uid at position last_full_index with null.
 	sql = "UPDATE ebdb.meal_table SET %s = NULL WHERE meal_id=%s;" % (guestLastString, mealid)
-	cursor.execute(sql)
+	# cursor.execute(sql)
 	print("got to here 8 - we've finished the removal (ostensibly)")
 
 	return redirect(url_for('mymeals', uid=uid, message='success1'))
