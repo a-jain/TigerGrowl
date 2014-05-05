@@ -214,6 +214,7 @@ def mymeals(uid=None, message=None):
 	invitedMeals = json.dumps(queryInviteResults)
 
 	yourInvites = []
+	InviteNames = []
 
 	tempQuery1 = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(tempQuery1)
@@ -224,7 +225,14 @@ def mymeals(uid=None, message=None):
 		queryResults = cursor.fetchall()
 		for each in queryResults:
 			yourInvites.append(each)
+			InviteNames.append(each[15])
 	yourInvites = json.dumps(yourInvites)
+
+	InviteMealNames = []
+	for i in range(0, len(InviteNames)):
+		sql = "SELECT * FROM ebdb.user_table WHERE user_id = %d" % (int(InviteNames[i]))
+		cursor.execute(sql)
+		InviteMealNames.append(cursor.fetchone())
 
 	yourmeals = []
 	mealuids = []
@@ -247,24 +255,25 @@ def mymeals(uid=None, message=None):
 		queryresultList.append(cursor.fetchone())
 
 	hostnameList = json.dumps(queryresultList)
+	invitenameList = json.dumps(InviteMealNames)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, message=message)
 
 @application.route('/accept/<mealid>/<uid>')
 def accept(mealid=None, uid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
-	print "accept: cursor opened"
+	#print "accept: cursor opened"
 	deletequery = "DELETE FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
 	cursor.execute(deletequery)
-	print "accept: row deleted"
+	#print "accept: row deleted"
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
-	print "accept: meal fetched"
+	#print "accept: meal fetched"
 	meal = cursor.fetchone()
 	if not meal:
-		print "accept: this is not a meal"
+		#print "accept: this is not a meal"
 		abort(404)
 
 
@@ -285,7 +294,7 @@ def accept(mealid=None, uid=None):
 			errorFlag = "3" # They are the host
 			cursor.close()
 			return redirect(url_for('feed', errorFlag=errorFlag))
-	print "accept: type bashed"	
+	#print "accept: type bashed"	
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
@@ -316,9 +325,20 @@ def accept(mealid=None, uid=None):
 	guestString = "guest" + str(guest_x)
 	sql = "UPDATE ebdb.meal_table SET %s=%s WHERE meal_id=%s;" % (guestString, uid, mealid)
 	cursor.execute(sql)
-	print "accept: accepted"
+	#print "accept: accepted"
 	cursor.close()
-	return redirect(url_for('mymeals', uid=uid, message="success"))
+	return redirect(url_for('mymeals', uid=uid))
+
+@application.route('/reject/<mealid>/<uid>')
+def reject(mealid=None, uid=None):
+	if not uid or not mealid:
+		return redirect(url_for('home'))
+	cursor = db.cursor()
+	#print "accept: cursor opened"
+	deletequery = "DELETE FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
+	cursor.execute(deletequery)
+	cursor.close()
+	return redirect(url_for('mymeals', uid=uid))
 
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
@@ -436,22 +456,36 @@ def inviters(mealid=None):
 	cursor = db.cursor()
 	for i in request.form.itervalues():
 		# print "kevin's a slut"
+		# check if user is already invited.
 		sql = "SELECT * FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
 		# print "such an outrageous whore"
 		cursor.execute(sql)
 		# print "taht the world has ever known"
 		is_invited_already = False #is the user already invited to this meal? Reset 2 false
-		
 		invitees = cursor.fetchall()
 		for each in invitees:
-
 			if (str(each[2]) == str(i)):
-
 				is_invited_already = True
 				mistake = True
-				
-		#is the user already invited to this meal?
+				break
+
+		# check that user is not already a guest
+		is_guest_already = False
 		if not is_invited_already:
+			sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = %d" % int(mealid)
+			cursor.execute(sql)
+			mealinfo = cursor.fetchone()
+			firstGuestIndex = 4
+			guests = mealinfo[firstGuestIndex:firstGuestIndex + 11]
+			for guest in guests:
+				if str(guest) == str(i):
+					is_guest_already = True
+					mistake = True
+					break
+
+				
+		# if the user isn't already invited and isn't already a guest, then invite him
+		if not is_invited_already and not is_guest_already:
 			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
 		 	cursor.execute(sql)
 		print i
@@ -465,7 +499,7 @@ def inviters(mealid=None):
 	else: 
 		errorFlag = "0a"
 		
-	return redirect(url_for('feed', errorFlag = errorFlag))
+	return render_template('lightboxclose.html')
 	
 @socketio.on('notify')
 def test_message(message):
