@@ -347,19 +347,20 @@ def inviters(mealid=None):
 		sql = "SELECT FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
 		cursor.execute(sql)
 		
-		is_invited_already = False #is the user already invited to this meal? Reset 2 false
+		# is_invited_already = False #is the user already invited to this meal? Reset 2 false
 		
-		invitees = cursor.fetchall()
-		for each in invitees:
-			if (str(each) == str(i)):
-				is_invited_already = True
+		# invitees = cursor.fetchall()
+		# for each in invitees:
+		# 	if (str(each) == str(i)):
+		# 		is_invited_already = True
 		
-		#is the user already invited to this meal?
-		"""if not is_invited_already:
-			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
-		 	cursor.execute(sql)
-		print i
-		"""
+		# #is the user already invited to this meal?
+		# if not is_invited_already:
+		# 	sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
+		#  	cursor.execute(sql)
+		# print i
+
+>>>>>>> origin/master
 	cursor.close()
 		
 	print "wtf"
