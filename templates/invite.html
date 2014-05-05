@@ -9,13 +9,6 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<title>Invite Friends - TigerGrowl</title>
 	
-	<script>
-		function bigrefresh(){
-			alert('Success! Your meal is being hosted!');
-			top.location.href = "http://www.tigergrowl.info/feed";
-		}
-
-	</script>
 </head>
 
 <body>
@@ -87,7 +80,9 @@
 												mfsForm.action = '../inviter/{{mealid}}';
 												// mfsForm.action = 'http://requestb.in/s4vrids4';
 												mfsForm.appendChild(sendButton);
-												sendButton.onclick = bigrefresh();
+												sendButton.onclick = function(){
+													top.location.href = "http://www.tigergrowl.info/feed";
+												};;
 												sendButton.innerHTML = "Invite!"
 												$(document).trigger('buttondone');
 											});
@@ -99,6 +94,7 @@
 									});
 });
 };
+
 (function(d){
 	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 	if (d.getElementById(id)) {return;}
