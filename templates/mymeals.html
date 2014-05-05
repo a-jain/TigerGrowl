@@ -36,6 +36,7 @@
 			$('#HostButton').nivoLightbox({
 	            effect: 'fall'
 	        });
+
 			$('#helpLink').nivoLightbox({
 	            effect: 'fall'
 	        });
@@ -165,6 +166,7 @@
 		var hostnameList = jQuery.parseJSON( {{hostnameList|tojson|safe}} );
 
 		var hostrowDiv = "<div class='row host-row'> \
+		<div class='name-identifier'>Your Meal</div> \
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming? \
 			<div title = 'Kevin Bruccoleri' style='height:50px;width:50px;display:inline;'> \
@@ -201,7 +203,7 @@
 			<img id='attendee11' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
 			</div> \
 		</div> \
-		<a class='invitebutton' href='#'><button class='btn btn-primary btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Invite Friends</button> </a> \
+		<a class='invitebutton' href='#'><button class='btn btn-primary btn-large gilead' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Invite Friends</button> </a> \
 		</div>";
 
 
