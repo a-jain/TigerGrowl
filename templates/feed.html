@@ -74,7 +74,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-		<a id="mymealslink" href="#"><button type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
+		<a id="mymealslink" href="#"><button id="mymealsbutton" disabled="disabled" type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a>
 
 		<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
 
@@ -188,7 +188,8 @@
 
 			<script>
 				$(document).bind('fbInit',function(){
-					console.log('fbInit complete; FB Object is Available');
+					// console.log('fbInit complete; FB Object is Available');
+					$("#mymealsbutton").removeAttr("disabled");
 
 					$(".joinbutton").each(function(i) {
 						if (obj[i] !== undefined) { 
