@@ -342,6 +342,8 @@ def inviters(mealid=None):
 	# print request.form['friend1']
 	# print request.form.itervalues()
 
+	mistake = False
+	
 	cursor = db.cursor()
 	for i in request.form.itervalues():
 		# print "kevin's a slut"
@@ -353,9 +355,10 @@ def inviters(mealid=None):
 		
 		invitees = cursor.fetchall()
 		for each in invitees:
-			if (str(each) == str(i)):
+			if (str(each)[2] == str(i)):
 				is_invited_already = True
-		
+				mistake = True
+				
 		#is the user already invited to this meal?
 		if not is_invited_already:
 			sql = "INSERT INTO ebdb.invitees (meal_id, guest) VALUES (%d, %d);" % (int(mealid), int(i))
@@ -365,7 +368,7 @@ def inviters(mealid=None):
 	cursor.close()
 		
 	print "wtf"
-
+	if 
 	return redirect(url_for('feed'))
 
 @socketio.on('notify')
