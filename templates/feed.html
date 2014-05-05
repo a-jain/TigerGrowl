@@ -116,7 +116,7 @@
 			<div class='name-identifier'>  </div> \
 			<div class='setting-identifier'>  </div> \
 			<div class='attendees'>Who's Coming? \
-				<div style='height:50px;width:50px;display:inline;'> \
+				<div title = "placeholder for now" "style='height:50px;width:50px;display:inline;'> \
 					<img id='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
 				</div> \
 				<div style='height:50px;width:50px;display:inline;'> \
@@ -203,6 +203,18 @@
 				$(document).bind('fbInitPicLoaded',function(){
 					$("#FacebookPhoto").prop("src", window.picurl);
 				});
+			</script>
+
+			<script> // for loading who's coming
+				RowNum = $('.feed-row').length;
+				pics = createArray(RowNum,12);
+				for (i=0;i<RowNum;i++)
+				{
+					for (j=4;j<16;j++)
+					{
+						pics[i][j] = obj[i][j];
+					}
+				}
 			</script>
 
 				<footer> <!--
