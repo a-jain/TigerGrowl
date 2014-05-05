@@ -279,7 +279,7 @@ def mymeals(uid=None, message=None):
 	hostnameList = json.dumps(queryresultList)
 	invitenameList = json.dumps(InviteMealNames)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, notify=notify, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, hostGuestNames=hostGuestNames, notify=notify, message=message)
 
 @application.route('/accept/<mealid>/<uid>')
 def accept(mealid=None, uid=None):
