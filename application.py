@@ -250,7 +250,7 @@ def accept(mealid=None, uid=None):
 	if not uid or not mealid:
 		return redirect(url_for('home'))
 	cursor = db.cursor()
-	deletequery = "DELETE * FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
+	deletequery = "DELETE FROM ebdb.invitees WHERE (meal_id, guest) = (%s, %s);" % (mealid,uid)
 	cursor.execute(deletequery)
 	query = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s;" % (mealid)
 	cursor.execute(query)
