@@ -113,7 +113,7 @@ def registermeal():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
 		cursor = db.cursor()
 		
-		
+
 		# # received as month-day-year
 		# receivedDate = str(form.date.data).split('/')
 		# print "received date: "
@@ -131,6 +131,7 @@ def registermeal():
 		print("registermealarrived3")
 		cursor.execute(sql)
 		cursor.close()
+		print "all done"
 		# change to some exit page
 		return redirect(url_for('exitpage'))
 
