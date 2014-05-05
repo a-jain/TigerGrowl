@@ -60,7 +60,7 @@ def feed(errorFlag=None):
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
-	GuestNames = getGuestNames(mealList)
+	GuestNames = getGuestNames(queryResults)
 
 	mealuids = []
 	for meal in queryResults:
