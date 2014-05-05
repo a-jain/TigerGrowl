@@ -11,3 +11,4 @@ itsdangerous==0.23
 wsgiref==0.1.2
 validators==0.5.0
 flask-socketio==0.3.2
+wtforms-html5==0.1.3
