@@ -225,11 +225,13 @@ def mymeals(uid=None, message=None):
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
+	hostGuestNames = getGuestNames(queryResults)
 
 	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
+	inviteGuestNames = getGuestNames(queryInviteResults)
 
 	yourInvites = []
 	InviteNames = []
