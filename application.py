@@ -158,7 +158,7 @@ def joinmeal(uid=None, mealid=None):
 	#f = open("TEMP_for_testing_joinmeal.txt", "w")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
 	guest_x = 1
-	for guest in meal[firstGuestIndex:firstGuestIndex + 11]:
+	for guest in meal[firstGuestIndex:firstGuestIndex + 12]:
 		
 		if (not guest):
 			break

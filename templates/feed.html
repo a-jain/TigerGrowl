@@ -182,6 +182,7 @@
 							$(this).text(obj[i][1] + ", " + date[1] + "/" + date[2] + ", " + obj[i++][3]);
 						}
 					});
+					$(document).trigger("divsfilled");
 				});
 				
 			</script>
@@ -202,6 +203,14 @@
 				});
 				$(document).bind('fbInitPicLoaded',function(){
 					$("#FacebookPhoto").prop("src", window.picurl);
+				});
+			</script>
+
+			<script>
+				$(document).bind('divsfilled',function(){
+					$(".attendee1").each(function(i) {
+						$(this).attr('title', 'hi there11');
+					});
 				});
 			</script>
 
