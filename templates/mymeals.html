@@ -160,10 +160,9 @@
 	<script>
 
 		var objHost = jQuery.parseJSON( {{myhosts|tojson|safe}} );
-		var objInvite = [];
+		var objInvite = jQuery.parseJSON( {{invited|tojson|safe}} );
 		var objGuest = jQuery.parseJSON( {{myguests|tojson|safe}} );
 		var hostnameList = jQuery.parseJSON( {{hostnameList|tojson|safe}} );
-		var invited = jQuery.parseJSON( {{invited|tojson|safe}} );
 
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='setting-identifier'> </div> \
