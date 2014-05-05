@@ -84,25 +84,25 @@ def exitpage():
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 
-	print("got to here 1")
+	#print("got to here 1")
 	form = Signup(request.form)
 	if request.method == 'POST' and form.validate():
 		cursor = db.cursor()
 		
-		print("got to here 2")
+		#print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
 		#check to make sure that this netid was not already present in the database
 		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
 		
-		print("got to here3")
+		#print("got to here3")
 		cursor.execute(sql)
 		cursor.close()
 		
-		print("got to here 4")
+		#print("got to here 4")
 		return redirect(url_for('feed'))
 		
-		print("got to here 5")
+		#print("got to here 5")
 	return render_template('registeruser.html', form=form)
 
 @application.route('/registermeal', methods=['GET', 'POST'])
