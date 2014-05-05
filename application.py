@@ -313,6 +313,7 @@ def accept(mealid=None, uid=None):
 	cursor.execute(sql)
 	print "accept: accepted"
 	cursor.close()
+	return redirect(url_for('mymeals', uid=uid, message="success"))
 
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
