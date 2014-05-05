@@ -106,6 +106,8 @@ def registeruser():
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
 	form = MealForm(request.form)
+	print form
+	print request.method
 	print("registermealarrived1")
 	if request.method == 'POST' and form.validate():
 		# user = User(form.mealtable.data, form.host.data, form.place.data)
@@ -133,7 +135,7 @@ def registermeal():
 		print "form not validated"
 	else:
 		print("registermealarrived1b")
-		
+
 	return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
