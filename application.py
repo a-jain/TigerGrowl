@@ -220,8 +220,10 @@ def mymeals(uid=None, message=None):
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
-	inviteGuestNames = getGuestNames(queryInviteResults, "invite")
+	# inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
+	# invitedMeals = []
+	inviteGuestNames = []
 	yourInvites = []
 	InviteNames = []
 
