@@ -546,10 +546,11 @@ def getGuestNames(mealList):
 		newList = []
 		j = 4	
 		while mealList[i][j] is not None and j < 15: 
-			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
+			sql = "SELECT (firstname, lastname) FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
 			cursor.execute(sql)
 			temp = cursor.fetchone()
-			newList.append(temp)
+			temp2 = temp[0] + temp[1]
+			newList.append(temp2)
 			j=j+1
 		ListofLists.append(newList)
 
