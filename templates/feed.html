@@ -193,13 +193,25 @@
 					$("#mymealsbutton").removeAttr("disabled"); 
 					$("#mymealslink").prop("href", "mymeals/" + window.uid);
 
-					$(".joinbutton").each(function(i) {
+					$(".joinbutton button").each(function(i) {
 						if (obj[i] !== undefined) { 
 							if (parseInt(window.uid) == obj[i][15]) {
 								$(this).hide();
 							}
 							else {
-								$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
+								j = 0
+								while (GuestNames[i][j] != undefined){
+									if (GuestNames[i][j] == parseInt(window.uid)) {
+										$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
+										$(this).removeClass('btn-primary');
+										$(this).addClass('btn-warning');
+										$(this).text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
+										j = -1
+									}  
+								}
+								if (j == -1) {
+									$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
+								}							
 							}
 							i++;
 						}
