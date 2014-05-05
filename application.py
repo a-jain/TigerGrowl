@@ -241,9 +241,9 @@ def mymeals(uid=None, message=None):
 			InviteNames.append(each[15])
 
 	# function call to get all guest names, given a list of meals that you're invited to
-	print yourInvites
+	# print yourInvites
 	inviteGuestNames = getGuestNames(yourInvites)
-	print inviteGuestNames
+	# print inviteGuestNames
 	yourInvites = json.dumps(yourInvites)
 
 	InviteMealNames = []
@@ -279,7 +279,7 @@ def mymeals(uid=None, message=None):
 	hostnameList = json.dumps(queryresultList)
 	invitenameList = json.dumps(InviteMealNames)
 	cursor.close()
-	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, notify=notify, message=message)
+	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, invitenameList=invitenameList, myguests=yourmeals, inviteGuestNames=inviteGuestNames, hostGuestNames=hostGuestNames, notify=notify, message=message)
 
 @application.route('/accept/<mealid>/<uid>')
 def accept(mealid=None, uid=None):
