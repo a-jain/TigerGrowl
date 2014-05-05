@@ -296,7 +296,16 @@
 					else if (error == "0") {
 						alert("You have successfully joined this meal!");
 						window.location = '../feed';
-					}	
+					}
+					else if (error == "0a") {
+						alert("Invites sent!");
+						window.location = '../feed';
+					}
+					
+					else if (error == "4") {
+						alert("You've already invited one of those guests- don't worry, we've invited everyone else!");
+						window.location = '../feed';
+					}
 				}			
 			</script>
 		</body>

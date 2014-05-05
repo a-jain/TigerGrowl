@@ -355,6 +355,7 @@ def inviters(mealid=None):
 		
 		invitees = cursor.fetchall()
 		for each in invitees:
+			#compare to i to guest (3rd field)
 			if (str(each)[2] == str(i)):
 				is_invited_already = True
 				mistake = True
@@ -368,8 +369,12 @@ def inviters(mealid=None):
 	cursor.close()
 		
 	print "wtf"
-	if 
-	return redirect(url_for('feed'))
+	if (mistake = True):
+		errorFlag = "4"
+	else: 
+		errorFlag = "0a"
+		
+	return redirect(url_for('feed', errorFlag = errorFlag))
 
 @socketio.on('notify')
 def test_message(message):
