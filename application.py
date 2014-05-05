@@ -60,6 +60,8 @@ def feed(errorFlag=None):
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
+	GuestNames = getGuestNames(mealList)
+
 	mealuids = []
 	for meal in queryResults:
 		mealuids.append(meal[15])
@@ -73,7 +75,7 @@ def feed(errorFlag=None):
 
 	hostList = json.dumps(queryresultList)
 	cursor.close()
-	return render_template('feed.html', mealList=mealList, hostList=hostList, errorFlag=errorFlag)
+	return render_template('feed.html', mealList=mealList, hostList=hostList, GuestNames=GuestNames, errorFlag=errorFlag)
 
 @application.route('/exitpage')
 def exitpage():
@@ -527,6 +529,24 @@ def clearOldMeals():
 	print("2")
 	cursor.close()	
 	print("if you get here Gil's code worked fine")
+
+def getGuestNames(mealList):
+	# get all the guest names for guest1
+	cursor = db.cursor()
+	ListofLists = []
+
+	for i in range(0, len(mealList)):
+		newList = []	
+		while mealList[i][j] is not None: 
+			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
+			cursor.execute(sql)
+			temp = cursor.fetchone()
+			newList.append(temp)
+		ListofLists.append(newList)
+
+	return ListofLists
+
+
 	
 	
 if __name__ == '__main__':
