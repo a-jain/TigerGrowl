@@ -8,7 +8,14 @@
 	<link rel="shortcut icon" href="/static/img/favicon.ico" />
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<title>Invite Friends - TigerGrowl</title>
+	
+	<script>
+		function bigrefresh(){
+			alert('Success! Your meal is being hosted!');
+			top.location.href = "http://www.tigergrowl.info/feed";
+		}
 
+	</script>
 </head>
 
 <body>
@@ -80,6 +87,7 @@
 												mfsForm.action = '../inviter/{{mealid}}';
 												// mfsForm.action = 'http://requestb.in/s4vrids4';
 												mfsForm.appendChild(sendButton);
+												sendButton.onclick = bigrefresh();
 												sendButton.innerHTML = "Invite!"
 												$(document).trigger('buttondone');
 											});
