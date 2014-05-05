@@ -246,8 +246,6 @@ def mymeals(uid=None, message=None):
 	cursor.close()
 	return render_template('mymeals.html', myhosts=hostingMeals, yourinvites=yourInvites, invited=invitedMeals, hostnameList=hostnameList, myguests=yourmeals, message=message)
 
-@application.route('/remove')
-@application.route('/remove/<mealid>')
 @application.route('/remove/<mealid>/<uid>')
 def remove(mealid=None, uid=None):
 	print("got to here1")
@@ -261,7 +259,7 @@ def remove(mealid=None, uid=None):
 	meal = cursor.fetchone()
 	print("got to here 3")
 	firstGuestIndex = 4 #hardcoded; this is the index of the first guest
-	guests = meal[firstGuestIndex:firstGuestIndex + 11]
+	guests = meal[firstGuestIndex:firstGuestIndex + 10]
 	print("got to here 4")
 	# search guests for uid
 	guest_X = 1
@@ -278,11 +276,11 @@ def remove(mealid=None, uid=None):
 	# search guests for final non-null array index
 	guest_Y = 0
 	for guest in guests:
-	
 		# check if the guest matches the selected user id
 		if (not guest):
 			break
 		guest_Y += 1
+		
 	print("got to here 6")
 	last_full_index = guest_Y
 	last_full = guests[last_full_index]
