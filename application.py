@@ -60,7 +60,7 @@ def feed(errorFlag=None):
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
-	GuestNames = getGuestNames(queryResults)
+	GuestNames = getGuestNames(queryResults, "mealTable")
 
 	mealuids = []
 	for meal in queryResults:
@@ -141,16 +141,6 @@ def joinmeal(uid=None, mealid=None):
 	
 	hostid = meal[15]
 	
-	
-	print("this is the hostid")
-	print(hostid)
-	print("hostid type:")
-	print(type(hostid))
-	print("uid type:")
-	print(type(uid))
-	print("uid is:")
-	print(uid) 
-	
 	#type bashing
 	if (type(uid) is int):
 		str_uid = str(uid)
@@ -163,12 +153,11 @@ def joinmeal(uid=None, mealid=None):
 		str_hostid = hostid
 			
 	if str(hostid) == str(uid):
-		print("host and uid match yo!")
+
 		errorFlag = "3" # They are the host
 		cursor.close()
 		return redirect(url_for('feed', errorFlag=errorFlag))
 	else:
-		print("don't match yo")
 		print(str(hostid))
 		print(str(uid))
 				
@@ -225,13 +214,13 @@ def mymeals(uid=None, message=None):
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
-	hostGuestNames = getGuestNames(queryResults)
+	hostGuestNames = getGuestNames(queryResults, "mealTable")
 
 	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
-	inviteGuestNames = getGuestNames(queryInviteResults)
+	inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
 	yourInvites = []
 	InviteNames = []
@@ -544,16 +533,23 @@ def clearOldMeals():
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
+
 # find guest names for every meal to be shown on mymeals. mealsList is a list of mealids
-def getGuestNames(mealList):
+def getGuestNames(mealList, type):
 	# get all the guest names for guest1
 	cursor = db.cursor()
 	ListofLists = []
 
+	if type == "mealTable": 
+		min = 4
+		max = 15
+	
+	if type == "invite":
+		
 	for i in range(0, len(mealList)):
 		newList = []
-		j = 4	
-		while mealList[i][j] is not None and j < 15: 
+		j = min	
+		while mealList[i][j] is not None and j < max: 
 			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
 			cursor.execute(sql)
 			temp = cursor.fetchone()
