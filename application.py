@@ -120,6 +120,9 @@ def registermeal():
 		# print "new date: "
 		# print newDate
 
+		print "date:"
+		print str(form.date.data)
+
 		print("registermealarrived2")
 		receivedTime = str(form.time.data)[:-3]
 		print receivedTime
