@@ -1,7 +1,6 @@
 import os.path
 from flask import Flask, render_template, flash, url_for, request, redirect, abort
 from flask import send_from_directory
-from flask.ext.socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 import MySQLdb
 import json
@@ -10,7 +9,6 @@ from datetime import datetime
 
 application = Flask(__name__)
 application.secret_key = '\x99\x02~p\x90\xa3\xce~\xe0\xe6Q\xe3\x8c\xac\xe9\x94\x84B\xe7\x9d=\xdf\xbb&'
-socketio = SocketIO(application)
 
 db = MySQLdb.connect(host="aa104vf4z8592ny.ct5w0yg0rrlk.us-east-1.rds.amazonaws.com",user="growladmin",passwd="youeatyet?",db="ebdb")
 db.autocommit(True)
@@ -485,7 +483,7 @@ def inviters(mealid=None):
 				
 		# if the user isn't already invited and isn't already a guest, then invite him
 		if not is_invited_already and not is_guest_already:
-			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 0, 0)
+			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 1, 1)
 		 	cursor.execute(sql)
 		#print i
 
@@ -499,11 +497,6 @@ def inviters(mealid=None):
 		errorFlag = "0a"
 		
 	return redirect(url_for('feed', errorFlag = errorFlag))
-	
-@socketio.on('notify')
-def test_message(message):
-    emit('my response',
-         {'data': message['data']})
 
 def clearOldMeals():
 
@@ -601,6 +594,20 @@ def getGuestNames(mealList):
 
 	return dump
 
+def Notifications(uid):
+	cursor = db.cursor()
+	# find all of the meals where the guest is uid, and the guest has not yet been notified
+	sql = "SELECT * FROM ebdb.invitees where (guest, guestnotification)=(%s, %s)" % (uid, 1)
+	cursor.execute(sql);
+	temp = cursor.fetchall();
+
+	NotificationList = [] # contains mealids of meals that need notifications
+
+	for item in temp:
+		NotificationList.append(item[0])
+
+	return NotificationList
+
 # def getGuestNamesAkash(mealList):
 # 	print mealList
 # 	firstGuestIndex = 4
@@ -611,4 +618,3 @@ def getGuestNames(mealList):
 	
 if __name__ == '__main__':
 	application.run(debug=True)
-	socketio.run(application)
