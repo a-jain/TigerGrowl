@@ -52,6 +52,8 @@ def timeline():
 @application.route('/feed/<errorFlag>')
 def feed(errorFlag=None):
 
+	clearOldMeals()
+	
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
 	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date, time" % "pub")
@@ -197,6 +199,9 @@ def joinmeal(uid=None, mealid=None):
 def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
+		
+	clearOldMeals()
+	
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
 	cursor.execute(query)
@@ -467,6 +472,37 @@ def test_message(message):
     emit('my response',
          {'data': message['data']})
 
+def clearOldMeals():
+
+	currentDate = datetime.now().strftime('%Y-%m-%d')
+	thisHour = int(datetime.now().strftime('%H'))
+	currentMin = int(datetime.now().strftime('%M'))
+	
+	if (currentMin >= 10):
+		lastMin = currentMin - 10
+		lastHour = thisHour
+		
+	else:
+	
+		if (thisHour != 0):
+			lastHour = lastHour - 1
+			lastMin = currentMin + 50
+		else:
+			lastHour = 0
+			lastMin = 0
+		
+	lastTime = str(lastHour)
+	
+	cursor = db.cursor()
+	
+	sql = "DELETE FROM ebdb.meal_table WHERE date < %s;" (currentDate) 
+	cursor.execute(sql)
+	
+	sql = "DELETE FROM ebdb.meal_table WHERE date = %s AND time < %02d%:%02d%;" (currentDate, lastTime) 
+	cursor.execute(sql)
+
+	cursor.close()	
+		
 if __name__ == '__main__':
 	application.run(debug=True)
 	socketio.run(application)
