@@ -199,15 +199,16 @@
 								$(this).hide();
 							}
 							else {
-								j = 0
-								while (GuestNames[i][j] != undefined){
-									if (GuestNames[i][j] == parseInt(window.uid)) {
+								j = 4
+								while ((obj[i][j] != null) && (j < 15)){
+									if (obj[i][j] == parseInt(window.uid)) {
 										$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
 										$(this).removeClass('btn-primary');
 										$(this).addClass('btn-warning');
 										$(this).text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
 										j = -1
-									}  
+									}
+									j++  
 								}
 								if (j != -1) {
 									$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);
