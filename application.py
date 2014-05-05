@@ -216,11 +216,11 @@ def mymeals(uid=None, message=None):
 	hostingMeals = json.dumps(queryResults)
 	hostGuestNames = getGuestNames(queryResults, "mealTable")
 
-	# queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
-	# cursor.execute(queryInvite)
-	# queryInviteResults = cursor.fetchall()
-	# invitedMeals = json.dumps(queryInviteResults)
-	# inviteGuestNames = getGuestNames(queryInviteResults, "invite")
+	queryInvite = "SELECT * FROM ebdb.invitees WHERE guest = %s" % (uid)
+	cursor.execute(queryInvite)
+	queryInviteResults = cursor.fetchall()
+	invitedMeals = json.dumps(queryInviteResults)
+	inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
 	yourInvites = []
 	InviteNames = []
@@ -540,14 +540,16 @@ def getGuestNames(mealList, type):
 	cursor = db.cursor()
 	ListofLists = []
 
-	if type == "mealTable": 
-		min = 4
-		max = 15
+	
+	minIndex = 4
+	maxIndex = 15
+	
+
 		
 	for i in range(0, len(mealList)):
 		newList = []
-		j = min	
-		while mealList[i][j] is not None and j < max: 
+		j = minIndex
+		while mealList[i][j] is not None and j < maxIndex: 
 			sql = "SELECT * FROM ebdb.user_table where user_id=%s;" % (mealList[i][j])
 			cursor.execute(sql)
 			temp = cursor.fetchone()
@@ -560,7 +562,6 @@ def getGuestNames(mealList, type):
 		dump = json.dumps(ListofLists)
 
 	return dump
-
 	
 if __name__ == '__main__':
 	application.run(debug=True)
