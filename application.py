@@ -528,12 +528,12 @@ def clearOldMeals():
 	print("0.9")
 	cursor = db.cursor()
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date < %s;" % (currentDate) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate) 
 	cursor.execute(sql)
 	
 	print("1")
 	
-	sql = "DELETE FROM ebdb.meal_table WHERE date = %s AND time < %02d%s%02d;" % (currentDate, lastHour, ":", lastMin) 
+	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d;\'" % (currentDate, lastHour, ":", lastMin) 
 	cursor.execute(sql)
 	print("2")
 	cursor.close()	
