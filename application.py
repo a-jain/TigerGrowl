@@ -525,11 +525,11 @@ def clearOldMeals():
 	cursor.execute(sql)
 	oldMealsSQL = cursor.fetchall()
 	oldMeals = []
-	print "######"
-	print oldMealsSQL
+	# print "######"
+	# print oldMealsSQL
 	for meal in oldMealsSQL:
 		oldMeals.append(meal[0])
-	print "#######"
+	# print "#######"
 	# akash end
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date < \'%s\';" % (currentDate)
@@ -541,11 +541,11 @@ def clearOldMeals():
 	sql = "SELECT * FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
 	cursor.execute(sql)
 	oldMealsSQL = cursor.fetchall()
-	print "###**###"
-	print oldMealsSQL
+	# print "###**###"
+	# print oldMealsSQL
 	for meal in oldMealsSQL:
 		oldMeals.append(meal[0])
-	print "###**###"
+	# print "###**###"
 	# akash end
 	
 	sql = "DELETE FROM ebdb.meal_table WHERE date = \'%s\' AND time < \'%02d:%02d\';" % (currentDate, lastHour, lastMin) 
