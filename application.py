@@ -133,7 +133,7 @@ def registermeal():
 		cursor.close()
 		print "all done"
 		# change to some exit page
-		return redirect(url_for('exitpage'))
+		return redirect(url_for('feed'))
 
 	elif request.method == 'POST':
 		print("registermealarrived1a")
