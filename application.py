@@ -141,7 +141,7 @@ def registermeal():
 	else:
 		print("registermealarrived1b")
 
-	return render_template('registermeal.html', form=form)
+	return redirect(url_for('feed'))
 
 @application.route('/joinmeal/<mealid>/<uid>')
 def joinmeal(uid=None, mealid=None):
