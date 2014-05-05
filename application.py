@@ -222,10 +222,7 @@ def mymeals(uid=None, message=None):
 	cursor.execute(queryInvite)
 	queryInviteResults = cursor.fetchall()
 	invitedMeals = json.dumps(queryInviteResults)
-	# inviteGuestNames = getGuestNames(queryInviteResults, "invite")
 
-	# invitedMeals = []
-	# inviteGuestNames = []
 	yourInvites = []
 	InviteNames = []
 
@@ -241,9 +238,7 @@ def mymeals(uid=None, message=None):
 			InviteNames.append(each[15])
 
 	# function call to get all guest names, given a list of meals that you're invited to
-	# print yourInvites
 	inviteGuestNames = getGuestNames(yourInvites)
-	# print inviteGuestNames
 	yourInvites = json.dumps(yourInvites)
 
 	InviteMealNames = []
