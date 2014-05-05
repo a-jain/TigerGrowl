@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
   <style>
   hr {color:sienna;}
@@ -22,11 +21,8 @@
               window.opener.location.reload();
           }
       }
-
     </script>
     
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   </head>
 
 {% from "formmacro.html" import render_field %}
@@ -51,19 +47,6 @@ FB.init({
   cookie     : true, // enable cookies to allow the server to access the session
   xfbml      : true  // parse XFBML
 });
-// FB.Event.subscribe('auth.authResponseChange', function(response) {
-// FB.api(
-//           "me?fields=id,picture",
-//           function (response) {
-//             if (response && !response.error) {
-//             	userid = response["id"]
-//             	pic = response["pic"]
-// 				$(document).ready(function() {$("#uid").val(userid);});
-// 			 	});
-//             }
-//           }
-//       );
-//   });
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
