@@ -412,6 +412,19 @@
 			        	$(this).prop("href", "../remove/" + objGuest[i++][0] + '/' + window.uid);
 			        }
 				});
+
+				$(".accept-invite").each(function(i) {
+			    	if (objInvitedMeals[i] !== undefined) { 
+			        	$(this).prop("href", "../accept/" + objInvitedMeals[i++][0] + '/' + window.uid);
+			        }
+				});
+
+				$(".reject-invite").each(function(i) {
+			    	if (objInvitedMeals[i] !== undefined) { 
+			        	$(this).prop("href", "../reject/" + objInvitedMeals[i++][0] + '/' + window.uid);
+			        }
+				});
+
 			});
 		</script>
 			
