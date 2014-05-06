@@ -171,7 +171,7 @@ h1 {
 }
 
 .feed-row .setting-identifier {
-	float:right;
+	float:left;
 	width:45%;
 	text-align: center;
 }
