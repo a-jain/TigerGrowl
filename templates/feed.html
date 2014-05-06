@@ -198,14 +198,21 @@
 							if (parseInt(window.uid) == obj[i][15]) {
 								$(this).hide();
 							}
-							else {										
-								//$(this).removeClass('btn-primary');
-								//$(this).addClass('btn-warning');
-								$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
-								//$(this).text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
-
-						
-								//$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);							
+							else {	
+								j = 4;
+								while ((obj[i][j] != null) && (j < 15)) {
+									if (parseInt(obj[i][j]) == parseInt(window.uid)) {
+										$(this).children("button").removeClass('btn-primary');
+										$(this).children("button").addClass('btn-warning');
+										$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
+										$(this).children("button").text('<span class="glyphicon glyphicon-exclamation-sign"></span> Leave Meal');
+										j = 16;
+									}
+									j++;
+								}
+								if (j != 16) {
+									$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid);	
+								}						
 							}
 							i++;
 						}
