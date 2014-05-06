@@ -205,7 +205,7 @@
 										$(this).children("button").removeClass('btn-primary');
 										$(this).children("button").addClass('btn-warning');
 										$(this).prop("href", "remove/" + obj[i][0] + "/" + window.uid);
-										$(this).append("<span class='glyphicon glyphicon-exclamation-sign'></span>");
+										$(this).children("button").append("<span class='glyphicon glyphicon-exclamation-sign'></span>");
 										$(this).children("button").text(' Leave Meal');
 										j = 15;
 									}
