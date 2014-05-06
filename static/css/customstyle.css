@@ -61,6 +61,10 @@ body {
 
 }
 
+.accept-invite .reject-invite {
+	font-family:'Patrick Hand SC';
+}
+
 #HostButton {
 	border-color: black;
 }
