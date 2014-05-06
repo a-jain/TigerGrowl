@@ -46,9 +46,9 @@
 		{% from "formmacro.html" import render_field %}
 		<form method=post action="/registermeal" class = "form-signin" role = "form">
 			<!-- <dl> -->
-				{{ render_field(form.place) }}
-				{{ render_field(form.time) }}
-				{{ render_field(form.date) }}
+				{{ render_field(form.place, autocomplete="off") }}
+				{{ render_field(form.time, autocomplete="off") }}
+				{{ render_field(form.date, autocomplete="off") }}
 
 				{% for subfield in form.priv %}
 					{{ subfield }}
