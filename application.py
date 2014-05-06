@@ -438,7 +438,7 @@ def remove(mealid=None, uid=None):
 
 	cursor.close()	
 	
-	return redirect(url_for('mymeals', uid=uid, message='success1'))
+	return redirect(url_for('mymeals', uid=uid))
 	
 # when invite friends is clicked, the following happens:
 # pull user's friends from fb
