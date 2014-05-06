@@ -192,6 +192,7 @@
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='name-identifier'>Your Meal</div> \
 		<div class='setting-identifier'> </div> \
+		<div class='pubpri-identifier'>  </div> \
 		<div class='attendees'>Who's Coming? \
 			<div style='height:50px;width:50px;display:inline;'> \
 			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
@@ -238,6 +239,7 @@
 		var inviterowDiv = "<div class='row feed-row inviter-row'> \
 		<div class='name-identifier'> </div> \
 		<div class='setting-identifier'> </div> \
+		<div class='pubpri-identifier'>  </div> \
 		<div class='attendees'>Who's Coming? \
 			<div style='height:50px;width:50px;display:inline;'> \
 			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
@@ -281,6 +283,7 @@
 		var guestrowDiv = "<div class='row guest-row feed-row'> \
 		<div class='name-identifier'> </div> \
 		<div class='setting-identifier'> </div> \
+		<div class='pubpri-identifier'>  </div> \
 		<div class='attendees'>Who's Coming? \
 			<div style='height:50px;width:50px;display:inline;'> \
 			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
@@ -363,6 +366,11 @@
 				    $(this).text(objHost[i][1] + ", " + date[1] + "/" + date[2] + ", " + objHost[i++][3]);
 				}
 			});
+			$(".host-row .pubpri-identifier").each(function(i) {
+				if (objHost[i] !== undefined) { 
+					$(this).text("This meal is "+objHost[i][16]);
+				}
+			});
 		});
 
 		// Invited meal: place, date, time
@@ -379,6 +387,11 @@
 				j++;
 			});
 
+			$(".inviter-row .pubpri-identifier").each(function(i) {
+				if (objInvitedMeals[i] !== undefined) { 
+					$(this).text("This meal is "+objInvitedMeals[i][16]);
+				}
+			});
 
 			$(".inviter-row .setting-identifier").each(function(i) {
 				if (objInvitedMeals[i] !== undefined) { 
@@ -411,6 +424,12 @@
 			$(".guest-column .feed-row .name-identifier").each(function(i) {
 				if (objGuest[i] !== undefined ) {
 					$(this).text(hostnameList[i][1] + ' ' + hostnameList[i++][2] + "'s Meal");
+				}
+			});
+
+			$(".guestcolumn .feed-row .pubpri-identifier").each(function(i) {
+				if (objGuest[i] !== undefined) { 
+					$(this).text("This meal is "+objGuest[i][16]);
 				}
 			});
 		});
