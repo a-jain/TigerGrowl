@@ -136,7 +136,7 @@
 			<!-- Hosted Meals Go Here-->
 		</div>
 
-		<h1 data-toggle="collapse" data-target=".invite-column"><span class="servicedrop2 glyphicon glyphicon-chevron-up"></span> Invites</h1>
+		<h1 class="invite-head" data-toggle="collapse" data-target=".invite-column"><span class="servicedrop2 glyphicon glyphicon-chevron-up"></span> Invites</h1>
 		<div class="feed-column invite-column collapse">
 			<!-- Invite Meals Go Here-->
 		</div>
@@ -392,6 +392,11 @@
 					$(this).text(invitenameList[i][1] + ' ' + invitenameList[i++][2] + "'s Meal");
 				}
 			});
+
+			if (notify.length > 0) {
+				$(".invite-head").append(notify.length) 
+			}
+
 			
 		});
 		
