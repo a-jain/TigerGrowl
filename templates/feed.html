@@ -130,7 +130,6 @@
 			var rowDiv = "<div class='row feed-row'> \
 			<div class='name-identifier'>  </div> \
 			<div class='setting-identifier'>  </div> \
-			<div class='pubpri-identifier'>  </div> \
 			<div class='attendees'>Who's Coming? \
 				<div style='height:50px;width:50px;display:inline;'> \
 					<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg' data-toggle='tooltip' data-placement='top' title='Tooltip on top'> \
@@ -174,7 +173,6 @@
 		var rowDiv = "<div class='row feed-row' style='visibility:hidden;'> \
 		<div class='name-identifier'>  </div> \
 		<div class='setting-identifier'>  </div> \
-		<div class='pubpri-identifier'>  </div> \
 		<div class='attendees'>Who's Coming?</div> \
 		<a class='joinbutton' href='#'><button class='btn btn-success btn-large' style='margin-right:20%; float:right; margin-top: 30px;'><span class='glyphicon glyphicon-exclamation-sign'></span> Join Meal</button> </a> \
 	</div> \
@@ -197,11 +195,6 @@
 						if (obj[i] !== undefined) { 
 							date = obj[i][2].split("-");
 							$(this).text(obj[i][1] + ", " + date[1] + "/" + date[2] + ", " + obj[i++][3]);
-						}
-					});
-					$(".feed-row .pubpri-identifier").each(function(i) {
-						if (obj[i] !== undefined) { 
-							$(this).text("This meal is "+obj[i][16]);
 						}
 					});
 				});
