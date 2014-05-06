@@ -191,7 +191,7 @@
 
 		var hostrowDiv = "<div class='row host-row'> \
 		<div class='name-identifier'>Your Meal \
-			<div style='<div class='pubpri-identifier' style='font-size: small; display: inline;'></div> \
+			<div class='pubpri-identifier' style='font-size: small; display: inline;'></div> \
 		</div> \
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming? \
@@ -390,7 +390,7 @@
 
 			$(".inviter-row .pubpri-identifier").each(function(i) {
 				if (objInvitedMeals[i] !== undefined) { 
-					if (objInvitedMeals[i][16] == 'pub') {
+					if (objInvitedMeals[i++][16] == 'pub') {
 						$(this).text("");
 						$(this).append("<span class='glyphicon glyphicon-eye-close'></span>");
 						$(this).append(" Public");
