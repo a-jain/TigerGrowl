@@ -61,7 +61,7 @@ body {
 
 }
 
-.accept-invite .reject-invite {
+.accept-invite, .reject-invite {
 	font-family:'Patrick Hand SC';
 }
 
