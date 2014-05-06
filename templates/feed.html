@@ -207,7 +207,10 @@
 					$(".joinbutton").each(function(i) {
 						if (obj[i] !== undefined) { 
 							if (parseInt(window.uid) == obj[i][15]) {
-								$(this).hide();
+								$(this).children("button").removeClass('btn-primary');
+								$(this).children("button").addClass('btn-info');
+								$(this).prop("href", "invite/" + obj[i][0]);
+								$(this).children("button").text("Invite Friends");
 							}
 							else {	
 								j = 4;
