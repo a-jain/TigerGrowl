@@ -190,9 +190,10 @@
 
 
 		var hostrowDiv = "<div class='row host-row'> \
-		<div class='name-identifier'>Your Meal</div> \
+		<div class='name-identifier'>Your Meal \
+			<div style='<div class='pubpri-identifier' style='font-size: small; display: inline;'></div> \
+		</div> \
 		<div class='setting-identifier'> </div> \
-		<div class='pubpri-identifier'>  </div> \
 		<div class='attendees'>Who's Coming? \
 			<div style='height:50px;width:50px;display:inline;'> \
 			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
@@ -389,7 +390,16 @@
 
 			$(".inviter-row .pubpri-identifier").each(function(i) {
 				if (objInvitedMeals[i] !== undefined) { 
-					$(this).text("This meal is "+objInvitedMeals[i][16]);
+					if (objInvitedMeals[i][16] == pub) {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Public");
+					}
+					else {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Private");
+					}
 				}
 			});
 
