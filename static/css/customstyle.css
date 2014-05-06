@@ -1,5 +1,6 @@
 @import "bootstrap.min.css";
 @import "bootstrap-theme.css";
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 
 html {
 	height:100%;
@@ -70,7 +71,7 @@ body {
     color: rgba(255,255,255,1);
     text-decoration: none;
     background-color: rgba(219,87,5,1);
-    font-family: 'Raleway';
+    font-family: 'Yanone+Kaffeesatz';
     font-weight: 700;
     font-size: 3em;
     display: block;
@@ -81,7 +82,7 @@ body {
     -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
     -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
     box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
-    margin: 100px auto;
+    /*margin: 100px auto;*/
 	width: 160px;
 	text-align: center;
 	
