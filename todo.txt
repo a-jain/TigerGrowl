@@ -15,3 +15,7 @@ Fix meals you are invited to section of my meals
 
 ############
 After demo:
+
+deal handling of creating a meal on safari when datepicker doesn't load properly
+verify fb id == uid in URL
+make sure date that meal can be created is in a reasonable range
