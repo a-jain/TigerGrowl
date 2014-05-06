@@ -33,7 +33,7 @@
 <body>
 	<div id="mfs"></div>
 
-	<p id="rndtext">Don't see your other friends? Tell them to get on <a href="http://tigergrowl.info">TigerGrowl</a>!</p>
+	<p id="rndtext" style="display:none;">Don't see your other friends? Tell them to get on <a href="http://tigergrowl.info">TigerGrowl</a>!</p>
 
 	<!-- <p id="intersects">Intersects </p> -->
 	<style>
@@ -54,7 +54,7 @@
 	    body {
 			padding-top: 40px;
 			padding-bottom: 40px;
-			background-image: url('../static/img/formback.jpg');
+			background-image: url('/static/img/formback.jpg');
 			color:white;
 		}
 	</style>
@@ -130,7 +130,7 @@
 	ref.parentNode.insertBefore(js, ref);
 }(document));
 $(document).bind('buttondone', function () {
-	$('#sendButton span').text('Some Remove Text');
+	$("#rndtext").fadeIn("fast");
 });
 </script>   
 
