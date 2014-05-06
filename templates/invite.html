@@ -19,13 +19,21 @@
 	  ga('send', 'pageview');
 
 	  </script>
+
+	  <style>
+	  #rndtext {
+	  	margin-left: auto;
+	  	margin-right: auto;
+	  	font-family: "Raleway";
+	  }
+	  </style>
 	
 </head>
 
 <body>
 	<div id="mfs"></div>
 
-	<p>Don't see your other friends? Tell them to get on <a href="http://tigergrowl.info">TigerGrowl</a>!</p>
+	<p id="rndtext">Don't see your other friends? Tell them to get on <a href="http://tigergrowl.info">TigerGrowl</a>!</p>
 
 	<!-- <p id="intersects">Intersects </p> -->
 	<style>
@@ -66,7 +74,7 @@
 					console.log(response);
 					FB.api(
 									// "/fql?q=SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1",
-									"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}},
+									"/fql", {q:{"query1":"SELECT uid, name, is_app_user, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1 ORDER BY name"}},
 									function (response) {
 										if (response && !response.error) {
 											console.log(response);
