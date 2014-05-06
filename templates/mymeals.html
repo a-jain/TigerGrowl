@@ -369,7 +369,16 @@
 			});
 			$(".host-row .pubpri-identifier").each(function(i) {
 				if (objHost[i] !== undefined) { 
-					$(this).text("This meal is "+objHost[i][16]);
+					if (objHost[i++][16] == 'pub') {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Public");
+					}
+					else {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Private");
+					}
 				}
 			});
 		});
@@ -439,7 +448,16 @@
 
 			$(".guest-column .feed-row .pubpri-identifier").each(function(i) {
 				if (objGuest[i] !== undefined) { 
-					$(this).text("This meal is "+objGuest[i][16]);
+					if (objGuest[i++][16] == 'pub') {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Public");
+					}
+					else {
+						$(this).text("");
+						$(this).append("<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Private");
+					}
 				}
 			});
 		});
