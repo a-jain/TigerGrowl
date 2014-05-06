@@ -395,6 +395,12 @@
 
 			if (notify.length > 0) {
 				$(".invite-head").append(" (" + notify.length + ")") 
+				if (notify.length == 1) {
+					alert("You have a new meal invitation waiting for you!");
+				}
+				else {
+					alert("You have new meal invitations waiting for you!");
+				}
 			}
 
 			
