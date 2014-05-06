@@ -54,7 +54,7 @@ def feed(errorFlag=None):
 	
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
-	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date, time" % "pub")
+	cursor.execute("SELECT * FROM ebdb.meal_table WHERE publicprivate = \'%s\' ORDER BY date, time;" % "pub")
 	queryResults = cursor.fetchall()
 	mealList = json.dumps(queryResults)
 
@@ -231,7 +231,7 @@ def mymeals(uid=None, message=None):
 	# clearOldMeals()
 	
 	cursor = db.cursor()
-	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s;" % (uid)
+	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s ORDER BY date, time;" % (uid)
 	cursor.execute(query)
 	queryResults = cursor.fetchall()
 	hostingMeals = json.dumps(queryResults)
@@ -249,7 +249,7 @@ def mymeals(uid=None, message=None):
 	cursor.execute(tempQuery1)
 	queryTempResults = cursor.fetchall()
 	for row in queryTempResults:
-		tempQuery2 = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s" % row[0]
+		tempQuery2 = "SELECT * FROM ebdb.meal_table WHERE meal_id = %s ORDER BY date, time" % row[0]
 		cursor.execute(tempQuery2)
 		queryResults = cursor.fetchall()
 		for each in queryResults:
