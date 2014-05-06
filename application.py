@@ -648,7 +648,7 @@ def Notifications(uid):
 
 	for item in temp:
 		NotificationList.append(item[0])
-		print "item0: "+ item[0]
+		print "item0: "+ str(item[0])
 		print uid
 		update = "UPDATE ebdb.invitees SET guestnotification = 0 WHERE meal_id = %s AND guest = %s)" % (item[0], uid)
 		cursor.execute(update);
