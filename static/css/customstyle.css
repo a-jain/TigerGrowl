@@ -71,9 +71,9 @@ body {
     color: rgba(255,255,255,1);
     text-decoration: none;
     background-color: rgba(219,87,5,1);
-    font-family: 'Yanone Kaffeesatz';
-    font-weight: 700;
-    font-size: 3em;
+    font-family:"Raleway";
+    font-weight:bold;
+	font-size:300%;
     /*display: block;*/
     box-shadow:none;
     padding: 4px;
@@ -86,8 +86,9 @@ body {
     /*margin: 100px auto;*/
     margin-left: auto;
     margin-right: auto;
-	width: 200px;
+	width: 300px;
 	text-align: center;
+	margin-bottom: 20px;
 	
 	-webkit-transition: all .1s ease;
 	-moz-transition: all .1s ease;
@@ -162,6 +163,11 @@ h1 {
 	float: left;
 	width: 50%;
 	padding-left:45px;
+}
+
+.name-identifier {
+	font-weight:bold;
+	font-size:125%;
 }
 
 .feed-row .setting-identifier {
