@@ -648,6 +648,8 @@ def Notifications(uid):
 
 	for item in temp:
 		NotificationList.append(item[0])
+		deletion = "UPDATE ebdb.invitees SET guestnotification = 0 WHERE (meal_id, guest) = (%s, %s)" % (item[0], uid)
+		cursor.execute(deletion);
 
 	return NotificationList
 
