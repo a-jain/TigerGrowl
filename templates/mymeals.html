@@ -351,11 +351,12 @@
 		else {
 			$.each(".inviter-row", function(j) {
 				for (i=0;i<notify.length;i++) {
-					if (notify[i] == objInvite[j++][0]) {
+					if (notify[i] == objInvite[j][0]) {
 						$(this).css("background-color", "rgba(255, 236, 16, 0.9)");
 						$(this).css("color", "black");
 					}
 				}
+				j++;
 			});
 		}
 
