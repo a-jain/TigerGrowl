@@ -193,14 +193,14 @@
 					$("#mymealsbutton").removeAttr("disabled"); 
 					$("#mymealslink").prop("href", "mymeals/" + window.uid);
 
-					$(".joinbutton").each(function(i) {
+					$(".joinbutton button").each(function(i) {
 						if (obj[i] !== undefined) { 
 							if (parseInt(window.uid) == obj[i][15]) {
 								$(this).hide();
 							}
 							else {
 						
-								$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid							
+								$(this).prop("href", "joinmeal/" + obj[i][0] + "/" + window.uid)							
 							}
 							i++;
 						}
