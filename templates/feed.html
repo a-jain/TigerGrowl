@@ -60,7 +60,7 @@
 			$('#helpLink').nivoLightbox({
 							effect: 'fall'                       // The effect to use when showing the lightbox
 						});
-			$('.btn-info').nivoLightbox({
+			$('.invite-friends').nivoLightbox({
 							effect: 'fall'                       // The effect to use when showing the lightbox
 						});
 		});
@@ -213,6 +213,7 @@
 								$(this).children("button").removeClass('btn-primary');
 								$(this).children("button").addClass('btn-info');
 								$(this).prop("href", "invite/" + obj[i][0]);
+								$(this).addClass("invite-friends");
 								$(this).children("button").text("Invite Friends");
 								$(this).children("button").prepend("<span class='glyphicon glyphicon-heart'></span> ");
 							}
