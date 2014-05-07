@@ -438,7 +438,7 @@ def remove(mealid=None, uid=None):
 
 	cursor.close()	
 	
-	return redirect(url_for('mymeals', uid=uid, message='success1'))
+	return redirect(url_for('mymeals', uid=uid))
 	
 @application.route('/invite/<mealid>')
 def invite(mealid=None):
