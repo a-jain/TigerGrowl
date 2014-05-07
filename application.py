@@ -440,13 +440,6 @@ def remove(mealid=None, uid=None):
 	
 	return redirect(url_for('mymeals', uid=uid, message='success1'))
 	
-# when invite friends is clicked, the following happens:
-# pull user's friends from fb
-# pull all userids in user_table
-# cross reference. all fbids that are not in userids are added to blacklist = []
-# we call the fb friend selector with the blacklist
-# this returns some fb ids
-# we add this to the sql database	
 @application.route('/invite/<mealid>')
 def invite(mealid=None):
 	if not mealid:
@@ -603,7 +596,6 @@ def clearOldMeals():
 	cursor.close()	
 	#print("if you get here Gil's code worked fine")
 
-
 # find guest names for every meal to be shown on mymeals. mealsList is a list of mealids
 def getGuestNames(mealList):
 	# get all the guest names for guest1
@@ -654,14 +646,7 @@ def Notifications(uid):
 		cursor.execute(update);
 
 	return NotificationList
-
-# def getGuestNamesAkash(mealList):
-# 	print mealList
-# 	firstGuestIndex = 4
-# 	lastGuestIndex = 14
-
-# 	for meal in mealList:
-
+	
 	
 if __name__ == '__main__':
 	application.run(debug=True)
