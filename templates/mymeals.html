@@ -1063,12 +1063,14 @@
 				FB.getLoginStatus(function(response) {
 					if (response.status === 'connected') {
 						uid = response.authResponse.userID;
+						console.log("fb init");
 						$(document).trigger('fbInit');
 
 						FB.api('me?fields=picture.height(80)', function(response) {
 							if (!response || response.error) {
 								console.log('Error occured');
 							} else {
+								console.log("fb init but API call failed");
 								picurl = response["picture"]["data"]["url"];
 								// console.log(picurl)
 								$(document).trigger('fbInitPicLoaded');
@@ -1076,6 +1078,7 @@
 						});
 					}
 					else {
+						console.log("fb not init");
 					} 
 				});
 			}
