@@ -80,7 +80,7 @@
 	         js.src = "//connect.facebook.net/en_US/sdk.js";
 	         fjs.parentNode.insertBefore(js, fjs);
 	       }(document, 'script', 'facebook-jssdk'));
-			
+
 			console.log("fb async has been init")
 			FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
@@ -92,7 +92,7 @@
 						if (!response || response.error) {
 							console.log('Error occured');
 						} else {
-							console.log("fb init but API call failed");
+							console.log("fb init all good");
 							picurl = response["picture"]["data"]["url"];
 							// console.log(picurl)
 							$(document).trigger('fbInitPicLoaded');
