@@ -1053,6 +1053,7 @@
 
 		<!-- Facebook verification -->
 		<script type="text/javascript">
+			console.log("fb function reached")
 			window.fbAsyncInit = function() {
 				FB.init({
 					appId      : '1423477091234772',
@@ -1060,6 +1061,7 @@
 							cookie     : true, // enable cookies to allow the server to access the session
 							xfbml      : true  // parse XFBML
 						});
+				console.log("fb async has been init")
 				FB.getLoginStatus(function(response) {
 					if (response.status === 'connected') {
 						uid = response.authResponse.userID;
