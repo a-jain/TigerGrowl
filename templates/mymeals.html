@@ -68,11 +68,11 @@
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId      : '1423477091234772',
-						status     : true, // check login status
-						cookie     : true, // enable cookies to allow the server to access the session
-						xfbml      : false  // parse XFBML
-					});
-		}
+				status     : true, // check login status
+				cookie     : true, // enable cookies to allow the server to access the session
+				xfbml      : false  // parse XFBML
+			});
+		
 		console.log("fb first part is done");
 
 			(function(d, s, id){
@@ -105,7 +105,7 @@
 					console.log("fb not init");
 				} 
 			});
-		
+		}
 	</script>
 
 	{% if message != "success" and message != "success1" %}
