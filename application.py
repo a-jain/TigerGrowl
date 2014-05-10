@@ -18,6 +18,15 @@ db.autocommit(True)
 
 mandrill_client = mandrill.Mandrill('HWEIfvZ19MEJHOx-Wfsvrw')
 
+<<<<<<< HEAD
+=======
+# mandrill.send_email(
+#     from_email='princetontigergrowl@gmail.com',
+#     to=[{'email': 'kevinbruccoleri@gmail.com'}],
+#     text='Hello World' # here goes the verify link
+# )
+
+>>>>>>> FETCH_HEAD
 @application.errorhandler(404)
 def page_not_found(error):
 	return render_template('error.html'), 404
@@ -55,7 +64,7 @@ def timeline():
 @application.route('/feed/<errorFlag>')
 def feed(errorFlag=None):
 
-	# clearOldMeals()
+	clearOldMeals()
 	
 	cursor = db.cursor()
 	#What if page number gives an offset that is too large?
@@ -186,8 +195,12 @@ def registermeal():
 	elif request.method == 'POST':
 		
 		print "form not validated"
+		print "redirecting to registermeal may 10"
+		return render_template('registermeal.html', form=form)
 	else:
 		print("registermealarrived1b")
+		print "not redirecting to RM may 10 but could have"
+		#return redirect(url_for('registermeal'))
 
 	return render_template('registermeal.html', form=form)
 
@@ -266,7 +279,7 @@ def joinmeal(uid=None, mealid=None):
 @application.route('/mymeals/<uid>/<message>')
 def mymeals(uid=None, message=None):
 	if not uid:
-		return redirect(url_for('/home'))
+		return redirect(url_for('home'))
 		
 	# clearOldMeals()
 	
