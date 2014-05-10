@@ -18,15 +18,6 @@ db.autocommit(True)
 
 mandrill_client = mandrill.Mandrill('HWEIfvZ19MEJHOx-Wfsvrw')
 
-<<<<<<< HEAD
-=======
-# mandrill.send_email(
-#     from_email='princetontigergrowl@gmail.com',
-#     to=[{'email': 'kevinbruccoleri@gmail.com'}],
-#     text='Hello World' # here goes the verify link
-# )
-
->>>>>>> FETCH_HEAD
 @application.errorhandler(404)
 def page_not_found(error):
 	return render_template('error.html'), 404
