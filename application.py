@@ -242,8 +242,8 @@ def mymeals(uid=None, message=None):
 	# 	return redirect(url_for('home'))
 
 	if request.method == 'POST':
-		print form.uid.data
-		uid = int(form.uid.data)
+		print request.data
+		# uid = int(form.uid.data)
 		
 	# clearOldMeals()
 	
