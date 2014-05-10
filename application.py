@@ -95,17 +95,21 @@ def registeruser():
 		#print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
+		print "REGISTERUSER: Break 1"
 		# if there are no entries under this id, send email
 		sql = "SELECT * FROM ebdb.user_table where netid=%s;" % (netid)
 		sql2 = "SELECT * FROM ebdb.pending_user_table where netid=%s;" % (netid)
 
+		print "REGISTERUSER: Break 2"
 		cursor.execute(sql)
 		sqlResult = cursor.fetchone()
 
+		print "REGISTERUSER: Break 3"
 		cursor.execute(sql2)
 		sqlResult2 = cursor.fetchone()
 		# if both results are none, then entry is not existing
 		if sqlResult is None:
+			print "REGISTERUSER: Break 4"
 			recipient = netid + '@princeton.edu'
 			firstname = form.firstname.data
 			uid = form.uid.data
@@ -124,16 +128,17 @@ def registeruser():
 			     }
 
 			result = mandrill_client.messages.send_template(template_name='verify', template_content=template_content, message=message)
+			print result
 
 			#check to make sure that this netid was not already present in the pending database
 			if sqlResult2 is None:
 				sqlAction = "INSERT INTO ebdb.pending_user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-			
-			#print("got to here3")
+				print "REGISTERUSER: Break 5"
+
 			cursor.execute(sqlAction)
 			cursor.close()
 			
-			#print("got to here 4")
+			print "REGISTERUSER: Break 6"
 			return render_template('thankyou.html')
 		
 		else:
