@@ -164,7 +164,7 @@ def registermeal():
 		print "not redirecting to RM may 10 but could have"
 		#return redirect(url_for('registermeal'))
 
-	return render_template('registermeal.html', form=form)
+	# return render_template('registermeal.html', form=form)
 
 @application.route('/joinmeal/<mealid>/<uid>')
 def joinmeal(uid=None, mealid=None):
