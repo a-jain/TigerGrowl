@@ -87,6 +87,13 @@
 			FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 					uid = response.authResponse.userID;
+					var currentURL = document.location.href;
+					var components = currentURL.split("/");
+					var URLuid = components.slice(-1)[0] 
+					console.log(URLuid);
+					console.log(uid);
+
+
 					console.log("fb init");
 					$(document).trigger('fbInit');
 
