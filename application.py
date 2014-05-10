@@ -155,7 +155,7 @@ def verify():
 
 	# search the pending users for a matching uid
 	cursor = db.cursor()
-	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
+	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=%d;" % (uid)
 	cursor.execute(sql)
 	print "VERIFY: BREAK 1"
 
@@ -172,7 +172,7 @@ def verify():
 	cursor.execute(sqlAction)
 
 	print "VERIFY: BREAK 4"
-	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
+	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=%d;" % (uid)
 	cursor.execute(removeAction)
 
 	print "VERIFY: BREAK 5"
