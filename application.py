@@ -239,11 +239,11 @@ def joinmeal(uid=None, mealid=None):
 @application.route('/mymeals/<message>', methods=['GET', 'POST'])
 def mymeals(uid=None, message=None):
 	if not uid:
-		return redirect(url_for('/home'))
+		return redirect(url_for('home'))
 
-	# if request.method == 'POST':
-	# 	print form.uid.data
-	# 	uid = int(form.uid.data)
+	if request.method == 'POST':
+		print form.uid.data
+		uid = int(form.uid.data)
 		
 	# clearOldMeals()
 	
