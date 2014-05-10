@@ -238,8 +238,8 @@ def joinmeal(uid=None, mealid=None):
 @application.route('/mymeals', methods=['GET', 'POST'])
 @application.route('/mymeals/<message>', methods=['GET', 'POST'])
 def mymeals(uid=None, message=None):
-	if not uid:
-		return redirect(url_for('home'))
+	# if not uid:
+	# 	return redirect(url_for('home'))
 
 	if request.method == 'POST':
 		print form.uid.data
