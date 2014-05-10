@@ -95,23 +95,23 @@ def registeruser():
 		#print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
-		print "REGISTERUSER: Break 1"
+		#print "REGISTERUSER: Break 1"
 		# if there are no entries under this id, send email
 		sql = "SELECT * FROM ebdb.user_table WHERE netid=\'%s\';" % (netid)
 		sql2 = "SELECT * FROM ebdb.pending_user_table WHERE netid=\'%s\';" % (netid)
 
-		print sql
-		print sql2
-		print "REGISTERUSER: Break 2"
+		#print sql
+		#print sql2
+		#print "REGISTERUSER: Break 2"
 		cursor.execute(sql)
 		sqlResult = cursor.fetchone()
 
-		print "REGISTERUSER: Break 3"
+		#print "REGISTERUSER: Break 3"
 		cursor.execute(sql2)
 		sqlResult2 = cursor.fetchone()
 		# if both results are none, then entry is not existing
 		if sqlResult is None:
-			print "REGISTERUSER: Break 4"
+			#print "REGISTERUSER: Break 4"
 			recipient = netid + '@princeton.edu'
 			firstname = form.firstname.data
 			uid = form.uid.data
@@ -135,12 +135,12 @@ def registeruser():
 			#check to make sure that this netid was not already present in the pending database
 			if sqlResult2 is None:
 				sqlAction = "INSERT INTO ebdb.pending_user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-				print "REGISTERUSER: Break 5"
+				#print "REGISTERUSER: Break 5"
 
 			cursor.execute(sqlAction)
 			cursor.close()
 			
-			print "REGISTERUSER: Break 6"
+			#print "REGISTERUSER: Break 6"
 			return render_template('thankyou.html')
 		
 		else:
@@ -149,6 +149,29 @@ def registeruser():
 
 		#print("got to here 5")
 	return render_template('registeruser.html', form=form)
+
+@application.route('/verify/<uid>')
+def verify():
+
+	# search the pending users for a matching uid
+	cursor = db.cursor()
+	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
+	cursor.execute(sql)
+
+	result = cursor.fetchone()
+
+	# if not present, give a 404 error
+	if result is None:
+		return render_template('error.html')
+
+	sqlAction = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(result[0]), result[1], result[2], result[3], result[4])
+	cursor.execute(sqlAction)
+
+	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
+	cursor.execute(removeAction)
+
+	return redirect(url_for('feed'))
+
 
 @application.route('/registermeal', methods=['GET', 'POST'])
 def registermeal():
