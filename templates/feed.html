@@ -43,20 +43,6 @@
 		}
 	</script>
 
-	<script>
-		function ajaxReq() {
-			console.log("bitch");
-			$.ajax({
-			  type: "POST",
-			  url: "/mymeals",
-			  data: {"uid": 672778514},
-			  dataType:'json',
-			  contentType: "application/json; charset=utf-8"
-			});
-			console.log("done");
-		}
-	</script>
-
 			<!--
 		<script>
 		function openpopup() {
@@ -138,7 +124,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<a class="navbar-brand logo" style="color:white;" href="/feed">TigerGrowl</a>
 
-		<input id="mymealsbutton" disabled="disabled" type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;" value="My Meals" onclick="ajaxReq()"></input>
+		<a id="mymealslink" href="#"><button id="mymealsbutton" disabled="disabled" type="button" class="btn btn-default navbar-btn" style="float: right;margin-right: 45px;margin-left: 45px;"><span class="glyphicon glyphicon-user"></span> My Meals</button></a> 
 
 		<img id="FacebookPhoto" href="#" style="height: 50px;padding: 4px; float:right;">/>
 
