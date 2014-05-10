@@ -4,6 +4,9 @@ from flask import send_from_directory
 from werkzeug.utils import secure_filename
 import MySQLdb
 import json
+import random
+import base64
+import md5
 from form import *
 from datetime import datetime
 import mandrill
@@ -114,14 +117,28 @@ def registeruser():
 			#print "REGISTERUSER: Break 4"
 			recipient = netid + '@princeton.edu'
 			firstname = form.firstname.data
-			uid = form.uid.data
+			hashid = '%030x' % random.randrange(16**30)
+
+			# ensure that this hashid is not already in use
+			sql = "SELECT * FROM ebdb.pending_user_table WHERE hashid=\'%s\';" % (hashid)
+			cursor.execute(sql)
+			result = cursor.fetchone()
+
+			while result is not None:
+				# if it is, make it again, and then check if new hashid is not in use
+				hashid = '%030x' % random.randrange(16**30)
+
+				sql = "SELECT * FROM ebdb.pending_user_table WHERE hashid=\'%s\';" % (hashid)
+				cursor.execute(sql)
+				result = cursor.fetchone()
+
 
 			template_content = [{'content': 'example content', 'name': 'example name'}]
 			message = {
 			     'from_email': 'princetontigergrowl@gmail.com',
 			     'from_name': 'TigerGrowl',
 			     'merge_vars': [{'rcpt': recipient,
-			                     'vars': [{'name': 'FIRSTNAME', 'content': firstname}, {'name': 'identifier', 'content': uid}]}],
+			                     'vars': [{'name': 'FIRSTNAME', 'content': firstname}, {'name': 'identifier', 'content': hashid}]}],
 			     'metadata': {'website': 'www.tigergrowl.info'},
 			     'subject': 'Verify your TigerGrowl Account',
 			     'to': [{'email': recipient,
@@ -134,7 +151,7 @@ def registeruser():
 
 			#check to make sure that this netid was not already present in the pending database
 			if sqlResult2 is None:
-				sqlAction = "INSERT INTO ebdb.pending_user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+				sqlAction = "INSERT INTO ebdb.pending_user_table (hashid, user_id, firstname, lastname, netid, photo_url) VALUES (\'%s\', %d, \'%s\', \'%s\', \'%s\', \'%s\');" % (hashid, int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
 				#print "REGISTERUSER: Break 5"
 
 			cursor.execute(sqlAction)
@@ -150,15 +167,13 @@ def registeruser():
 		#print("got to here 5")
 	return render_template('registeruser.html', form=form)
 
-@application.route('/verify/<uid>')
+@application.route('/verify/<hashid>')
 def verify(uid=None):
 
 	# search the pending users for a matching uid
 	cursor = db.cursor()
-	uid = str(uid)
-	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
-	print(sql)
-	print(type(uid))
+
+	sql = "SELECT * FROM ebdb.pending_user_table WHERE hashid=\'%s\';" % (hashid)
 	cursor.execute(sql)
 	#print "VERIFY: BREAK 1"
 
