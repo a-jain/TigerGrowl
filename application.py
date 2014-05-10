@@ -621,11 +621,11 @@ def cancelMeal(mealid=None, uid=None):
 	
 def clearOldMeals():
 	currentDate = datetime.now().strftime('%Y-%m-%d')
-	thisHour = int(datetime.now().strftime('%H'))
+	thisHour = (int(datetime.now().strftime('%H')) - 4) % 24
 	currentMin = int(datetime.now().strftime('%M'))
 
 	print(datetime.now().strftime('%Y-%m-%d'))
-	print(datetime.now().strftime('%H/%m'))
+	print(datetime.now().strftime('%H:%M'))
 	
 	if (currentMin >= 10):
 		lastMin = currentMin - 10
