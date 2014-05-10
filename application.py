@@ -188,12 +188,13 @@ def registermeal():
 		cursor.close()
 		print "all done 3 "
 		# change to some exit page
-		return redirect(url_for('feed'))
+		return redirect(url_for('feed', errorFlag = "close"))
 
 	elif request.method == 'POST':
 		print form.date.data
 		print "form not validated"
 		# print "redirecting to registermeal may 10"
+
 		return render_template('registermeal.html', form=form)
 	else:
 		print("registermealarrived1b")

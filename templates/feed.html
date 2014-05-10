@@ -483,6 +483,11 @@
 			<script type="text/javascript">			
 				var error = "{{ errorFlag }}";
 				if (error != "") {
+					if (error == "close") {
+						alert("You have successfully joined the meal!");
+						window.location = '/feed';
+					}
+
 					if (error == "1") {
 						alert("Oops! You are already a guest for this meal!");
 						window.location = '/feed';
