@@ -90,31 +90,29 @@ def exitpage():
 @application.route('/registeruser', methods=['GET', 'POST'])
 def registeruser():
 
-	#print("got to here 1")
 	form = Signup(request.form)
 	if request.method == 'POST' and form.validate():
 		cursor = db.cursor()
 		
-		#print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
-		#print "REGISTERUSER: Break 1"
+		print "REGISTERUSER: Break 1"
 		# if there are no entries under this id, send email
 		sql = "SELECT * FROM ebdb.user_table WHERE netid=\'%s\';" % (netid)
 		sql2 = "SELECT * FROM ebdb.pending_user_table WHERE netid=\'%s\';" % (netid)
 
 		#print sql
 		#print sql2
-		#print "REGISTERUSER: Break 2"
+		print "REGISTERUSER: Break 2"
 		cursor.execute(sql)
 		sqlResult = cursor.fetchone()
 
-		#print "REGISTERUSER: Break 3"
+		print "REGISTERUSER: Break 3"
 		cursor.execute(sql2)
 		sqlResult2 = cursor.fetchone()
 		# if both results are none, then entry is not existing
 		if sqlResult is None:
-			#print "REGISTERUSER: Break 4"
+			print "REGISTERUSER: Break 4"
 			recipient = netid + '@princeton.edu'
 			firstname = form.firstname.data
 			hashid = '%030x' % random.randrange(16**30)
@@ -152,7 +150,8 @@ def registeruser():
 			#check to make sure that this netid was not already present in the pending database
 			if sqlResult2 is None:
 				sqlAction = "INSERT INTO ebdb.pending_user_table (hashid, user_id, firstname, lastname, netid, photo_url) VALUES (\'%s\', %d, \'%s\', \'%s\', \'%s\', \'%s\');" % (hashid, int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-				#print "REGISTERUSER: Break 5"
+				print sqlAction
+				print "REGISTERUSER: Break 5"
 
 			cursor.execute(sqlAction)
 			cursor.close()
