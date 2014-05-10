@@ -97,9 +97,11 @@ def registeruser():
 
 		print "REGISTERUSER: Break 1"
 		# if there are no entries under this id, send email
-		sql = "SELECT * FROM ebdb.user_table where netid=%s;" % (netid)
-		sql2 = "SELECT * FROM ebdb.pending_user_table where netid=%s;" % (netid)
+		sql = "SELECT * FROM ebdb.user_table WHERE netid=%s;" % (netid)
+		sql2 = "SELECT * FROM ebdb.pending_user_table WHERE netid=%s;" % (netid)
 
+		print sql
+		print sql2
 		print "REGISTERUSER: Break 2"
 		cursor.execute(sql)
 		sqlResult = cursor.fetchone()
