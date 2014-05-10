@@ -240,6 +240,9 @@ def joinmeal(uid=None, mealid=None):
 def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
+
+	if request.method == 'POST':
+		print form.uid.data
 		
 	# clearOldMeals()
 	
