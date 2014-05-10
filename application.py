@@ -175,7 +175,7 @@ def verify(uid=None):
 	cursor.execute(sqlAction)
 
 	print "VERIFY: BREAK 4"
-	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=%d;" % (uid)
+	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
 	cursor.execute(removeAction)
 
 	print "VERIFY: BREAK 5"
