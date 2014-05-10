@@ -160,25 +160,25 @@ def verify(uid=None):
 	print(sql)
 	print(type(uid))
 	cursor.execute(sql)
-	print "VERIFY: BREAK 1"
+	#print "VERIFY: BREAK 1"
 
 	result = cursor.fetchone()
 
-	print "VERIFY: BREAK 2"
+	#print "VERIFY: BREAK 2"
 	# if not present, give a 404 error
 	if result is None:
 		print "VERIFY: BREAK 2.5"
 		return render_template('error.html')
 
-	print "VERIFY: BREAK 3"
+	#print "VERIFY: BREAK 3"
 	sqlAction = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(result[0]), result[1], result[2], result[3], result[4])
 	cursor.execute(sqlAction)
 
-	print "VERIFY: BREAK 4"
+	#print "VERIFY: BREAK 4"
 	removeAction = "DELETE FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
 	cursor.execute(removeAction)
 
-	print "VERIFY: BREAK 5"
+	#print "VERIFY: BREAK 5"
 	return redirect(url_for('feed'))
 
 
