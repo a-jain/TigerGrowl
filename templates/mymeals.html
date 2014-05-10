@@ -90,14 +90,11 @@
 					var currentURL = document.location.href;
 					var components = currentURL.split("/");
 					var URLuid = components.slice(-1)[0] 
-					console.log(URLuid);
-					console.log(uid);
+					// console.log(URLuid);
+					// console.log(uid);
 					if (uid != URLuid) {
-						console.log("awk");
+						// console.log("awk");
 						location.href = "/mymeals/" + uid;
-					}
-					else {
-						console.log("not awk")
 					}
 
 
