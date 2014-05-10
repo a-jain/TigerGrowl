@@ -19,10 +19,20 @@
 		<link href="../static/css/form-signin.css" rel="stylesheet", media = "screen">
 		<script src="../static/js/jquery-1.11.0.min.js"></script>
 		<script>
-			function bigrefresh(){
+			function checkIfValidated(){
+				var success = {{success}};
+				console.log(success);
+
+				if (success == "works") {
+					alert('Success! Your meal is being hosted!');
+					top.location.href = "http://www.tigergrowl.info/feed";
+				}
+				else {
+					location.reload();
+				}
 				alert('reloading now');
 				//alert('Success! Your meal is being hosted!');
-				location.reload();
+				//location.reload();
 				//top.location.href = "http://www.tigergrowl.info/feed";
 			}
 
