@@ -156,7 +156,9 @@ def verify():
 	# search the pending users for a matching uid
 	cursor = db.cursor()
 	uid = str(uid)
-	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=%d;" % (uid)
+	sql = "SELECT * FROM ebdb.pending_user_table WHERE user_id=\'%s\';" % (uid)
+	print(sql)
+	print(type(uid))
 	cursor.execute(sql)
 	print "VERIFY: BREAK 1"
 
