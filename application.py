@@ -243,6 +243,7 @@ def mymeals(uid=None, message=None):
 
 	if request.method == 'POST':
 		print form.uid.data
+		uid = int(form.uid.data)
 		
 	# clearOldMeals()
 	
