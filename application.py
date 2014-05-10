@@ -151,7 +151,7 @@ def registeruser():
 	return render_template('registeruser.html', form=form)
 
 @application.route('/verify/<uid>')
-def verify():
+def verify(uid=None):
 
 	# search the pending users for a matching uid
 	cursor = db.cursor()
