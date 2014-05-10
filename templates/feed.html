@@ -504,11 +504,13 @@
 						alert("Invites sent!");
 						top.location.href = "/feed";
 					}
-					
 					else if (error == "4") {
 						alert("You've selected some people who have already been invited - don't worry, we've invited everyone else!");
 						top.location.href = "/feed";
-
+					}
+					else if (error == "5") {
+						alert("You are already a registered TigerGrowl user!");
+						top.location.href = "/feed";
 					}
 				}			
 			</script>

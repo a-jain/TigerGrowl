@@ -18,12 +18,6 @@ db.autocommit(True)
 
 mandrill_client = mandrill.Mandrill('HWEIfvZ19MEJHOx-Wfsvrw')
 
-mandrill.send_email(
-    from_email='princetontigergrowl@gmail.com',
-    to=[{'email': 'kevinbruccoleri@gmail.com'}],
-    text='Hello World' # here goes the verify link
-)
-
 @application.errorhandler(404)
 def page_not_found(error):
 	return render_template('error.html'), 404
@@ -101,16 +95,51 @@ def registeruser():
 		#print("got to here 2")
 		netid = form.email.data.split('@')[0]
 
-		#check to make sure that this netid was not already present in the database
-		sql = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
-		
-		#print("got to here3")
+		# if there are no entries under this id, send email
+		sql = "SELECT * FROM ebdb.user_table where netid=%s;" % (netid)
+		sql2 = "SELECT * FROM ebdb.pending_user_table where netid=%s;" % (netid)
+
 		cursor.execute(sql)
-		cursor.close()
+		sqlResult = cursor.fetchone()
+
+		cursor.execute(sql2)
+		sqlResult2 = cursor.fetchone()
+		# if both results are none, then entry is not existing
+		if sqlResult is None:
+			recipient = netid + '@princeton.edu'
+			firstname = form.firstname.data
+			uid = form.uid.data
+
+			template_content = [{'content': 'example content', 'name': 'example name'}]
+			message = {
+			     'from_email': 'princetontigergrowl@gmail.com',
+			     'from_name': 'TigerGrowl',
+			     'merge_vars': [{'rcpt': recipient,
+			                     'vars': [{'name': 'FIRSTNAME', 'content': firstname}, {'name': 'identifier', 'content': uid}]}],
+			     'metadata': {'website': 'www.tigergrowl.info'},
+			     'subject': 'Verify your TigerGrowl Account',
+			     'to': [{'email': recipient,
+			             'name': firstname,
+			             'type': 'to'}]
+			     }
+
+			result = mandrill_client.messages.send_template(template_name='verify', template_content=template_content, message=message)
+
+			#check to make sure that this netid was not already present in the pending database
+			if sqlResult2 is None:
+				sqlAction = "INSERT INTO ebdb.pending_user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(form.uid.data), form.firstname.data, form.lastname.data, netid, form.picurl.data)
+			
+			#print("got to here3")
+			cursor.execute(sqlAction)
+			cursor.close()
+			
+			#print("got to here 4")
+			return render_template('thankyou.html')
 		
-		#print("got to here 4")
-		return redirect(url_for('feed'))
-		
+		else:
+			return redirect(url_for('feed', errorFlag='5'))
+
+
 		#print("got to here 5")
 	return render_template('registeruser.html', form=form)
 
