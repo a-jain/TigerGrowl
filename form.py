@@ -10,7 +10,7 @@ class MealForm(Form):
     place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
     time = TimeField('Time (hh:mm)', [Required()])
     # format='%m/%d/%y', 
-    date = DateField('Date (mm/dd)', validators=[Required(), DateRange(min=date(2014, 01, 12), max=date(2015, 01, 02))])
+    date = DateField('Date (mm/dd)', validators=[Required(), DateRange(min=date(2014, 05, 18), max=date(2014, 06, 18))])
     priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
     uid = HiddenField('')
 
