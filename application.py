@@ -157,6 +157,7 @@ def registermeal():
 	elif request.method == 'POST':
 		
 		print "form not validated"
+		return redirect(url_for('registermeal'))
 	else:
 		print("registermealarrived1b")
 
