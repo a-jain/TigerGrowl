@@ -157,9 +157,11 @@ def registermeal():
 	elif request.method == 'POST':
 		
 		print "form not validated"
+		print "redirecting to registermeal may 10"
 		return redirect(url_for('registermeal'))
 	else:
 		print("registermealarrived1b")
+		print "not redirecting to RM may 10 but could have"
 
 	return render_template('registermeal.html', form=form)
 
