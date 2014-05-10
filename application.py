@@ -185,7 +185,7 @@ def verify(hashid=None):
 		return render_template('error.html')
 
 	print "VERIFY: BREAK 3"
-	sqlAction = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(result[0]), result[1], result[2], result[3], result[4])
+	sqlAction = "INSERT INTO ebdb.user_table (user_id, firstname, lastname, netid, photo_url) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\');" % (int(result[1]), result[2], result[3], result[4], result[5])
 	cursor.execute(sqlAction)
 
 	print "VERIFY: BREAK 4"
