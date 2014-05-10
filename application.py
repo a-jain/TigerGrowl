@@ -312,7 +312,7 @@ def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('home'))
 		
-	# clearOldMeals()
+	clearOldMeals()
 	
 	cursor = db.cursor()
 	query = "SELECT * FROM ebdb.meal_table WHERE user_id = %s ORDER BY date, time;" % (uid)
