@@ -235,6 +235,8 @@ def joinmeal(uid=None, mealid=None):
 @application.route('/mymeals')
 @application.route('/mymeals/<uid>')
 @application.route('/mymeals/<uid>/<message>')
+@application.route('/mymeals', methods=['POST'])
+@application.route('/mymeals/<message>', methods=['POST'])
 def mymeals(uid=None, message=None):
 	if not uid:
 		return redirect(url_for('/home'))
