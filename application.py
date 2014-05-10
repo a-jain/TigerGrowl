@@ -625,7 +625,7 @@ def clearOldMeals():
 	currentMin = int(datetime.now().strftime('%M'))
 
 	print(datetime.now().strftime('%Y-%m-%d'))
-	print(currentDate = datetime.now().strftime('%H/%m'))
+	print(datetime.now().strftime('%H/%m'))
 	
 	if (currentMin >= 10):
 		lastMin = currentMin - 10
