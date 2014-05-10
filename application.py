@@ -184,7 +184,7 @@ def registermeal():
 		return redirect(url_for('feed'))
 
 	elif request.method == 'POST':
-		
+		print form.date.data
 		print "form not validated"
 		print "redirecting to registermeal may 10"
 		return render_template('registermeal.html', form=form)
