@@ -167,7 +167,7 @@ def registeruser():
 	return render_template('registeruser.html', form=form)
 
 @application.route('/verify/<hashid>')
-def verify(uid=None):
+def verify(hashid=None):
 
 	# search the pending users for a matching uid
 	cursor = db.cursor()
