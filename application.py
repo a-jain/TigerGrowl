@@ -18,11 +18,11 @@ db.autocommit(True)
 
 mandrill_client = mandrill.Mandrill('HWEIfvZ19MEJHOx-Wfsvrw')
 
-mandrill.send_email(
-    from_email='princetontigergrowl@gmail.com',
-    to=[{'email': 'kevinbruccoleri@gmail.com'}],
-    text='Hello World' # here goes the verify link
-)
+# mandrill.send_email(
+#     from_email='princetontigergrowl@gmail.com',
+#     to=[{'email': 'kevinbruccoleri@gmail.com'}],
+#     text='Hello World' # here goes the verify link
+# )
 
 @application.errorhandler(404)
 def page_not_found(error):
