@@ -158,11 +158,11 @@ def registermeal():
 		
 		print "form not validated"
 		print "redirecting to registermeal may 10"
-		return redirect(url_for('registermeal'))
+		#return redirect(url_for('registermeal'))
 	else:
 		print("registermealarrived1b")
 		print "not redirecting to RM may 10 but could have"
-		return redirect(url_for('registermeal'))
+		#return redirect(url_for('registermeal'))
 
 	return render_template('registermeal.html', form=form)
 
