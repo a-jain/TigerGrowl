@@ -245,51 +245,62 @@
 		var notify = jQuery.parseJSON( {{notify|tojson|safe}} );
 
 
-		var hostrowDiv = "<div class='row host-row'> \
-		<div class='name-identifier'>Your Meal \
-			<div class='pubpri-identifier' style='font-size: small; display: inline;'></div> \
+		var hostrowDiv = "<div class='row feed-row host-row'> \
+	<div class='name-identifier'>Meal \
+		<div class='pubpri-identifier' style='font-size: small; display: inline;'> \
+			Pubpri \
 		</div> \
-		<div class='setting-identifier'> </div> \
-		<div class='attendees'>Who's Coming? \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee1' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee2' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee3' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee4' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee5' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee6' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee7' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee8' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee9' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee10' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
-			<div style='height:50px;width:50px;display:inline;'> \
-			<img class='attendee11' href='#' style='height: 50px;padding: 4px;' src='https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/s80x80/1900142_10203248131268388_1098298608_t.jpg'> \
-			</div> \
+	</div> \
+	<div class='setting-identifier'> \
+	</div> \
+	<div class='attendees'>Who's Coming? \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee1' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
 		</div> \
-		<div style='float:right;margin-right:10%'> \
-			<a class='invitebutton' href='#'><button type='button' class='btn btn-info inviteSomeFriends' style='margin-top: 30px;'><span class='glyphicon glyphicon-heart'></span> Invite Friends</button> </a> \
-			<a class='cancelbutton' href='#'><button type='button' class='btn btn-danger CancelMeal' style='margin-left:5px;margin-top: 30px;'><span class='glyphicon glyphicon-remove'></span> Cancel Meal</button> </a> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee2' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
 		</div> \
-		</div>";
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee3' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee4' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee5' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee6' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee7' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee8' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee9' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee10' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+		<div style='height:50px;width:50px;display:inline;'> \
+			<img class='attendee11' href='#' style='height: 50px; padding: 4px;' title='' data-original-title=''> \
+		</div> \
+	</div> \
+	<div style='float:right;margin-right:10%'> \
+		<a class='invitebutton' href='#'> \
+			<button type='button' class='btn btn-info inviteSomeFriends' style='margin-top: 30px;'> \
+				<span class='glyphicon glyphicon-heart'></span> Invite Friends \
+			</button> \
+		</a> \
+		<a class='cancelbutton' href='#'> \
+			<button type='button' class='btn btn-danger CancelMeal' style='margin-left:5px;margin-top: 30px;'> \
+				<span class='glyphicon glyphicon-remove'></span> Cancel Meal \
+			</button> \
+		</a> \
+	</div> \
+</div>";
 
 
 		var inviterowDiv = "<div class='row feed-row inviter-row'> \
