@@ -5,9 +5,6 @@ from wtforms_components import TimeField, DateRange
 
 from datetime import date, datetime
 
-import locale
-locale.setlocale(locale.LC_ALL, 'en_US.utf8')
-
 class MealForm(Form):
 
 	currentYear = int(datetime.now().strftime('%Y'))
