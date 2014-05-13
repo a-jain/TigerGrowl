@@ -92,7 +92,7 @@
 			xfbml      : false  // parse XFBML
 		});
 
-		console.log("Here")
+		// console.log("Here")
 				
 		FB.getLoginStatus(function(response) {
 			if (response.status === 'connected') {
@@ -101,16 +101,16 @@
 
 				FB.api('me?fields=picture.height(80)', function(response) {
 					if (!response || response.error) {
-						console.log('Error occured');
+						// console.log('Error occured');
 					} else {
 						picurl = response["picture"]["data"]["url"];
-						console.log(picurl)
+						// console.log(picurl)
 						$(document).trigger('fbInitPicLoaded');
 					}
 				});
 			}
 			else {
-				console.log("User not logged into fb")
+				// console.log("User not logged into fb")
 				location.href = "/";
 			}
 		});

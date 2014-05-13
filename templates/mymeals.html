@@ -65,7 +65,7 @@
 	<div id="fb-root"></div>
 	<!-- Facebook verification -->
 	<script type="text/javascript">
-		console.log("fb function reached")
+		// console.log("fb function reached")
 		
 			FB.init({
 				appId      : '1423477091234772',
@@ -74,44 +74,44 @@
 				xfbml      : false  // parse XFBML
 			});
 		
-		console.log("fb first part is done");
+		// console.log("fb first part is done");
 
-			
+		
 
-			console.log("fb async has been init")
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					uid = response.authResponse.userID;
-					var currentURL = document.location.href;
-					var components = currentURL.split("/");
-					var URLuid = components.slice(-1)[0] 
-					// console.log(URLuid);
-					// console.log(uid);
-					if (uid != URLuid) {
-						// console.log("awk");
-						location.href = "/mymeals/" + uid;
-					}
-
-
-					console.log("fb init");
-					$(document).trigger('fbInit');
-
-					FB.api('me?fields=picture.height(80)', function(response) {
-						if (!response || response.error) {
-							console.log('Error occured');
-						} else {
-							console.log("fb init all good");
-							picurl = response["picture"]["data"]["url"];
-							// console.log(picurl)
-							$(document).trigger('fbInitPicLoaded');
-						}
-					});
+		// console.log("fb async has been init")
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				uid = response.authResponse.userID;
+				var currentURL = document.location.href;
+				var components = currentURL.split("/");
+				var URLuid = components.slice(-1)[0] 
+				// console.log(URLuid);
+				// console.log(uid);
+				if (uid != URLuid) {
+					// console.log("awk");
+					location.href = "/mymeals/" + uid;
 				}
-				else {
-					console.log("fb not logged in");
-					location.href = "/";
-				} 
-			});
+
+
+				// console.log("fb init");
+				$(document).trigger('fbInit');
+
+				FB.api('me?fields=picture.height(80)', function(response) {
+					if (!response || response.error) {
+						// console.log('Error occured');
+					} else {
+						// console.log("fb init all good");
+						picurl = response["picture"]["data"]["url"];
+						// console.log(picurl)
+						$(document).trigger('fbInitPicLoaded');
+					}
+				});
+			}
+			else {
+				// console.log("fb not logged in");
+				location.href = "/";
+			} 
+		});
 		
 	</script>
 
