@@ -15,7 +15,7 @@
 	<script src="../static/js/jquery-1.11.0.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="../static/js/bootstrap.min.js"></script>
-	<script src="../static/js/fb.js"></script>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
 	<script src="../static/js/nivo-lightbox.min.js"></script>
 
 	<script>
@@ -92,13 +92,7 @@
 				xfbml      : false  // parse XFBML
 			});
 
-			(function(d, s, id){
-	         var js, fjs = d.getElementsByTagName(s)[0];
-	         if (d.getElementById(id)) {return;}
-	         js = d.createElement(s); js.id = id;
-	         js.src = "//connect.facebook.net/en_US/sdk.js";
-	         fjs.parentNode.insertBefore(js, fjs);
-	       }(document, 'script', 'facebook-jssdk'));
+			
 					
 			FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
