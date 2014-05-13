@@ -13,9 +13,9 @@ class MealForm(Form):
 
 	place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
 	time = TimeField('Time (hh:mm)', [Required(message=(u'Invalid Time'))])
-	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[Required(message=(u'Invalid Date')), DateRange(min=datetime.now())])
+	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[Required(message=(u'Invalid Date')), DateRange(min=datetime.now().date())])
 	priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
-	uid = HiddenField('')
+	uid = HiddenField('', [Required()])
 
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():
