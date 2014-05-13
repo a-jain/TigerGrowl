@@ -248,9 +248,6 @@
 
 		var hostrowDiv = "<div class='row feed-row host-row'> \
 	<div class='name-identifier'>Your Meal \
-		<div class='pubpri-identifier' style='font-size: small; display: inline;'> \
-			Pubpri \
-		</div> \
 	</div> \
 	<div class='setting-identifier'> \
 	</div> \
@@ -306,9 +303,6 @@
 
 		var inviterowDiv = "<div class='row feed-row inviter-row'> \
 		<div class='name-identifier'> Meal \
-			<div class='pubpri-identifier' style='font-size: small; display: inline;'> \
-				Pubpri \
-			</div> \
 		</div> \
 		<div class='setting-identifier'> \
 		</div> \
@@ -360,7 +354,6 @@
 
 		var guestrowDiv = "<div class='row guest-row feed-row'> \
 		<div class='name-identifier'> \
-			<div class='pubpri-identifier' style='font-size: small; display: inline;'></div> \
 		</div> \
 		<div class='setting-identifier'> </div> \
 		<div class='attendees'>Who's Coming? \
@@ -445,17 +438,19 @@
 				    $(this).text(objHost[i][1] + ", " + date[1] + "/" + date[2] + ", " + objHost[i++][3]);
 				}
 			});
-			$(".host-row .pubpri-identifier").each(function(i) {
+			// pubpriv
+			$(".host-row .name-identifier").each(function(i) {
 				if (objHost[i] !== undefined) { 
 					if (objHost[i++][16] == 'pub') {
-						$(this).text("");
-						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
-						$(this).append(" Public )");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append("(<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Public)");
+						$(this).append("</div>");
+
 					}
 					else {
-						$(this).text("");
-						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
-						$(this).append(" Private )");
+						$(this).append("(<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Private)");
 					}
 				}
 			});
@@ -475,21 +470,7 @@
 				j++;
 			});
 
-			$(".inviter-row .pubpri-identifier").each(function(i) {
-				if (objInvitedMeals[i] !== undefined) { 
-					if (objInvitedMeals[i++][16] == 'pub') {
-						$(this).text("");
-						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
-						$(this).append(" Public )");
-					}
-					else {
-						$(this).text("");
-						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
-						$(this).append(" Private )");
-					}
-				}
-			});
-
+			
 			$(".inviter-row .setting-identifier").each(function(i) {
 				if (objInvitedMeals[i] !== undefined) { 
 					date = objInvitedMeals[i][2].split("-");
@@ -500,6 +481,20 @@
 			$(".inviter-row .name-identifier").each(function(i) {
 				if (invitenameList[i] !== undefined ) {
 					$(this).text(invitenameList[i][1] + ' ' + invitenameList[i++][2] + "'s Meal");
+				}
+			});
+
+			// pubpriv
+			$(".inviter-row .name-identifier").each(function(i) {
+				if (objInvitedMeals[i] !== undefined) { 
+					if (objInvitedMeals[i++][16] == 'pub') {
+						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Public )");
+					}
+					else {
+						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Private )");
+					}
 				}
 			});
 
@@ -524,15 +519,13 @@
 				}
 			});
 
-			$(".guest-column .feed-row .pubpri-identifier").each(function(i) {
+			$(".guest-column .name-identifier").each(function(i) {
 				if (objGuest[i] !== undefined) { 
 					if (objGuest[i++][16] == 'pub') {
-						$(this).text("");
 						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
 						$(this).append(" Public )");
 					}
 					else {
-						$(this).text("");
 						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
 						$(this).append(" Private )");
 					}

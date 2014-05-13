@@ -186,8 +186,7 @@ h1 {
 .feed-row .attendees {
 	float: left;
 	margin-top: 20px;
-	padding-left: 45px;
-	width: 60%;
+	width: 100%;
 }
 
 
@@ -201,8 +200,7 @@ h1 {
 .host-row .attendees {
 	float: left;
 	margin-top: 20px;
-	margin-left: 45px;
-	width: 45%;
+	width: 100%;
 }
 
 footer{
