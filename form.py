@@ -17,7 +17,7 @@ class MealForm(Form):
 
 	place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
 	time = TimeField('Time (hh:mm)', [Required(message=(u'Invalid Time'))])
-	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[DateRange(min=date(currentDay, currentMonth, currentYear), max=date(min(currentDay, 28), (currentMonth+1) % 12, currentYear))])
+	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[DateRange(min=date(currentYear, currentMonth, currentDay), max=date(currentYear, (currentMonth+1) % 12, min(currentDay, 28)))])
 	priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
 	uid = HiddenField('')
 
