@@ -1,10 +1,9 @@
 from wtforms import Form, BooleanField, TextField, IntegerField, validators
 from wtforms.validators import ValidationError, Required, Email, URL
-from wtforms.fields import HiddenField, RadioField, SelectField
-from wtforms_components import TimeField
+from wtforms.fields import HiddenField, RadioField, SelectField, DateField
+from wtforms_components import TimeField, DateRange
 
 from datetime import date, datetime
-from wtforms_html5 import DateField, DateRange
 
 import locale
 locale.setlocale(locale.LC_ALL, 'en_US.utf8')
@@ -17,7 +16,7 @@ class MealForm(Form):
 
 	place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
 	time = TimeField('Time (hh:mm)', [Required(message=(u'Invalid Time'))])
-	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[DateRange(min=date(currentYear, currentMonth, currentDay), max=date(currentYear, (currentMonth+1) % 12, min(currentDay, 28)))])
+	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[Required(message=(u'Invalid Date')), DateRange(min=datetime.now())])
 	priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
 	uid = HiddenField('')
 
