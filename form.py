@@ -5,6 +5,11 @@ from wtforms_components import TimeField, DateRange
 
 from datetime import date, datetime
 
+
+def validate_date(form, field):
+	if "2014" not in str(field.data) and "2015" not in str(field.data):
+		raise ValidationError(u'Don\'t get ahead of yourself!')
+
 class MealForm(Form):
 
 	currentYear = int(datetime.now().strftime('%Y'))
@@ -20,10 +25,6 @@ class MealForm(Form):
 def validate_email(form, field):
 	if "@princeton.edu" not in field.data.lower():
 		raise ValidationError(u'Must have a @princeton.edu email address')
-
-def validate_date(form, field):
-	if "2014" not in str(field.data) and "2015" not in str(field.data):
-		raise ValidationError(u'Don\'t get ahead of yourself!')
 
 class Signup(Form):
 	firstname = TextField('First Name', [Required(), validators.Length(min=1, max=44)])
