@@ -82,39 +82,39 @@
 			padding:0px;
 		}
 	</style>
-
+	<div id="fb-root"></div>
 	<script type="text/javascript">
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '1423477091234772',
-				status     : true, // check login status
-				cookie     : true, // enable cookies to allow the server to access the session
-				xfbml      : false  // parse XFBML
-			});
+		
+		FB.init({
+			appId      : '1423477091234772',
+			status     : true, // check login status
+			cookie     : true, // enable cookies to allow the server to access the session
+			xfbml      : false  // parse XFBML
+		});
 
-			
-					
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					uid = response.authResponse.userID;
-					$(document).trigger('fbInit');
+		console.log("Here")
+				
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				uid = response.authResponse.userID;
+				$(document).trigger('fbInit');
 
-					FB.api('me?fields=picture.height(80)', function(response) {
-						if (!response || response.error) {
-							console.log('Error occured');
-						} else {
-							picurl = response["picture"]["data"]["url"];
-							console.log(picurl)
-							$(document).trigger('fbInitPicLoaded');
-						}
-					});
-				}
-				else {
-					console.log("User not logged into fb")
-					location.href = "/";
-				}
-			});
-		}
+				FB.api('me?fields=picture.height(80)', function(response) {
+					if (!response || response.error) {
+						console.log('Error occured');
+					} else {
+						picurl = response["picture"]["data"]["url"];
+						console.log(picurl)
+						$(document).trigger('fbInitPicLoaded');
+					}
+				});
+			}
+			else {
+				console.log("User not logged into fb")
+				location.href = "/";
+			}
+		});
+		
 	</script>
 
 
@@ -479,7 +479,7 @@
 					</div>
 				</div>
 			</footer>
-			<div id="fb-root"></div>
+			
 
 			<script type="text/javascript">			
 				var error = "{{ errorFlag }}";
