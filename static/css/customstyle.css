@@ -25,13 +25,12 @@ body {
 	}
 }
 
-/*
-@media screen and (max-height: 900px) {
+@media screen and (max-height:650px) {
 	body {
 		background-size: 1720px 900px;
 	}
 }
-*/
+
 
 @media screen and (min-width: 851px) and (max-width: 1270px) {
 	body {
