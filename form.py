@@ -7,7 +7,7 @@ from datetime import date, datetime
 from wtforms_html5 import DateField, DateRange
 
 import locale
-locale.setlocale(locale.LC_ALL, 'en_US.utf8')
+locale.setlocale(locale.LC_ALL, 'en_GB.utf8')
 
 class MealForm(Form):
 
@@ -18,7 +18,7 @@ class MealForm(Form):
 	place = SelectField(u'Choose a place', choices=[('Forbes', 'Forbes'), ('Mathey', 'Mathey'), ('Rocky', 'Rocky'), ('Whitman', 'Whitman'), ('Wilcox', 'Wilcox'), ('Wu', 'Wu'), ('Cannon', 'Cannon'), ('Cap and Gown', 'Cap and Gown'), ('Charter', 'Charter'), ('Cloister', 'Cloister'), ('Colonial', 'Colonial'), ('Cottage', 'Cottage'), ('Ivy', 'Ivy'), ('Quad', 'Quad'), ('Terrace', 'Terrace'), ('Tiger Inn', 'Tiger Inn'), ('Tower', 'Tower')])
 	time = TimeField('Time (hh:mm)', [Required()])
 	# format='%m/%d/%y', 
-	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[DateRange(min=date(currentYear, currentMonth, currentDay), max=date(currentYear, (currentMonth+1) % 12, min(currentDay, 28)))])
+	date = DateField('Date (mm/dd/yyyy) in the next month', format='%m/%d/%Y', validators=[Required(), DateRange(min=date(currentYear, currentMonth, currentDay), max=date(currentYear, (currentMonth+1) % 12, min(currentDay, 28)))])
 	priv = RadioField('Friends-only or Public', [Required()], choices=[('pvt', 'Private'), ('pub', 'Public')])
 	uid = HiddenField('')
 
@@ -27,8 +27,8 @@ def validate_email(form, field):
 		raise ValidationError(u'Must have a @princeton.edu email address')
 
 class Signup(Form):
-	firstname = TextField('First Name', [Required(), validators.Length(min=2, max=45)])
-	lastname = TextField('Last Name', [Required(), validators.Length(min=2, max=45)])
+	firstname = TextField('First Name', [Required(), validators.Length(min=1, max=44)])
+	lastname = TextField('Last Name', [Required(), validators.Length(min=1, max=44)])
 	email = TextField('Email', [Required(), Email(), validate_email])
 	uid = HiddenField('', [Required()])
 	picurl = HiddenField('')
