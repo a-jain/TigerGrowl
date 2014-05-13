@@ -27,8 +27,8 @@ def validate_email(form, field):
 		raise ValidationError(u'Must have a @princeton.edu email address')
 
 class Signup(Form):
-	firstname = TextField('First Name', [Required(), validators.Length(min=1, max=44)])
-	lastname = TextField('Last Name', [Required(), validators.Length(min=1, max=44)])
-	email = TextField('Email', [Required(), Email(), validate_email])
+	firstname = TextField('First Name', [Required(message=(u'Invalid Name')), validators.Length(min=1, max=44)])
+	lastname = TextField('Last Name', [Required(message=(u'Invalid Name')), validators.Length(min=1, max=44)])
+	email = TextField('Email', [Required(message=(u'Invalid Email')), Email(), validate_email])
 	uid = HiddenField('', [Required()])
 	picurl = HiddenField('')
