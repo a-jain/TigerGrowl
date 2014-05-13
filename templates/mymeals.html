@@ -443,14 +443,17 @@
 				if (objHost[i] !== undefined) { 
 					if (objHost[i++][16] == 'pub') {
 						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
-						$(this).append("(<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-open'></span>");
 						$(this).append(" Public)");
 						$(this).append("</div>");
 
 					}
 					else {
-						$(this).append("(<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-close'></span>");
 						$(this).append(" Private)");
+						$(this).append("</div>");
+
 					}
 				}
 			});
@@ -488,12 +491,16 @@
 			$(".inviter-row .name-identifier").each(function(i) {
 				if (objInvitedMeals[i] !== undefined) { 
 					if (objInvitedMeals[i++][16] == 'pub') {
-						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
-						$(this).append(" Public )");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Public)");
+						$(this).append("</div>");
 					}
 					else {
-						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
-						$(this).append(" Private )");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Private)");
+						$(this).append("</div>");
 					}
 				}
 			});
@@ -522,12 +529,16 @@
 			$(".guest-column .name-identifier").each(function(i) {
 				if (objGuest[i] !== undefined) { 
 					if (objGuest[i++][16] == 'pub') {
-						$(this).append("( <span class='glyphicon glyphicon-eye-open'></span>");
-						$(this).append(" Public )");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-open'></span>");
+						$(this).append(" Public)");
+						$(this).append("</div>");
 					}
 					else {
-						$(this).append("( <span class='glyphicon glyphicon-eye-close'></span>");
-						$(this).append(" Private )");
+						$(this).append("<div class='pubpri-identifier' style='font-size: small; display: inline;'>");
+						$(this).append(" (<span class='glyphicon glyphicon-eye-close'></span>");
+						$(this).append(" Private)");
+						$(this).append("</div>");
 					}
 				}
 			});
