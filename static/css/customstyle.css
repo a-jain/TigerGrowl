@@ -12,7 +12,7 @@ body {
 	height:100%;
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width:550px) {
 	.help, .btn-info, .btn-success, .btn-warning {
 		display:none;
 	}
