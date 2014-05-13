@@ -12,6 +12,13 @@ body {
 	height:100%;
 }
 
+@media screen and (max-width:450px) {
+	.help, .btn-info, .btn-success, .btn-warning {
+		display:none;
+	}
+
+}
+
 @media screen and (min-width:1271px) {
 	body {
 		background-size: 100% 100%;
