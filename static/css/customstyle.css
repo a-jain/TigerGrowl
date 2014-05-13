@@ -13,11 +13,32 @@ body {
 }
 
 @media screen and (max-width:550px) {
-	.help, .btn-info, .btn-success, .btn-warning {
+	.help, .attendees {
 		display:none;
 	}
-
 }
+
+@media screen and (max-width:400px) {
+	.mymealsbutton {
+		float: none;
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+	.FacebookPhoto {
+		height: 35px;
+		padding: 4px;
+		float: none;
+	}
+	#HostButton {
+		font-size: 100%;
+		width: auto;	
+	}
+	.feed-row {
+		font-size:80%;
+	}
+}
+
+
 
 @media screen and (min-width:1271px) {
 	body {
