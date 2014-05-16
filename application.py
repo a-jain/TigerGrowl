@@ -573,6 +573,7 @@ def inviters(mealid=None):
 		# print "kevin's a slut"
 		# check if user is already invited.
 		sql = "SELECT * FROM ebdb.invitees WHERE meal_id = %d" % int(mealid)
+		print sql
 		# print "such an outrageous whore"
 		cursor.execute(sql)
 		# print "taht the world has ever known"
@@ -588,6 +589,7 @@ def inviters(mealid=None):
 		is_guest_already = False
 		if not is_invited_already:
 			sql = "SELECT * FROM ebdb.meal_table WHERE meal_id = %d" % int(mealid)
+			print sql
 			cursor.execute(sql)
 			mealinfo = cursor.fetchone()
 			firstGuestIndex = 4
@@ -602,6 +604,7 @@ def inviters(mealid=None):
 		# if the user isn't already invited and isn't already a guest, then invite him
 		if not is_invited_already and not is_guest_already:
 			sql = "INSERT INTO ebdb.invitees (meal_id, guest, hostnotification, guestnotification) VALUES (%d, %d, %d, %d);" % (int(mealid), int(i), 1, 1)
+			print sql
 		 	cursor.execute(sql)
 		#print i
 
